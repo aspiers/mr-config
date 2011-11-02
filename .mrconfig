@@ -1,0 +1,12 @@
+[DEFAULT]
+
+include =
+    cat ~/.GIT/3rd-party/mr/lib/stow
+    #
+    for d in $HOME/.config/mr/{lib,groups.d}; do
+        if [ -d "$d" ]; then
+            cat "$d"/*
+        else
+            echo "$d missing" >&2
+        fi
+    done

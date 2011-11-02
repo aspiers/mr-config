@@ -1,0 +1,2 @@
+lib =
+    source $HOME/lib/libhost.sh

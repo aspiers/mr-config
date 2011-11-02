@@ -1,0 +1,10 @@
+lib =
+    # Uncomment to test mr:
+    #export MR_TEST=$HOME/roaming/scm/mr-test
+    #
+    if [ -n "$MR_TEST" ]; then
+        info "test mode activated"
+        STOW_DIR=$MR_TEST/stow
+        STOW_TARGET=$MR_TEST/target
+        MR_GIT=$MR_TEST/GIT
+    fi

@@ -1,0 +1,3 @@
+lib =
+    MR_NAME="`basename $MR_REPO`"
+    #info "default repo name is $MR_NAME, can still be overridden"

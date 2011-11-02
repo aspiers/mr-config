@@ -1,0 +1,1 @@
+fixups = echo "${MR_REPO%/}/.cfg-post.d/$MR_NAME"

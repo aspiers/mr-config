@@ -1,0 +1,26 @@
+lib =
+    MR_GIT=$HOME/.GIT
+    GIT_MY_ROOT=$MR_GIT/adamspiers.org
+    MY_UPSTREAM_HOST=adamspiers.org
+    GIT_MY_UPSTREAM=ssh://$MY_UPSTREAM_HOST/home/adam/.GIT/adamspiers.org
+    GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party
+    #
+    git_clone_my_repo () {
+        git clone "$GIT_MY_UPSTREAM/$MR_NAME" "$MR_REPO"
+    }
+    #
+    moosehall_git_checkout () {
+        if [ $# != 2 ]; then
+            error "Usage: moosehall_git_checkout HUB-HOST REPO"
+        fi
+        hub="$1"
+        repo="$2"
+        read_localhost_nickname
+        if [ "$hub" = "$localhost_nickname" ]; then
+            if ! [ -d "$MR_REPO" ]; then
+                error "This machine is supposed to be the hub for $MR_REPO but it didn't exist!"
+            fi
+        else
+            git clone ssh://$hub/home/adam/.GIT/$repo "$MR_REPO"
+        fi
+    }
