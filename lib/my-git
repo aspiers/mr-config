@@ -5,6 +5,11 @@ lib =
     GIT_MY_UPSTREAM=ssh://$MY_UPSTREAM_HOST/home/adam/.GIT/adamspiers.org
     GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party
     #
+    # syntactic sugar
+    git_clone () {
+        git clone "$@" "$MR_REPO"
+    }
+    #
     git_clone_my_repo () {
         git clone "$GIT_MY_UPSTREAM/$MR_NAME" "$MR_REPO"
     }

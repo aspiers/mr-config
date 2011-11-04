@@ -1,2 +1,2 @@
 [$HOME/.GIT/3rd-party/offlineimap]
-checkout = git clone git://github.com/spaetz/offlineimap.git "$MR_REPO"
+checkout = git_clone git://github.com/spaetz/offlineimap.git
