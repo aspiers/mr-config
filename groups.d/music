@@ -1,2 +1,9 @@
-[.GIT/3rd-party/lilypond]
+[$HOME/.GIT/3rd-party/lilypond]
 checkout = moosehall_git_checkout atlantic lilypond
+
+[$HOME/.GIT/3rd-party/git-cl]
+checkout = git clone https://github.com/gperciva/git-cl "$MR_REPO"
+
+[$HOME/.GIT/3rd-party/lilypond-extra]
+checkout = git clone https://github.com/gperciva/lilypond-extra "$MR_REPO"
+
