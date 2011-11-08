@@ -6,10 +6,14 @@ if ! which curl >&/dev/null; then
 fi
 
 dst=$HOME/.GIT/3rd-party
-[ -d $dst ] || mkdir -p $dst
+if [ -d $dst ]; then
+    echo "$dst already exists; aborting" >&2
+    exit 1
+fi
 
+mkdir -p $dst
 git clone git@github.com:aspiers/kitenet-mr.git $dst/mr
-ln -s $dst/mr/mr ~/bin
+ln -sf $dst/mr/mr ~/bin
 
 mr -t bootstrap http://adamspiers.org/.mrconfig
 cd
