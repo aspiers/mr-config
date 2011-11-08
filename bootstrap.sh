@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! which curl >&/dev/null; then
+    echo "mr can't bootstrap without curl" >&2
+    exit 1
+fi
+
 dst=$HOME/.GIT/3rd-party
 [ -d $dst ] || mkdir -p $dst
 
