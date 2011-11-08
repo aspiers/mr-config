@@ -1,16 +1,19 @@
 [$HOME/.GIT/adamspiers.org/SESSION]
+skip = require_exe X
 checkout = git_clone_my_repo SESSION
 
 [$HOME/.GIT/adamspiers.org/fonts]
 checkout = git_clone_my_repo fonts
 
 [$HOME/.GIT/adamspiers.org/gkrellm]
+skip = require_exe gkrellm
 checkout = git_clone_my_repo gkrellm
 
 [$HOME/.GIT/adamspiers.org/rxvt]
 checkout = git_clone_my_repo rxvt
 
 [$HOME/.GIT/adamspiers.org/xwrits]
+skip = require_exe xwrits
 checkout = git_clone_my_repo xwrits
 
 [$HOME/.GIT/adamspiers.org/graphics]
@@ -27,6 +30,7 @@ checkout = git_clone_my_repo kde
 checkout = git_clone_my_repo watchlogs
 
 [$HOME/.GIT/adamspiers.org/xchat]
+skip = require_exe xchat
 checkout = git_clone_my_repo xchat
 
 # [$HOME/.GIT/adamspiers.org/backgrounds]

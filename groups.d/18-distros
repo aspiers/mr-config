@@ -3,5 +3,5 @@ skip = require_exe rpm
 checkout = git_clone_my_repo rpm
 
 [$HOME/.GIT/adamspiers.org/SUSE]
+skip = require_file /etc/SuSE-release
 checkout = git_clone_my_repo SUSE
-

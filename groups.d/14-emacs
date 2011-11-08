@@ -10,32 +10,40 @@
 # snippet.el
 
 [$HOME/.GIT/adamspiers.org/emacs]
+skip = require_exe emacs
 checkout = git_clone_my_repo emacs
 
 [$HOME/.GIT/3rd-party/org-mode]
+skip = require_exe emacs
 checkout = git_clone git://repo.or.cz/org-mode.git
 relocate = lib/emacs/major-modes/org-mode.git
 
 [$HOME/.GIT/3rd-party/cucumber-el]
+skip = require_exe emacs
 checkout = git_clone git://github.com/michaelklishin/cucumber.el.git
 relocate = lib/emacs/major-modes/cucumber
 
 [$HOME/.GIT/3rd-party/elisp-behave]
+skip = require_exe emacs
 checkout = git_clone git://github.com/tomtt/elisp_behave.git
 relocate = lib/emacs/major-modes/elisp-behave
 
 [$HOME/.GIT/3rd-party/emacs-rails]
+skip = require_exe emacs
 checkout = git_clone git://github.com/remvee/emacs-rails.git
 relocate = lib/emacs/major-modes/emacs-rails.remvee.git
 
 [$HOME/.GIT/3rd-party/yasnippets-rails]
+skip = require_exe emacs
 checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
 relocate = lib/emacs/minor-modes/yasnippets-rails
 
 [$HOME/.GIT/3rd-party/remember]
+skip = require_exe emacs
 checkout = git_clone git://repo.or.cz/remember-el.git
 relocate = lib/emacs/major-modes/remember.git
 
 [$HOME/.GIT/3rd-party/dvc]
+skip = require_exe emacs
 checkout = git_clone http://bzr.xsteve.at/dvc/
 relocate = lib/emacs/major-modes/$MR_NAME

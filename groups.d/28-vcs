@@ -1,7 +1,9 @@
 [$HOME/.GIT/adamspiers.org/hg]
+skip = require_exe hg
 checkout = git_clone_my_repo hg
 
 [$HOME/.GIT/adamspiers.org/hg.pub]
+skip = require_exe hg
 checkout = git_clone_my_repo hg.pub
 
 [$HOME/.GIT/adamspiers.org/svn]

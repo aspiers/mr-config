@@ -8,7 +8,9 @@ checkout = git_clone_my_repo perl+doc
 checkout = git_clone_my_repo pmtools
 
 [$HOME/.GIT/adamspiers.org/ruby]
+skip = require_exe ruby
 checkout = git_clone_my_repo ruby
 
 [$HOME/.GIT/adamspiers.org/java]
+skip = require_exe java
 checkout = git_clone_my_repo java

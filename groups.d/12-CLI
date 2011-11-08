@@ -1,7 +1,9 @@
 [$HOME/.GIT/adamspiers.org/lftp]
+skip = require_exe lftp
 checkout = git_clone_my_repo lftp
 
 [$HOME/.GIT/adamspiers.org/ncftp]
+skip = require_exe ncftp
 checkout = git_clone_my_repo ncftp
 
 [$HOME/.GIT/adamspiers.org/wscan]
