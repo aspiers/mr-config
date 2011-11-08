@@ -12,6 +12,8 @@ lib =
     #
     git_clone_my_repo () {
         git clone "$GIT_MY_UPSTREAM/$MR_NAME" "$MR_REPO"
+        cd "$MR_REPO"
+        git config user.email "dotfiles@adamspiers.org"
     }
     #
     moosehall_git_checkout () {
