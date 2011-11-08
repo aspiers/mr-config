@@ -1,5 +1,5 @@
 [$HOME/.GIT/3rd-party/mr]
-checkout = git_clone git://git.kitenet.net/mr
+checkout = git_clone git@github.com:aspiers/kitenet-mr.git "$MR_REPO"
 fixups = git_email mr
 
 [$HOME/.GIT/adamspiers.org/META]
