@@ -1,0 +1,6 @@
+[$HOME/.GIT/adamspiers.org/screen]
+checkout = git_clone_my_repo screen
+
+[$HOME/.GIT/3rd-party/git-annex]
+checkout = git_clone git://git-annex.branchable.com/
+

@@ -1,0 +1,14 @@
+[$HOME/.GIT/adamspiers.org/perl+mine]
+checkout = git_clone_my_repo perl+mine
+
+[$HOME/.GIT/adamspiers.org/perl+doc]
+checkout = git_clone_my_repo perl+doc
+
+[$HOME/.GIT/adamspiers.org/pmtools]
+checkout = git_clone_my_repo pmtools
+
+[$HOME/.GIT/adamspiers.org/ruby]
+checkout = git_clone_my_repo ruby
+
+[$HOME/.GIT/adamspiers.org/java]
+checkout = git_clone_my_repo java

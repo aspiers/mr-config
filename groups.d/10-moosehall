@@ -1,0 +1,23 @@
+[$HOME/.GIT/adamspiers.org/moosehall+shell-env]
+skip = ! moosehall-connection-p
+checkout = git_clone_my_repo moosehall+shell-env
+
+[$HOME/.GIT/adamspiers.org/moosehall+xsession]
+skip = ! moosehall-connection-p
+checkout = git_clone_my_repo moosehall+xsession
+
+[$HOME/.GIT/adamspiers.org/moosehall+ssh.pub]
+skip = ! moosehall-connection-p
+checkout = git_clone_my_repo moosehall+ssh.pub
+
+[$HOME/.GIT/adamspiers.org/moosehall+watchlogs.pub]
+skip = ! moosehall-connection-p
+checkout = git_clone_my_repo moosehall+watchlogs.pub
+
+[$HOME/.GIT/adamspiers.org/moosehall+ldap.pub]
+skip = ! moosehall-connection-p
+checkout = git_clone_my_repo moosehall+ldap.pub
+
+[$HOME/.GIT/adamspiers.org/moosehall+ldap.sec]
+skip = ! moosehall-connection-p
+checkout = git_clone_my_repo moosehall+ldap.sec

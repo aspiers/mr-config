@@ -1,0 +1,11 @@
+[$HOME/.GIT/adamspiers.org/lftp]
+checkout = git_clone_my_repo lftp
+
+[$HOME/.GIT/adamspiers.org/ncftp]
+checkout = git_clone_my_repo ncftp
+
+[$HOME/.GIT/adamspiers.org/wscan]
+checkout = git_clone_my_repo wscan
+
+[$HOME/.GIT/adamspiers.org/dup-files]
+checkout = git_clone_my_repo dup-files

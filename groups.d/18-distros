@@ -1,0 +1,7 @@
+[$HOME/.GIT/adamspiers.org/rpm]
+skip = require_exe rpm
+checkout = git_clone_my_repo rpm
+
+[$HOME/.GIT/adamspiers.org/SUSE]
+checkout = git_clone_my_repo SUSE
+

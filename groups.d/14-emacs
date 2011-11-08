@@ -1,0 +1,41 @@
+# TODO:
+#
+# move all 3rd party emacs packages out to separate packages
+#   color-theme
+#   org
+#   epg
+#   etc.
+#
+# find-recursive.el
+# snippet.el
+
+[$HOME/.GIT/adamspiers.org/emacs]
+checkout = git_clone_my_repo emacs
+
+[$HOME/.GIT/3rd-party/org-mode]
+checkout = git_clone git://repo.or.cz/org-mode.git
+relocate = lib/emacs/major-modes/org-mode.git
+
+[$HOME/.GIT/3rd-party/cucumber-el]
+checkout = git_clone git://github.com/michaelklishin/cucumber.el.git
+relocate = lib/emacs/major-modes/cucumber
+
+[$HOME/.GIT/3rd-party/elisp-behave]
+checkout = git_clone git://github.com/tomtt/elisp_behave.git
+relocate = lib/emacs/major-modes/elisp-behave
+
+[$HOME/.GIT/3rd-party/emacs-rails]
+checkout = git_clone git://github.com/remvee/emacs-rails.git
+relocate = lib/emacs/major-modes/emacs-rails.remvee.git
+
+[$HOME/.GIT/3rd-party/yasnippets-rails]
+checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
+relocate = lib/emacs/minor-modes/yasnippets-rails
+
+[$HOME/.GIT/3rd-party/remember]
+checkout = git_clone git://repo.or.cz/remember-el.git
+relocate = lib/emacs/major-modes/remember.git
+
+[$HOME/.GIT/3rd-party/dvc]
+checkout = git_clone http://bzr.xsteve.at/dvc/
+relocate = lib/emacs/major-modes/$MR_NAME

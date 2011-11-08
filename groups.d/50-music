@@ -7,3 +7,7 @@ checkout = git_clone https://github.com/gperciva/git-cl
 [$HOME/.GIT/3rd-party/lilypond-extra]
 checkout = git_clone https://github.com/gperciva/lilypond-extra
 
+#[$HOME/.CVS/lilypond]
+#name = lilypond-extra
+#checkout = moosehall_git_checkout atlantic lilypond
+

@@ -1,0 +1,17 @@
+# [$HOME/.GIT/adamspiers.org/novell+shell-env.pub]
+# checkout = git_clone_my_repo novell+shell-env.pub
+
+# [$HOME/.GIT/adamspiers.org/novell+emacs.pub]
+# checkout = git_clone_my_repo novell+emacs.pub
+
+# [$HOME/.GIT/adamspiers.org/novell+mail.pub]
+# checkout = git_clone_my_repo novell+mail.pub
+
+# [$HOME/.GIT/adamspiers.org/novell+vpn.pub]
+# checkout = git_clone_my_repo novell+vpn.pub
+
+# [$HOME/.GIT/adamspiers.org/novell+mail.sec]
+# checkout = git_clone_my_repo novell+mail.sec
+
+# [$HOME/.GIT/adamspiers.org/novell+vpn.sec]
+# checkout = git_clone_my_repo novell+vpn.sec

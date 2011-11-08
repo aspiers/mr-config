@@ -1,6 +1,0 @@
-[$HOME/roaming/scm/mr-test/GIT/mailcap]
-name = mailcap
-checkout = git_clone_my_repo
-
-[$HOME/roaming/scm/mr-test/GIT/pmtools]
-checkout = git_clone_my_repo

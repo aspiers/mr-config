@@ -1,0 +1,35 @@
+[$HOME/.GIT/3rd-party/mr]
+checkout = git_clone git://git.kitenet.net/mr
+
+[$HOME/.GIT/adamspiers.org/META]
+checkout = git_clone_my_repo META
+
+[$HOME/.GIT/adamspiers.org/shell-env]
+checkout = git_clone_my_repo shell-env
+
+# N.B. cvs requires glob-to-re from shell-env.
+# My version of stow uses ~/.cvsignore from this. 
+[$HOME/.GIT/adamspiers.org/cvs]
+checkout = git_clone_my_repo cvs
+
+[$HOME/.GIT/adamspiers.org/git]
+checkout = git_clone_my_repo git
+
+# This one required to stop stow folding some high-level
+# directories which are safer left unfolded (in case I
+# accidentally put new files in there and they unintentionally go
+# in a package directory).
+[$HOME/.GIT/adamspiers.org/ANTIFOLD]
+checkout = git_clone_my_repo ANTIFOLD
+
+[$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
+checkout = git_clone_my_repo shell-env.adam_spiers.pub
+
+[$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.sec]
+checkout = git_clone_my_repo shell-env.adam_spiers.sec
+
+[$HOME/.GIT/adamspiers.org/ssh]
+checkout = git_clone_my_repo ssh
+
+[$HOME/.GIT/adamspiers.org/ssh.adam_spiers.sec]
+checkout = git_clone_my_repo ssh.adam_spiers.sec

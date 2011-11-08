@@ -1,0 +1,16 @@
+[$HOME/.GIT/adamspiers.org/hg]
+checkout = git_clone_my_repo hg
+
+[$HOME/.GIT/adamspiers.org/hg.pub]
+checkout = git_clone_my_repo hg.pub
+
+[$HOME/.GIT/adamspiers.org/svn]
+skip = require_exe svn
+checkout = git_clone_my_repo svn
+
+[$HOME/.GIT/adamspiers.org/darcs]
+skip = require_exe darcs
+checkout = git_clone_my_repo darcs
+
+#[$HOME/.GIT/adamspiers.org/arch]
+#checkout = git_clone_my_repo arch
