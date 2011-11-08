@@ -28,3 +28,16 @@ lib =
             true
         fi
     }
+    #
+    require_moosehall () {
+        if awk '/^ *search/ { print $2; exit 0 }' /etc/resolv.conf | \
+            sed 's/\.$//' | \
+            grep -q moosehall
+        then
+            #echo "Found moosehall in /etc/resolv.conf search path; not skipping"
+            false
+        else
+            #echo "Didn't find moosehall in /etc/resolv.conf search path; skipping"
+            true
+        fi
+    }
