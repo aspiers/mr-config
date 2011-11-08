@@ -34,3 +34,15 @@ lib =
             git clone ssh://$hub/home/adam/.GIT/$repo "$MR_REPO"
         fi
     }
+    #
+    git_add_remotes () {
+        cd "$MR_REPO"
+        while read remote url exception; do
+            if [ "$LOCALHOST_NICKNAME" = "$exception" ]; then
+                warning "Won't add remote $url for $exception"
+            else
+                git remote add "$remote" "$url"
+                info "Added remote $remote -> $url"
+            fi
+        done
+    }

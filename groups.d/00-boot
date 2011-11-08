@@ -1,5 +1,10 @@
 [$HOME/.GIT/3rd-party/mr]
-checkout = git_clone git@github.com:aspiers/kitenet-mr.git "$MR_REPO"
+checkout = 
+    git_clone git@github.com:aspiers/kitenet-mr.git "$MR_REPO"
+    git_add_remotes <<EOF
+    foo bar baz
+    foo2 bar2 baz2
+    EOF
 fixups = git_email mr
 
 [$HOME/.GIT/adamspiers.org/META]
