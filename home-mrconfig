@@ -1,0 +1,5 @@
+[.config/mr]
+name = mr-config
+checkout = git clone ssh://adamspiers.org/home/adam/.config/mr "$MR_REPO"
+chain = true
+fixups = ln -sf .config/mr/home-mrconfig ~/.mrconfig
