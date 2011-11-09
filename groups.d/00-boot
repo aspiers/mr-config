@@ -1,6 +1,6 @@
 [$HOME/.GIT/3rd-party/mr]
 checkout = 
-    git_clone git@github.com:aspiers/kitenet-mr.git "$MR_REPO"
+    git_clone git@github.com:aspiers/kitenet-mr.git
     git_add_remotes <<EOF
     foo bar baz
     foo2 bar2 baz2

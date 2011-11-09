@@ -15,7 +15,7 @@ checkout = git_clone_my_repo emacs
 
 [$HOME/.GIT/3rd-party/org-mode]
 skip = require_exe emacs
-checkout = git_clone git://repo.or.cz/org-mode.git
+checkout = git_clone git://repo.or.cz/org-mode.git orgmode
 relocate = lib/emacs/major-modes/org-mode.git
 
 [$HOME/.GIT/3rd-party/cucumber-el]

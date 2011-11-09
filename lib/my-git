@@ -7,11 +7,14 @@ lib =
     #
     # syntactic sugar
     git_clone () {
-        git clone "$@" "$MR_REPO"
+        git clone "$1" "$MR_REPO"
+        ( cd "$MR_REPO" && git_email "${2:-$MR_NAME}" )
     }
     #
     git_email () {
-        git config user.email "$1@adamspiers.org"
+        email="$1@adamspiers.org"
+        git config user.email "$email"
+        info "Set user.email to $email"
     }
     git_clone_my_repo () {
         git clone "$GIT_MY_UPSTREAM/$MR_NAME" "$MR_REPO"
@@ -30,7 +33,7 @@ lib =
                 error "This machine is supposed to be the hub for $MR_REPO but it didn't exist!"
             fi
         else
-            git clone ssh://$hub/home/adam/.GIT/$repo "$MR_REPO"
+            git_clone ssh://$hub/home/adam/.GIT/$repo
         fi
     }
     #
