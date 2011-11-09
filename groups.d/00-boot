@@ -9,17 +9,21 @@ fixups = git_email mr
 
 [$HOME/.GIT/adamspiers.org/META]
 checkout = git_clone_my_repo META
+fixups = mr stow
 
 [$HOME/.GIT/adamspiers.org/shell-env]
 checkout = git_clone_my_repo shell-env
+fixups = mr stow
 
 # N.B. cvs requires glob-to-re from shell-env.
 # My version of stow uses ~/.cvsignore from this. 
 [$HOME/.GIT/adamspiers.org/cvs]
 checkout = git_clone_my_repo cvs
+fixups = mr stow
 
 [$HOME/.GIT/adamspiers.org/git]
 checkout = git_clone_my_repo git
+fixups = mr stow
 
 # This one required to stop stow folding some high-level
 # directories which are safer left unfolded (in case I
@@ -27,17 +31,22 @@ checkout = git_clone_my_repo git
 # in a package directory).
 [$HOME/.GIT/adamspiers.org/ANTIFOLD]
 checkout = git_clone_my_repo ANTIFOLD
+fixups = mr stow
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
 checkout = git_clone_my_repo shell-env.adam_spiers.pub
+fixups = mr stow
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.sec]
 checkout = git_clone_my_repo shell-env.adam_spiers.sec
+fixups = mr stow
 
 [$HOME/.GIT/adamspiers.org/ssh]
 skip = require_exe ssh
 checkout = git_clone_my_repo ssh
+fixups = mr stow
 
 [$HOME/.GIT/adamspiers.org/ssh.adam_spiers.sec]
 skip = require_exe ssh
 checkout = git_clone_my_repo ssh.adam_spiers.sec
+fixups = mr stow
