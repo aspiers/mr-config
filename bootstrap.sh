@@ -13,6 +13,8 @@ if ! which curl >&/dev/null; then
     exit 1
 fi
 
+cd
+
 ${EDITOR:-vi} ~/.zdotuser
 ${EDITOR:-vi} ~/.localhost-nickname
 
@@ -59,37 +61,32 @@ else
     echo "yep - good!"
 fi
 
-dst=$HOME/.GIT/3rd-party
-if [ -d $dst ]; then
-    echo "$dst already exists; aborting" >&2
+third_party_git=$HOME/.GIT/3rd-party
+if [ -d $third_party_git ]; then
+    echo "$third_party_git already exists; aborting" >&2
     exit 1
 fi
 
-mkdir -p $dst
+mkdir -p $third_party_git
 echo "Retrieving upstream git repo for mr: $mr_upstream_repo"
-git clone $mr_upstream_repo $dst/mr
-ln -sf $dst/mr/mr ~/bin
+git clone $mr_upstream_repo $third_party_git/mr
+ln -sf $third_party_git/mr/mr ~/bin
 echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 
 mr -t -i -v6 bootstrap http://adamspiers.org/.mrconfig
-
-mr -v6 -i checkout
-
-exit 0
 
 # ~/bin probably doesn't exist yet, but it will be created early on
 # in the below run, and various .cfg-post.d will rely on it being there.
 export PATH=~/bin:$PATH
 
-echo "Running mr -r cvs stow to set up .cvsrc ..."
-mr -r cvs
+# STOW_COMMAND avoids chicken-and-egg issue finding stow.
+#
+# META is needed early on for both stow and lib/libhooks.sh, and
+# possibly other things too.
+STOW_COMMAND=$third_party_git/META/bin/stow mr -r META checkout
 
-echo "Running mr -r META shell-env to install lib/libhooks.sh ..."
-mr -r META,shell-env
-echo
-
-echo "Running mr -r /ssh/ to retrieve all ssh config ..."
-mr -r ssh,ssh.adam_spiers.sec
+echo "Retrieving shell-env and ssh config ..."
+mr -i -r shell-env,ssh,ssh.adam_spiers.sec checkout
 echo
 
 if ! grep -q 'bootstrap.sh-magic-cookie' ~/.ssh/config; then
@@ -102,7 +99,7 @@ echo "rm ~/.ssh/config"
 rm ~/.ssh/config
 echo
 echo "Running mr -r /ssh/ to build config ..."
-mr -r /ssh/ #--dry-run
+mr -i -r ssh up
 
-echo "Running mr -r ..."
-mr -r #--dry-run
+echo "Running mr checkout ..."
+mr -v6 -i checkout
