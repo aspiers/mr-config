@@ -1,6 +1,6 @@
 lib =
     require_exe () {
-        if which "$1" >&/dev/null; then
+        if which "$1" >/dev/null 2>&1; then
             #echo "Found $1 in \$PATH; not skipping"
             false
         else

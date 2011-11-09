@@ -1,6 +1,6 @@
 lib =
     HOST_NAME_FILE=$HOME/.localhost-nickname
-    [ -f "$HOST_NAME_FILE" ] && localhost_nickname="$(<$HOST_NAME_FILE)"
+    [ -f "$HOST_NAME_FILE" ] && localhost_nickname="$(cat $HOST_NAME_FILE)"
     if [ -z "$localhost_nickname" ]; then
         echo "Put host nickname in $HOST_NAME_FILE" >&2
         exit 1

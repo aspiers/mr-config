@@ -8,7 +8,7 @@ include =
         echo "Couldn't find $stow_lib - stow functions will be absent." >&2
     fi
     #
-    for d in $HOME/.config/mr/{lib,groups.d}; do
+    for d in ~/.config/mr/lib ~/.config/mr/groups.d; do
         if [ -d "$d" ]; then
             cat "$d"/*
         else
