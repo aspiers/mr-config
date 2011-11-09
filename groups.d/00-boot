@@ -7,6 +7,7 @@ checkout =
     EOF
 fixups = git_email mr
 
+# FIXME: extract stow stuff out into separate package
 [$HOME/.GIT/adamspiers.org/META]
 checkout = git_clone_my_repo META
 fixups = mr stow

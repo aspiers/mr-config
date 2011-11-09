@@ -83,6 +83,8 @@ export PATH=~/bin:$PATH
 #
 # META is needed early on for both stow and lib/libhooks.sh, and
 # possibly other things too.
+#
+# FIXME: extract stow into a separate package.
 STOW_COMMAND=$third_party_git/META/bin/stow mr -r META checkout
 
 echo "Retrieving shell-env and ssh config ..."
