@@ -73,11 +73,11 @@ git clone $mr_upstream_repo $third_party_git/mr
 ln -sf $third_party_git/mr/mr ~/bin
 echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 
-mr -t -i -v6 bootstrap http://adamspiers.org/.mrconfig
-
 # ~/bin probably doesn't exist yet, but it will be created early on
 # in the below run, and various .cfg-post.d will rely on it being there.
 export PATH=~/bin:$PATH
+
+mr -t -i -v6 bootstrap http://adamspiers.org/.mrconfig
 
 # We need stow checked out and stowed first, so that the other
 # repos can stow themselves.
