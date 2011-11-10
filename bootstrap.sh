@@ -79,13 +79,13 @@ mr -t -i -v6 bootstrap http://adamspiers.org/.mrconfig
 # in the below run, and various .cfg-post.d will rely on it being there.
 export PATH=~/bin:$PATH
 
-# STOW_COMMAND avoids chicken-and-egg issue finding stow.
-#
-# META is needed early on for both stow and lib/libhooks.sh, and
-# possibly other things too.
-#
-# FIXME: extract stow into a separate package.
-STOW_COMMAND=$third_party_git/META/bin/stow mr -r META checkout
+# We need stow checked out and stowed first, so that the other
+# repos can stow themselves.
+mr -r stow checkout
+
+# META is needed early on for lib/libhooks.sh, and possibly other
+# things too.
+mr -r META checkout
 
 echo "Retrieving shell-env and ssh config ..."
 mr -i -r shell-env,ssh,ssh.adam_spiers.sec checkout
