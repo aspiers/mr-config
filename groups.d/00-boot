@@ -11,14 +11,19 @@ fixups = git_email mr
 
 [$HOME/.GIT/adamspiers.org/stow]
 checkout = git_clone git@github.com:aspiers/stow.git
-lib =
-    # STOW_COMMAND avoids chicken-and-egg issue finding stow.
-    export STOW_COMMAND="$MR_REPO/stow"
+# STOW_COMMAND would avoid a chicken-and-egg issue finding stow
+# if we used stow to install itself, but since moving it into
+# its own package, we just use make install, so this is no longer
+# needed.
+#lib = export STOW_COMMAND="$MR_REPO/stow"
+
 fixups =
     cd "$MR_REPO"
+    \
     # Horrible hack to stop autotools trying to do a reconfigure
     # which requires autoconf, aclocal etc.  UGH!
     touch configure Makefile.in aclocal.m4 config.status
+    \
     ./configure --prefix=$HOME
     make install
 
