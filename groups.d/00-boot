@@ -13,7 +13,7 @@ fixups = git_email mr
 checkout = git_clone git@github.com:aspiers/stow.git
 lib =
     # STOW_COMMAND avoids chicken-and-egg issue finding stow.
-    export STOW_COMMAND="${MR_REPO%/}/stow"
+    export STOW_COMMAND="$MR_REPO/stow"
 fixups =
     cd "$MR_REPO"
     # Horrible hack to stop autotools trying to do a reconfigure

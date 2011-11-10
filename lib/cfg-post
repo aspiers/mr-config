@@ -1,7 +1,7 @@
 # -*- mode: sh -*-
 
 fixups =
-    post_script="${MR_REPO%/}/.cfg-post.d/$MR_NAME"
+    post_script="$MR_REPO/.cfg-post.d/$MR_NAME"
     if [ -e "$post_script" ]; then
         info "Running $post_script ..."
         "$post_script"
