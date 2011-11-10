@@ -9,12 +9,13 @@ fixups = git_email mr
 
 [$HOME/.GIT/adamspiers.org/stow]
 checkout = git_clone git@github.com:aspiers/stow.git
+lib =
+    # STOW_COMMAND avoids chicken-and-egg issue finding stow.
+    export STOW_COMMAND="${MR_REPO%/}/stow"
 fixups =
     cd "$MR_REPO"
     ./configure --prefix=$HOME
     make install
-    # STOW_COMMAND avoids chicken-and-egg issue finding stow.
-    export STOW_COMMAND="${MR_REPO%/}/stow"
     mr_stow
 
 # META is needed early on for lib/libhooks.sh, and possibly other
