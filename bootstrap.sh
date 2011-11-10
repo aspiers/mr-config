@@ -15,8 +15,8 @@ fi
 
 cd
 
-${EDITOR:-vi} ~/.zdotuser
-${EDITOR:-vi} ~/.localhost-nickname
+[ -e ~/.zdotuser           ] || ${EDITOR:-vi} ~/.zdotuser
+[ -e ~/.localhost-nickname ] || ${EDITOR:-vi} ~/.localhost-nickname
 
 echo "Setting ZDOTDIR to $HOME"
 export ZDOTDIR=$HOME
