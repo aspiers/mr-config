@@ -3,5 +3,5 @@ name = mr-config
 checkout = git clone ssh://adamspiers.org/home/adam/.config/mr "$MR_REPO"
 chain = true
 fixups =
-    ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
-    ln -sf "$MR_REPO/.stow-global-ignore" ~
+    ln -sf "${MR_REPO%/}/home-mrconfig" ~/.mrconfig
+    ln -sf "${MR_REPO%/}/.stow-global-ignore" ~
