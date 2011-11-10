@@ -25,11 +25,6 @@ checkout = git_clone_my_repo META
 [$HOME/.GIT/adamspiers.org/shell-env]
 checkout = git_clone_my_repo shell-env
 
-# N.B. cvs requires glob-to-re from shell-env.
-# My version of stow uses ~/.cvsignore from this. 
-[$HOME/.GIT/adamspiers.org/cvs]
-checkout = git_clone_my_repo cvs
-
 [$HOME/.GIT/adamspiers.org/git]
 checkout = git_clone_my_repo git
 
