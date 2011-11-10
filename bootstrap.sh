@@ -81,8 +81,11 @@ mr -t -i -v6 bootstrap http://adamspiers.org/.mrconfig
 
 # We need stow checked out and stowed first, so that the other
 # repos can stow themselves.
-mr -r stow checkout
-mr -r stow stow
+#
+# For some reason the bootstrap above already checked out stow but
+# doesn't run the fixups, which installs stow.  Probably a
+# bootstrap+chain bug.  An update should fix that for now.
+mr -r stow update
 
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.

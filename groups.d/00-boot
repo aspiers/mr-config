@@ -16,7 +16,6 @@ fixups =
     cd "$MR_REPO"
     ./configure --prefix=$HOME
     make install
-    mr_stow
 
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.
