@@ -82,10 +82,12 @@ export PATH=~/bin:$PATH
 # We need stow checked out and stowed first, so that the other
 # repos can stow themselves.
 mr -r stow checkout
+mr -r stow stow
 
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.
 mr -r META checkout
+mr -r META stow
 
 echo "Retrieving shell-env and ssh config ..."
 mr -i -r shell-env,ssh,ssh.adam_spiers.sec checkout
@@ -105,3 +107,4 @@ mr -i -r ssh up
 
 echo "Running mr checkout ..."
 mr -v6 -i checkout
+mr -v6 -i stow
