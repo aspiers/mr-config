@@ -17,6 +17,7 @@ lib =
         info "Set user.email to $email"
     }
     git_clone_my_repo () {
+        info "Cloning from $GIT_MY_UPSTREAM/$MR_NAME"
         git clone "$GIT_MY_UPSTREAM/$MR_NAME" "$MR_REPO"
         cd "$MR_REPO"
         git_email dotfiles
