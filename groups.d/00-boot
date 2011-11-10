@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 [$HOME/.GIT/3rd-party/mr]
 checkout = 
     git_clone git@github.com:aspiers/kitenet-mr.git

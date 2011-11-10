@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 # [$HOME/.GIT/adamspiers.org/novell+shell-env.pub]
 # checkout = git_clone_my_repo novell+shell-env.pub
 

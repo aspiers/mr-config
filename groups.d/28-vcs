@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 # N.B. cvs requires glob-to-re from shell-env.
 [$HOME/.GIT/adamspiers.org/cvs]
 checkout = git_clone_my_repo cvs

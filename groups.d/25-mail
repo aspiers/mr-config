@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 [$HOME/.GIT/adamspiers.org/mutt]
 skip = require_exe mutt
 checkout = git_clone_my_repo mutt

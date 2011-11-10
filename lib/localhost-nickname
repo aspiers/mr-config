@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 lib =
     HOST_NAME_FILE=$HOME/.localhost-nickname
     [ -f "$HOST_NAME_FILE" ] && localhost_nickname="$(cat $HOST_NAME_FILE)"

@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 [$HOME/.GIT/adamspiers.org/pim]
 checkout = git_clone_my_repo pim
 

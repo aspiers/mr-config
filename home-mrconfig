@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 [.config/mr]
 name = mr-config
 checkout = git clone ssh://adamspiers.org/home/adam/.config/mr "$MR_REPO"

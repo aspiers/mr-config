@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 lib =
     MR_GIT=$HOME/.GIT
     GIT_MY_ROOT=$MR_GIT/adamspiers.org

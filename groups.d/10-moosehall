@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 [$HOME/.GIT/adamspiers.org/moosehall+shell-env]
 skip = require_moosehall
 checkout = git_clone_my_repo moosehall+shell-env
