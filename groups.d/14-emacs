@@ -14,38 +14,46 @@
 [$HOME/.GIT/adamspiers.org/emacs]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone_my_repo emacs
+stowable = true
 
 [$HOME/.GIT/3rd-party/org-mode]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone git://repo.or.cz/org-mode.git orgmode
-relocate = lib/emacs/major-modes/org-mode.git
+# FIXME relocate = lib/emacs/major-modes/org-mode.git
+# stowable = true
 
 [$HOME/.GIT/3rd-party/cucumber-el]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone git://github.com/michaelklishin/cucumber.el.git
-relocate = lib/emacs/major-modes/cucumber
+# FIXME relocate = lib/emacs/major-modes/cucumber
+# stowable = true
 
 [$HOME/.GIT/3rd-party/elisp-behave]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone git://github.com/tomtt/elisp_behave.git
-relocate = lib/emacs/major-modes/elisp-behave
+# FIXME relocate = lib/emacs/major-modes/elisp-behave
+# stowable = true
 
 [$HOME/.GIT/3rd-party/emacs-rails]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone git://github.com/remvee/emacs-rails.git
-relocate = lib/emacs/major-modes/emacs-rails.remvee.git
+# FIXME relocate = lib/emacs/major-modes/emacs-rails.remvee.git
+# stowable = true
 
 [$HOME/.GIT/3rd-party/yasnippets-rails]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
-relocate = lib/emacs/minor-modes/yasnippets-rails
+# FIXME relocate = lib/emacs/minor-modes/yasnippets-rails
+# stowable = true
 
 [$HOME/.GIT/3rd-party/remember]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone git://repo.or.cz/remember-el.git
-relocate = lib/emacs/major-modes/remember.git
+# FIXME relocate = lib/emacs/major-modes/remember.git
+# stowable = true
 
 [$HOME/.GIT/3rd-party/dvc]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone http://bzr.xsteve.at/dvc/
-relocate = lib/emacs/major-modes/$MR_NAME
+# FIXME relocate = lib/emacs/major-modes/$MR_NAME
+# stowable = true

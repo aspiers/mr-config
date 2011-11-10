@@ -3,38 +3,48 @@
 [$HOME/.GIT/adamspiers.org/SESSION]
 skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo SESSION
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/fonts]
 checkout = git_clone_my_repo fonts
+stowable = true
 
-[$HOME/.GIT/adamspiers.org/gkrellm]
-skip = default_skipper || missing_exe gkrellm
-checkout = git_clone_my_repo gkrellm
+# [$HOME/.GIT/adamspiers.org/gkrellm]
+# skip = default_skipper || missing_exe gkrellm
+# checkout = git_clone_my_repo gkrellm
 
 [$HOME/.GIT/adamspiers.org/rxvt]
 checkout = git_clone_my_repo rxvt
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/xwrits]
 skip = default_skipper || missing_exe xwrits
 checkout = git_clone_my_repo xwrits
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/graphics]
 checkout = git_clone_my_repo graphics
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/audio]
 checkout = git_clone_my_repo audio
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/kde]
 skip = default_skipper || ( missing_exe kdeinit && missing_exe kdeinit4 )
 checkout = git_clone_my_repo kde
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/watchlogs]
 checkout = git_clone_my_repo watchlogs
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/xchat]
 skip = default_skipper || missing_exe xchat
 checkout = git_clone_my_repo xchat
+stowable = true
 
 # [$HOME/.GIT/adamspiers.org/backgrounds]
 # checkout = git_clone_my_repo backgrounds
+# stowable = true
 

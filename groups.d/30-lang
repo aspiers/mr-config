@@ -2,17 +2,22 @@
 
 [$HOME/.GIT/adamspiers.org/perl+mine]
 checkout = git_clone_my_repo perl+mine
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/perl+doc]
 checkout = git_clone_my_repo perl+doc
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/pmtools]
 checkout = git_clone_my_repo pmtools
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/ruby]
 skip = default_skipper || missing_exe ruby
 checkout = git_clone_my_repo ruby
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/java]
 skip = default_skipper || missing_exe java
 checkout = git_clone_my_repo java
+stowable = true

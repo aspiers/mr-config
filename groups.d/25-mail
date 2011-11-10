@@ -3,20 +3,25 @@
 [$HOME/.GIT/adamspiers.org/mutt]
 skip = default_skipper || missing_exe mutt
 checkout = git_clone_my_repo mutt
+stowable = true
 
 # depends on shell-env for sort-by-filename
 [$HOME/.GIT/adamspiers.org/mutt.pub]
 checkout = git_clone_my_repo mutt.pub
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/mutt.sec]
 checkout = git_clone_my_repo mutt.sec
+stowable = true
 
 [$HOME/.GIT/3rd-party/offlineimap]
 checkout = git_clone git://github.com/spaetz/offlineimap.git
 
 [$HOME/.GIT/adamspiers.org/mailcap]
 checkout = git_clone_my_repo mailcap
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/gnupg]
 skip = default_skipper || missing_exe gpg
 checkout = git_clone_my_repo gnupg
+stowable = true

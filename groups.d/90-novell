@@ -2,18 +2,24 @@
 
 # [$HOME/.GIT/adamspiers.org/novell+shell-env.pub]
 # checkout = git_clone_my_repo novell+shell-env.pub
+# stowable = true
 
 # [$HOME/.GIT/adamspiers.org/novell+emacs.pub]
 # checkout = git_clone_my_repo novell+emacs.pub
+# stowable = true
 
 # [$HOME/.GIT/adamspiers.org/novell+mail.pub]
 # checkout = git_clone_my_repo novell+mail.pub
+# stowable = true
 
 # [$HOME/.GIT/adamspiers.org/novell+vpn.pub]
 # checkout = git_clone_my_repo novell+vpn.pub
+# stowable = true
 
 # [$HOME/.GIT/adamspiers.org/novell+mail.sec]
 # checkout = git_clone_my_repo novell+mail.sec
+# stowable = true
 
 # [$HOME/.GIT/adamspiers.org/novell+vpn.sec]
 # checkout = git_clone_my_repo novell+vpn.sec
+# stowable = true

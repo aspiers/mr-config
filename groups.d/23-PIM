@@ -3,11 +3,14 @@
 [$HOME/.GIT/adamspiers.org/pim]
 checkout = git_clone_my_repo pim
 skip = default_skipper || user_not_adam
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/pim.sec]
 checkout = git_clone_my_repo pim.sec
+stowable = true
 
 # TODO: move stuff from old personal-interest CVS repo here
 #
 # [$HOME/.GIT/adamspiers.org/finance]
 # checkout = git_clone_my_repo finance
+# stowable = true

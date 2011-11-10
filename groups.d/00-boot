@@ -33,12 +33,15 @@ fixups =
 # things too.
 [$HOME/.GIT/adamspiers.org/META]
 checkout = git_clone_my_repo META
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env]
 checkout = git_clone_my_repo shell-env
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/git]
 checkout = git_clone_my_repo git
+stowable = true
 
 # This one required to stop stow folding some high-level
 # directories which are safer left unfolded (in case I
@@ -46,18 +49,23 @@ checkout = git_clone_my_repo git
 # in a package directory).
 [$HOME/.GIT/adamspiers.org/ANTIFOLD]
 checkout = git_clone_my_repo ANTIFOLD
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
 checkout = git_clone_my_repo shell-env.adam_spiers.pub
 skip = default_skipper || user_not_adam
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.sec]
 checkout = git_clone_my_repo shell-env.adam_spiers.sec
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/ssh]
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo ssh
+stowable = true
 
 [$HOME/.GIT/adamspiers.org/ssh.adam_spiers.sec]
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo ssh.adam_spiers.sec
+stowable = true
