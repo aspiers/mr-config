@@ -2,6 +2,7 @@
 
 lib =
     debug_skippers () {
+        check_repo_name
         if [ -n "$MR_DEBUG_SKIP" ]; then
             echo "# SKIP $MR_NAME?  $*"
         fi

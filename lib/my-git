@@ -7,8 +7,12 @@ lib =
     GIT_MY_UPSTREAM=ssh://$MY_UPSTREAM_HOST/home/adam/.GIT/adamspiers.org
     GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party
     #
+    check_repo_name () {
+        [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
+    }
     # syntactic sugar
     git_clone () {
+        check_repo_name
         git clone "$1" "$MR_REPO"
         ( cd "$MR_REPO" && git_email "${2:-$MR_NAME}" )
     }
@@ -19,6 +23,7 @@ lib =
         info "Set user.email to $email"
     }
     git_clone_my_repo () {
+        check_repo_name
         info "Cloning from $GIT_MY_UPSTREAM/$MR_NAME"
         git clone "$GIT_MY_UPSTREAM/$MR_NAME" "$MR_REPO"
         cd "$MR_REPO"
