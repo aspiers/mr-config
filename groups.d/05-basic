@@ -1,10 +1,10 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/screen]
-skip = require_exe screen
+skip = default_skipper || missing_exe screen
 checkout = git_clone_my_repo screen
 
 [$HOME/.GIT/3rd-party/git-annex]
-skip = require_exe git
+skip = default_skipper || missing_exe git
 checkout = git_clone git://git-annex.branchable.com/
 

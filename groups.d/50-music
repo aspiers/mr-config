@@ -2,13 +2,14 @@
 
 [$HOME/.GIT/3rd-party/lilypond]
 checkout = moosehall_git_checkout atlantic lilypond
+skip = lazy
 
 [$HOME/.GIT/3rd-party/git-cl]
-skip = require_dir $HOME/.GIT/3rd-party/lilypond
+skip = missing_dir $HOME/.GIT/3rd-party/lilypond
 checkout = git_clone https://github.com/gperciva/git-cl
 
 [$HOME/.GIT/3rd-party/lilypond-extra]
-skip = require_dir $HOME/.GIT/3rd-party/lilypond
+skip = missing_dir $HOME/.GIT/3rd-party/lilypond
 checkout = git_clone https://github.com/gperciva/lilypond-extra
 
 #[$HOME/.CVS/lilypond]

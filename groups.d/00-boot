@@ -47,14 +47,15 @@ checkout = git_clone_my_repo ANTIFOLD
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
 checkout = git_clone_my_repo shell-env.adam_spiers.pub
+skip = default_skipper || user_not_adam
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.sec]
 checkout = git_clone_my_repo shell-env.adam_spiers.sec
 
 [$HOME/.GIT/adamspiers.org/ssh]
-skip = require_exe ssh
+skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo ssh
 
 [$HOME/.GIT/adamspiers.org/ssh.adam_spiers.sec]
-skip = require_exe ssh
+skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo ssh.adam_spiers.sec

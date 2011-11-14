@@ -5,19 +5,19 @@
 checkout = git_clone_my_repo cvs
 
 [$HOME/.GIT/adamspiers.org/hg]
-skip = require_exe hg
+skip = default_skipper || missing_exe hg
 checkout = git_clone_my_repo hg
 
 [$HOME/.GIT/adamspiers.org/hg.pub]
-skip = require_exe hg
+skip = default_skipper || missing_exe hg
 checkout = git_clone_my_repo hg.pub
 
 [$HOME/.GIT/adamspiers.org/svn]
-skip = require_exe svn
+skip = default_skipper || missing_exe svn
 checkout = git_clone_my_repo svn
 
 [$HOME/.GIT/adamspiers.org/darcs]
-skip = require_exe darcs
+skip = default_skipper || missing_exe darcs
 checkout = git_clone_my_repo darcs
 
 #[$HOME/.GIT/adamspiers.org/arch]

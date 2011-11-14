@@ -1,45 +1,120 @@
 # -*- mode: sh -*-
 
 lib =
-    require_exe () {
+    debug_skippers () {
+        if [ -n "$MR_DEBUG_SKIP" ]; then
+            echo "# SKIP $MR_NAME?  $*"
+        fi
+    }
+    missing_exe () {
         if which "$1" >/dev/null 2>&1; then
-            #echo "Found $1 in \$PATH; not skipping"
-            false
+            debug_skippers ". Found $1 in \$PATH"
+            return 1
         else
-            #echo "Didn't find $1 in \$PATH; skipping"
-            true
+            debug_skippers "! Didn't find $1 in \$PATH"
+            return 0
         fi
     }
     #
-    require_file () {
+    missing_file () {
         if [ -f "$1" ]; then
-            #echo "Found $1; not skipping"
-            false
+            debug_skippers ". Found $1"
+            return 1
         else
-            #echo "Didn't find $1; skipping"
-            true
+            debug_skippers "! Didn't find $1"
+            return 0
         fi
     }
     #
-    require_dir () {
+    missing_dir () {
         if [ -d "$1" ]; then
-            #echo "Found $1; not skipping"
-            false
+            debug_skippers ". Found $1"
+            return 1
         else
-            #echo "Didn't find $1; skipping"
-            true
+            debug_skippers "! Didn't find $1"
+            return 0
         fi
     }
     #
-    require_moosehall () {
+    not_moosehall () {
         if awk '/^ *search/ { print $2; exit 0 }' /etc/resolv.conf | \
             sed 's/\.$//' | \
             grep -q moosehall
         then
-            #echo "Found moosehall in /etc/resolv.conf search path; not skipping"
-            false
+            debug_skippers ". Found moosehall in /etc/resolv.conf search path"
+            return 1
         else
-            #echo "Didn't find moosehall in /etc/resolv.conf search path; skipping"
-            true
+            debug_skippers "! Didn't find moosehall in /etc/resolv.conf search path"
+            return 0
         fi
     }
+    #
+    user_not_adam () {
+        if [ -n "$ZDOTUSER" ]; then
+            if [ "$ZDOTUSER" = adam.spiers ]; then
+                debug_skippers ". \$ZDOTUSER is adam.spiers"
+                return 1
+            else
+                debug_skippers "! \$ZDOTUSER is not adam.spiers"
+                return 0
+            fi
+        else
+            debug_skippers "! WARNING: \$ZDOTUSER was not set."
+            return 0
+        fi
+    }
+    #
+    insecure_machine () {
+        case "$localhost_nickname" in
+            arctic|atlantic|pacific|indian|southern|d600|coltrane|linuxmce|adriatic)
+                debug_skippers ". $localhost_nickname secure"
+                return 1
+                ;;
+            '')
+                debug_skippers "! WARNING: \$localhost_nickname was not set"
+                return 0
+                ;;
+            *)
+                debug_skippers "! $localhost_nickname was not secure"
+                return 0
+                ;;
+        esac
+    }
+    #
+    confidential_repo () {
+        if [ -n "$MR_CONFIDENTIAL_REPO" ]; then
+            debug_skippers "! Repo manually set as confidential via \$MR_CONFIDENTIAL_REPO"
+            return 0
+        fi
+        #
+        case "$MR_NAME" in
+            *.sec|*novell*)
+                debug_skippers "! Repo auto-detected as confidential"
+                return 0
+                ;;
+            *)
+                debug_skippers ". Repo is not confidential"
+                return 1
+                ;;
+        esac
+    }
+    #
+    default_skipper () {
+        if confidential_repo; then
+            if insecure_machine; then
+                debug_skippers "! Confidential repo on insecure machine"
+                return 0
+            elif user_not_adam; then
+                debug_skippers "! Confidential repo but not Adam"
+                return 0
+            else
+                debug_skippers ". Safe to use confidential repo"
+                return 1
+            fi
+        else
+            debug_skippers ". Public repo"
+            return 1
+        fi
+    }
+
+skip = default_skipper

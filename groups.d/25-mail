@@ -1,7 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/mutt]
-skip = require_exe mutt
+skip = default_skipper || missing_exe mutt
 checkout = git_clone_my_repo mutt
 
 # depends on shell-env for sort-by-filename
@@ -18,5 +18,5 @@ checkout = git_clone git://github.com/spaetz/offlineimap.git
 checkout = git_clone_my_repo mailcap
 
 [$HOME/.GIT/adamspiers.org/gnupg]
-skip = require_exe gpg
+skip = default_skipper || missing_exe gpg
 checkout = git_clone_my_repo gnupg

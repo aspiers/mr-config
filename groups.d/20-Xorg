@@ -1,21 +1,21 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/SESSION]
-skip = require_exe X
+skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo SESSION
 
 [$HOME/.GIT/adamspiers.org/fonts]
 checkout = git_clone_my_repo fonts
 
 [$HOME/.GIT/adamspiers.org/gkrellm]
-skip = require_exe gkrellm
+skip = default_skipper || missing_exe gkrellm
 checkout = git_clone_my_repo gkrellm
 
 [$HOME/.GIT/adamspiers.org/rxvt]
 checkout = git_clone_my_repo rxvt
 
 [$HOME/.GIT/adamspiers.org/xwrits]
-skip = require_exe xwrits
+skip = default_skipper || missing_exe xwrits
 checkout = git_clone_my_repo xwrits
 
 [$HOME/.GIT/adamspiers.org/graphics]
@@ -25,14 +25,14 @@ checkout = git_clone_my_repo graphics
 checkout = git_clone_my_repo audio
 
 [$HOME/.GIT/adamspiers.org/kde]
-skip = require_exe kdeinit && require_exe kdeinit4
+skip = default_skipper || ( missing_exe kdeinit && missing_exe kdeinit4 )
 checkout = git_clone_my_repo kde
 
 [$HOME/.GIT/adamspiers.org/watchlogs]
 checkout = git_clone_my_repo watchlogs
 
 [$HOME/.GIT/adamspiers.org/xchat]
-skip = require_exe xchat
+skip = default_skipper || missing_exe xchat
 checkout = git_clone_my_repo xchat
 
 # [$HOME/.GIT/adamspiers.org/backgrounds]
