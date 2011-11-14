@@ -7,7 +7,9 @@ checkout =
     foo bar baz
     foo2 bar2 baz2
     EOF
-fixups = git_email mr
+fixups =
+    git_email mr
+    ln -sf "$MR_REPO/mr" ~/bin
 
 [$HOME/.GIT/adamspiers.org/stow]
 checkout = git_clone git@github.com:aspiers/stow.git
