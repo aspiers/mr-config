@@ -6,6 +6,10 @@ include =
     # FIXME: this should be available to all include routines
     include_files() {
         for f in "$@"; do
+            case "$f" in
+                *.orig|*~) continue ;;
+            esac
+            \
             echo "# INCLUDED FROM: $f"
             cat "$f"
         done
