@@ -21,12 +21,7 @@ checkout = git_clone git@github.com:aspiers/stow.git
 
 fixups =
     cd "$MR_REPO"
-    \
-    # Horrible hack to stop autotools trying to do a reconfigure
-    # which requires autoconf, aclocal etc.  UGH!
-    touch configure Makefile.in aclocal.m4 config.status
-    \
-    ./configure --prefix=$HOME
+    ./configure --disable-maintainer-mode --prefix=$HOME
     make install
 
 # META is needed early on for lib/libhooks.sh, and possibly other
