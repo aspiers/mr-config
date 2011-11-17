@@ -11,7 +11,7 @@ fixups =
     git_email mr
     ln -sf "$MR_REPO/mr" ~/bin
 
-[$HOME/.GIT/adamspiers.org/stow]
+[$HOME/.GIT/3rd-party/stow]
 checkout = git_clone git@github.com:aspiers/stow.git
 # STOW_COMMAND would avoid a chicken-and-egg issue finding stow
 # if we used stow to install itself, but since moving it into
