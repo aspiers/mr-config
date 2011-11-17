@@ -69,7 +69,7 @@ fi
 
 mkdir -p $third_party_git
 echo "Retrieving upstream git repo for mr: $mr_upstream_repo"
-git clone $mr_upstream_repo $third_party_git/mr
+git clone -b master $mr_upstream_repo $third_party_git/mr
 ln -sf $third_party_git/mr/mr ~/bin
 echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 
