@@ -77,7 +77,7 @@ echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 # in the below run, and various .cfg-post.d will rely on it being there.
 export PATH=~/bin:$PATH
 
-mr -t -i -v6 bootstrap http://adamspiers.org/.mrconfig
+mr -t -i bootstrap http://adamspiers.org/.mrconfig
 
 # We need stow checked out and stowed first, so that the other
 # repos can stow themselves.
