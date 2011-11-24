@@ -67,14 +67,15 @@ else
 fi
 
 third_party_git=$HOME/.GIT/3rd-party
-if [ -d $third_party_git ]; then
-    echo "$third_party_git already exists; aborting" >&2
-    exit 1
-fi
 
 mkdir -p $third_party_git
-echo "Retrieving upstream git repo for mr: $mr_upstream_repo"
-git clone -b master $mr_upstream_repo $third_party_git/mr
+if [ -d $third_party_git/mr ]; then
+    echo "Updating existing mr git repo"
+    ( cd $third_party_git/mr && git pull -r )
+else
+    echo "Retrieving upstream git repo for mr: $mr_upstream_repo"
+    git clone -b master $mr_upstream_repo $third_party_git/mr
+fi
 ln -sf $third_party_git/mr/mr ~/bin
 echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 
@@ -82,7 +83,11 @@ echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 # in the below run, and various .cfg-post.d will rely on it being there.
 export PATH=~/bin:$PATH
 
-mr -t -i bootstrap http://adamspiers.org/.mrconfig
+if [ -e .mrconfig ]; then
+    mr -r mr-config up
+else
+    mr -t -i bootstrap http://adamspiers.org/.mrconfig
+fi
 
 # We need stow installed first, so that the other
 # repos can stow themselves.
@@ -90,11 +95,10 @@ mr -r stow-release checkout
 
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.
-mr -r META checkout
-mr -r META stow
+mr -r META up
 
 echo "Retrieving shell-env and ssh config ..."
-mr -i -r shell-env,ssh,ssh.adam_spiers.sec checkout
+mr -i -r shell-env,ssh,ssh.adam_spiers.sec up
 echo
 
 if ! grep -q 'bootstrap.sh-magic-cookie' ~/.ssh/config; then
@@ -113,4 +117,4 @@ echo "Running mr -r /ssh/ to build config ..."
 mr -i -r ssh up
 
 echo "Running mr checkout ..."
-mr -v6 -i checkout
+mr -v4 -i up
