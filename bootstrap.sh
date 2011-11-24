@@ -13,6 +13,11 @@ if ! which curl >&/dev/null; then
     exit 1
 fi
 
+if [ -d ~/.stow ]; then
+    echo "Rogue ~/.stow - delete it first." >&2
+    exit 1
+fi
+
 cd
 
 [ -e ~/.zdotuser           ] || ${EDITOR:-vi} ~/.zdotuser
