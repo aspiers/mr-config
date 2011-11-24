@@ -52,8 +52,8 @@ checkout = git_clone git://repo.or.cz/remember-el.git
 # FIXME relocate = lib/emacs/major-modes/remember.git
 # stowable = true
 
-[$HOME/.GIT/3rd-party/dvc]
-skip = default_skipper || missing_exe emacs
-checkout = git_clone http://bzr.xsteve.at/dvc/
+# [$HOME/.GIT/3rd-party/dvc]
+# skip = default_skipper || missing_exe emacs
+# checkout = git_clone http://bzr.xsteve.at/dvc/
 # FIXME relocate = lib/emacs/major-modes/$MR_NAME
 # stowable = true
