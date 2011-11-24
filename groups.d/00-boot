@@ -32,6 +32,7 @@ fixups =
     make install
 
 [$HOME/.GIT/3rd-party/stow]
+skip = lazy
 checkout = git_clone git@github.com:aspiers/stow.git
 # STOW_COMMAND would avoid a chicken-and-egg issue finding stow
 # if we used stow to install itself, but since moving it into

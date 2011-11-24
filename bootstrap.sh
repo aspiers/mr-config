@@ -79,13 +79,9 @@ export PATH=~/bin:$PATH
 
 mr -t -i bootstrap http://adamspiers.org/.mrconfig
 
-# We need stow checked out and stowed first, so that the other
+# We need stow installed first, so that the other
 # repos can stow themselves.
-#
-# For some reason the bootstrap above already checked out stow but
-# doesn't run the fixups, which installs stow.  Probably a
-# bootstrap+chain bug.  An update should fix that for now.
-mr -r stow update
+mr -r stow-release checkout
 
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.
