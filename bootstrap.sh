@@ -114,4 +114,3 @@ mr -i -r ssh up
 
 echo "Running mr checkout ..."
 mr -v6 -i checkout
-mr -v6 -i stow
