@@ -19,8 +19,11 @@ lib =
     #
     git_email () {
         email="$1@adamspiers.org"
-        git config user.email "$email"
-        info "Set user.email to $email"
+        existing=$( git config user.email || true )
+        if [ "$email" != "$existing" ]; then
+            git config user.email "$email"
+            info "Set user.email from ${existing:-(none)} to $email"
+        fi
     }
     git_clone_my_repo () {
         check_repo_name
