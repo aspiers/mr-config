@@ -7,3 +7,9 @@ chain = true
 fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
+
+stow       = true
+stowover   = true
+restow     = true
+restowover = true
+unstow     = true
