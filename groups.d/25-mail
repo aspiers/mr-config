@@ -7,10 +7,14 @@ stowable = true
 
 # depends on shell-env for sort-by-filename
 [$HOME/.GIT/adamspiers.org/mutt.pub]
+# needs ~/.mutt/run-hooks
+skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
 checkout = git_clone_my_repo mutt.pub
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/mutt.sec]
+# needs ~/.mutt/run-hooks
+skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
 checkout = git_clone_my_repo mutt.sec
 stowable = true
 
