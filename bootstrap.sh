@@ -46,6 +46,7 @@ Host $git_host
 Host *
    ControlPath ~/.ssh/master-%r@%h:%p
 EOF
+    chmod 600 ~/.ssh/config
     echo "Wrote ~/.ssh/config:"
     echo
     cat ~/.ssh/config
