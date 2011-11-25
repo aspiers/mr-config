@@ -18,7 +18,7 @@ lib =
     }
     #
     git_email () {
-        email="$1@adamspiers.org"
+        email="${1:-${MR_EMAIL:-$MR_NAME}}@adamspiers.org"
         existing=$( git config user.email || true )
         if [ "$email" != "$existing" ]; then
             git config user.email "$email"
@@ -59,3 +59,5 @@ lib =
             fi
         done
     }
+
+ge = git_email
