@@ -93,6 +93,11 @@ fi
 # repos can stow themselves.
 mr -r stow-release checkout
 
+if [ -d ~/.cfg ]; then
+    touch ~/.cfg/.stow
+    export MR_STOW_OVER=.
+fi
+
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.
 mr -r META up
