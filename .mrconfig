@@ -12,6 +12,7 @@ include =
             \
             echo "# INCLUDED FROM: $f"
             cat "$f"
+            echo # Needed in case file isn't terminated with a newline
         done
     }
     #
