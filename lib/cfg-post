@@ -1,9 +1,16 @@
 # -*- mode: sh -*-
 
 fixups =
-    for f in "$MR_REPO/.cfg-post.d"/*; do
+    dir=.cfg-post.d
+    for f in "$MR_REPO/$dir"/*; do
         if [ -x "$f" ]; then
-            info "Running $f ..."
-            "$f"
+            stowed="${f##*/}"
+            s="$ZDOTDIR/$dir/$stowed"
+            if [ -x "$s" ]; then
+                info "Running $s ..."
+                "$s"
+            else
+                error "$f not stowed as $s; can't run"
+            fi
         fi
     done
