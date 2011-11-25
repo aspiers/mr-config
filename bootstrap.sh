@@ -123,4 +123,4 @@ echo "Running mr -r /ssh/ to build config ..."
 mr -i -r ssh up
 
 echo "Running mr checkout ..."
-mr -v4 -i up
+mr -s -i up
