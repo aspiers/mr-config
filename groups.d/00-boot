@@ -10,6 +10,8 @@ remotes =
 fixups =
     git_email mr
     ln -sf "$MR_REPO/mr" ~/bin
+    ln -sf "$MR_REPO/zsh/mrcd" ~/.zsh/functions
+    ln -sf "$MR_REPO/zsh/_mr_repositories" ~/.zsh/functions
 
 [$HOME/software/scm/stow-2.1.0]
 lib =
