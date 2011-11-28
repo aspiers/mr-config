@@ -3,9 +3,11 @@
 [$HOME/.GIT/adamspiers.org/screen]
 skip = default_skipper || missing_exe screen
 checkout = git_clone_my_repo screen
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/git-annex]
 skip = default_skipper || missing_exe git
 checkout = git_clone git://git-annex.branchable.com/
+remotes = auto_remotes
 

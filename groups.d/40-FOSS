@@ -10,12 +10,13 @@ skip = lazy
 
 [$HOME/.GIT/3rd-party/gnulib]
 checkout = git_clone git://git.savannah.gnu.org/gnulib.git
-#stowable = true
+remotes = auto_remotes
 skip = lazy
 fixups =
     ln -sf "$MR_REPO/build-aux/gnupload" ~/bin
 
 [$HOME/.GIT/adamspiers.org/gnu.sec]
 checkout = git_clone_my_repo gnu.sec
+remotes = auto_remotes
 stowable = true
 lib = MR_EMAIL=gnu

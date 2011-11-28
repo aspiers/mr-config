@@ -3,6 +3,7 @@
 [$HOME/.GIT/adamspiers.org/mutt]
 skip = default_skipper || missing_exe mutt
 checkout = git_clone_my_repo mutt
+remotes = auto_remotes
 stowable = true
 
 # depends on shell-env for sort-by-filename
@@ -10,22 +11,27 @@ stowable = true
 # needs ~/.mutt/run-hooks
 skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
 checkout = git_clone_my_repo mutt.pub
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/mutt.sec]
 # needs ~/.mutt/run-hooks
 skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
 checkout = git_clone_my_repo mutt.sec
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/offlineimap]
 checkout = git_clone git://github.com/spaetz/offlineimap.git
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/mailcap]
 checkout = git_clone_my_repo mailcap
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/gnupg]
 skip = default_skipper || missing_exe gpg
 checkout = git_clone_my_repo gnupg
+remotes = auto_remotes
 stowable = true

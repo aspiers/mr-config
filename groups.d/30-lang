@@ -2,22 +2,27 @@
 
 [$HOME/.GIT/adamspiers.org/perl+mine]
 checkout = git_clone_my_repo perl+mine
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/perl+doc]
 checkout = git_clone_my_repo perl+doc
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/pmtools]
 checkout = git_clone_my_repo pmtools
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ruby]
 skip = default_skipper || missing_exe ruby
 checkout = git_clone_my_repo ruby
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/java]
 skip = default_skipper || missing_exe java
 checkout = git_clone_my_repo java
+remotes = auto_remotes
 stowable = true

@@ -3,10 +3,12 @@
 [$HOME/.GIT/adamspiers.org/SESSION]
 skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo SESSION
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/fonts]
 checkout = git_clone_my_repo fonts
+remotes = auto_remotes
 stowable = true
 
 # [$HOME/.GIT/adamspiers.org/gkrellm]
@@ -15,36 +17,44 @@ stowable = true
 
 [$HOME/.GIT/adamspiers.org/rxvt]
 checkout = git_clone_my_repo rxvt
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/xwrits]
 skip = default_skipper || missing_exe xwrits
 checkout = git_clone_my_repo xwrits
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/graphics]
 checkout = git_clone_my_repo graphics
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/audio]
 checkout = git_clone_my_repo audio
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/kde]
 skip = default_skipper || ( missing_exe kdeinit && missing_exe kdeinit4 )
 checkout = git_clone_my_repo kde
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/watchlogs]
 checkout = git_clone_my_repo watchlogs
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/xchat]
 skip = default_skipper || missing_exe xchat
 checkout = git_clone_my_repo xchat
+remotes = auto_remotes
 stowable = true
 
 # [$HOME/.GIT/adamspiers.org/backgrounds]
 # checkout = git_clone_my_repo backgrounds
+# remotes = auto_remotes
 # stowable = true
 

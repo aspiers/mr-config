@@ -1,17 +1,20 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/3rd-party/lilypond]
-checkout = moosehall_git_checkout atlantic 3rd-party/lilypond
 skip = lazy
+checkout = moosehall_git_checkout atlantic 3rd-party/lilypond
+remotes = auto_remotes && savannah_rw_remote
 push = unsafe
 
 [$HOME/.GIT/3rd-party/git-cl]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond
 checkout = git_clone https://github.com/gperciva/git-cl
+remotes = auto_remotes
 push = unsafe
 
 [$HOME/.GIT/3rd-party/lilypond-extra]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond
 checkout = git_clone https://github.com/gperciva/lilypond-extra
+remotes = auto_remotes
 push = unsafe
 

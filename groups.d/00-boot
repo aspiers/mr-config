@@ -1,12 +1,12 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/3rd-party/mr]
+lib = GITHUB_NAME=kitenet-mr
 checkout = 
     git_clone git@github.com:aspiers/kitenet-mr.git
-    git_add_remotes <<EOF
-    foo bar baz
-    foo2 bar2 baz2
-    EOF
+remotes =
+    auto_remotes
+    git_add_remotes <<<"kitenet git://git.kitenet.net/mr"
 fixups =
     git_email mr
     ln -sf "$MR_REPO/mr" ~/bin
@@ -40,6 +40,8 @@ checkout = git_clone git@github.com:aspiers/stow.git
 # needed.
 #lib = export STOW_COMMAND="$MR_REPO/stow"
 
+remotes = auto_remotes && savannah_rw_remote
+
 fixups =
     cd "$MR_REPO"
     ./configure --disable-maintainer-mode --prefix=$HOME
@@ -49,14 +51,18 @@ fixups =
 # things too.
 [$HOME/.GIT/adamspiers.org/META]
 checkout = git_clone_my_repo META
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env]
 checkout = git_clone_my_repo shell-env
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/git]
+name = git-config
 checkout = git_clone_my_repo git
+remotes = auto_remotes
 stowable = true
 
 # This one required to stop stow folding some high-level
@@ -65,23 +71,28 @@ stowable = true
 # in a package directory).
 [$HOME/.GIT/adamspiers.org/ANTIFOLD]
 checkout = git_clone_my_repo ANTIFOLD
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
 checkout = git_clone_my_repo shell-env.adam_spiers.pub
 skip = default_skipper || user_not_adam
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.sec]
 checkout = git_clone_my_repo shell-env.adam_spiers.sec
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ssh]
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo ssh
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ssh.adam_spiers.sec]
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo ssh.adam_spiers.sec
+remotes = auto_remotes
 stowable = true

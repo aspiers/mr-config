@@ -3,17 +3,21 @@
 [$HOME/.GIT/adamspiers.org/lftp]
 skip = default_skipper || missing_exe lftp
 checkout = git_clone_my_repo lftp
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ncftp]
 skip = default_skipper || missing_exe ncftp
 checkout = git_clone_my_repo ncftp
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/wscan]
 checkout = git_clone_my_repo wscan
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/dup-files]
 checkout = git_clone_my_repo dup-files
+remotes = auto_remotes
 stowable = true

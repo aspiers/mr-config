@@ -1,0 +1,60 @@
+# -*- mode: sh -*-
+
+# Utility for ensuring that a git repository has the right remotes
+# set.  Particularly handy when several machines need to be set up as
+# mutual peers, in which case it automatically avoids adding a remote
+# pointing to the local machine.  For this to work, the
+# localhost-nickname module is also required (you can find this in the
+# same directory of the git repository where you found this module).
+#
+# Sample usage from within an .mrconfig file:
+#
+#   [repo]
+#   checkout = git clone ...
+#   remotes = git_add_remotes <<<"
+#       remote1  git@github.com:$MY_GITHUB_USERNAME/$MR_NAME.git
+#       mydomain ssh://foo@REMOTE.com/path/to/git/repo
+#       ...
+#       "
+#
+# or even
+#
+#   [repo]
+#   checkout = git clone ...
+#   fixups = git_add_remotes <<<"..."
+
+lib =
+    git_add_remotes () {
+        cd "$MR_REPO"
+        while read remote url exception; do
+            if [ -z "$remote$url" ]; then
+                # presumably got a blank line
+                continue
+            fi
+            url="${url/REMOTE/$remote}"
+            existing_url=$( git config "remote.$remote.url" ) || true
+            if [ -n "$existing_url" ]; then
+                if [ "$url" = "$existing_url" ]; then
+                    #info "Remote $remote already points to $url"
+                    continue
+                else
+                    error "Remote $remote already points to $existing_url not $url"
+                    continue
+                fi
+            fi
+            #
+            if [ -z "$exception" ]; then
+                exception="$remote"
+            fi
+            if [ "$LOCALHOST_NICKNAME" = "$exception" ]; then
+                warning "Won't add remote $url for $exception"
+                continue
+            fi
+            #
+            if git remote add "$remote" "$url"; then
+                info "Added remote $remote -> $url"
+            else
+                error "Failed to add remote $remote"
+            fi
+        done
+    }

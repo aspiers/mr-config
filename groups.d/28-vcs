@@ -3,28 +3,34 @@
 # N.B. cvs requires glob-to-re from shell-env.
 [$HOME/.GIT/adamspiers.org/cvs]
 checkout = git_clone_my_repo cvs
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/hg]
 skip = default_skipper || missing_exe hg
 checkout = git_clone_my_repo hg
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/hg.pub]
 skip = default_skipper || missing_exe hg
 checkout = git_clone_my_repo hg.pub
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/svn]
 skip = default_skipper || missing_exe svn
 checkout = git_clone_my_repo svn
+remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/darcs]
 skip = default_skipper || missing_exe darcs
 checkout = git_clone_my_repo darcs
+remotes = auto_remotes
 stowable = true
 
 # [$HOME/.GIT/adamspiers.org/arch]
 # checkout = git_clone_my_repo arch
+# remotes = auto_remotes
 # stowable = true
