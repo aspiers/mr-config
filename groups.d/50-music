@@ -3,12 +3,15 @@
 [$HOME/.GIT/3rd-party/lilypond]
 checkout = moosehall_git_checkout atlantic 3rd-party/lilypond
 skip = lazy
+push = unsafe
 
 [$HOME/.GIT/3rd-party/git-cl]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond
 checkout = git_clone https://github.com/gperciva/git-cl
+push = unsafe
 
 [$HOME/.GIT/3rd-party/lilypond-extra]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond
 checkout = git_clone https://github.com/gperciva/lilypond-extra
+push = unsafe
 

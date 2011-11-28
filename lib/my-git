@@ -59,5 +59,8 @@ lib =
             fi
         done
     }
+    unsafe () {
+        echo "Automatic $MR_ACTION via mr has been specified as unsafe for $MR_REPO"
+    }
 
 ge = git_email
