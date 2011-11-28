@@ -1,5 +1,13 @@
 # -*- mode: sh -*-
 
+[$HOME/.CVS/stow-web]
+checkout = cvs -z3 -d:ext:aspiers@cvs.savannah.gnu.org:/web/stow co -d "$MR_NAME" stow
+skip = lazy
+
+[$HOME/.CVS/stow-cvs]
+checkout = cvs -z3 -d:ext:aspiers@cvs.savannah.gnu.org:/sources/stow co -d "$MR_NAME" stow
+skip = lazy
+
 [$HOME/.GIT/3rd-party/gnulib]
 checkout = git_clone git://git.savannah.gnu.org/gnulib.git
 #stowable = true
