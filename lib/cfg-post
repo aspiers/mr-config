@@ -1,6 +1,6 @@
 # -*- mode: sh -*-
 
-fixups =
+fixups_append =
     dir=.cfg-post.d
     for f in "$MR_REPO/$dir"/*; do
         if [ -x "$f" ]; then

@@ -20,7 +20,7 @@ lib =
         esac
     }
 
-fixups =
+fixups_append =
     if confidential_repo; then
         chmod go-rwx -R "$MR_REPO"
     fi
