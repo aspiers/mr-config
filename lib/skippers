@@ -82,24 +82,6 @@ lib =
         esac
     }
     #
-    confidential_repo () {
-        if [ -n "$MR_CONFIDENTIAL_REPO" ]; then
-            debug_skippers "! Repo manually set as confidential via \$MR_CONFIDENTIAL_REPO"
-            return 0
-        fi
-        #
-        case "$MR_NAME" in
-            *.sec|*novell*)
-                debug_skippers "! Repo auto-detected as confidential"
-                return 0
-                ;;
-            *)
-                debug_skippers ". Repo is not confidential"
-                return 1
-                ;;
-        esac
-    }
-    #
     default_skipper () {
         if confidential_repo; then
             if insecure_machine; then
