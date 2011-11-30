@@ -16,11 +16,20 @@ include =
         done
     }
     #
-    stow_lib=$HOME/.GIT/3rd-party/mr/lib/stow
+    mr_lib=$HOME/.GIT/3rd-party/mr/lib
+    #
+    stow_lib=$mr_lib/stow
     if [ -e "$stow_lib" ]; then
         include_files "$stow_lib"
     else
         echo "Couldn't find $stow_lib - stow functions will be absent." >&2
+    fi
+    #
+    download_lib=$mr_lib/download
+    if [ -e "$download_lib" ]; then
+        include_files "$download_lib"
+    else
+        echo "Couldn't find $download_lib - download functions will be absent." >&2
     fi
     #
     for d in ~/.config/mr/lib ~/.config/mr/groups.d; do
