@@ -14,20 +14,8 @@ fixups =
     ln -sf "$MR_REPO/zsh/_mr_repositories" ~/.zsh/functions
 
 [$HOME/software/scm/stow-2.1.0]
-lib =
-    webcheckout () {
-        f=stow-2.1.0.tar.bz2
-        rm -f $f
-        wget http://adamspiers.org/computing/$f
-        tar jxvf $f
-    }
 name = stow-release
-checkout = webcheckout
-update =
-    cd ..
-    rm -rf "$MR_REPO"
-    webcheckout
-status = true
+checkout = mr_download_checkout http://adamspiers.org/computing/stow-2.1.0.tar.bz2
 fixups =
     cd "$MR_REPO"
     ./configure --prefix=$HOME
