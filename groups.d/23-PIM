@@ -17,3 +17,9 @@ stowable = true
 # checkout = git_clone_my_repo finance
 # remotes = auto_remotes
 # stowable = true
+
+[$HOME/software/graphics/ploticus/2.41]
+name = ploticus
+# http://sourceforge.net/projects/ploticus/files/ploticus/2.41/pl241linuxi386.tar.gz/download
+checkout = mr_download_checkout "http://sourceforge.net/projects/ploticus/files/ploticus/2.41/pl241linuxi386.tar.gz/download" pl241linuxi386.tar.gz
+fixups = ln -sf "$MR_REPO/bin/pl" ~/bin
