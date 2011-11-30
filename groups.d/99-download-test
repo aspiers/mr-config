@@ -1,0 +1,9 @@
+# -*- mode: sh -*-
+
+[$HOME/software/fail2ban-0.8.4]
+skip = lazy
+checkout = mr_download_checkout http://sourceforge.net/projects/fail2ban/files/latest/download?source=files fail2ban-0.8.4.tar.bz2
+
+[$HOME/software/fail2ban]
+skip = lazy
+checkout = mr_download_checkout http://sourceforge.net/projects/fail2ban/files/latest/download?source=files fail2ban-latest.tar.bz2
