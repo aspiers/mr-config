@@ -52,9 +52,14 @@ EOF
     cat ~/.ssh/config
 fi
 
-echo "Executing ssh -NMf $git_user_at_host"
-ssh -NMf $git_user_at_host
-echo
+ssh_socket=$HOME/.ssh/master-${git_user_at_host}:22
+if [ -S $ssh_socket ]; then
+    echo "$ssh_socket already exists"
+else
+    echo "Executing ssh -NMf $git_user_at_host"
+    ssh -NMf $git_user_at_host
+    echo
+fi
 
 echo -n "Checking passwordless ssh works ... "
 cmd="ssh -n -o PasswordAuthentication=no $git_user_at_host hostname 2>&1"
