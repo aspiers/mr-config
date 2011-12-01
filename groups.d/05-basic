@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/screen]
+name = screenrc
 skip = default_skipper || missing_exe screen
 checkout = git_clone_my_repo screen
 remotes = auto_remotes
