@@ -31,6 +31,15 @@ lib =
                 # presumably got a blank line
                 continue
             fi
+            #
+            if [ -z "$exception" ]; then
+                exception="$remote"
+            fi
+            if [ "$LOCALHOST_NICKNAME" = "$exception" ]; then
+                warning "Won't add remote $url for $exception"
+                continue
+            fi
+            #
             url="${url/REMOTE/$remote}"
             existing_url=$( git config "remote.$remote.url" ) || true
             if [ -n "$existing_url" ]; then
@@ -41,14 +50,6 @@ lib =
                     error "Remote $remote already points to $existing_url not $url"
                     continue
                 fi
-            fi
-            #
-            if [ -z "$exception" ]; then
-                exception="$remote"
-            fi
-            if [ "$LOCALHOST_NICKNAME" = "$exception" ]; then
-                warning "Won't add remote $url for $exception"
-                continue
             fi
             #
             if git remote add "$remote" "$url"; then
