@@ -100,7 +100,7 @@ lib =
         echo "Automatic $MR_ACTION via mr has been specified as unsafe for $MR_REPO"
     }
 
-ge = git_email
+ge = git_email "$@"
 
 git_update = git pull --ff-only "$@"
 git_merge  = git pull "$@"
