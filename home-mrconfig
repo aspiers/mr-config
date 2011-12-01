@@ -2,7 +2,7 @@
 
 [.config/mr]
 name = mr-config
-checkout = git clone -b master ssh://adamspiers.org/home/adam/.config/mr "$MR_REPO"
+checkout = git clone -b master ssh://git.adamspiers.org/home/adam/.config/mr "$MR_REPO"
 post_checkout = git remote add github git@github.com:aspiers/mr-config.git
 chain = true
 fixups =

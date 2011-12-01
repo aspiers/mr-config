@@ -3,7 +3,7 @@
 lib =
     MR_GIT=$HOME/.GIT
     GIT_MY_ROOT=$MR_GIT/adamspiers.org
-    MY_UPSTREAM_HOST=adamspiers.org
+    MY_UPSTREAM_HOST=git.adamspiers.org
     GIT_MY_UPSTREAM=ssh://$MY_UPSTREAM_HOST/home/adam/.GIT/adamspiers.org
     GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party
     #

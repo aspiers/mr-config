@@ -2,7 +2,7 @@
 
 set -e
 
-git_host=adamspiers.org
+git_host=git.adamspiers.org
 git_local_hostname=arctic
 git_user=adam
 git_user_at_host=$git_user@$git_host
