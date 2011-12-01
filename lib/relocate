@@ -1,0 +1,9 @@
+# -*- mode: sh -*-
+
+lib =
+    symlink_from () {
+        if [ $# != 1 ]; then
+            error "Usage: symlink_from SYMLINK"
+        fi
+        ensure_symlink_exists "$1" "$MR_REPO"
+    }
