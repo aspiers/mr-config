@@ -27,21 +27,23 @@ lib =
     git_add_remotes () {
         cd "$MR_REPO"
         read_localhost_nickname
+        # Needs to be exported to while-read subshell
+        export LOCALHOST_NICKNAME="$localhost_nickname"
         echo "$*" | while read remote url exception; do
             if [ -z "$remote$url" ]; then
                 # presumably got a blank line
                 continue
             fi
+            url="${url/REMOTE/$remote}"
             #
             if [ -z "$exception" ]; then
                 exception="$remote"
             fi
             if [ "$LOCALHOST_NICKNAME" = "$exception" ]; then
-                warning "Won't add remote $url for $exception"
+                info "Won't add remote $url for $exception"
                 continue
             fi
             #
-            url="${url/REMOTE/$remote}"
             existing_url=$( git config "remote.$remote.url" ) || true
             if [ -n "$existing_url" ]; then
                 if [ "$url" = "$existing_url" ]; then
