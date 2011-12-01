@@ -25,8 +25,9 @@ lib =
     }
     git_clone_my_repo () {
         check_repo_name
-        info "Cloning from $GIT_MY_UPSTREAM/$MR_NAME"
-        git clone "$GIT_MY_UPSTREAM/$MR_NAME" "$MR_REPO"
+        name="${MR_REPO##*/}"
+        info "Cloning from $GIT_MY_UPSTREAM/$name"
+        git clone "$GIT_MY_UPSTREAM/$name" "$MR_REPO"
         cd "$MR_REPO"
         git_email dotfiles
     }
