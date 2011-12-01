@@ -18,43 +18,43 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/org-mode]
-skip = default_skipper || missing_exe emacs
+skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 checkout = git_clone git://repo.or.cz/org-mode.git orgmode
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/org-mode.git
 
 [$HOME/.GIT/3rd-party/cucumber-el]
-skip = default_skipper || missing_exe emacs
+skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 checkout = git_clone git://github.com/michaelklishin/cucumber.el.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/cucumber
 
 [$HOME/.GIT/3rd-party/elisp-behave]
-skip = default_skipper || missing_exe emacs
+skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 checkout = git_clone git://github.com/tomtt/elisp_behave.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/elisp-behave
 
 [$HOME/.GIT/3rd-party/emacs-rails]
-skip = default_skipper || missing_exe emacs
+skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 checkout = git_clone git://github.com/remvee/emacs-rails.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/emacs-rails.remvee.git
 
 [$HOME/.GIT/3rd-party/yasnippets-rails]
-skip = default_skipper || missing_exe emacs
+skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
 checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/minor-modes/yasnippets-rails
 
 [$HOME/.GIT/3rd-party/remember]
-skip = default_skipper || missing_exe emacs
+skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 checkout = git_clone git://repo.or.cz/remember-el.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/remember.git
 
 # [$HOME/.GIT/3rd-party/dvc]
-# skip = default_skipper || missing_exe emacs
+# skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 # checkout = git_clone http://bzr.xsteve.at/dvc/
 # fixups = symlink_from ~/lib/emacs/major-modes/$MR_NAME
 # stowable = true
