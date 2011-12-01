@@ -2,12 +2,12 @@
 
 [$HOME/.GIT/adamspiers.org/rpm]
 skip = default_skipper || missing_exe rpm
-checkout = git_clone_my_repo rpm
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/SUSE]
 skip = default_skipper || missing_file /etc/SuSE-release
-checkout = git_clone_my_repo SUSE
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

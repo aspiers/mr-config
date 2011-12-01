@@ -40,18 +40,18 @@ fixups =
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.
 [$HOME/.GIT/adamspiers.org/META]
-checkout = git_clone_my_repo META
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env]
-checkout = git_clone_my_repo shell-env
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/git]
 name = git-config
-checkout = git_clone_my_repo git
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
@@ -60,29 +60,29 @@ stowable = true
 # accidentally put new files in there and they unintentionally go
 # in a package directory).
 [$HOME/.GIT/adamspiers.org/ANTIFOLD]
-checkout = git_clone_my_repo ANTIFOLD
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
-checkout = git_clone_my_repo shell-env.adam_spiers.pub
+checkout = git_clone_my_repo
 skip = default_skipper || user_not_adam
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.sec]
-checkout = git_clone_my_repo shell-env.adam_spiers.sec
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ssh]
 skip = default_skipper || missing_exe ssh
-checkout = git_clone_my_repo ssh
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ssh.adam_spiers.sec]
 skip = default_skipper || missing_exe ssh
-checkout = git_clone_my_repo ssh.adam_spiers.sec
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

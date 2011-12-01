@@ -1,6 +1,6 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/work-tools]
-checkout = git_clone_my_repo work-tools
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

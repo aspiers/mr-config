@@ -2,7 +2,7 @@
 
 [$HOME/.GIT/adamspiers.org/mutt]
 skip = default_skipper || missing_exe mutt
-checkout = git_clone_my_repo mutt
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
@@ -10,14 +10,14 @@ stowable = true
 [$HOME/.GIT/adamspiers.org/mutt.pub]
 # needs ~/.mutt/run-hooks
 skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
-checkout = git_clone_my_repo mutt.pub
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/mutt.sec]
 # needs ~/.mutt/run-hooks
 skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
-checkout = git_clone_my_repo mutt.sec
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
@@ -26,6 +26,6 @@ checkout = git_clone git://github.com/spaetz/offlineimap.git
 remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/mailcap]
-checkout = git_clone_my_repo mailcap
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

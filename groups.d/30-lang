@@ -1,28 +1,28 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/perl+mine]
-checkout = git_clone_my_repo perl+mine
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/perl+doc]
-checkout = git_clone_my_repo perl+doc
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/pmtools]
-checkout = git_clone_my_repo pmtools
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ruby]
 skip = default_skipper || missing_exe ruby
-checkout = git_clone_my_repo ruby
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/java]
 skip = default_skipper || missing_exe java
-checkout = git_clone_my_repo java
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

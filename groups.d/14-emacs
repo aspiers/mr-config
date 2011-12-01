@@ -13,7 +13,7 @@
 
 [$HOME/.GIT/adamspiers.org/emacs]
 skip = default_skipper || missing_exe emacs
-checkout = git_clone_my_repo emacs
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 

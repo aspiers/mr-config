@@ -3,7 +3,7 @@
 [$HOME/.GIT/adamspiers.org/screen]
 name = screenrc
 skip = default_skipper || missing_exe screen
-checkout = git_clone_my_repo screen
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
@@ -14,6 +14,6 @@ remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/gnupg.sec]
 skip = default_skipper || missing_exe gpg
-checkout = git_clone_my_repo gnupg
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

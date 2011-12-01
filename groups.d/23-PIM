@@ -1,20 +1,20 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/pim]
-checkout = git_clone_my_repo pim
+checkout = git_clone_my_repo
 skip = default_skipper || user_not_adam
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/pim.sec]
-checkout = git_clone_my_repo pim.sec
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 # TODO: move stuff from old personal-interest CVS repo here
 #
 # [$HOME/.GIT/adamspiers.org/finance]
-# checkout = git_clone_my_repo finance
+# checkout = git_clone_my_repo
 # remotes = auto_remotes
 # stowable = true
 
