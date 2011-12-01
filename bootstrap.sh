@@ -124,8 +124,8 @@ echo "Allowing mr to rebuild ssh config from scratch ..."
 echo "rm ~/.ssh/config"
 rm ~/.ssh/config
 echo
-echo "Running mr -r /ssh/ to build config ..."
-mr -i -r ssh up
+echo "Running mr -r ssh fixups to build config ..."
+mr -i -r ssh fixups
 
 echo "Running mr checkout ..."
 mr -s -i up
