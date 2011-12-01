@@ -39,3 +39,6 @@ include =
             echo "$d missing" >&2
         fi
     done
+
+# N.B. anything placed here (i.e. after the above include) will not
+# any impact any repositories pulled in by the include.
