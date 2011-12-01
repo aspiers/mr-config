@@ -8,7 +8,7 @@ git_user=adam
 git_user_at_host=$git_user@$git_host
 mr_upstream_repo="git@github.com:aspiers/kitenet-mr.git"
 
-if ! which curl >&/dev/null; then
+if ! which curl >/dev/null 2>&1; then
     echo "mr can't bootstrap without curl" >&2
     exit 1
 fi
