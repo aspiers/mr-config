@@ -6,7 +6,7 @@ checkout =
     git_clone git@github.com:aspiers/kitenet-mr.git
 remotes =
     auto_remotes
-    git_add_remotes "kitenet git://git.kitenet.net/mr"
+    git_add_remotes kitenet git://git.kitenet.net/mr
 fixups =
     git_email mr
     ln -sf "$MR_REPO/mr" ~/bin
