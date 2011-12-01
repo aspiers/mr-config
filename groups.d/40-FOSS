@@ -20,3 +20,9 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 lib = MR_EMAIL=gnu
+
+[$HOME/.GIT/adamspiers.org/mysqldiff]
+checkout = git clone `github_url`
+remotes =
+    auto_remotes
+    git_add_remotes guyfawkes https://github.com/GuyFawkes/mysqldiff
