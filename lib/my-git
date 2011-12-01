@@ -73,6 +73,9 @@ lib =
         git_add_remotes "arctic  ssh://git.adamspiers.org/home/adam/$repo"
     }
     moosehall_remotes () {
+        if not_moosehall; then
+            return 0
+        fi
         repo="${MR_REPO#$HOME/}"
         git_add_remotes "
         70ow       ssh://REMOTE.adamspiers.org/home/adam/$repo atlantic
