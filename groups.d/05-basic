@@ -12,3 +12,8 @@ skip = default_skipper || missing_exe git
 checkout = git_clone git://git-annex.branchable.com/
 remotes = auto_remotes
 
+[$HOME/.GIT/adamspiers.org/gnupg.sec]
+skip = default_skipper || missing_exe gpg
+checkout = git_clone_my_repo gnupg
+remotes = auto_remotes
+stowable = true
