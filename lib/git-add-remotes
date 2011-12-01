@@ -11,7 +11,7 @@
 #
 #   [repo]
 #   checkout = git clone ...
-#   remotes = git_add_remotes <<<"
+#   remotes = git_add_remotes "
 #       remote1  git@github.com:$MY_GITHUB_USERNAME/$MR_NAME.git
 #       mydomain ssh://foo@REMOTE.com/path/to/git/repo
 #       ...
@@ -21,12 +21,12 @@
 #
 #   [repo]
 #   checkout = git clone ...
-#   fixups = git_add_remotes <<<"..."
+#   fixups = git_add_remotes "..."
 
 lib =
     git_add_remotes () {
         cd "$MR_REPO"
-        while read remote url exception; do
+        echo "$*" | while read remote url exception; do
             if [ -z "$remote$url" ]; then
                 # presumably got a blank line
                 continue

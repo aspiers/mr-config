@@ -56,24 +56,24 @@ lib =
         echo "git@github.com:aspiers/${1:-${GITHUB_NAME:-$MR_NAME}}.git"
     }
     savannah_ro_remote () {
-        git_add_remotes <<<"savannah `savannah_ro_url`"
+        git_add_remotes "savannah `savannah_ro_url`"
     }
     savannah_rw_remote () {
-        git_add_remotes <<<"savannah `savannah_rw_url`"
+        git_add_remotes "savannah `savannah_rw_url`"
     }
     github_clone () {
         check_repo_name
         url=
     }
     github_remote () {
-        git_add_remotes <<<"github `github_url`"
+        git_add_remotes "github `github_url`"
     }
     arctic_remote () {
-        git_add_remotes <<<"arctic  ssh://git.adamspiers.org/home/adam/$repo"
+        git_add_remotes "arctic  ssh://git.adamspiers.org/home/adam/$repo"
     }
     moosehall_remotes () {
         repo="${MR_REPO#$HOME/}"
-        git_add_remotes <<<"
+        git_add_remotes "
         70ow       ssh://REMOTE.adamspiers.org/home/adam/$repo atlantic
         atlantic   ssh://REMOTE/home/adam/$repo
         southern   ssh://REMOTE/home/adam/$repo
