@@ -38,6 +38,7 @@ lib =
         fi
         hub="$1"
         repo="$2"
+        read_localhost_nickname
         if [ "$hub" = "$localhost_nickname" ]; then
             if ! [ -d "$MR_REPO" ]; then
                 error "This machine is supposed to be the hub for $MR_REPO but it didn't exist!"

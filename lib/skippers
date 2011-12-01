@@ -66,6 +66,7 @@ lib =
     }
     #
     insecure_machine () {
+        read_localhost_nickname
         case "$localhost_nickname" in
             arctic|atlantic|pacific|indian|southern|d600|coltrane|linuxmce|adriatic)
                 debug_skippers ". $localhost_nickname secure"

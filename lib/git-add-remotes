@@ -26,6 +26,7 @@
 lib =
     git_add_remotes () {
         cd "$MR_REPO"
+        read_localhost_nickname
         echo "$*" | while read remote url exception; do
             if [ -z "$remote$url" ]; then
                 # presumably got a blank line
