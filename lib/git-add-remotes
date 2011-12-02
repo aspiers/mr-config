@@ -34,7 +34,7 @@ lib =
                 # presumably got a blank line
                 continue
             fi
-            url="${url/REMOTE/$remote}"
+            url=$( echo "$url" | sed "s/REMOTE/$remote/g" )
             #
             if [ -z "$exception" ]; then
                 exception="$remote"
