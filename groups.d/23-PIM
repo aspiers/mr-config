@@ -18,8 +18,10 @@ stowable = true
 # remotes = auto_remotes
 # stowable = true
 
+# Used for graph-gmail
 [$HOME/software/graphics/ploticus/2.41]
 name = ploticus
+skip = default_skipper || not_host atlantic
 # http://sourceforge.net/projects/ploticus/files/ploticus/2.41/pl241linuxi386.tar.gz/download
 checkout = mr_download_checkout "http://sourceforge.net/projects/ploticus/files/ploticus/2.41/pl241linuxi386.tar.gz/download" pl241linuxi386.tar.gz
 fixups = ln -sf "$MR_REPO/bin/pl" ~/bin
