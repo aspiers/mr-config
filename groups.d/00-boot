@@ -9,9 +9,12 @@ remotes =
     git_add_remotes kitenet git://git.kitenet.net/mr
 fixups =
     git_email mr
-    ln -sf "$MR_REPO/mr" ~/bin
-    ln -sf "$MR_REPO/zsh/mrcd" ~/.zsh/functions
-    ln -sf "$MR_REPO/zsh/_mr_repositories" ~/.zsh/functions
+    for exe in mr zsh/mrcd zsh/mr_recache; do
+        ln -sf "$MR_REPO/$exe" ~/bin
+    done
+    for fn in mrcd _mr_repositories; do
+        ln -sf "$MR_REPO/zsh/$fn" ~/.zsh/functions
+    done
 
 [$HOME/software/scm/stow-2.1.0]
 name = stow-release
