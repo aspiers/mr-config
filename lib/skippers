@@ -10,30 +10,30 @@ lib =
     missing_exe () {
         if which "$1" >/dev/null 2>&1; then
             debug_skippers ". Found $1 in \$PATH"
-            return 1
+            return 1 # false
         else
             debug_skippers "! Didn't find $1 in \$PATH"
-            return 0
+            return 0 # true
         fi
     }
     #
     missing_file () {
         if [ -f "$1" ]; then
             debug_skippers ". Found $1"
-            return 1
+            return 1 # false
         else
             debug_skippers "! Didn't find $1"
-            return 0
+            return 0 # true
         fi
     }
     #
     missing_dir () {
         if [ -d "$1" ]; then
             debug_skippers ". Found $1"
-            return 1
+            return 1 # false
         else
             debug_skippers "! Didn't find $1"
-            return 0
+            return 0 # true
         fi
     }
     #
@@ -41,10 +41,10 @@ lib =
 	read_localhost_nickname
 	if [ "$localhost_nickname" != "$1" ]; then
 	    debug_skippers "! On host $localhost_nickname not $1"
-	    return 0
+	    return 0 # true
 	else
 	    debug_skippers ". On host $1"
-	    return 1
+	    return 1 # false
 	fi
     }
     #
@@ -54,10 +54,10 @@ lib =
             grep -q moosehall
         then
             debug_skippers ". Found moosehall in /etc/resolv.conf search path"
-            return 1
+            return 1 # false
         else
             debug_skippers "! Didn't find moosehall in /etc/resolv.conf search path"
-            return 0
+            return 0 # true
         fi
     }
     #
@@ -65,14 +65,14 @@ lib =
         if [ -n "$ZDOTUSER" ]; then
             if [ "$ZDOTUSER" = adam.spiers ]; then
                 debug_skippers ". \$ZDOTUSER is adam.spiers"
-                return 1
+                return 1 # false
             else
                 debug_skippers "! \$ZDOTUSER is not adam.spiers"
-                return 0
+                return 0 # true
             fi
         else
             debug_skippers "! WARNING: \$ZDOTUSER was not set."
-            return 0
+            return 0 # true
         fi
     }
     #
@@ -81,15 +81,15 @@ lib =
         case "$localhost_nickname" in
             arctic|atlantic|pacific|indian|southern|d600|coltrane|linuxmce|adriatic)
                 debug_skippers ". $localhost_nickname secure"
-                return 1
+                return 1 # false
                 ;;
             '')
                 debug_skippers "! WARNING: \$localhost_nickname was not set"
-                return 0
+                return 0 # true
                 ;;
             *)
                 debug_skippers "! $localhost_nickname was not secure"
-                return 0
+                return 0 # true
                 ;;
         esac
     }
@@ -98,17 +98,17 @@ lib =
         if confidential_repo; then
             if insecure_machine; then
                 debug_skippers "! Confidential repo on insecure machine"
-                return 0
+                return 0 # true
             elif user_not_adam; then
                 debug_skippers "! Confidential repo but not Adam"
-                return 0
+                return 0 # true
             else
                 debug_skippers ". Safe to use confidential repo"
-                return 1
+                return 1 # false
             fi
         else
             debug_skippers ". Public repo"
-            return 1
+            return 1 # false
         fi
     }
 
