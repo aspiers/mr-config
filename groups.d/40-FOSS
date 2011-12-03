@@ -26,3 +26,9 @@ checkout = git clone `github_url`
 remotes =
     auto_remotes
     git_add_remotes guyfawkes https://github.com/GuyFawkes/mysqldiff
+
+[$HOME/.CVS/texinfo]
+checkout = cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/texinfo co texinfo
+skip = lazy
+fixups =
+    ln -sf "$MR_REPO/util/gendocs.sh" ~/bin/gendocs
