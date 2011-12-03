@@ -41,11 +41,12 @@ checkout = git_clone git://github.com/remvee/emacs-rails.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/emacs-rails.remvee.git
 
-[$HOME/.GIT/3rd-party/yasnippets-rails]
-skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
-checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
-remotes = auto_remotes
-fixups = symlink_from ~/lib/emacs/minor-modes/yasnippets-rails
+# FIXME: add yasnippet (and a dependency)
+# [$HOME/.GIT/3rd-party/yasnippets-rails]
+# skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
+# checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
+# remotes = auto_remotes
+# fixups = symlink_from ~/lib/emacs/minor-modes/yasnippets-rails
 
 [$HOME/.GIT/3rd-party/remember]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
