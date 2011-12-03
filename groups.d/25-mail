@@ -24,6 +24,10 @@ stowable = true
 [$HOME/.GIT/3rd-party/offlineimap]
 checkout = git_clone git://github.com/spaetz/offlineimap.git
 remotes = auto_remotes
+fixups =
+    make clean
+    make
+    python setup.py install --home ~
 
 [$HOME/.GIT/adamspiers.org/mailcap]
 checkout = git_clone_my_repo
