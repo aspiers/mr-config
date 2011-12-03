@@ -13,6 +13,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/wscan]
+skip = default_skipper || ! iwconfig 2>&1 | grep -q IEEE
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
