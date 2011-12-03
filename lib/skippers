@@ -37,6 +37,17 @@ lib =
         fi
     }
     #
+    not_host () {
+	read_localhost_nickname
+	if [ "$localhost_nickname" != "$1" ]; then
+	    debug_skippers "! On host $localhost_nickname not $1"
+	    return 0
+	else
+	    debug_skippers ". On host $1"
+	    return 1
+	fi
+    }
+    #
     not_moosehall () {
         if awk '/^ *search/ { print $2; exit 0 }' /etc/resolv.conf | \
             sed 's/\.$//' | \
