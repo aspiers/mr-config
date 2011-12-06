@@ -15,6 +15,7 @@ fixups =
     for fn in mrcd _mr_repositories; do
         ln -sf "$MR_REPO/zsh/$fn" ~/.zsh/functions
     done
+    zsh -c zrec
 
 [$HOME/software/scm/stow-2.1.0]
 name = stow-release
