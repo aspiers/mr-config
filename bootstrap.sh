@@ -95,9 +95,11 @@ echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 
 div ############################################################
 
-# ~/bin probably doesn't exist yet, but it will be created early on
-# in the below run, and various .cfg-post.d will rely on it being there.
-export PATH=~/bin:$PATH
+# Various .cfg-post.d rely on ~/bin being there.
+if ! [ -d ~/bin ]; then
+    mkdir ~/bin
+fi
+export PATH=$HOME/bin:$PATH
 
 if [ -e .mrconfig ]; then
     mr -r mr-config up
