@@ -8,6 +8,12 @@ git_user=adam
 git_user_at_host=$git_user@$git_host
 mr_upstream_repo="git@github.com:aspiers/kitenet-mr.git"
 
+div () {
+    echo
+    echo "############################################################"
+    echo
+}
+
 if ! which curl >/dev/null 2>&1; then
     echo "mr can't bootstrap without curl" >&2
     exit 1
@@ -72,6 +78,8 @@ else
     echo "yep - good!"
 fi
 
+div ############################################################
+
 third_party_git=$HOME/.GIT/3rd-party
 
 mkdir -p $third_party_git
@@ -85,6 +93,8 @@ fi
 ln -sf $third_party_git/mr/mr ~/bin
 echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 
+div ############################################################
+
 # ~/bin probably doesn't exist yet, but it will be created early on
 # in the below run, and various .cfg-post.d will rely on it being there.
 export PATH=~/bin:$PATH
@@ -95,6 +105,8 @@ else
     mr -t -i bootstrap http://adamspiers.org/.mrconfig
 fi
 
+div ############################################################
+
 # We need stow installed first, so that the other
 # repos can stow themselves.
 mr -r stow-release checkout
@@ -104,6 +116,8 @@ if [ -d ~/.cfg ]; then
     export MR_STOW_OVER=.
 fi
 
+div ############################################################
+
 # META is needed early on for lib/libhooks.sh, and possibly other
 # things too.
 mr -r META up
@@ -111,6 +125,8 @@ mr -r META up
 echo "Retrieving shell-env and ssh config ..."
 mr -i -r shell-env,ssh,ssh.adam_spiers.sec up
 echo
+
+div ############################################################
 
 if ! grep -q 'bootstrap.sh-magic-cookie' ~/.ssh/config; then
     echo "bootstrap.sh magic cookie missing from ~/.ssh/config"
@@ -126,6 +142,8 @@ rm ~/.ssh/config
 echo
 echo "Running mr -r ssh fixups to build config ..."
 mr -i -r ssh fixups
+
+div ############################################################
 
 echo "Running mr checkout ..."
 mr -s -i up
