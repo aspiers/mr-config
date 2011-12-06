@@ -149,3 +149,10 @@ div ############################################################
 
 echo "Running mr checkout ..."
 mr -s -i up
+
+cat <<EOF
+
+Now fix the above errors and also run:
+
+  ( cd && mr remotes )
+EOF
