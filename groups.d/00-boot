@@ -17,9 +17,9 @@ fixups =
     done
     zsh -c zrec
 
-[$HOME/software/scm/stow-2.1.0]
+[$HOME/software/scm/stow-2.1.1]
 name = stow-release
-checkout = mr_download_checkout http://adamspiers.org/computing/stow-2.1.0.tar.bz2
+checkout = mr_download_checkout http://adamspiers.org/computing/stow-2.1.1.tar.bz2
 fixups =
     cd "$MR_REPO"
     ./configure --prefix=$HOME
