@@ -88,7 +88,8 @@ if [ -d $third_party_git/mr ]; then
     ( cd $third_party_git/mr && git pull -r )
 else
     echo "Retrieving upstream git repo for mr: $mr_upstream_repo"
-    git clone -b master $mr_upstream_repo $third_party_git/mr
+    git clone $mr_upstream_repo $third_party_git/mr
+    ( cd $third_party_git/mr && git checkout master )
 fi
 ln -sf $third_party_git/mr/mr ~/bin
 echo '~/.config/mr/.mrconfig' > ~/.mrtrust
