@@ -25,7 +25,8 @@ stowable = true
 checkout = git_clone git://github.com/spaetz/offlineimap.git
 remotes = auto_remotes
 fixups =
-    make clean
+    # make clean breaks on first checkout for some reason
+    #make clean
     make
     python setup.py install --home ~
 
