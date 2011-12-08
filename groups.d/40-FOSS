@@ -9,19 +9,21 @@ checkout = cvs -z3 -d:ext:aspiers@cvs.savannah.gnu.org:/sources/stow co -d "$MR_
 skip = lazy
 
 [$HOME/.GIT/3rd-party/gnulib]
+skip = lazy
 checkout = git_clone git://git.savannah.gnu.org/gnulib.git
 remotes = auto_remotes
-skip = lazy
 fixups =
     ln -sf "$MR_REPO/build-aux/gnupload" ~/bin
 
 [$HOME/.GIT/adamspiers.org/gnu.sec]
+skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 lib = MR_EMAIL=gnu
 
 [$HOME/.GIT/adamspiers.org/mysqldiff]
+skip = lazy
 checkout = git clone `github_url`
 remotes =
     auto_remotes
