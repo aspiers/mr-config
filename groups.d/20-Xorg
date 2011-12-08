@@ -7,6 +7,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/fonts]
+skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -16,6 +17,7 @@ stowable = true
 # checkout = git_clone_my_repo
 
 [$HOME/.GIT/adamspiers.org/rxvt]
+skip = default_skipper || missing_exe urxvt
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -27,11 +29,13 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/graphics]
+skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/audio]
+skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
