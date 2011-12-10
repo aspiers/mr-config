@@ -64,8 +64,7 @@ lib =
         git_add_remotes savannah `savannah_rw_url`
     }
     github_clone () {
-        check_repo_name
-        url=
+        git_clone `github_url`
     }
     github_remote () {
         git_add_remotes github `github_url`
