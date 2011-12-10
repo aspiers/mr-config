@@ -12,6 +12,7 @@ lib =
     }
     git_clone () {
         check_repo_name
+        info "Cloning from $1"
         git clone "$1" "$MR_REPO"
         ( cd "$MR_REPO" && git_email "${2:-$MR_NAME}" )
     }
@@ -25,11 +26,7 @@ lib =
     }
     git_clone_my_repo () {
         check_repo_name
-        name="${MR_REPO##*/}"
-        info "Cloning from $GIT_MY_UPSTREAM/$name"
-        git clone "$GIT_MY_UPSTREAM/$name" "$MR_REPO"
-        cd "$MR_REPO"
-        git_email dotfiles
+        git_clone "$GIT_MY_UPSTREAM/$MR_NAME" dotfiles
     }
     #
     moosehall_git_checkout () {
