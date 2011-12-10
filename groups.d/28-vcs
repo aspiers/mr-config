@@ -34,3 +34,9 @@ stowable = true
 # checkout = git_clone_my_repo
 # remotes = auto_remotes
 # stowable = true
+
+[$HOME/.GIT/3rd-party/git]
+skip = default_skipper || missing_exe git
+checkout = github_clone
+remotes =
+    git_add_remotes jonseymour git://github.com/jonseymour/git.git
