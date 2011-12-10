@@ -24,7 +24,7 @@ lib = MR_EMAIL=gnu
 
 [$HOME/.GIT/adamspiers.org/mysqldiff]
 skip = lazy
-checkout = git clone `github_url`
+checkout = github_clone
 remotes =
     auto_remotes
     git_add_remotes guyfawkes https://github.com/GuyFawkes/mysqldiff

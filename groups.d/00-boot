@@ -2,8 +2,7 @@
 
 [$HOME/.GIT/3rd-party/mr]
 lib = GITHUB_NAME=kitenet-mr
-checkout = 
-    git_clone git@github.com:aspiers/kitenet-mr.git
+checkout = github_clone
 remotes =
     auto_remotes
     git_add_remotes kitenet git://git.kitenet.net/mr
@@ -27,7 +26,7 @@ fixups =
 
 [$HOME/.GIT/3rd-party/stow]
 skip = lazy
-checkout = git_clone git@github.com:aspiers/stow.git
+checkout = github_clone
 # STOW_COMMAND would avoid a chicken-and-egg issue finding stow
 # if we used stow to install itself, but since moving it into
 # its own package, we just use make install, so this is no longer
