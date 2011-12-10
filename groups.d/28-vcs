@@ -42,4 +42,11 @@ remotes =
     git_add_remotes jonseymour git://github.com/jonseymour/git.git
     git_add_remotes git        git://github.com/git/git.git
 fixups =
-    make install prefix=~/local
+    make install prefix=$HOME/local
+    if which asciidoc >/dev/null 2>&1 &&
+       which xmlto >/dev/null 2>&1; then
+        make install-doc prefix=$HOME/local
+    fi
+    if which docbook2x-texi >/dev/null 2>&1; then
+        make install-info prefix=$HOME/local
+    fi
