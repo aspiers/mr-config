@@ -27,7 +27,7 @@ skip = lazy
 checkout = github_clone
 remotes =
     auto_remotes
-    git_add_remotes guyfawkes https://github.com/GuyFawkes/mysqldiff
+    git_add_remotes guyfawkes git://github.com/GuyFawkes/mysqldiff.git
 
 [$HOME/.CVS/texinfo]
 checkout = cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/texinfo co texinfo
