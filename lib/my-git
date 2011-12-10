@@ -10,12 +10,6 @@ lib =
     check_repo_name () {
         [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
     }
-    git_clone () {
-        check_repo_name
-        info "Cloning from $1"
-        git clone "$1" "$MR_REPO"
-        ( cd "$MR_REPO" && git_email "${2:-$MR_NAME}" )
-    }
     git_email () {
         email="${1:-${MR_EMAIL:-$MR_NAME}}@adamspiers.org"
         existing=$( git config user.email || true )
@@ -23,6 +17,15 @@ lib =
             git config user.email "$email"
             info "Set user.email from ${existing:-(none)} to $email"
         fi
+    }
+    git_clone () {
+        check_repo_name
+        info "Cloning from $1"
+        git clone "$1" "$MR_REPO"
+        ( cd "$MR_REPO" && git_email "${2:-$MR_NAME}" )
+    }
+    github_clone () {
+        git_clone `github_url`
     }
     git_clone_my_repo () {
         check_repo_name
@@ -59,9 +62,6 @@ lib =
     }
     savannah_rw_remote () {
         git_add_remotes savannah `savannah_rw_url`
-    }
-    github_clone () {
-        git_clone `github_url`
     }
     github_remote () {
         git_add_remotes github `github_url`
