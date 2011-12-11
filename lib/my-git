@@ -105,3 +105,4 @@ ge = git_email "$@"
 git_update = git pull --ff-only "$@"
 git_merge  = git pull "$@"
 git_rebase = git pull -r "$@"
+git_branch = ggb | grep '^\*'
