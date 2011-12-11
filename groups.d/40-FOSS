@@ -34,3 +34,17 @@ checkout = cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/texinfo co
 skip = lazy
 fixups =
     ln -sf "$MR_REPO/util/gendocs.sh" ~/bin/gendocs
+
+[$HOME/.GIT/3rd-party/zsh]
+skip = lazy
+checkout = git clone git://zsh.git.sf.net/gitroot/zsh/zsh
+remotes = auto_remotes
+lib =
+    install_zsh () {
+        if ! [ -x configure ]; then
+            autoreconf
+        fi
+        ./configure --prefix=$HOME/local
+        make install
+    }
+install = install_zsh
