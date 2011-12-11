@@ -30,7 +30,7 @@ lib =
     }
     git_clone_my_repo () {
         check_repo_name
-        git_clone "$GIT_MY_UPSTREAM/$MR_NAME" dotfiles
+        git_clone "$GIT_MY_UPSTREAM/$MR_NAME" "${MR_EMAIL:-dotfiles}"
     }
     #
     moosehall_git_checkout () {
