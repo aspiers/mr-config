@@ -39,6 +39,7 @@ fixups =
 skip = lazy
 checkout = git clone git://zsh.git.sf.net/gitroot/zsh/zsh
 remotes = auto_remotes
+fixups = git_email
 lib =
     install_zsh () {
         if ! [ -x configure ]; then
