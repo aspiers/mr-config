@@ -4,7 +4,7 @@
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
-fixups = git_email mr
+lib = MR_EMAIL=mr
 
 [$HOME/.GIT/adamspiers.org/screen]
 name = screenrc
