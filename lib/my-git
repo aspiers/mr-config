@@ -11,6 +11,7 @@ lib =
         [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
     }
     git_email () {
+        cd "$MR_REPO"
         email="${1:-${MR_EMAIL:-$MR_NAME}}@adamspiers.org"
         existing=$( git config user.email || true )
         if [ "$email" != "$existing" ]; then
@@ -22,7 +23,7 @@ lib =
         check_repo_name
         info "Cloning from $1"
         git clone "$1" "$MR_REPO"
-        ( cd "$MR_REPO" && git_email "${2:-$MR_NAME}" )
+        git_email "${2:-$MR_NAME}"
     }
     github_clone () {
         git_clone `github_url`
