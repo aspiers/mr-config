@@ -11,6 +11,9 @@ fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
 
+# Note: inclusion of my mr libraries happens after this repository is
+# defined, so any actions defined by those libraries are not available 
+# for this repository :-(
 stow       = true
 stowover   = true
 restow     = true
