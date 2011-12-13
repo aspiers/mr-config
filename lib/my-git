@@ -89,8 +89,15 @@ lib =
     private_repo_remotes () {
         moosehall_remotes && arctic_remote
     }
+    work_remotes () {
+        :
+        # git_add_remotes "
+        # "
+    }
     auto_remotes () {
-        if confidential_repo; then
+        if work_repo; then
+            work_remotes
+        elif confidential_repo; then
             private_repo_remotes
         else
             public_repo_remotes

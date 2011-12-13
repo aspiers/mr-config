@@ -88,13 +88,40 @@ lib =
                 return 0 # true
                 ;;
             *)
-                debug_skippers "! $localhost_nickname was not secure"
+                debug_skippers "! $localhost_nickname is not secure"
                 return 0 # true
                 ;;
         esac
     }
     #
+    work_machine () {
+        read_localhost_nickname
+        case "$localhost_nickname" in
+            atlantic|southern|pacific|indian|d600)
+                debug_skippers ". $localhost_nickname is a work machine"
+                return 0 # false
+                ;;
+            '')
+                debug_skippers "! WARNING: \$localhost_nickname was not set"
+                return 1 # true
+                ;;
+            *)
+                debug_skippers "! $localhost_nickname is not a work machine"
+                return 1 # true
+                ;;
+        esac
+    }
+    #
     default_skipper () {
+        # Default policy is not to skip unless we find a reason to.
+        if work_repo; then
+            if ! work_machine; then
+                debug_skippers "! Work repo on non-work machine"
+                return 0 # true
+            else
+                debug_skippers ". Work repo on work machine"
+            fi
+        fi
         if confidential_repo; then
             if insecure_machine; then
                 debug_skippers "! Confidential repo on insecure machine"
@@ -104,12 +131,12 @@ lib =
                 return 0 # true
             else
                 debug_skippers ". Safe to use confidential repo"
-                return 1 # false
             fi
-        else
-            debug_skippers ". Public repo"
-            return 1 # false
         fi
+        #
+        # Default policy.
+        debug_skippers ". Public repo"
+        return 1 # false
     }
 
 skip = default_skipper

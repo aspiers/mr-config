@@ -4,18 +4,37 @@ lib =
     confidential_repo () {
         if [ -n "$MR_CONFIDENTIAL_REPO" ]; then
             debug_skippers "! Repo manually set as confidential via \$MR_CONFIDENTIAL_REPO"
-            return 0
+            return 0 # true
         fi
         #
         check_repo_name
+        #
+        if work_repo; then
+            return 0 # true
+        fi
+        #
         case "$MR_NAME" in
-            *.sec|*novell*)
+            *.sec)
                 debug_skippers "! Repo auto-detected as confidential"
-                return 0
+                return 0 # true
                 ;;
             *)
                 debug_skippers ". Repo is not confidential"
-                return 1
+                return 1 # false
+                ;;
+        esac
+    }
+    #
+    work_repo () {
+        check_repo_name
+        case "$MR_NAME" in
+            *novell*)
+                debug_skippers "! Repo auto-detected as work-related"
+                return 0 # true
+                ;;
+            *)
+                debug_skippers ". Repo is not work-related"
+                return 1 # false
                 ;;
         esac
     }
