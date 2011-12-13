@@ -42,9 +42,11 @@ fixups =
     ./configure --disable-maintainer-mode --prefix=$HOME
     make install
 
-# META is needed early on for lib/libhooks.sh, and possibly other
+# cfgctl is needed early on for lib/libhooks.sh, and possibly other
 # things too.
 [$HOME/.GIT/adamspiers.org/META]
+deleted = true
+[$HOME/.GIT/adamspiers.org/cfgctl]
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

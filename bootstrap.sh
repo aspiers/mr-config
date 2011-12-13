@@ -121,9 +121,9 @@ fi
 
 div ############################################################
 
-# META is needed early on for lib/libhooks.sh, and possibly other
+# cfgctl is needed early on for lib/libhooks.sh, and possibly other
 # things too.
-mr -r META up
+mr -r cfgctl up
 
 echo "Retrieving shell-env and ssh config ..."
 mr -i -r shell-env,ssh,ssh.adam_spiers.sec up
