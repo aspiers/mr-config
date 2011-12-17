@@ -1,5 +1,6 @@
 # -*- mode: sh -*-
 
+# needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/mutt]
 skip = default_skipper || missing_exe mutt
 checkout = git_clone_my_repo

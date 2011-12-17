@@ -42,8 +42,7 @@ fixups =
     ./configure --disable-maintainer-mode --prefix=$HOME
     make install
 
-# cfgctl is needed early on for lib/libhooks.sh, and possibly other
-# things too.
+# Is cfgctl still needed early on?  I suspect not.
 [$HOME/.GIT/adamspiers.org/META]
 deleted = true
 [$HOME/.GIT/adamspiers.org/cfgctl]
@@ -51,6 +50,7 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+# Needed for many things including lib/libhooks.sh, lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/shell-env]
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -82,6 +82,7 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+# needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/ssh]
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo

@@ -18,6 +18,7 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+# needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/dup-files]
 checkout = git_clone_my_repo
 remotes = auto_remotes
