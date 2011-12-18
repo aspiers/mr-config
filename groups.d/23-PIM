@@ -30,4 +30,4 @@ fixups = ln -sf "$MR_REPO/bin/pl" ~/bin
 skip = default_skipper || not_host atlantic
 checkout = svn checkout http://googlecl.googlecode.com/svn/trunk/ googlecl
 fixups =
-    python setup.py install --home=$HOME
+    python setup.py install --home ~
