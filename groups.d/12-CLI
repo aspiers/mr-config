@@ -23,3 +23,11 @@ stowable = true
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/software/file/fastdup]
+skip = default_skipper
+checkout = mr_download_checkout "http://sourceforge.net/projects/fastdup/files/latest/download?source=files" fastdup-0.3.tar.bz2
+fixups =
+    cd "$MR_REPO"
+    make
+    ln -sf "$MR_REPO/fastdup" ~/bin
