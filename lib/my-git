@@ -4,7 +4,8 @@ lib =
     MR_GIT=$HOME/.GIT
     GIT_MY_ROOT=$MR_GIT/adamspiers.org
     MY_UPSTREAM_HOST=git.adamspiers.org
-    GIT_MY_UPSTREAM=ssh://$MY_UPSTREAM_HOST/home/adam/.GIT/adamspiers.org
+    GIT_MY_UPSTREAM_HOME=ssh://$MY_UPSTREAM_HOST/home/adam
+    GIT_MY_UPSTREAM=$GIT_MY_UPSTREAM_HOME/.GIT/adamspiers.org
     GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party
     #
     check_repo_name () {
@@ -58,6 +59,10 @@ lib =
     github_url () {
         echo "git@github.com:aspiers/${1:-${GITHUB_NAME:-$MR_NAME}}.git"
     }
+    arctic_url () {
+        echo "$GIT_MY_UPSTREAM_HOME/$repo"
+    }
+    #
     savannah_ro_remote () {
         git_add_remotes savannah `savannah_ro_url`
     }
@@ -68,7 +73,7 @@ lib =
         git_add_remotes github `github_url`
     }
     arctic_remote () {
-        git_add_remotes arctic ssh://git.adamspiers.org/home/adam/$repo
+        git_add_remotes arctic `arctic_url`
     }
     moosehall_remotes () {
         if not_moosehall; then
