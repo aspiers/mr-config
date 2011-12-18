@@ -94,3 +94,15 @@ skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/.GIT/3rd-party/dvcs-autosync]
+lib = MR_GIT_REMOTE=gitorious
+checkout = git_clone git@gitorious.org:~aspiers/dvcs-autosync/aspiers-dvcs-autosync.git
+remotes =
+    auto_remotes
+    git_add_remotes "
+        origin    git://gitorious.org/dvcs-autosync/dvcs-autosync.git
+        giel      git://gitorious.org/~Giel/dvcs-autosync/giels-dvcs-autosync.git"
+fixups =
+    cd "$MR_REPO"
+    python setup.py install --home ~
