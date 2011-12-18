@@ -23,14 +23,21 @@ lib =
     git_clone () {
         check_repo_name
         info "Cloning from $1"
-        git clone "$1" "$MR_REPO"
+        remote_opts=
+        if [ -n "$MR_GIT_REMOTE" ]; then
+            remote_opts="-o $MR_GIT_REMOTE"
+            echo "Default remote is MR_GIT_REMOTE"
+        fi
+        git clone $remote_opts "$1" "$MR_REPO"
         git_email "${2:-$MR_NAME}"
     }
     github_clone () {
+        MR_GIT_REMOTE=github
         git_clone `github_url`
     }
     git_clone_my_repo () {
         check_repo_name
+        MR_GIT_REMOTE=arctic
         git_clone "$GIT_MY_UPSTREAM/$MR_NAME" "${MR_EMAIL:-dotfiles}"
     }
     #
