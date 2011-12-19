@@ -53,7 +53,7 @@ lib =
                 error "This machine is supposed to be the hub for $MR_REPO but it didn't exist!"
             fi
         else
-            git_clone ssh://$hub/home/adam/.GIT/$repo
+            git_clone ssh://$hub/home/adam/$repo
         fi
     }
     #
