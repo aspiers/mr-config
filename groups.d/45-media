@@ -1,0 +1,6 @@
+# -*- mode: sh -*-
+
+[$HOME/images]
+skip = lazy || default_skipper
+checkout = git_clone ssh://atlantic/home/adam/images
+remotes = moosehall_remotes
