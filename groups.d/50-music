@@ -39,3 +39,12 @@ checkout = git_clone https://github.com/gperciva/lilypond-extra
 remotes = auto_remotes
 push = unsafe
 
+[$HOME/.GIT/3rd-party/libanki]
+skip = lazy || ! music_machine
+checkout = git_clone git://github.com/dae/libanki.git anki
+remotes = moosehall_remotes
+
+[$HOME/.GIT/3rd-party/ankiqt]
+skip = lazy || ! music_machine
+checkout = git_clone git://github.com/dae/ankiqt.git anki
+remotes = moosehall_remotes
