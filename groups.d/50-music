@@ -1,19 +1,40 @@
 # -*- mode: sh -*-
 
+[DEFAULT]
+lib =
+    music_machine () {
+        read_localhost_nickname
+        case "$localhost_nickname" in
+            atlantic|southern|adriatic|linuxmce)
+                debug_skippers ". $localhost_nickname is a music machine"
+                return 0 # true
+                ;;
+            '')
+                debug_skippers "! WARNING: \$localhost_nickname was not set"
+                return 1 # false
+                ;;
+            *)
+                debug_skippers "! $localhost_nickname is not a music machine"
+                return 1 # false
+                ;;
+        esac
+    }
+
+
 [$HOME/.GIT/3rd-party/lilypond]
-skip = lazy
-checkout = moosehall_git_checkout atlantic 3rd-party/lilypond
+skip = lazy || ! music_machine
+checkout = moosehall_git_checkout atlantic .GIT/3rd-party/lilypond
 remotes = auto_remotes && savannah_rw_remote
 push = unsafe
 
 [$HOME/.GIT/3rd-party/git-cl]
-skip = missing_dir $HOME/.GIT/3rd-party/lilypond
+skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
 checkout = git_clone https://github.com/gperciva/git-cl
 remotes = auto_remotes
 push = unsafe
 
 [$HOME/.GIT/3rd-party/lilypond-extra]
-skip = missing_dir $HOME/.GIT/3rd-party/lilypond
+skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
 checkout = git_clone https://github.com/gperciva/lilypond-extra
 remotes = auto_remotes
 push = unsafe
