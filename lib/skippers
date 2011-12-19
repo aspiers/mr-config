@@ -99,15 +99,15 @@ lib =
         case "$localhost_nickname" in
             atlantic|southern|pacific|indian|d600)
                 debug_skippers ". $localhost_nickname is a work machine"
-                return 0 # false
+                return 0 # true
                 ;;
             '')
                 debug_skippers "! WARNING: \$localhost_nickname was not set"
-                return 1 # true
+                return 1 # false
                 ;;
             *)
                 debug_skippers "! $localhost_nickname is not a work machine"
-                return 1 # true
+                return 1 # false
                 ;;
         esac
     }
