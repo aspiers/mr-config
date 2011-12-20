@@ -1,6 +1,6 @@
 # -*- mode: sh -*-
 
-[$HOME/images]
+[$HOME/media]
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout atlantic images
+checkout = moosehall_git_checkout atlantic media
 remotes = moosehall_remotes
