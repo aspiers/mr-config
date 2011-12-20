@@ -26,7 +26,7 @@ lib =
         remote_opts=
         if [ -n "$MR_GIT_REMOTE" ]; then
             remote_opts="-o $MR_GIT_REMOTE"
-            echo "Default remote is MR_GIT_REMOTE"
+            echo "Default remote is $MR_GIT_REMOTE"
         fi
         git clone $remote_opts "$1" "$MR_REPO"
         git_email "${2:-$MR_NAME}"
