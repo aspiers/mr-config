@@ -26,6 +26,16 @@ skip = lazy || ! music_machine
 checkout = moosehall_git_checkout atlantic .GIT/3rd-party/lilypond
 remotes = auto_remotes && savannah_rw_remote
 push = unsafe
+configure =
+    cd "$MR_REPO"
+    ./autogen.sh --noconfigure
+    [ -d build ] || mkdir build
+    cd build
+    ../configure --disable-optimising
+compile =
+    cd "$MR_REPO"/build
+    export LYMAKE='make -j3 CPU_COUNT=3'
+    $LYMAKE
 
 [$HOME/.GIT/3rd-party/git-cl]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
