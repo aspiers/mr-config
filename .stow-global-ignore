@@ -54,3 +54,4 @@ Build
 config\.log
 autom4te\.cache
 .*\.log
+README.*
