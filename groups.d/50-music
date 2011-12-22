@@ -58,3 +58,8 @@ remotes = moosehall_remotes
 skip = lazy || ! music_machine
 checkout = git_clone git://github.com/dae/ankiqt.git anki
 remotes = moosehall_remotes
+
+[$HOME/music]
+skip = lazy || ! music_machine
+checkout = moosehall_git_checkout atlantic music
+chain = true
