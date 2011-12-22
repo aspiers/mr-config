@@ -24,6 +24,53 @@
 #   fixups = git_add_remotes "..."
 
 lib =
+    git_add_new_remote () {
+        remote="$1"
+        url="$2"
+        if git remote add "$remote" "$url"; then
+            info "Added remote $remote -> $url"
+            return 0
+        else
+            error "Failed to add remote $remote"
+            return 1
+        fi
+    }
+    #
+    git_set_remote () {
+        remote="$1"
+        url="$2"
+        existing_url="$3"
+        if git remote set-url "$remote" "$url"; then
+            info "Repointed remote $remote -> $url (was $existing_url)"
+            return 0
+        else
+            error "Failed to repoint remote $remote"
+            return 1
+        fi
+    }
+    #
+    git_add_remote () {
+        remote="$1"
+        url="$2"
+        existing_url=$( git config "remote.$remote.url" ) || true
+        if [ -n "$existing_url" ]; then
+            if [ "$url" = "$existing_url" ]; then
+                #info "Remote $remote already points to $url"
+                return 0
+            fi
+            #
+            if [ -n "$MR_OVERWRITE_REMOTES" ]; then
+                git_set_remote "$remote" "$url" "$existing_url"
+                return $?
+            else
+                error "Remote $remote already points to $existing_url not $url"
+                return 1
+            fi
+        fi
+        #
+        git_add_new_remote "$remote" "$url"
+    }
+    #
     git_add_remotes () {
         cd "$MR_REPO"
         read_localhost_nickname
@@ -44,21 +91,6 @@ lib =
                 continue
             fi
             #
-            existing_url=$( git config "remote.$remote.url" ) || true
-            if [ -n "$existing_url" ]; then
-                if [ "$url" = "$existing_url" ]; then
-                    #info "Remote $remote already points to $url"
-                    continue
-                else
-                    error "Remote $remote already points to $existing_url not $url"
-                    continue
-                fi
-            fi
-            #
-            if git remote add "$remote" "$url"; then
-                info "Added remote $remote -> $url"
-            else
-                error "Failed to add remote $remote"
-            fi
+            git_add_remote "$remote" "$url"
         done
     }
