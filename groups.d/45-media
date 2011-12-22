@@ -3,4 +3,6 @@
 [$HOME/media]
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout atlantic media
-remotes = moosehall_remotes
+remotes =
+    moosehall_remotes
+    git_add_remotes "WD /media/WD/media"
