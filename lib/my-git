@@ -4,8 +4,9 @@ lib =
     MR_GIT=$HOME/.GIT
     GIT_MY_ROOT=$MR_GIT/adamspiers.org
     MY_UPSTREAM_HOST=git.adamspiers.org
-    GIT_MY_UPSTREAM_HOME=ssh://$MY_UPSTREAM_HOST/home/adam
-    GIT_MY_UPSTREAM=$GIT_MY_UPSTREAM_HOME/.GIT/adamspiers.org
+    #GIT_MY_UPSTREAM_HOME=ssh://$MY_UPSTREAM_HOST/home/adam/
+    GIT_MY_UPSTREAM_HOME=arctic:
+    GIT_MY_UPSTREAM=${GIT_MY_UPSTREAM_HOME}.GIT/adamspiers.org
     GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party
     #
     check_repo_name () {
@@ -68,7 +69,7 @@ lib =
         echo "git@github.com:aspiers/${1:-${GITHUB_NAME:-$MR_NAME}}.git"
     }
     arctic_url () {
-        echo "$GIT_MY_UPSTREAM_HOME/$repo"
+        echo "${GIT_MY_UPSTREAM_HOME}$repo"
     }
     #
     savannah_ro_remote () {
@@ -88,12 +89,13 @@ lib =
             return 0
         fi
         repo="${MR_REPO#$HOME/}"
+        # Note: uses URL rewriting so we can decide independently
+        # whether to fetch over wired/wireless or even ADSL.
         git_add_remotes "
-        70ow       ssh://REMOTE.adamspiers.org/home/adam/$repo atlantic
-        atlantic   ssh://REMOTE/home/adam/$repo
-        southern   ssh://REMOTE/home/adam/$repo
-        adriatic   ssh://REMOTE/home/adam/$repo
-        linuxmce   ssh://REMOTE/home/adam/$repo
+        atlantic   atlantic:$repo
+        southern   southern:$repo
+        adriatic   adriatic:$repo
+        linuxmce   linuxmce:$repo
         "
     }
     public_repo_remotes () {
