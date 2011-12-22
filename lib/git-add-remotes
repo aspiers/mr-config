@@ -56,15 +56,16 @@ lib =
         if [ -n "$existing_url" ]; then
             if [ "$url" = "$existing_url" ]; then
                 #info "Remote $remote already points to $url"
-                return 0
+                return
             fi
             #
             if [ -n "$MR_OVERWRITE_REMOTES" ]; then
                 git_set_remote "$remote" "$url" "$existing_url"
-                return $?
+                return
             else
-                error "Remote $remote already points to $existing_url not $url"
-                return 1
+                warning "Remote $remote already points to $existing_url not $url"
+                warning "Use MR_OVERWRITE_REMOTES=y to rewrite URL."
+                return
             fi
         fi
         #
