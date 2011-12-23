@@ -5,6 +5,11 @@ skip = lazy || default_skipper
 checkout = moosehall_git_checkout atlantic org
 remotes = moosehall_remotes
 
+[$HOME/soc]
+skip = lazy || default_skipper
+checkout = moosehall_git_checkout atlantic soc
+remotes = moosehall_remotes
+
 [$HOME/.GIT/adamspiers.org/pim]
 checkout = git_clone_my_repo
 skip = default_skipper || user_not_adam
