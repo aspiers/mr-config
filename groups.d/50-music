@@ -63,3 +63,4 @@ remotes = moosehall_remotes
 skip = lazy || ! music_machine
 checkout = moosehall_git_checkout atlantic music
 chain = true
+remotes = moosehall_remotes
