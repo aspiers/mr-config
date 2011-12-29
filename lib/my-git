@@ -55,7 +55,7 @@ lib =
             fi
         else
             MR_GIT_REMOTE=$hub
-            git_clone ssh://$hub/home/adam/$repo
+            git_clone $hub:$repo
         fi
     }
     #
