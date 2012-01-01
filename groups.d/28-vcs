@@ -50,3 +50,9 @@ fixups =
     if which docbook2x-texi >/dev/null 2>&1; then
         make install-info prefix=$HOME/local
     fi
+
+[$HOME/.GIT/adamspiers.org/github.sec]
+skip = lazy || default_skipper
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
