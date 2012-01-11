@@ -14,7 +14,11 @@ lib =
     }
     git_email () {
         cd "$MR_REPO"
-        email="${1:-${MR_EMAIL:-$MR_NAME}}@adamspiers.org"
+        email="${1:-${MR_EMAIL:-$MR_NAME}}"
+        case "$email" in
+            *@*) ;;
+            *) email="$email@adamspiers.org"
+        esac
         existing=$( git config user.email || true )
         if [ "$email" != "$existing" ]; then
             git config user.email "$email"
