@@ -105,4 +105,7 @@ remotes =
         giel      git://gitorious.org/~Giel/dvcs-autosync/giels-dvcs-autosync.git"
 fixups =
     cd "$MR_REPO"
-    python setup.py install --home ~
+    # https://bugzilla.novell.com/show_bug.cgi?id=658604
+    # --home doesn't work on openSUSE
+    #python setup.py install --home ~
+    python setup.py install --prefix=$HOME/local
