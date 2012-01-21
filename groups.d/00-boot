@@ -112,3 +112,6 @@ fixups =
     # http://docs.python.org/distutils/apiref.html
     libdir=$( python -c 'from distutils.sysconfig import get_python_lib; import os; print get_python_lib(False, False, os.getenv("HOME") + "/local")' )
     cp jabberbot.py "$libdir"
+    # for openSUSE add devel:languages:python
+    #sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/python/openSUSE_12.1/devel:languages:python.repo
+    #sudo zypper in python-xmpppy
