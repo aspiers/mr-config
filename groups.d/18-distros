@@ -7,6 +7,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/SUSE]
+name = SUSE-dist
 skip = default_skipper || missing_file /etc/SuSE-release
 checkout = git_clone_my_repo
 remotes = auto_remotes

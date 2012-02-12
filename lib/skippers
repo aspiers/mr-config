@@ -112,6 +112,24 @@ lib =
         esac
     }
     #
+    music_machine () {
+        read_localhost_nickname
+        case "$localhost_nickname" in
+            atlantic|southern|adriatic|linuxmce)
+                debug_skippers ". $localhost_nickname is a music machine"
+                return 0 # true
+                ;;
+            '')
+                debug_skippers "! WARNING: \$localhost_nickname was not set"
+                return 1 # false
+                ;;
+            *)
+                debug_skippers "! $localhost_nickname is not a music machine"
+                return 1 # false
+                ;;
+        esac
+    }
+    #
     default_skipper () {
         # Default policy is not to skip unless we find a reason to.
         if work_repo; then

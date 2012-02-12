@@ -14,7 +14,11 @@ lib =
     }
     git_email () {
         cd "$MR_REPO"
-        email="${1:-${MR_EMAIL:-$MR_NAME}}@adamspiers.org"
+        email="${1:-${MR_EMAIL:-$MR_NAME}}"
+        case "$email" in
+            *@*) ;;
+            *) email="$email@adamspiers.org"
+        esac
         existing=$( git config user.email || true )
         if [ "$email" != "$existing" ]; then
             git config user.email "$email"
@@ -55,7 +59,7 @@ lib =
             fi
         else
             MR_GIT_REMOTE=$hub
-            git_clone ssh://$hub/home/adam/$repo
+            git_clone $hub:$repo
         fi
     }
     #
@@ -129,3 +133,5 @@ git_update = git pull --ff-only "$@"
 git_merge  = git pull "$@"
 git_rebase = git pull -r "$@"
 git_branch = ggb | grep '^\*'
+
+forceremotes = MR_OVERWRITE_REMOTES=y mr remotes "$@"

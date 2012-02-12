@@ -26,3 +26,13 @@ skip = default_skipper || missing_exe gpg
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/.GIT/3rd-party/zsh-completions]
+skip = missing_exe zsh
+checkout = git_clone git://github.com/zsh-users/zsh-completions.git
+remotes = github_remote
+fixups =
+  zcpath=~/.zsh/functions/zsh-completions
+  ln -sf "$MR_REPO" "$zcpath"
+  echo 'fpath=( "$fpath[@]" "'"$zcpath"'" )' > ~/.zshenv.d/zsh-completions
+  zsh -c zrec

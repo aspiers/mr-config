@@ -23,3 +23,8 @@ stowable = true
 [$HOME/.GIT/adamspiers.org/novell+vpn.sec]
 checkout = git_clone_my_repo
 stowable = true
+
+[$HOME/SUSE]
+lib      = MR_EMAIL=aspiers@suse.com
+checkout = moosehall_git_checkout atlantic SUSE
+remotes  = moosehall_remotes
