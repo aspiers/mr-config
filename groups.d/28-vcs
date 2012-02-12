@@ -50,3 +50,8 @@ fixups =
     if which docbook2x-texi >/dev/null 2>&1; then
         make install-info prefix=$HOME/local
     fi
+
+[$HOME/.GIT/3rd-party/willgit]
+skip = default_skipper || missing_exe git
+checkout = git_clone git://gitorious.org/willgit/mainline.git
+fixups = ln -sf $MR_REPO/bin/git-wtf ~/bin
