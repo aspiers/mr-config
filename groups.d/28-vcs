@@ -61,3 +61,9 @@ stowable = true
 skip = default_skipper || missing_exe git
 checkout = git_clone git://gitorious.org/willgit/mainline.git
 fixups = ln -sf $MR_REPO/bin/git-wtf ~/bin
+
+[$HOME/.GIT/3rd-party/topgit]
+skip = default_skipper || missing_exe git
+checkout = git_clone git://repo.or.cz/topgit.git
+fixups = make install
+
