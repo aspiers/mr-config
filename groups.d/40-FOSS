@@ -37,7 +37,7 @@ fixups =
 
 [$HOME/.GIT/3rd-party/zsh]
 skip = lazy
-checkout = git clone git://zsh.git.sf.net/gitroot/zsh/zsh
+checkout = git_clone git://zsh.git.sf.net/gitroot/zsh/zsh
 remotes = auto_remotes
 fixups = git_email
 lib =
