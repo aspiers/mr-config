@@ -49,3 +49,13 @@ lib =
         make install
     }
 install = install_zsh
+
+[$HOME/.GIT/3rd-party/smokeping]
+skip = lazy
+checkout = git_clone git://github.com/oetiker/SmokePing.git
+fixups =
+    if ! [ -e configure ]; then
+        ./autogen.sh
+    fi
+    ./configure --prefix=$HOME/.STOW/smokeping
+    make install
