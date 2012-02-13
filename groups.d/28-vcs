@@ -58,7 +58,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/willgit]
-skip = default_skipper || missing_exe git
+skip = default_skipper || missing_exe git || missing_exe ruby
 checkout = git_clone git://gitorious.org/willgit/mainline.git
 fixups = ln -sf $MR_REPO/bin/git-wtf ~/bin
 
