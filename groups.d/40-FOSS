@@ -52,7 +52,7 @@ install = install_zsh
 
 [$HOME/.GIT/3rd-party/smokeping]
 skip = lazy
-checkout = git_clone git://github.com/oetiker/SmokePing.git
+checkout = github_clone SmokePing
 fixups =
     if ! [ -e configure ]; then
         ./autogen.sh
