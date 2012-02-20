@@ -31,12 +31,12 @@ remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/cucumber
 push = unsafe
 
-[$HOME/.GIT/3rd-party/elisp-behave]
-skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
-checkout = git_clone git://github.com/tomtt/elisp_behave.git
-remotes = auto_remotes
-fixups = symlink_from ~/lib/emacs/major-modes/elisp-behave
-push = unsafe
+# [$HOME/.GIT/3rd-party/elisp-behave]
+# skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+# checkout = git_clone git://github.com/tomtt/elisp_behave.git
+# remotes = auto_remotes
+# fixups = symlink_from ~/lib/emacs/major-modes/elisp-behave
+# push = unsafe
 
 [$HOME/.GIT/3rd-party/emacs-rails]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe rails
