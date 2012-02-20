@@ -41,7 +41,7 @@ fixups =
     cd "$MR_REPO"
     autoconf
     automake
-    ./configure --disable-maintainer-mode --prefix=$HOME
+    ./configure --prefix=$HOME
     make install
 
 # Is cfgctl still needed early on?  I suspect not.
