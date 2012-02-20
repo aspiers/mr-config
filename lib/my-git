@@ -38,7 +38,7 @@ lib =
     }
     github_clone () {
         MR_GIT_REMOTE=github
-        git_clone `github_url`
+        git_clone `github_url "$@"`
     }
     git_clone_my_repo () {
         check_repo_name
