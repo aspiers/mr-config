@@ -148,7 +148,6 @@ git_wip =
 
 git_dwim =
     if git wip; then
-        echo "wip in $MR_REPO"
         git-dwim
     fi
 
