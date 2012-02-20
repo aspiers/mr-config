@@ -136,6 +136,7 @@ git_branch = ggb | grep '^\*'
 
 git_wtf = git -c color.wtf=true wtf
 
+git_wip_is_interactive = false
 git_wip =
     if git wip; then
         #echo -e "\e[1m${MR_REPO/$HOME/~}\e[0m"
