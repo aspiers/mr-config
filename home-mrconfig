@@ -7,9 +7,15 @@ checkout =
     ( cd "$MR_REPO" && git checkout master )
 post_checkout = git remote add github git@github.com:aspiers/mr-config.git
 chain = true
+lib =
+    git_email () {
+        git config user.email dotfiles@adamspiers.org
+    }
 fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
+    git_email
+ge = git_email
 
 # Note: inclusion of my mr libraries happens after this repository is
 # defined, so any actions defined by those libraries are not available 
