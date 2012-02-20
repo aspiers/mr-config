@@ -25,7 +25,7 @@ fixups = symlink_from ~/lib/emacs/major-modes/org-mode.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/cucumber-el]
-skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
 checkout = git_clone git://github.com/michaelklishin/cucumber.el.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/cucumber
