@@ -140,6 +140,7 @@ git_wip_is_interactive = false
 git_wip =
     if git wip; then
         #echo -e "\e[1m${MR_REPO/$HOME/~}\e[0m"
+        echo "TODO: git sync-upstream in $MR_REPO"
         ggs
         #echo
         #exit 1
