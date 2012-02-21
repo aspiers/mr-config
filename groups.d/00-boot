@@ -20,7 +20,7 @@ fixups =
 
 [$HOME/software/scm/stow]
 name = stow-release
-checkout = mr_download_checkout http://adamspiers.org/computing/stow-latest.tar.bz2
+checkout = mr_download_checkout http://ftp.gnu.org/gnu/stow/stow-latest.tar.bz2
 fixups =
     cd "$MR_REPO"
     ./configure --prefix=$HOME
