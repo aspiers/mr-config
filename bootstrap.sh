@@ -77,6 +77,7 @@ fi
 
 div ############################################################
 
+echo "Configuring git ..."
 which git >&/dev/null || fatal "git not found on \$PATH; aborting."
 git config --global url.ssh://$git_host/home/$git_user/.insteadof $git_local_hostname:
 
@@ -98,6 +99,8 @@ echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 
 div ############################################################
 
+echo "Setting up mr config ..."
+
 # Various .cfg-post.d rely on ~/bin being there.
 if ! [ -d ~/bin ]; then
     mkdir ~/bin
@@ -114,6 +117,7 @@ div ############################################################
 
 # We need stow installed first, so that the other
 # repos can stow themselves.
+echo "Installing stow-release ..."
 mr -r stow-release checkout
 
 if [ -d ~/.cfg ]; then
