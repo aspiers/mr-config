@@ -78,7 +78,7 @@ fi
 div ############################################################
 
 which git >&/dev/null || fatal "git not found on \$PATH; aborting."
-git config url.ssh://$git_host/home/$git_user/.insteadof $git_local_hostname:
+git config --global url.ssh://$git_host/home/$git_user/.insteadof $git_local_hostname:
 
 div ############################################################
 
