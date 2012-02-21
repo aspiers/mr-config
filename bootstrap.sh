@@ -87,10 +87,10 @@ third_party_git=$HOME/.GIT/3rd-party
 
 mkdir -p $third_party_git
 if [ -d $third_party_git/mr ]; then
-    echo "Updating existing mr git repo"
+    echo "Updating existing mr git repo ..."
     ( cd $third_party_git/mr && git pull -r )
 else
-    echo "Retrieving upstream git repo for mr: $mr_upstream_repo"
+    echo "Retrieving upstream git repo for mr: $mr_upstream_repo ..."
     git clone $mr_upstream_repo $third_party_git/mr
     ( cd $third_party_git/mr && git checkout master )
 fi
