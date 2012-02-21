@@ -43,7 +43,7 @@ lib =
     git_clone_my_repo () {
         check_repo_name
         MR_GIT_REMOTE=arctic
-        git_clone "$GIT_MY_UPSTREAM/$MR_NAME" "${MR_EMAIL:-dotfiles}"
+        git_clone "$GIT_MY_UPSTREAM/${MR_REPO##*/}" "${MR_EMAIL:-dotfiles}"
     }
     #
     moosehall_git_checkout () {
