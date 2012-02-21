@@ -127,12 +127,16 @@ fi
 
 div ############################################################
 
-# cfgctl is needed early on for lib/libhooks.sh, and possibly other
-# things too.
-mr -r cfgctl up
+# cfgctl used to be needed early on for lib/libhooks.sh, but that got
+# moved to shell-env.  It's possibly needed for other things too,
+# but let's try to manage without.
+#mr -r cfgctl up
 
-echo "Retrieving shell-env and ssh config ..."
-mr -i -r shell-env,ssh,ssh.adam_spiers.sec up
+boot=( shell-env ssh ssh.adam_spiers.sec mr-util git-config )
+pkgs="${boot[@]}"
+pkgs="${pkgs// /,}"
+echo "Retrieving ${pkgs//,/, } ..."
+mr -i -r $pkgs up
 echo
 
 div ############################################################
