@@ -1,0 +1,2 @@
+[$HOME/software/web/wpscan]
+checkout = svn checkout http://wpscan.googlecode.com/svn/trunk/ $MR_NAME
