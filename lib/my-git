@@ -99,7 +99,7 @@ lib =
         atlantic   atlantic:$repo
         southern   southern:$repo
         adriatic   adriatic:$repo
-        mc     media-centre:$repo
+        mc      mediacentre:$repo
         "
     }
     public_repo_remotes () {
