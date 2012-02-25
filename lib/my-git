@@ -47,11 +47,11 @@ lib =
     }
     #
     moosehall_git_checkout () {
-        if [ $# != 2 ]; then
-            error "Usage: moosehall_git_checkout HUB-HOST REPO"
+        if [ $# = 0 -o $# -gt 2 ]; then
+            error "Usage: moosehall_git_checkout HUB-HOST [REPO]"
         fi
         hub="$1"
-        repo="$2"
+        repo="${2:-${MR_REPO#$HOME/}}"
         read_localhost_nickname
         if [ "$hub" = "$localhost_nickname" ]; then
             if ! [ -d "$MR_REPO" ]; then

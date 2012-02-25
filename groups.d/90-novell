@@ -26,5 +26,5 @@ stowable = true
 
 [$HOME/SUSE]
 lib      = MR_EMAIL=aspiers@suse.com
-checkout = moosehall_git_checkout atlantic SUSE
+checkout = moosehall_git_checkout atlantic
 remotes  = moosehall_remotes
