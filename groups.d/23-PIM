@@ -1,16 +1,19 @@
 # -*- mode: sh -*-
 
 [$HOME/org]
+lib = MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout atlantic org
 remotes = moosehall_remotes
 
 [$HOME/soc]
+lib = MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout atlantic soc
 remotes = moosehall_remotes
 
 [$HOME/OWRA]
+lib = MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout atlantic OWRA
 remotes = moosehall_remotes
