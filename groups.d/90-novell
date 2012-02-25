@@ -25,6 +25,8 @@ checkout = git_clone_my_repo
 stowable = true
 
 [$HOME/SUSE]
-lib      = MR_EMAIL=aspiers@suse.com
+lib      =
+    MR_EMAIL=aspiers@suse.com
+    MR_CONFIDENTIAL_REPO=yes
 checkout = moosehall_git_checkout atlantic
 remotes  = moosehall_remotes
