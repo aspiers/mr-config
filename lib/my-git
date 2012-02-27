@@ -119,9 +119,14 @@ lib =
         fix_upstream
     }
     work_remotes () {
-        :
-        # git_add_remotes "
-        # "
+        repo="${MR_REPO#$HOME/}"
+        arctic_remote
+        git_add_remotes "
+        atlantic   atlantic:$repo
+        southern   southern:$repo
+        pacific    pacific:$repo
+        indian     indian:$repo
+        "
         fix_upstream
     }
     auto_remotes () {
