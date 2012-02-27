@@ -56,7 +56,7 @@ lib =
             echo "Default remote branch is $MR_GIT_REMOTE_BRANCH"
         fi
         git clone $remote_opt $branch_opt "$1" "$MR_REPO"
-        git_email "${2:-$MR_NAME}"
+        git_email "${2-$MR_NAME}"
     }
     github_clone () {
         MR_GIT_REMOTE=github
@@ -67,7 +67,12 @@ lib =
         check_repo_name
         MR_GIT_REMOTE=arctic
         MR_GIT_REMOTE_BRANCH=master
-        git_clone "$GIT_MY_UPSTREAM/${MR_REPO##*/}" "${MR_EMAIL:-dotfiles}"
+        if work_repo; then
+            email=
+        else
+            email="${MR_EMAIL:-dotfiles}"
+        fi
+        git_clone "$GIT_MY_UPSTREAM/${MR_REPO##*/}" "$email"
     }
     #
     moosehall_git_checkout () {
