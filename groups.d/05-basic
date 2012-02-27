@@ -32,7 +32,8 @@ skip = missing_exe zsh
 checkout = git_clone git://github.com/zsh-users/zsh-completions.git
 remotes = github_remote
 fixups =
-  zcpath=~/.zsh/functions/zsh-completions
-  ln -sf "$MR_REPO" "$zcpath"
-  echo 'fpath=( "$fpath[@]" "'"$zcpath"'" )' > ~/.zshenv.d/zsh-completions
-  zsh -c zrec
+    zcpath=~/.zsh/functions/zsh-completions
+    ln -sf "$MR_REPO" "$zcpath"
+    [ -d ~/.zshenv.d ] || mkdir ~/.zshenv.d
+    echo 'fpath=( "$fpath[@]" "'"$zcpath"'" )' > ~/.zshenv.d/zsh-completions
+    zsh -c zrec
