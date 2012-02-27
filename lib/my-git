@@ -112,14 +112,17 @@ lib =
     }
     public_repo_remotes () {
         moosehall_remotes && arctic_remote && github_remote
+        fix_upstream
     }
     private_repo_remotes () {
         moosehall_remotes && arctic_remote
+        fix_upstream
     }
     work_remotes () {
         :
         # git_add_remotes "
         # "
+        fix_upstream
     }
     auto_remotes () {
         if work_repo; then
@@ -129,6 +132,47 @@ lib =
         else
             public_repo_remotes
         fi
+    }
+    #
+    fix_upstream () {
+        if [ -n "$upstream_fixed" ]; then
+            return 0
+        fi
+        head=`git head`
+        upstream=`git upstream`
+        remote="${upstream%/*}"
+        remote_branch="${upstream#*/}"
+        if [ "$remote" != 'origin' ]; then
+            echo "Current upstream is $upstream; nothing needs fixing."
+            upstream_fixed=yes
+            return 0
+        fi
+        origin_url=`git config "remote.origin.url"`
+        if [[ "$origin_url" == ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* ]] ||
+           [[ "$origin_url" == ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* ]]
+        then
+            if [ -z `git config "remote.arctic.url"` ]; then
+                mr remotes
+            else
+                echo "arctic remote already set up"
+            fi
+            #
+            if [ -n `git config "remote.arctic.url"` ]; then
+                arctic_upstream="arctic/$remote_branch"
+                if ! git rev-parse "$arctic_upstream" >/dev/null 2>&1; then
+                    echo "$arctic_upstream is not tracked locally; fetching from arctic ..."
+                    ggf arctic
+                else
+                    echo "Already tracking $arctic_upstream"
+                fi
+                ggsup "$arctic_upstream"
+            else
+                echo "'mr remotes' did not configure arctic remote; nothing to do."
+            fi
+        else
+            echo "Not touching upstream $upstream with URL $origin_url"
+        fi
+        upstream_fixed=yes
     }
     #
     unsafe () {
@@ -161,33 +205,5 @@ git_dwim =
 
 forceremotes = MR_OVERWRITE_REMOTES=y mr remotes "$@"
 
-git_fixupstream =
-    head=`git head`
-    upstream=`git upstream`
-    remote="${upstream%/*}"
-    remote_branch="${upstream#*/}"
-    if [ "$remote" != 'origin' ]; then
-        echo "Current upstream is $upstream; nothing needs fixing."
-        return 0
-    fi
-    origin_url=`git config "remote.origin.url"`
-    if [[ "$origin_url" == ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* ]]; then
-        if [ -z `git config "remote.arctic.url"` ]; then
-            mr remotes
-        else
-            echo "arctic remote already set up"
-        fi
-        if [ -n `git config "remote.arctic.url"` ]; then
-            arctic_upstream="arctic/$remote_branch"
-            if ! git rev-parse "$arctic_upstream" >/dev/null 2>&1; then
-                ggf arctic
-            else
-                echo "Already tracking $arctic_upstream"
-            fi
-            ggsup "$arctic_upstream"
-        else
-            echo "'mr remotes' did not configure arctic remote; nothing to do."
-        fi
-    else
-        echo "Not touching upstream $upstream with URL $origin_url"
-    fi
+# Try to avoid ambiguating 'fixups' or 'update' actions.
+git_chkupstream = fix_upstream
