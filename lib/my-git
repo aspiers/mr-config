@@ -12,19 +12,36 @@ lib =
     check_repo_name () {
         [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
     }
+    #
     git_email () {
         cd "$MR_REPO"
+        if ! work_repo; then
+            git_set_personal_email "$@"
+            return 0
+        fi
+        #
+        if [ -n "$1" ]; then
+            error "Invoked 'git_email $1' on work repository $MR_REPO"
+        fi
+        git_set_email aspiers@suse.com
+    }
+    git_set_personal_email () {
         email="${1:-${MR_EMAIL:-$MR_NAME}}"
         case "$email" in
             *@*) ;;
             *) email="$email@adamspiers.org"
         esac
+        git_set_email "$email"
+    }
+    git_set_email () {
+        email="$1"
         existing=$( git config user.email || true )
         if [ "$email" != "$existing" ]; then
             git config user.email "$email"
             info "Set user.email from ${existing:-(none)} to $email"
         fi
     }
+    #
     git_clone () {
         check_repo_name
         info "Cloning from $1"
