@@ -4,6 +4,10 @@
 checkout = git_clone_my_repo
 stowable = true
 
+[$HOME/.GIT/adamspiers.org/novell+shell-env.sec]
+checkout = git_clone_my_repo
+stowable = true
+
 [$HOME/.GIT/adamspiers.org/novell+emacs.pub]
 checkout = git_clone_my_repo
 stowable = true
@@ -21,6 +25,10 @@ checkout = git_clone_my_repo
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/novell+vpn.sec]
+checkout = git_clone_my_repo
+stowable = true
+
+[$HOME/.GIT/adamspiers.org/novell+pso.sec]
 checkout = git_clone_my_repo
 stowable = true
 
