@@ -58,3 +58,6 @@ skip = default_skipper || not_host atlantic
 checkout = svn checkout http://googlecl.googlecode.com/svn/trunk/ googlecl
 fixups =
     python setup.py install --home ~
+
+[$HOME/software/audio/mpdtoys]
+checkout = git_clone git://git.kitenet.net/mpdtoys.git
