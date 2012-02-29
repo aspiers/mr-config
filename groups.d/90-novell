@@ -46,3 +46,8 @@ lib =
     MR_CONFIDENTIAL_REPO=yes
 checkout = moosehall_git_checkout atlantic
 remotes = work_remotes
+
+[$HOME/.GIT/3rd-party/bugzilla-tools]
+checkout = git_clone https://github.com/mvidner/Bugzilla-Tools.git
+lib =
+    MR_EMAIL=aspiers@suse.com
