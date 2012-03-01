@@ -100,7 +100,7 @@ lib =
         echo "ssh://aspiers@git.sv.gnu.org/srv/git/${1:-$MR_NAME}.git"
     }
     github_url () {
-        echo "git@github.com:aspiers/${1:-${GITHUB_NAME:-$MR_NAME}}.git"
+        echo "git@github.com:aspiers/${1:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
     }
     arctic_url () {
         echo "${GIT_MY_UPSTREAM_HOME}$repo"
