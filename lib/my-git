@@ -161,6 +161,34 @@ lib =
         fi
     }
     #
+    switch_from_origin_to () {
+        local remote="$1"
+        local upstream="$remote/$remote_branch"
+        if ! git rev-parse "$upstream" >/dev/null 2>&1; then
+            echo "$upstream is not tracked locally; fetching from $remote ..."
+            ggf "$remote"
+        else
+            echo "Already tracking $upstream"
+        fi
+        ggsup "$upstream"
+    }
+    maybe_switch_from_origin_to () {
+        # Return true (0) if the switch was made
+        local remote="$1"
+        if [ -z `git config "remote.$remote.url"` ]; then
+            mr remotes
+        else
+            echo "$remote remote already set up"
+        fi
+        #
+        if [ -n `git config "remote.$remote.url"` ]; then
+            switch_from_origin_to "$remote"
+            return 0
+        else
+            echo "'mr remotes' did not configure $remote remote; nothing to do."
+        fi
+        return 1
+    }
     fix_upstream () {
         if [ -n "$upstream_fixed" ]; then
             return 0
@@ -175,29 +203,27 @@ lib =
             return 0
         fi
         origin_url=`git config "remote.origin.url"`
+        switched_from_origin=
         if [[ "$origin_url" == ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* ]] ||
            [[ "$origin_url" == ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* ]]
         then
-            if [ -z `git config "remote.arctic.url"` ]; then
-                mr remotes
-            else
-                echo "arctic remote already set up"
+            if maybe_switch_from_origin_to 'arctic'; then
+                switched_from_origin=yes
             fi
-            #
-            if [ -n `git config "remote.arctic.url"` ]; then
-                arctic_upstream="arctic/$remote_branch"
-                if ! git rev-parse "$arctic_upstream" >/dev/null 2>&1; then
-                    echo "$arctic_upstream is not tracked locally; fetching from arctic ..."
-                    ggf arctic
-                else
-                    echo "Already tracking $arctic_upstream"
-                fi
-                ggsup "$arctic_upstream"
-            else
-                echo "'mr remotes' did not configure arctic remote; nothing to do."
+        elif [[ "$origin_url" == git@github.com:aspiers/$MR_NAME.git ]]; then
+            if maybe_switch_from_origin_to 'github'; then
+                switched_from_origin=yes
             fi
         else
             echo "Not touching upstream $upstream with URL $origin_url"
+        fi
+        if [ -n "$switched_from_origin" ]; then
+            echo "Upstream switched from origin"
+            if git remote rm origin; then
+                echo "Removed origin remote"
+            else
+                return 1
+            fi
         fi
         upstream_fixed=yes
     }
