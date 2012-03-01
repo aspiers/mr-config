@@ -41,7 +41,9 @@ lib =
             info "Set user.email from ${existing:-(none)} to $email"
         fi
     }
-    #
+    # Usage: git_clone URL [EMAIL]
+    # EMAIL defaults to MR_EMAIL if set, otherwise a sensible value
+    # is guessed (see above).
     git_clone () {
         check_repo_name
         info "Cloning from $1"
@@ -56,7 +58,7 @@ lib =
             echo "Default remote branch is $MR_GIT_REMOTE_BRANCH"
         fi
         git clone $remote_opt $branch_opt "$1" "$MR_REPO"
-        git_email "${2-$MR_NAME}"
+        git_email "$2"
     }
     github_clone () {
         MR_GIT_REMOTE=github
