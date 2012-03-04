@@ -206,19 +206,22 @@ lib =
         fi
         origin_url=`git config "remote.origin.url"`
         switched_from_origin=
-        if [[ "$origin_url" == ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* ]] ||
-           [[ "$origin_url" == ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* ]]
-        then
-            if maybe_switch_from_origin_to 'arctic'; then
-                switched_from_origin=yes
-            fi
-        elif [[ "$origin_url" == git@github.com:aspiers/$MR_NAME.git ]]; then
-            if maybe_switch_from_origin_to 'github'; then
-                switched_from_origin=yes
-            fi
-        else
-            echo "Not touching upstream $upstream with URL $origin_url"
-        fi
+        case "$origin_url" in
+            ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+            ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/*)
+                if maybe_switch_from_origin_to 'arctic'; then
+                    switched_from_origin=yes
+                fi
+                ;;
+            git@github.com:aspiers/$MR_NAME.git)
+                if maybe_switch_from_origin_to 'github'; then
+                    switched_from_origin=yes
+                fi
+                ;;
+            *)
+                echo "Not touching upstream $upstream with URL $origin_url"
+                ;;
+        esac
         if [ -n "$switched_from_origin" ]; then
             echo "Upstream switched from origin"
             if git remote rm origin; then
