@@ -26,6 +26,12 @@ lib =
         git_set_email aspiers@suse.com
     }
     git_set_personal_email () {
+        existing=$( git config user.email || true )
+        # Don't overwrite dotfiles address with default.
+        if [ -z "$1" -a "$existing" = 'dotfiles@adamspiers.org' ]; then
+            echo "Defaulting to existing address: <$existing>"
+            return
+        fi
         email="${1:-${MR_EMAIL:-$MR_NAME}}"
         case "$email" in
             *@*) ;;
