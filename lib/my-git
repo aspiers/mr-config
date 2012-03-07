@@ -71,6 +71,11 @@ lib =
         MR_GIT_REMOTE_BRANCH=master
         git_clone `github_url "$@"`
     }
+    savannah_ro_clone () {
+        MR_GIT_REMOTE=savannah
+        MR_GIT_REMOTE_BRANCH=master
+        git_clone `savannah_ro_url "$@"`
+    }
     git_clone_my_repo () {
         check_repo_name
         MR_GIT_REMOTE=arctic
