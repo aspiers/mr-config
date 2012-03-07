@@ -79,3 +79,15 @@ push = unsafe
 # fixups = symlink_from ~/lib/emacs/major-modes/$MR_NAME
 # stowable = true
 # push = unsafe
+
+[$HOME/.GIT/3rd-party/emacs]
+name = emacs-git
+checkout = git_clone git://git.savannah.gnu.org/emacs.git
+push = unsafe
+
+[$HOME/.GIT/3rd-party/magit]
+skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+checkout = github_clone
+remotes = auto_remotes
+fixups = symlink_from ~/lib/emacs/major-modes/remember.git
+push = unsafe
