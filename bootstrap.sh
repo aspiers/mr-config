@@ -6,7 +6,10 @@ git_host=git.adamspiers.org
 git_local_hostname=arctic
 git_user=adam
 git_user_at_host=$git_user@$git_host
-mr_upstream_repo="git@github.com:aspiers/kitenet-mr.git"
+# On a vanilla bootstrap, we may not have an ssh key with
+# access to this URL:
+#mr_upstream_repo="git@github.com:aspiers/kitenet-mr.git"
+mr_upstream_repo="$git_local_hostname:.GIT/3rd-party/mr"
 
 div () {
     echo
