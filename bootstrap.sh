@@ -86,6 +86,15 @@ git config --global url.ssh://$git_host/home/$git_user/.insteadof $git_local_hos
 
 div ############################################################
 
+echo "Setting up ~/bin ..."
+# Various .cfg-post.d rely on ~/bin being there.
+if ! [ -d ~/bin ]; then
+    mkdir ~/bin
+fi
+export PATH=$HOME/bin:$PATH
+
+div ############################################################
+
 third_party_git=$HOME/.GIT/3rd-party
 
 mkdir -p $third_party_git
@@ -103,12 +112,6 @@ echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 div ############################################################
 
 echo "Setting up mr config ..."
-
-# Various .cfg-post.d rely on ~/bin being there.
-if ! [ -d ~/bin ]; then
-    mkdir ~/bin
-fi
-export PATH=$HOME/bin:$PATH
 
 if [ -e .mrconfig ]; then
     mr -r mr-config up
