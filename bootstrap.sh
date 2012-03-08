@@ -163,8 +163,8 @@ div ############################################################
 
 echo "Checking for files which distros are likely to provide ..."
 
-for skelfile in
-    .bashrc .bash_profile .inputrc .zshrc .emacs
+for skelfile in \
+    .profile .bashrc .bash_profile .inputrc .zshrc .emacs \
     .gnupg/{{pub,sec}ring,trustdb}.gpg
 do
     if [ -e "$skelfile" -a ! -L "$skelfile" ]; then
