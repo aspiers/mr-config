@@ -139,6 +139,11 @@ div ############################################################
 echo "Installing stow-release ..."
 mr -r stow-release checkout
 
+if ! which stow >&/dev/null; then
+    echo "stow installation failed; aborting." >&2
+    exit 1
+fi
+
 if [ -d ~/.cfg ]; then
     touch ~/.cfg/.stow
     export MR_STOW_OVER=.
