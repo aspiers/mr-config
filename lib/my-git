@@ -12,46 +12,77 @@ lib =
     check_repo_name () {
         [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
     }
+    #
     git_email () {
         cd "$MR_REPO"
+        if ! work_repo; then
+            git_set_personal_email "$@"
+            return 0
+        fi
+        #
+        if [ -n "$1" ]; then
+            error "Invoked 'git_email $1' on work repository $MR_REPO"
+        fi
+        git_set_email aspiers@suse.com
+    }
+    git_set_personal_email () {
         email="${1:-${MR_EMAIL:-$MR_NAME}}"
         case "$email" in
             *@*) ;;
             *) email="$email@adamspiers.org"
         esac
+        git_set_email "$email"
+    }
+    git_set_email () {
+        email="$1"
         existing=$( git config user.email || true )
         if [ "$email" != "$existing" ]; then
             git config user.email "$email"
             info "Set user.email from ${existing:-(none)} to $email"
         fi
     }
+    # Usage: git_clone URL [EMAIL]
+    # EMAIL defaults to MR_EMAIL if set, otherwise a sensible value
+    # is guessed (see above).
     git_clone () {
         check_repo_name
         info "Cloning from $1"
-        remote_opts=
+        remote_opt=
         if [ -n "$MR_GIT_REMOTE" ]; then
-            remote_opts="-o $MR_GIT_REMOTE"
+            remote_opt="-o $MR_GIT_REMOTE"
             echo "Default remote is $MR_GIT_REMOTE"
         fi
-        git clone $remote_opts "$1" "$MR_REPO"
-        git_email "${2:-$MR_NAME}"
+        branch_opt=
+        if [ -n "$MR_GIT_REMOTE_BRANCH" ]; then
+            branch_opt="-b $MR_GIT_REMOTE_BRANCH"
+            echo "Default remote branch is $MR_GIT_REMOTE_BRANCH"
+        fi
+        git clone $remote_opt $branch_opt "$1" "$MR_REPO"
+        git_email "$2"
     }
     github_clone () {
         MR_GIT_REMOTE=github
+        MR_GIT_REMOTE_BRANCH=master
         git_clone `github_url "$@"`
     }
     git_clone_my_repo () {
         check_repo_name
         MR_GIT_REMOTE=arctic
-        git_clone "$GIT_MY_UPSTREAM/$MR_NAME" "${MR_EMAIL:-dotfiles}"
+        MR_GIT_REMOTE_BRANCH=master
+        if work_repo; then
+            email=
+        else
+            email="${MR_EMAIL:-dotfiles}"
+        fi
+        git_clone "$GIT_MY_UPSTREAM/${MR_REPO##*/}" "$email"
     }
     #
     moosehall_git_checkout () {
-        if [ $# != 2 ]; then
-            error "Usage: moosehall_git_checkout HUB-HOST REPO"
+        if [ $# = 0 -o $# -gt 2 ]; then
+            error "Usage: moosehall_git_checkout HUB-HOST [REPO]"
         fi
         hub="$1"
-        repo="$2"
+        repo="${2:-${MR_REPO#$HOME/}}"
         read_localhost_nickname
         if [ "$hub" = "$localhost_nickname" ]; then
             if ! [ -d "$MR_REPO" ]; then
@@ -59,6 +90,7 @@ lib =
             fi
         else
             MR_GIT_REMOTE=$hub
+            MR_GIT_REMOTE_BRANCH=master
             git_clone $hub:$repo
         fi
     }
@@ -70,7 +102,7 @@ lib =
         echo "ssh://aspiers@git.sv.gnu.org/srv/git/${1:-$MR_NAME}.git"
     }
     github_url () {
-        echo "git@github.com:aspiers/${1:-${GITHUB_NAME:-$MR_NAME}}.git"
+        echo "git@github.com:aspiers/${1:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
     }
     arctic_url () {
         echo "${GIT_MY_UPSTREAM_HOME}$repo"
@@ -99,19 +131,27 @@ lib =
         atlantic   atlantic:$repo
         southern   southern:$repo
         adriatic   adriatic:$repo
-        mc     media-centre:$repo
+        mc      mediacentre:$repo
         "
     }
     public_repo_remotes () {
         moosehall_remotes && arctic_remote && github_remote
+        fix_upstream
     }
     private_repo_remotes () {
         moosehall_remotes && arctic_remote
+        fix_upstream
     }
     work_remotes () {
-        :
-        # git_add_remotes "
-        # "
+        repo="${MR_REPO#$HOME/}"
+        arctic_remote
+        git_add_remotes "
+        atlantic   atlantic:$repo
+        southern   southern:$repo
+        pacific    pacific:$repo
+        indian     indian:$repo
+        "
+        fix_upstream
     }
     auto_remotes () {
         if work_repo; then
@@ -121,6 +161,76 @@ lib =
         else
             public_repo_remotes
         fi
+    }
+    #
+    switch_from_origin_to () {
+        local remote="$1"
+        local upstream="$remote/$remote_branch"
+        if ! git rev-parse "$upstream" >/dev/null 2>&1; then
+            echo "$upstream is not tracked locally; fetching from $remote ..."
+            ggf "$remote"
+        else
+            echo "Already tracking $upstream"
+        fi
+        ggsup "$upstream"
+    }
+    maybe_switch_from_origin_to () {
+        # Return true (0) if the switch was made
+        local remote="$1"
+        if [ -z `git config "remote.$remote.url"` ]; then
+            mr remotes
+        else
+            echo "$remote remote already set up"
+        fi
+        #
+        if [ -n `git config "remote.$remote.url"` ]; then
+            switch_from_origin_to "$remote"
+            return 0
+        else
+            echo "'mr remotes' did not configure $remote remote; nothing to do."
+        fi
+        return 1
+    }
+    fix_upstream () {
+        if [ -n "$upstream_fixed" ]; then
+            return 0
+        fi
+        head=`git head`
+        upstream=`git upstream`
+        remote="${upstream%/*}"
+        remote_branch="${upstream#*/}"
+        if [ "$remote" != 'origin' ]; then
+            echo "Current upstream is $upstream; nothing needs fixing."
+            upstream_fixed=yes
+            return 0
+        fi
+        origin_url=`git config "remote.origin.url"`
+        switched_from_origin=
+        case "$origin_url" in
+            ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+            ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/*)
+                if maybe_switch_from_origin_to 'arctic'; then
+                    switched_from_origin=yes
+                fi
+                ;;
+            git@github.com:aspiers/$MR_NAME.git)
+                if maybe_switch_from_origin_to 'github'; then
+                    switched_from_origin=yes
+                fi
+                ;;
+            *)
+                echo "Not touching upstream $upstream with URL $origin_url"
+                ;;
+        esac
+        if [ -n "$switched_from_origin" ]; then
+            echo "Upstream switched from origin"
+            if git remote rm origin; then
+                echo "Removed origin remote"
+            else
+                return 1
+            fi
+        fi
+        upstream_fixed=yes
     }
     #
     unsafe () {
@@ -153,33 +263,5 @@ git_dwim =
 
 forceremotes = MR_OVERWRITE_REMOTES=y mr remotes "$@"
 
-git_fixupstream =
-    head=`git head`
-    upstream=`git upstream`
-    remote="${upstream%/*}"
-    remote_branch="${upstream#*/}"
-    if [ "$remote" != 'origin' ]; then
-        echo "Current upstream is $upstream; nothing needs fixing."
-        return 0
-    fi
-    origin_url=`git config "remote.origin.url"`
-    if [[ "$origin_url" == ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* ]]; then
-        if [ -z `git config "remote.arctic.url"` ]; then
-            mr remotes
-        else
-            echo "arctic remote already set up"
-        fi
-        if [ -n `git config "remote.arctic.url"` ]; then
-            arctic_upstream="arctic/$remote_branch"
-            if ! git rev-parse "$arctic_upstream" >/dev/null 2>&1; then
-                ggf arctic
-            else
-                echo "Already tracking $arctic_upstream"
-            fi
-            ggsup "$arctic_upstream"
-        else
-            echo "'mr remotes' did not configure arctic remote; nothing to do."
-        fi
-    else
-        echo "Not touching upstream $upstream with URL $origin_url"
-    fi
+# Try to avoid ambiguating 'fixups' or 'update' actions.
+git_chkupstream = fix_upstream

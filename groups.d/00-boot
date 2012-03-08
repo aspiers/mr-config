@@ -1,7 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/3rd-party/mr]
-lib = GITHUB_NAME=kitenet-mr
+lib = MR_GITHUB_NAME=kitenet-mr
 checkout = github_clone
 remotes =
     auto_remotes
@@ -20,7 +20,8 @@ fixups =
 
 [$HOME/software/scm/stow]
 name = stow-release
-checkout = mr_download_checkout http://ftp.gnu.org/gnu/stow/stow-latest.tar.bz2
+lib = MR_DOWNLOAD_URL=http://ftp.gnu.org/gnu/stow/stow-latest.tar.bz2
+checkout = mr_download_checkout
 fixups =
     cd "$MR_REPO"
     ./configure --prefix=$HOME

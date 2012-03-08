@@ -28,7 +28,7 @@ lib =
     work_repo () {
         check_repo_name
         case "$MR_NAME" in
-            *novell*)
+            *novell*|SUSE)
                 debug_skippers "! Repo auto-detected as work-related"
                 return 0 # true
                 ;;

@@ -2,7 +2,7 @@
 
 [$HOME/.GIT/3rd-party/lilypond]
 skip = lazy || ! music_machine
-checkout = moosehall_git_checkout atlantic .GIT/3rd-party/lilypond
+checkout = moosehall_git_checkout atlantic
 remotes = auto_remotes && savannah_rw_remote
 push = unsafe
 configure =
@@ -40,6 +40,6 @@ remotes = moosehall_remotes
 
 [$HOME/music]
 skip = lazy || ! music_machine
-checkout = moosehall_git_checkout atlantic music
+checkout = moosehall_git_checkout atlantic
 chain = true
 remotes = moosehall_remotes

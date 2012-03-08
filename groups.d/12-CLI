@@ -26,8 +26,22 @@ stowable = true
 
 [$HOME/software/file/fastdup]
 skip = default_skipper
-checkout = mr_download_checkout "http://sourceforge.net/projects/fastdup/files/latest/download?source=files" fastdup-0.3.tar.bz2
+lib =
+    MR_DOWNLOAD_URL="http://sourceforge.net/projects/fastdup/files/latest/download?source=files"
+    MR_DOWNLOAD_FILE=fastdup-0.3.tar.bz2
+checkout = mr_download_checkout
 fixups =
     cd "$MR_REPO"
     make
     ln -sf "$MR_REPO/fastdup" ~/bin
+
+[$HOME/software/file/xdiskusage]
+skip = lazy
+lib =
+    MR_DOWNLOAD_URL="http://xdiskusage.sourceforge.net/xdiskusage-1.48.tgz"
+    MR_DOWNLOAD_FILE=xdiskusage-1.48.tar.gz
+checkout = mr_download_checkout
+fixups =
+    cd "$MR_REPO"
+    ./configure --prefix=$HOME/local
+    make install

@@ -118,6 +118,19 @@ fi
 
 div ############################################################
 
+up=$HOME/bin/up
+# We need 'up' installed first, so that the download
+# plugin can unpack stow.
+if [ -x $up ]; then
+    echo "'up' utility already exists ..."
+else
+    echo "Downloading 'up' utility ..."
+    curl -o $up https://raw.github.com/aspiers/shell-env/master/bin/up
+    chmod +x $up
+fi
+
+div ############################################################
+
 # We need stow installed first, so that the other
 # repos can stow themselves.
 echo "Installing stow-release ..."
@@ -128,6 +141,11 @@ if [ -d ~/.cfg ]; then
     export MR_STOW_OVER=.
 fi
 
+if [ -e $up -a ! -L $up ]; then
+    echo "Removing temporary $up"
+    rm $up
+fi
+
 div ############################################################
 
 # cfgctl used to be needed early on for lib/libhooks.sh, but that got
@@ -135,7 +153,36 @@ div ############################################################
 # but let's try to manage without.
 #mr -r cfgctl up
 
-boot=( shell-env ssh ssh.adam_spiers.sec mr-util git-config )
+echo "Checking for files which distros are likely to provide ..."
+
+for skelfile in
+    .bashrc .bash_profile .inputrc .zshrc .emacs
+    .gnupg/{{pub,sec}ring,trustdb}.gpg
+do
+    if [ -e "$skelfile" -a ! -L "$skelfile" ]; then
+        cat <<EOF >&2
+Warning: $skelfile exists but is not a symlink.
+This will cause conflicts when stowing shell-env.
+Please correct now - launching a subshell ...
+
+EOF
+        $SHELL || fatal "Subshell failed; aborting."
+    fi
+done
+
+echo
+
+div ############################################################
+
+# shell-env is needed by mr-util for zrec
+
+echo "Retrieving shell-env ..."
+mr -i -r shell-env up
+echo
+
+div ############################################################
+
+boot=( ssh ssh.adam_spiers.sec mr-util git-config )
 pkgs="${boot[@]}"
 pkgs="${pkgs// /,}"
 echo "Retrieving ${pkgs//,/, } ..."
