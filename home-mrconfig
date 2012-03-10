@@ -16,6 +16,8 @@ fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
     git_email
+rebase = git pull -r "$@"
+git_wtf = git -c color.wtf=true wtf
 ge = git_email
 
 # Note: inclusion of my mr libraries happens after this repository is
