@@ -59,3 +59,13 @@ fixups =
     fi
     ./configure --prefix=$HOME/.STOW/smokeping
     make install
+
+[$HOME/.GIT/3rd-party/screen]
+skip = lazy
+checkout = savannah_ro_clone screen
+fixups =
+    cd src
+    ./autogen.sh
+    ./configure --prefix=$HOME/local
+    make
+    make install prefix=$HOME/.STOW/screen

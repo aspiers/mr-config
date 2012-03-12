@@ -1,7 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/3rd-party/mr]
-lib = GITHUB_NAME=kitenet-mr
+lib = MR_GITHUB_NAME=kitenet-mr
 checkout = github_clone
 remotes =
     auto_remotes
@@ -87,6 +87,7 @@ stowable = true
 
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/ssh]
+lib = MR_GITHUB_NAME=ssh-config
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo
 remotes = auto_remotes

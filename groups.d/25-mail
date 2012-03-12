@@ -24,7 +24,7 @@ stowable = true
 
 [$HOME/.GIT/3rd-party/offlineimap]
 checkout = git_clone git://github.com/spaetz/offlineimap.git
-skip = not_host atlantic || not_host pacific || not_host southern || not_host indian
+skip = not_host atlantic && not_host pacific && not_host southern && not_host indian
 remotes = auto_remotes
 fixups =
     # make clean breaks on first checkout for some reason

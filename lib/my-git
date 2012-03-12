@@ -26,6 +26,12 @@ lib =
         git_set_email aspiers@suse.com
     }
     git_set_personal_email () {
+        existing=$( git config user.email || true )
+        # Don't overwrite dotfiles address with default.
+        if [ -z "$1" -a "$existing" = 'dotfiles@adamspiers.org' ]; then
+            echo "Defaulting to existing address: <$existing>"
+            return
+        fi
         email="${1:-${MR_EMAIL:-$MR_NAME}}"
         case "$email" in
             *@*) ;;
@@ -41,7 +47,9 @@ lib =
             info "Set user.email from ${existing:-(none)} to $email"
         fi
     }
-    #
+    # Usage: git_clone URL [EMAIL]
+    # EMAIL defaults to MR_EMAIL if set, otherwise a sensible value
+    # is guessed (see above).
     git_clone () {
         check_repo_name
         info "Cloning from $1"
@@ -56,12 +64,17 @@ lib =
             echo "Default remote branch is $MR_GIT_REMOTE_BRANCH"
         fi
         git clone $remote_opt $branch_opt "$1" "$MR_REPO"
-        git_email "${2-$MR_NAME}"
+        git_email "$2"
     }
     github_clone () {
         MR_GIT_REMOTE=github
         MR_GIT_REMOTE_BRANCH=master
         git_clone `github_url "$@"`
+    }
+    savannah_ro_clone () {
+        MR_GIT_REMOTE=savannah
+        MR_GIT_REMOTE_BRANCH=master
+        git_clone `savannah_ro_url "$@"`
     }
     git_clone_my_repo () {
         check_repo_name
@@ -100,7 +113,7 @@ lib =
         echo "ssh://aspiers@git.sv.gnu.org/srv/git/${1:-$MR_NAME}.git"
     }
     github_url () {
-        echo "git@github.com:aspiers/${1:-${GITHUB_NAME:-$MR_NAME}}.git"
+        echo "git@github.com:aspiers/${1:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
     }
     arctic_url () {
         echo "${GIT_MY_UPSTREAM_HOME}$repo"
@@ -204,19 +217,22 @@ lib =
         fi
         origin_url=`git config "remote.origin.url"`
         switched_from_origin=
-        if [[ "$origin_url" == ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* ]] ||
-           [[ "$origin_url" == ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* ]]
-        then
-            if maybe_switch_from_origin_to 'arctic'; then
-                switched_from_origin=yes
-            fi
-        elif [[ "$origin_url" == git@github.com:aspiers/$MR_NAME.git ]]; then
-            if maybe_switch_from_origin_to 'github'; then
-                switched_from_origin=yes
-            fi
-        else
-            echo "Not touching upstream $upstream with URL $origin_url"
-        fi
+        case "$origin_url" in
+            ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+            ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/*)
+                if maybe_switch_from_origin_to 'arctic'; then
+                    switched_from_origin=yes
+                fi
+                ;;
+            git@github.com:aspiers/$MR_NAME.git)
+                if maybe_switch_from_origin_to 'github'; then
+                    switched_from_origin=yes
+                fi
+                ;;
+            *)
+                echo "Not touching upstream $upstream with URL $origin_url"
+                ;;
+        esac
         if [ -n "$switched_from_origin" ]; then
             echo "Upstream switched from origin"
             if git remote rm origin; then

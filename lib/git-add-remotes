@@ -88,7 +88,7 @@ lib =
                 exception="$remote"
             fi
             if [ "$LOCALHOST_NICKNAME" = "$exception" ]; then
-                info "Won't add remote $url for $exception"
+                #info "Won't add remote $url for $exception"
                 continue
             fi
             #

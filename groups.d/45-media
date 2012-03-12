@@ -6,3 +6,7 @@ checkout = moosehall_git_checkout atlantic
 remotes =
     moosehall_remotes
     git_add_remotes "WD /media/WD/media"
+
+[$HOME/software/audio/mpdtoys]
+skip = lazy || default_skipper
+checkout = git_clone git://git.kitenet.net/mpdtoys.git

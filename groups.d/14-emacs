@@ -18,10 +18,24 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/org-mode]
+lib =
+    MR_GITHUB_NAME=orgmode
+    MR_EMAIL=orgmode@adamspiers.org
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
-checkout = git_clone git://repo.or.cz/org-mode.git orgmode
-remotes = auto_remotes
+checkout = github_clone
+remotes =
+    auto_remotes
+    git_add_remotes origin git://repo.or.cz/org-mode.git
 fixups = symlink_from ~/lib/emacs/major-modes/org-mode.git
+push = unsafe
+
+[$HOME/.GIT/3rd-party/worg]
+skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+lib = MR_EMAIL=orgmode@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+    git_add_remotes origin git://worg@orgmode.org/worg.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/cucumber-el]
@@ -65,3 +79,15 @@ push = unsafe
 # fixups = symlink_from ~/lib/emacs/major-modes/$MR_NAME
 # stowable = true
 # push = unsafe
+
+[$HOME/.GIT/3rd-party/emacs]
+name = emacs-git
+checkout = git_clone git://git.savannah.gnu.org/emacs.git
+push = unsafe
+
+[$HOME/.GIT/3rd-party/magit]
+skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+checkout = github_clone
+remotes = auto_remotes
+fixups = symlink_from ~/lib/emacs/major-modes/remember.git
+push = unsafe

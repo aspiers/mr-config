@@ -6,7 +6,10 @@ git_host=git.adamspiers.org
 git_local_hostname=arctic
 git_user=adam
 git_user_at_host=$git_user@$git_host
-mr_upstream_repo="git@github.com:aspiers/kitenet-mr.git"
+# On a vanilla bootstrap, we may not have an ssh key with
+# access to this URL:
+#mr_upstream_repo="git@github.com:aspiers/kitenet-mr.git"
+mr_upstream_repo="$git_local_hostname:.GIT/3rd-party/mr"
 
 div () {
     echo
@@ -83,6 +86,15 @@ git config --global url.ssh://$git_host/home/$git_user/.insteadof $git_local_hos
 
 div ############################################################
 
+echo "Setting up ~/bin ..."
+# Various .cfg-post.d rely on ~/bin being there.
+if ! [ -d ~/bin ]; then
+    mkdir ~/bin
+fi
+export PATH=$HOME/bin:$PATH
+
+div ############################################################
+
 third_party_git=$HOME/.GIT/3rd-party
 
 mkdir -p $third_party_git
@@ -100,12 +112,6 @@ echo '~/.config/mr/.mrconfig' > ~/.mrtrust
 div ############################################################
 
 echo "Setting up mr config ..."
-
-# Various .cfg-post.d rely on ~/bin being there.
-if ! [ -d ~/bin ]; then
-    mkdir ~/bin
-fi
-export PATH=$HOME/bin:$PATH
 
 if [ -e .mrconfig ]; then
     mr -r mr-config up
@@ -133,6 +139,11 @@ div ############################################################
 echo "Installing stow-release ..."
 mr -r stow-release checkout
 
+if ! which stow >&/dev/null; then
+    echo "stow installation failed; aborting." >&2
+    exit 1
+fi
+
 if [ -d ~/.cfg ]; then
     touch ~/.cfg/.stow
     export MR_STOW_OVER=.
@@ -152,8 +163,8 @@ div ############################################################
 
 echo "Checking for files which distros are likely to provide ..."
 
-for skelfile in
-    .bashrc .bash_profile .inputrc .zshrc .emacs
+for skelfile in \
+    .profile .bashrc .bash_profile .inputrc .zshrc .emacs \
     .gnupg/{{pub,sec}ring,trustdb}.gpg
 do
     if [ -e "$skelfile" -a ! -L "$skelfile" ]; then
