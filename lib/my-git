@@ -139,10 +139,12 @@ lib =
         # Note: uses URL rewriting so we can decide independently
         # whether to fetch over wired/wireless or even ADSL.
         git_add_remotes "
-        atlantic   atlantic:$repo
-        southern   southern:$repo
-        adriatic   adriatic:$repo
-        mc      mediacentre:$repo
+        atlantic    atlantic:$repo
+        southern    southern:$repo
+        adriatic    adriatic:$repo
+        pacific      pacific:$repo
+        indian        indian:$repo
+        mc       mediacentre:$repo
         "
     }
     public_repo_remotes () {
