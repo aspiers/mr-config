@@ -46,6 +46,11 @@ lib =
     MR_CONFIDENTIAL_REPO=yes
 checkout = moosehall_git_checkout atlantic
 remotes = work_remotes
+fixups =
+    cd
+    for d in OpenStack HA IBS OBS; do
+        [ -e $d ] || ln -s SUSE/$d
+    done
 
 [$HOME/.GIT/3rd-party/bugzilla-tools]
 checkout = git_clone https://github.com/mvidner/Bugzilla-Tools.git
