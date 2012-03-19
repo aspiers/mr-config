@@ -8,7 +8,7 @@ lib = MR_EMAIL=mr
 
 [$HOME/.GIT/adamspiers.org/screen]
 name = screenrc
-skip = default_skipper || missing_exe screen
+skip = default_skipper || ( missing_exe screen && missing_exe tmux )
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
