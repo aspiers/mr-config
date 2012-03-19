@@ -96,3 +96,26 @@ checkout = github_clone
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/remember.git
 push = unsafe
+
+[$HOME/.GIT/3rd-party/auto-complete-mode]
+skip = lazy || default_skipper || missing_exe emacs
+lib = MR_EMAIL=emacs@adamspiers.org
+#checkout = git_clone http://cx4a.org/repo/rsense.git
+checkout = git_clone git://github.com/m2ym/auto-complete.git
+fixups =
+    make install DIR=$HOME/.emacs.d/
+
+[$HOME/lib/emacs/minor-modes/rsense]
+skip = lazy || default_skipper || missing_exe emacs || missing_exe ant || missing_exe ruby
+lib = MR_EMAIL=emacs@adamspiers.org
+#checkout = git_clone http://cx4a.org/repo/rsense.git
+checkout = git_clone git://github.com/m2ym/rsense.git
+fixups =
+    ant
+    export RSENSE_HOME=$STOW_DIR/$MR_NAME
+    ln -s $MR_REPO $RSENSE_HOME
+    chmod +x $RSENSE_HOME/bin/rsense
+    ruby $RSENSE_HOME/etc/config.rb > ~/.rsense
+
+[$HOME/.CVS/tramp]
+checkout = cvs -d :pserver:anonymous@cvs.savannah.gnu.org:/sources/tramp co tramp
