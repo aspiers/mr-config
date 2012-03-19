@@ -40,6 +40,7 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/cucumber-el]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
+lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://github.com/michaelklishin/cucumber.el.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/cucumber
@@ -54,6 +55,7 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/emacs-rails]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe rails
+lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://github.com/remvee/emacs-rails.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/emacs-rails.remvee.git
@@ -68,6 +70,7 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/remember]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://repo.or.cz/remember-el.git
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/remember.git
@@ -82,11 +85,13 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/emacs]
 name = emacs-git
+lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://git.savannah.gnu.org/emacs.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/magit]
 skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+lib = MR_EMAIL=emacs@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
 fixups = symlink_from ~/lib/emacs/major-modes/remember.git
