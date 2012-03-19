@@ -69,3 +69,7 @@ fixups =
     ./configure --prefix=$HOME/local
     make
     make install prefix=$HOME/.STOW/screen
+
+[$HOME/.GIT/3rd-party/tmux]
+skip = lazy
+checkout = svn co https://tmux.svn.sourceforge.net/svnroot/tmux/trunk tmux
