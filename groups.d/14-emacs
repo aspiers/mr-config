@@ -84,6 +84,7 @@ push = unsafe
 # push = unsafe
 
 [$HOME/.GIT/3rd-party/emacs]
+skip = lazy || default_skipper
 name = emacs-git
 lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://git.savannah.gnu.org/emacs.git
