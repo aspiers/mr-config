@@ -118,4 +118,5 @@ fixups =
     ruby $RSENSE_HOME/etc/config.rb > ~/.rsense
 
 [$HOME/.CVS/tramp]
+skip = lazy || default_skipper || missing_exe emacs || missing_exe ssh
 checkout = cvs -d :pserver:anonymous@cvs.savannah.gnu.org:/sources/tramp co tramp
