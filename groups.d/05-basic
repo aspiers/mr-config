@@ -12,24 +12,6 @@ skip = default_skipper || ( missing_exe screen && missing_exe tmux )
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
-fixups =
-    # Fix issues with screen's terminfo description which lacks
-    # italics and confuses it with standout mode.
-    #
-    # (from http://tmux.svn.sourceforge.net/viewvc/tmux/trunk/FAQ)
-    screen_terminfo="screen-256color"
-    infocmp "$screen_terminfo" | \
-        sed -e "s/^screen[^|]*|[^,]*,/${screen_terminfo}-it|GNU Screen with 256 colors and italics support,/" \
-	    -e 's/%?%p1%t;3%/%?%p1%t;7%/' \
-	    -e 's/smso=[^,]*,/smso=\\E[7m,/' \
-	    -e 's/rmso=[^,]*,/rmso=\\E[27m,/' \
-	    -e '$s/$/ sitm=\\E[3m, ritm=\\E[23m,/' \
-        > /tmp/screen.terminfo
-    [ -d .terminfo ] || mkdir .terminfo
-    TERMINFO=`pwd`/.terminfo tic /tmp/screen.terminfo
-    # check the results with: infocmp screen-256color-it
-    # N.B. fixups run after stowing, so this will need to be restowed
-    # manually to take effect :-/
 
 [$HOME/.GIT/3rd-party/git-annex]
 skip = default_skipper || missing_exe git
