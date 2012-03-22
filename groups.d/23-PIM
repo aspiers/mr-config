@@ -13,7 +13,9 @@ checkout = moosehall_git_checkout atlantic
 remotes = moosehall_remotes
 
 [$HOME/soc]
-lib = MR_CONFIDENTIAL_REPO=yes
+lib =
+    MR_EMAIL=adam@spiers.net
+    MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout atlantic
 remotes = moosehall_remotes
