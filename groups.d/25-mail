@@ -41,3 +41,7 @@ stowable = true
 checkout = github_clone scripts
 remotes = auto_remotes
 fixups = ln -s $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
+
+[$HOME/.GIT/adamspiers.org/gmail-count]
+checkout = git_clone
+remotes = auto_remotes
