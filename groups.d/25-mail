@@ -36,3 +36,8 @@ fixups =
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/.GIT/3rd-party/maildir-dedupe]
+checkout = github_clone scripts
+remotes = auto_remotes
+fixups = ln -s $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
