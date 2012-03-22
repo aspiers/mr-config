@@ -79,7 +79,7 @@ lib =
     insecure_machine () {
         read_localhost_nickname
         case "$localhost_nickname" in
-            arctic|atlantic|pacific|indian|southern|d600|coltrane|linuxmce|adriatic)
+            arctic|atlantic|pacific|indian|southern|mediacentre|adriatic)
                 debug_skippers ". $localhost_nickname secure"
                 return 1 # false
                 ;;
@@ -97,7 +97,7 @@ lib =
     work_machine () {
         read_localhost_nickname
         case "$localhost_nickname" in
-            atlantic|southern|pacific|indian|d600)
+            atlantic|southern|pacific|indian)
                 debug_skippers ". $localhost_nickname is a work machine"
                 return 0 # true
                 ;;
@@ -115,7 +115,7 @@ lib =
     music_machine () {
         read_localhost_nickname
         case "$localhost_nickname" in
-            atlantic|southern|adriatic|linuxmce)
+            atlantic|southern|adriatic|mediacentre)
                 debug_skippers ". $localhost_nickname is a music machine"
                 return 0 # true
                 ;;
