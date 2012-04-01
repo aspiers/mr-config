@@ -115,7 +115,7 @@ lib =
     music_machine () {
         read_localhost_nickname
         case "$localhost_nickname" in
-            atlantic|southern|adriatic|mediacentre)
+            atlantic|southern|adriatic|mediacentre|indian)
                 debug_skippers ". $localhost_nickname is a music machine"
                 return 0 # true
                 ;;
