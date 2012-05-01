@@ -39,7 +39,9 @@ stowable = true
 
 [$HOME/.GIT/3rd-party/maildir-dedupe]
 checkout = github_clone scripts
-remotes = auto_remotes
+remotes =
+    auto_remotes
+    git_add_remotes kdeldycke git://github.com/kdeldycke/scripts.git
 fixups = ln -s $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
 
 [$HOME/.GIT/adamspiers.org/gmail-count]
