@@ -3,7 +3,7 @@
 set -e
 
 git_host=git.adamspiers.org
-git_local_hostname=arctic
+git_local_hostname=coral
 git_user=adam
 git_user_at_host=$git_user@$git_host
 # On a vanilla bootstrap, we may not have an ssh key with
