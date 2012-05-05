@@ -170,80 +170,140 @@ lib =
         fi
     }
     #
+    is_branch_present () {
+        local branch="$1"
+        git rev-parse "$branch" >/dev/null 2>&1
+    }
+    ensure_remote_tracked_locally () {
+        # Return true (0) iff managed to ensure the remote is tracked locally
+        local remote="$1"
+        local upstream="$2"
+        #
+        if ! is_branch_present "$upstream"; then
+            info "$upstream is not tracked locally; fetching from $remote ..."
+            ggf "$remote" || return 1
+        else
+            info "Already tracking $upstream"
+        fi
+        return 0
+    }
     fetch_and_switch_upstream_to () {
         # Return true (0) iff the switch was made
         local remote="$1"
         local upstream="$remote/$remote_branch"
-        if ! git rev-parse "$upstream" >/dev/null 2>&1; then
-            info "$upstream is not tracked locally; fetching from $remote ..."
-            if ! ggf "$remote"; then
-                return 1
-            fi
-        else
-            info "Already tracking $upstream"
-        fi
+        #
+        ensure_remote_tracked_locally "$remote" "$upstream" || return 1
         ggsup "$upstream"
     }
-    configure_upstream_and_switch_to () {
-        # Return true (0) if the switch was made
+    configure_upstream () {
+        # Return true (0) iff the upstream was configured
         local remote="$1"
         #
         if [ -z `git config "remote.$remote.url"` ]; then
             mr remotes
         else
             echo "$remote remote already set up"
+            return 0
         fi
+        if [ -z `git config "remote.$remote.url"` ]; then
+            error "'mr remotes' failed to configure $remote remote; cannot proceed."
+            return 1
+        fi
+        return 0
+    }
+    configure_upstream_and_switch_to () {
+        # Return true (0) iff the switch was made
+        local remote="$1"
         #
-        if [ -n `git config "remote.$remote.url"` ]; then
-            if fetch_and_switch_upstream_to "$remote"; then
-                return 0
+        configure_upstream "$remote" || return 1
+        fetch_and_switch_upstream_to "$remote"
+    }
+    remove_origin_if_unused () {
+        # Return true (0) iff origin was removed or not there in the
+        # first place
+        upstream=`git upstream`
+        if [ "$upstream" = 'origin' ]; then
+            if ! is_branch_present "$upstream"; then
+                # git upstream should catch this, so in theory should
+                # never get here
+                error "origin in use but not tracked locally!"
             fi
+            info "Won't remove origin still in use as upstream."
+            return 1
         fi
-        info "'mr remotes' did not configure $remote remote; nothing to do."
+        if [ -z `git config "remote.origin.url"` ]; then
+            return 0 # wasn't there in the first place
+        fi
+        if git remote rm origin; then
+            info "Removed origin remote"
+            return 0
+        else
+            error "Failed to remove origin remote."
+        fi
+    }
+    switch_upstream_from_origin () {
+        # Return true (0) if the switch was made
+        origin_url=`git config "remote.origin.url"`
+        case "$origin_url" in
+            ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+            ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+            ssh://adam@git.adamspiers.org/home/adam/.srv/git/*)
+                if configure_upstream_and_switch_to 'adamspiers.org'; then
+                    return 0
+                fi
+                ;;
+            git@github.com:aspiers/$MR_NAME.git)
+                if configure_upstream_and_switch_to 'github'; then
+                    return 0
+                fi
+                ;;
+            *)
+                info "Not touching origin with URL $origin_url"
+                ;;
+        esac
         return 1
     }
     fix_upstream () {
+        # A few aspects to this:
+        #   1. Ensure that the right non-'origin' upstream remote is present
+        #      (github, or adamspiers.org, formerly arctic) - easily
+        #      done by running 'mr remotes'.
+        #
+        #   2. Ensure that upstream for local branch is set to that
+        #      remote - but how do we know which one?  If arctic,
+        #      switch to adamspiers.org.  If github, leave.
+        #      If origin, switch based on URL.
+        #
+        #   3. Remove 'origin' remote
         if [ -n "$upstream_fixed" ]; then
-            info "upstream already fixed in this run; won't fix again."
+            # FIXME: When would this happen?
+            warning "upstream already fixed in this run; won't fix again."
             return 0
         fi
         head=`git head`
         upstream=`git upstream`
         remote="${upstream%/*}"
         remote_branch="${upstream#*/}"
-        if [ "$remote" != 'origin' ]; then
-            echo "Current upstream is $upstream; nothing needs fixing."
-            upstream_fixed=yes
-            return 0
-        fi
-        origin_url=`git config "remote.origin.url"`
-        switched_from_origin=
-        case "$origin_url" in
-            ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
-            ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
-            ssh://adam@git.adamspiers.org/home/adam/.srv/git/*)
-                if configure_upstream_and_switch_to 'adamspiers.org'; then
-                    switched_from_origin=yes
-                fi
+        case "$remote" in
+            arctic)
+                configure_upstream_and_switch_to 'adamspiers.org'
                 ;;
-            git@github.com:aspiers/$MR_NAME.git)
-                if configure_upstream_and_switch_to 'github'; then
-                    switched_from_origin=yes
-                fi
+            github)
+                info "upstream is already github"
+                ;;
+            origin)
+                switch_upstream_from_origin
+                ;;
+            adamspiers.org)
                 ;;
             *)
-                info "Not touching upstream $upstream with URL $origin_url"
+                info "Not touching upstream $upstream"
                 ;;
         esac
-        if [ -n "$switched_from_origin" ]; then
-            info "Upstream switched from origin"
-            if git remote rm origin; then
-                info "Removed origin remote"
-            else
-                return 1
-            fi
+        #
+        if remove_origin_if_unused; then
+            upstream_fixed=yes
         fi
-        upstream_fixed=yes
     }
     #
     unsafe () {
