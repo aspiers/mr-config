@@ -32,7 +32,7 @@ include =
         echo "Couldn't find $download_lib - download functions will be absent." >&2
     fi
     #
-    for d in ~/.config/mr/lib ~/.config/mr/groups.d; do
+    for d in ~/.config/mr/lib.d ~/.config/mr/groups.d; do
         if [ -d "$d" ]; then
             include_files "$d"/*
         else
