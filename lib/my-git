@@ -26,7 +26,7 @@ lib =
         existing=$( git config user.email || true )
         # Don't overwrite dotfiles address with default.
         if [ -z "$1" -a "$existing" = 'dotfiles@adamspiers.org' ]; then
-            echo "Defaulting to existing address: <$existing>"
+            info "Defaulting to existing address: <$existing>"
             return
         fi
         email="${1:-${MR_EMAIL:-$MR_NAME}}"
@@ -53,12 +53,12 @@ lib =
         remote_opt=
         if [ -n "$MR_GIT_REMOTE" ]; then
             remote_opt="-o $MR_GIT_REMOTE"
-            echo "Default remote is $MR_GIT_REMOTE"
+            info "Default remote is $MR_GIT_REMOTE"
         fi
         branch_opt=
         if [ -n "$MR_GIT_REMOTE_BRANCH" ]; then
             branch_opt="-b $MR_GIT_REMOTE_BRANCH"
-            echo "Default remote branch is $MR_GIT_REMOTE_BRANCH"
+            info "Default remote branch is $MR_GIT_REMOTE_BRANCH"
         fi
         git clone $remote_opt $branch_opt "$1" "$MR_REPO"
         git_email "$2"
@@ -177,10 +177,10 @@ lib =
         local remote="$1"
         local upstream="$remote/$remote_branch"
         if ! git rev-parse "$upstream" >/dev/null 2>&1; then
-            echo "$upstream is not tracked locally; fetching from $remote ..."
+            info "$upstream is not tracked locally; fetching from $remote ..."
             ggf "$remote"
         else
-            echo "Already tracking $upstream"
+            info "Already tracking $upstream"
         fi
         ggsup "$upstream"
     }
@@ -197,7 +197,7 @@ lib =
             switch_from_origin_to "$remote"
             return 0
         else
-            echo "'mr remotes' did not configure $remote remote; nothing to do."
+            info "'mr remotes' did not configure $remote remote; nothing to do."
         fi
         return 1
     }
@@ -230,13 +230,13 @@ lib =
                 fi
                 ;;
             *)
-                echo "Not touching upstream $upstream with URL $origin_url"
+                info "Not touching upstream $upstream with URL $origin_url"
                 ;;
         esac
         if [ -n "$switched_from_origin" ]; then
-            echo "Upstream switched from origin"
+            info "Upstream switched from origin"
             if git remote rm origin; then
-                echo "Removed origin remote"
+                info "Removed origin remote"
             else
                 return 1
             fi
@@ -245,7 +245,7 @@ lib =
     }
     #
     unsafe () {
-        echo "Automatic $MR_ACTION via mr has been specified as unsafe for $MR_REPO"
+        warning "Automatic $MR_ACTION via mr has been specified as unsafe for $MR_REPO"
     }
 
 ge = git_email "$@"
@@ -261,7 +261,7 @@ git_wip_is_interactive = false
 git_wip =
     if git wip; then
         #echo -e "\e[1m${MR_REPO/$HOME/~}\e[0m"
-        echo "TODO: git sync-upstream in $MR_REPO"
+        warning "TODO: git sync-upstream in $MR_REPO"
         ggs
         #echo
         #exit 1
