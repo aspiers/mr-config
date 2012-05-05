@@ -207,6 +207,7 @@ lib =
     }
     fix_upstream () {
         if [ -n "$upstream_fixed" ]; then
+            info "upstream already fixed in this run; won't fix again."
             return 0
         fi
         head=`git head`
