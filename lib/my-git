@@ -179,7 +179,9 @@ lib =
         local upstream="$remote/$remote_branch"
         if ! git rev-parse "$upstream" >/dev/null 2>&1; then
             info "$upstream is not tracked locally; fetching from $remote ..."
-            ggf "$remote"
+            if ! ggf "$remote"; then
+                return 1
+            fi
         else
             info "Already tracking $upstream"
         fi
@@ -188,6 +190,7 @@ lib =
     configure_upstream_and_switch_to () {
         # Return true (0) if the switch was made
         local remote="$1"
+        #
         if [ -z `git config "remote.$remote.url"` ]; then
             mr remotes
         else
@@ -195,11 +198,11 @@ lib =
         fi
         #
         if [ -n `git config "remote.$remote.url"` ]; then
-            fetch_and_switch_upstream_to "$remote"
-            return 0
-        else
-            info "'mr remotes' did not configure $remote remote; nothing to do."
+            if fetch_and_switch_upstream_to "$remote"; then
+                return 0
+            fi
         fi
+        info "'mr remotes' did not configure $remote remote; nothing to do."
         return 1
     }
     fix_upstream () {
