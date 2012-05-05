@@ -31,7 +31,7 @@ include =
         fi
     done
     #
-    for f in ~/.config/mr/lib/*; do
+    for f in ~/.config/mr/sh.d/*; do
         ignore_lib "$f" && continue
         echo "lib = source $f"
     done
