@@ -3,11 +3,8 @@
 lib =
     MR_GIT=$HOME/.GIT
     GIT_MY_ROOT=$MR_GIT/adamspiers.org
-    MY_UPSTREAM_HOST=git.adamspiers.org
-    #GIT_MY_UPSTREAM_HOME=ssh://$MY_UPSTREAM_HOST/home/adam/
-    GIT_MY_UPSTREAM_HOME=arctic:
-    GIT_MY_UPSTREAM=${GIT_MY_UPSTREAM_HOME}.GIT/adamspiers.org
-    GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party
+    GIT_MY_UPSTREAM=adamspiers.org:
+    GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party # not referenced yet
     #
     check_repo_name () {
         [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
@@ -78,14 +75,14 @@ lib =
     }
     git_clone_my_repo () {
         check_repo_name
-        MR_GIT_REMOTE=arctic
+        MR_GIT_REMOTE=adamspiers.org
         MR_GIT_REMOTE_BRANCH=master
         if work_repo; then
             email=
         else
             email="${MR_EMAIL:-dotfiles}"
         fi
-        git_clone "$GIT_MY_UPSTREAM/${MR_REPO##*/}" "$email"
+        git_clone `my_upstream_url` "$email"
     }
     #
     moosehall_git_checkout () {
@@ -115,8 +112,8 @@ lib =
     github_url () {
         echo "git@github.com:aspiers/${1:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
     }
-    arctic_url () {
-        echo "${GIT_MY_UPSTREAM_HOME}$repo"
+    my_upstream_url () {
+        echo "${GIT_MY_UPSTREAM}${MR_REPO##*/}.git"
     }
     #
     savannah_ro_remote () {
@@ -128,8 +125,8 @@ lib =
     github_remote () {
         git_add_remotes github `github_url`
     }
-    arctic_remote () {
-        git_add_remotes arctic `arctic_url`
+    my_upstream_remote () {
+        git_add_remotes adamspiers.org `my_upstream_url`
     }
     moosehall_remotes () {
         if not_moosehall; then
@@ -148,16 +145,16 @@ lib =
         "
     }
     public_repo_remotes () {
-        moosehall_remotes && arctic_remote && github_remote
+        moosehall_remotes && my_upstream_remote && github_remote
         fix_upstream
     }
     private_repo_remotes () {
-        moosehall_remotes && arctic_remote
+        moosehall_remotes && my_upstream_remote
         fix_upstream
     }
     work_remotes () {
         repo="${MR_REPO#$HOME/}"
-        arctic_remote
+        my_upstream_remote
         git_add_remotes "
         atlantic   atlantic:$repo
         southern   southern:$repo
@@ -221,8 +218,9 @@ lib =
         switched_from_origin=
         case "$origin_url" in
             ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
-            ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/*)
-                if maybe_switch_from_origin_to 'arctic'; then
+            ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+            ssh://adam@git.adamspiers.org/home/adam/.srv/git/*)
+                if maybe_switch_from_origin_to 'adamspiers.org'; then
                     switched_from_origin=yes
                 fi
                 ;;
