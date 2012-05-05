@@ -1,0 +1,63 @@
+# -*- mode: sh -*-
+
+# Usage: git_clone URL [EMAIL]
+# EMAIL defaults to MR_EMAIL if set, otherwise a sensible value
+# is guessed (see above).
+git_clone () {
+    check_repo_name
+    info "Cloning from $1"
+    remote_opt=
+    if [ -n "$MR_GIT_REMOTE" ]; then
+        remote_opt="-o $MR_GIT_REMOTE"
+        info "Default remote is $MR_GIT_REMOTE"
+    fi
+    branch_opt=
+    if [ -n "$MR_GIT_REMOTE_BRANCH" ]; then
+        branch_opt="-b $MR_GIT_REMOTE_BRANCH"
+        info "Default remote branch is $MR_GIT_REMOTE_BRANCH"
+    fi
+    git clone $remote_opt $branch_opt "$1" "$MR_REPO"
+    git_email "$2"
+}
+
+github_clone () {
+    MR_GIT_REMOTE=github
+    MR_GIT_REMOTE_BRANCH=master
+    git_clone `github_url "$@"`
+}
+
+savannah_ro_clone () {
+    MR_GIT_REMOTE=savannah
+    MR_GIT_REMOTE_BRANCH=master
+    git_clone `savannah_ro_url "$@"`
+}
+
+git_clone_my_repo () {
+    check_repo_name
+    MR_GIT_REMOTE=adamspiers.org
+    MR_GIT_REMOTE_BRANCH=master
+    if work_repo; then
+        email=
+    else
+        email="${MR_EMAIL:-dotfiles}"
+    fi
+    git_clone `my_upstream_url` "$email"
+}
+
+moosehall_git_checkout () {
+    if [ $# = 0 -o $# -gt 2 ]; then
+        error "Usage: moosehall_git_checkout HUB-HOST [REPO]"
+    fi
+    hub="$1"
+    repo="${2:-${MR_REPO#$HOME/}}"
+    read_localhost_nickname
+    if [ "$hub" = "$localhost_nickname" ]; then
+        if ! [ -d "$MR_REPO" ]; then
+            error "This machine is supposed to be the hub for $MR_REPO but it didn't exist!"
+        fi
+    else
+        MR_GIT_REMOTE=$hub
+        MR_GIT_REMOTE_BRANCH=master
+        git_clone $hub:$repo
+    fi
+}

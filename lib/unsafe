@@ -1,0 +1,5 @@
+# -*- mode: sh -*-
+
+unsafe () {
+    warning "Automatic $MR_ACTION via mr has been specified as unsafe for $MR_REPO"
+}

@@ -1,0 +1,10 @@
+# -*- mode: sh -*-
+
+MR_GIT=$HOME/.GIT
+GIT_MY_ROOT=$MR_GIT/adamspiers.org
+GIT_MY_UPSTREAM=adamspiers.org:
+GIT_UPSTREAM_ROOT=$MR_GIT/3rd-party # not referenced yet
+
+check_repo_name () {
+    [ -n "$MR_NAME" ] || error "\$MR_NAME not set for $MR_REPO"
+}

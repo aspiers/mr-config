@@ -1,0 +1,67 @@
+# -*- mode: sh -*-
+
+switch_upstream_from_origin () {
+    # Return true (0) if the switch was made
+    origin_url=`git config "remote.origin.url"`
+    case "$origin_url" in
+        ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+        ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+        ssh://adam@git.adamspiers.org/home/adam/.srv/git/*)
+            if configure_upstream_and_switch_to 'adamspiers.org'; then
+                return 0
+            fi
+            ;;
+        git@github.com:aspiers/$MR_NAME.git)
+            if configure_upstream_and_switch_to 'github'; then
+                return 0
+            fi
+            ;;
+        *)
+            info "Not touching origin with URL $origin_url"
+            ;;
+    esac
+    return 1
+}
+
+fix_upstream () {
+    # A few aspects to this:
+    #   1. Ensure that the right non-'origin' upstream remote is present
+    #      (github, or adamspiers.org, formerly arctic) - easily
+    #      done by running 'mr remotes'.
+    #
+    #   2. Ensure that upstream for local branch is set to that
+    #      remote - but how do we know which one?  If arctic,
+    #      switch to adamspiers.org.  If github, leave.
+    #      If origin, switch based on URL.
+    #
+    #   3. Remove 'origin' remote
+    if [ -n "$upstream_fixed" ]; then
+        # FIXME: When would this happen?
+        warning "upstream already fixed in this run; won't fix again."
+        return 0
+    fi
+    head=`git head`
+    upstream=`git upstream`
+    remote="${upstream%/*}"
+    remote_branch="${upstream#*/}"
+    case "$remote" in
+        arctic)
+            configure_upstream_and_switch_to 'adamspiers.org'
+            ;;
+        github)
+            info "upstream is already github"
+            ;;
+        origin)
+            switch_upstream_from_origin
+            ;;
+        adamspiers.org|savannah*)
+            ;;
+        *)
+            info "Not touching upstream $upstream"
+            ;;
+    esac
+
+    if remove_origin_if_unused; then
+        upstream_fixed=yes
+    fi
+}

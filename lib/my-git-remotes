@@ -1,0 +1,63 @@
+# -*- mode: sh -*-
+
+savannah_ro_remote () {
+    git_add_remotes savannah `savannah_ro_url`
+}
+
+savannah_rw_remote () {
+    git_add_remotes savannah `savannah_rw_url`
+}
+
+github_remote () {
+    git_add_remotes github `github_url`
+}
+
+my_upstream_remote () {
+    git_add_remotes adamspiers.org `my_upstream_url`
+}
+
+moosehall_remotes () {
+    if not_moosehall; then
+        return 0
+    fi
+    repo="${MR_REPO#$HOME/}"
+    # Note: uses URL rewriting so we can decide independently
+    # whether to fetch over wired/wireless or even ADSL.
+    git_add_remotes "
+    atlantic    atlantic:$repo
+    southern    southern:$repo
+    adriatic    adriatic:$repo
+    pacific      pacific:$repo
+    indian        indian:$repo
+    mc       mediacentre:$repo
+    "
+}
+
+public_repo_remotes () {
+    moosehall_remotes && my_upstream_remote && github_remote
+}
+
+private_repo_remotes () {
+    moosehall_remotes && my_upstream_remote
+}
+
+work_remotes () {
+    repo="${MR_REPO#$HOME/}"
+    my_upstream_remote
+    git_add_remotes "
+    atlantic   atlantic:$repo
+    southern   southern:$repo
+    pacific    pacific:$repo
+    indian     indian:$repo
+    "
+}
+
+auto_remotes () {
+    if work_repo; then
+        work_remotes
+    elif confidential_repo; then
+        private_repo_remotes
+    else
+        public_repo_remotes
+    fi
+}

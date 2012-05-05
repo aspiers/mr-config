@@ -1,0 +1,17 @@
+# -*- mode: sh -*-
+
+savannah_ro_url () {
+    echo "git://git.sv.gnu.org/${1:-$MR_NAME}.git"
+}
+
+savannah_rw_url () {
+    echo "ssh://aspiers@git.sv.gnu.org/srv/git/${1:-$MR_NAME}.git"
+}
+
+github_url () {
+    echo "git@github.com:aspiers/${1:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
+}
+
+my_upstream_url () {
+    echo "${GIT_MY_UPSTREAM}${MR_REPO##*/}.git"
+}

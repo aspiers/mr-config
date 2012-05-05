@@ -1,0 +1,80 @@
+# -*- mode: sh -*-
+
+# Generic git helper functions.
+
+is_branch_present () {
+    local branch="$1"
+    git rev-parse "$branch" >/dev/null 2>&1
+}
+
+ensure_remote_tracked_locally () {
+    # Return true (0) iff managed to ensure the remote is tracked locally
+    local remote="$1"
+    local upstream="$2"
+    #
+    if ! is_branch_present "$upstream"; then
+        info "$upstream is not tracked locally; fetching from $remote ..."
+        ggf "$remote" || return 1
+    else
+        info "Already tracking $upstream"
+    fi
+    return 0
+}
+
+fetch_and_switch_upstream_to () {
+    # Return true (0) iff the switch was made
+    local remote="$1"
+    local upstream="$remote/$remote_branch"
+    #
+    ensure_remote_tracked_locally "$remote" "$upstream" || return 1
+    ggsup "$upstream"
+}
+
+configure_upstream () {
+    # Return true (0) iff the upstream was configured
+    local remote="$1"
+    #
+    if [ -z `git config "remote.$remote.url"` ]; then
+        mr remotes
+    else
+        echo "$remote remote already set up"
+        return 0
+    fi
+    if [ -z `git config "remote.$remote.url"` ]; then
+        error "'mr remotes' failed to configure $remote remote; cannot proceed."
+        return 1
+    fi
+    return 0
+}
+
+configure_upstream_and_switch_to () {
+    # Return true (0) iff the switch was made
+    local remote="$1"
+    #
+    configure_upstream "$remote" || return 1
+    fetch_and_switch_upstream_to "$remote"
+}
+
+remove_origin_if_unused () {
+    # Return true (0) iff origin was removed or not there in the
+    # first place
+    upstream=`git upstream`
+    if [ "$upstream" = 'origin' ]; then
+        if ! is_branch_present "$upstream"; then
+            # git upstream should catch this, so in theory should
+            # never get here
+            error "origin in use but not tracked locally!"
+        fi
+        info "Won't remove origin still in use as upstream."
+        return 1
+    fi
+    if [ -z `git config "remote.origin.url"` ]; then
+        return 0 # wasn't there in the first place
+    fi
+    if git remote rm origin; then
+        info "Removed origin remote"
+        return 0
+    else
+        error "Failed to remove origin remote."
+    fi
+}
