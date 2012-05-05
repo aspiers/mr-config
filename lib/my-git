@@ -173,7 +173,8 @@ lib =
         fi
     }
     #
-    switch_from_origin_to () {
+    fetch_and_switch_upstream_to () {
+        # Return true (0) iff the switch was made
         local remote="$1"
         local upstream="$remote/$remote_branch"
         if ! git rev-parse "$upstream" >/dev/null 2>&1; then
@@ -184,7 +185,7 @@ lib =
         fi
         ggsup "$upstream"
     }
-    maybe_switch_from_origin_to () {
+    configure_upstream_and_switch_to () {
         # Return true (0) if the switch was made
         local remote="$1"
         if [ -z `git config "remote.$remote.url"` ]; then
@@ -194,7 +195,7 @@ lib =
         fi
         #
         if [ -n `git config "remote.$remote.url"` ]; then
-            switch_from_origin_to "$remote"
+            fetch_and_switch_upstream_to "$remote"
             return 0
         else
             info "'mr remotes' did not configure $remote remote; nothing to do."
@@ -220,12 +221,12 @@ lib =
             ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
             ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
             ssh://adam@git.adamspiers.org/home/adam/.srv/git/*)
-                if maybe_switch_from_origin_to 'adamspiers.org'; then
+                if configure_upstream_and_switch_to 'adamspiers.org'; then
                     switched_from_origin=yes
                 fi
                 ;;
             git@github.com:aspiers/$MR_NAME.git)
-                if maybe_switch_from_origin_to 'github'; then
+                if configure_upstream_and_switch_to 'github'; then
                     switched_from_origin=yes
                 fi
                 ;;
