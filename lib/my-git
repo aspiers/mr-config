@@ -146,11 +146,9 @@ lib =
     }
     public_repo_remotes () {
         moosehall_remotes && my_upstream_remote && github_remote
-        fix_upstream
     }
     private_repo_remotes () {
         moosehall_remotes && my_upstream_remote
-        fix_upstream
     }
     work_remotes () {
         repo="${MR_REPO#$HOME/}"
@@ -161,7 +159,6 @@ lib =
         pacific    pacific:$repo
         indian     indian:$repo
         "
-        fix_upstream
     }
     auto_remotes () {
         if work_repo; then
