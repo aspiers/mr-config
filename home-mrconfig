@@ -4,9 +4,17 @@
 name = mr-config
 checkout =
     git clone -o adamspiers.org ssh://adam@git.adamspiers.org/home/adam/.srv/git/mr-config.git "$MR_REPO"
-post_checkout = 
+post_checkout =
     cd "$MR_REPO" && git remote add github git@github.com:aspiers/mr-config.git
 chain = true
+include =
+    if [ -e ~/.config/mr/library-loaders ]; then
+        # mr-config already checked out
+        source ~/.config/mr/library-loaders
+        load_libraries ~/.config/mr/sh.d/*
+        include_lib_dirs ~/.config/mr/lib.d
+        echo "remotes = auto_remotes"
+    fi
 lib =
     git_email () {
         git config user.email dotfiles@adamspiers.org
@@ -15,15 +23,3 @@ fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
     git_email
-rebase = git pull -r "$@"
-git_wtf = git -c color.wtf=true wtf
-ge = git_email
-
-# Note: inclusion of my mr libraries happens after this repository is
-# defined, so any actions defined by those libraries are not available 
-# for this repository :-(
-stow       = true
-stowover   = true
-restow     = true
-restowover = true
-unstow     = true
