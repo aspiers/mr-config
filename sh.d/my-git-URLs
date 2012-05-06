@@ -13,5 +13,5 @@ github_url () {
 }
 
 my_upstream_url () {
-    echo "${GIT_MY_UPSTREAM}${MR_REPO##*/}.git"
+    echo "${GIT_MY_UPSTREAM}${MR_NAME}.git"
 }
