@@ -74,7 +74,9 @@ fixups =
 skip = lazy
 checkout = svn co https://tmux.svn.sourceforge.net/svnroot/tmux/trunk tmux
 stowable = true
-lib = STOW_PKG_TYPE=directory
+lib =
+    STOW_PKG_TYPE=directory
+    STOW_NO_AUTOMATIC_ACTIONS=yes
 fixups =
     if ! [ -e configure ]; then
         bash ./autogen.sh
@@ -84,4 +86,4 @@ fixups =
     make install
     mkdir -p $STOW_PKG_PATH/share/doc/tmux
     cp -r examples $STOW_PKG_PATH/share/doc/tmux
-    mr_stow
+    mr_restow_regardless
