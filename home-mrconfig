@@ -10,7 +10,7 @@ chain = true
 include =
     if [ -e ~/.config/mr/library-loaders ]; then
         # mr-config already checked out
-        source ~/.config/mr/library-loaders
+        . ~/.config/mr/library-loaders
         load_libraries ~/.config/mr/sh.d/*
         include_lib_dirs ~/.config/mr/lib.d
         echo "remotes = auto_remotes"

@@ -3,7 +3,7 @@
 [DEFAULT]
 
 include =
-    source ~/.config/mr/library-loaders
+    . ~/.config/mr/library-loaders
     #
     include_mr_extensions
     load_libraries ~/.config/mr/sh.d/*

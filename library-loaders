@@ -27,7 +27,7 @@ include_mr_extensions () {
 load_libraries () {
     for f in "$@"; do
         _ignore_lib "$f" && continue
-        echo "lib = source $f"
+        echo "lib = . $f"
     done
 }
 
