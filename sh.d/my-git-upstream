@@ -46,7 +46,15 @@ fix_upstream () {
     remote_branch="${upstream#*/}"
     case "$remote" in
         arctic)
-            configure_upstream_and_switch_to 'adamspiers.org'
+            case "$MR_NAME" in
+                mr)
+                    # hub for mr is github not git.adamspiers.org, for bootstrapping reasons
+                    configure_upstream_and_switch_to 'github'
+                    ;;
+                *)
+                    configure_upstream_and_switch_to 'adamspiers.org'
+                    ;;
+            esac
             ;;
         github)
             info "upstream is already github"
