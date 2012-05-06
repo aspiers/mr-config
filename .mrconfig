@@ -3,46 +3,11 @@
 [DEFAULT]
 
 include =
-    # FIXME: this should be available to all include routines
-    ignore_lib () {
-        case "${1##*/}" in
-            *.orig|*~|README*) return 0 ;;
-        esac
-        return 1
-    }
-    include_files () {
-        for f in "$@"; do
-            ignore_lib "$f" && continue
-            echo "# INCLUDED FROM: $f"
-            cat "$f"
-            echo # Needed in case file isn't terminated with a newline
-        done
-    }
+    source ~/.config/mr/library-loaders
     #
-    mr_lib=$HOME/.GIT/3rd-party/mr/lib
-    #
-    stow_lib=$mr_lib/stow
-    download_lib=$mr_lib/download
-    for lib in "$stow_lib" "$download_lib"; do
-        if [ -e "$lib" ]; then
-            include_files "$lib"
-        else
-            echo "Couldn't find $lib - some functions will be absent." >&2
-        fi
-    done
-    #
-    for f in ~/.config/mr/sh.d/*; do
-        ignore_lib "$f" && continue
-        echo "lib = source $f"
-    done
-    #
-    for d in ~/.config/mr/lib.d ~/.config/mr/groups.d; do
-        if [ -d "$d" ]; then
-            include_files "$d"/*
-        else
-            echo "$d missing" >&2
-        fi
-    done
+    include_mr_extensions
+    load_libraries ~/.config/mr/sh.d/*
+    include_lib_dirs ~/.config/mr/lib.d ~/.config/mr/groups.d
 
 # N.B. anything placed here (i.e. after the above include) will not
 # any impact any repositories pulled in by the include.
