@@ -60,7 +60,7 @@ fix_upstream () {
             info "upstream is already github"
             ;;
         origin)
-            switch_upstream_from_origin
+            switch_upstream_from_origin || return 0
             ;;
         adamspiers.org|savannah*)
             ;;
