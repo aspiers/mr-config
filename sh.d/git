@@ -59,7 +59,8 @@ remove_origin_if_unused () {
     # Return true (0) iff origin was removed or not there in the
     # first place
     upstream=`git upstream`
-    if [ "$upstream" = 'origin' ]; then
+    remote="${upstream%/*}"
+    if [ "$remote" = 'origin' ]; then
         if ! is_branch_present "$upstream"; then
             # git upstream should catch this, so in theory should
             # never get here
