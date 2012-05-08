@@ -6,6 +6,7 @@ switch_upstream_from_origin () {
     case "$origin_url" in
         ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
         ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
+        ssh://git.adamspiers.org/home/adam/.config/mr | \
         ssh://adam@git.adamspiers.org/home/adam/.srv/git/*)
             if configure_upstream_and_switch_to 'adamspiers.org'; then
                 return 0
