@@ -44,7 +44,7 @@ remotes = work_remotes
 lib =
     MR_EMAIL=aspiers@suse.com
     MR_CONFIDENTIAL_REPO=yes
-checkout = moosehall_git_checkout atlantic
+checkout = moosehall_git_checkout indian
 remotes = work_remotes
 fixups =
     cd
