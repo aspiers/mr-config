@@ -1,0 +1,3 @@
+# -*- mode: sh -*-
+
+skip = default_skipper
