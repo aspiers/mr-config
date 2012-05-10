@@ -130,6 +130,10 @@ lib =
         esac
     }
     #
+    my_public_web_server () {
+        ! missing_file /etc/apache2/sites-enabled/adamspiers.org
+    }
+    #
     default_skipper () {
         # Default policy is not to skip unless we find a reason to.
         if work_repo; then

@@ -12,7 +12,7 @@ name = SUSE-dist
 skip =
     default_skipper || \
     ( missing_file /etc/SuSE-release &&
-      missing_file /etc/apache2/sites-enabled/adamspiers.org )
+      ! my_public_web_server )
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
