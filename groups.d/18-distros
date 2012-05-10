@@ -8,7 +8,11 @@ stowable = true
 
 [$HOME/.GIT/adamspiers.org/SUSE]
 name = SUSE-dist
-skip = default_skipper || missing_file /etc/SuSE-release
+# Check out on adamspiers.org web server so we can publish files
+skip =
+    default_skipper || \
+    ( missing_file /etc/SuSE-release &&
+      missing_file /etc/apache2/sites-enabled/adamspiers.org )
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
