@@ -1,4 +1,14 @@
 #!/bin/bash
+#
+# Bootstrap a new ~adam using mr.
+#
+# This essentially does the following steps:
+#   - configures ssh
+#   - configures git
+#   - checks out and installs my hacked version of mr
+#   - runs mr bootstrap on a remote copy of home-mrconfig
+#   - uses mr to install GNU Stow
+#   - uses mr to check out and fixup all repositories
 
 set -e
 

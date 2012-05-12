@@ -1,5 +1,8 @@
 # -*- mode: sh -*-
 
+# This file will be pointed to by an ~/.mrconfig symlink
+# created in the fixups section below.
+
 [.config/mr]
 name = mr-config
 checkout =
