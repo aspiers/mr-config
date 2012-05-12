@@ -25,6 +25,9 @@ combination of the following components:
     * [`sh.d/git`](https://github.com/aspiers/mr-config/tree/master/sh.d/git) - various generic `git`-related helper functions
     * [`sh.d/git-remotes`](https://github.com/aspiers/mr-config/tree/master/sh.d/git-remotes) - various helper functions relating to management of git remotes
 
+Note that any file whose name begins `my-` is specific to me and will
+not be useful to anyone else without modification.
+
 ## LICENSE
 
 The software in this repository is free software: you can redistribute
