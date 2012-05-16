@@ -3,6 +3,7 @@
 [$HOME/media]
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout atlantic
+lib = MR_EMAIL=adam@spiers.net
 remotes =
     moosehall_remotes
     git_add_remotes "WD /media/WD/media"
@@ -25,3 +26,10 @@ fixups =
     mv usr/* .
     rmdir usr
     mr_restow_regardless
+
+[$HOME/video]
+skip = lazy || default_skipper
+checkout = moosehall_git_checkout atlantic
+lib = MR_EMAIL=adam@spiers.net
+remotes =
+    moosehall_remotes
