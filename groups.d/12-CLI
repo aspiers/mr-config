@@ -70,6 +70,6 @@ fixups =
     set_stow_common_opts
     ./configure --prefix=$STOW_PKG_PATH
     make install
-    mkdir -p $STOW_PKG_PATH/share/doc/tmux
-    cp -r examples $STOW_PKG_PATH/share/doc/tmux
+    mkdir -p $STOW_PKG_PATH/share/doc/tmux/examples
+    cp examples/*.conf $STOW_PKG_PATH/share/doc/tmux/examples
     mr_restow_regardless
