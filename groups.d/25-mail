@@ -42,7 +42,7 @@ checkout = github_clone scripts
 remotes =
     auto_remotes
     git_add_remotes kdeldycke git://github.com/kdeldycke/scripts.git
-fixups = ln -s $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
+fixups = ln -sf $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
 
 [$HOME/.GIT/adamspiers.org/gmail-count]
 checkout = git_clone
