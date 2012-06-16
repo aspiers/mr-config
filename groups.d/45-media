@@ -6,7 +6,7 @@ checkout = moosehall_git_checkout atlantic
 lib = MR_EMAIL=adam@spiers.net
 remotes =
     moosehall_remotes
-    git_add_remotes "WD /media/WD/media"
+    git_add_remote "WD /media/WD/media"
 
 [$HOME/software/audio/mpdtoys]
 skip = lazy || default_skipper

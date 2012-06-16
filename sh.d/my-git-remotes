@@ -1,19 +1,19 @@
 # -*- mode: sh -*-
 
 savannah_ro_remote () {
-    git_add_remotes savannah `savannah_ro_url`
+    git_add_remote savannah `savannah_ro_url`
 }
 
 savannah_rw_remote () {
-    git_add_remotes savannah `savannah_rw_url`
+    git_add_remote savannah `savannah_rw_url`
 }
 
 github_remote () {
-    git_add_remotes github `github_url`
+    git_add_remote github `github_url`
 }
 
 my_upstream_remote () {
-    git_add_remotes adamspiers.org `my_upstream_url`
+    git_add_remote adamspiers.org `my_upstream_url`
 }
 
 moosehall_remotes () {
