@@ -29,7 +29,7 @@ moosehall_remotes () {
         adriatic REMOTE:$repo
         pacific  REMOTE:$repo
         indian   REMOTE:$repo
-        mc       mediacentre:$repo
+        mc       mediacentre:$repo mediacentre
     "
 }
 
