@@ -48,6 +48,7 @@ git_set_remote () {
     fi
 }
 
+# git_add_remote REMOTE-NAME URL
 git_add_remote () {
     remote="$1"
     url="$2"
@@ -71,6 +72,15 @@ git_add_remote () {
     git_add_new_remote "$remote" "$url"
 }
 
+# git_add_remotes REMOTES
+#
+# REMOTES is a multi-line string where each line is
+#
+#   REMOTE URL [EXCEPTION]
+#
+# Invokes git_add_remote for each line,
+# substituting 'REMOTE' for REMOTE in URL,
+# except for lines where localhost nickname equals EXCEPTION
 git_add_remotes () {
     cd "$MR_REPO"
     read_localhost_nickname
