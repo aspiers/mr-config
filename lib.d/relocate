@@ -1,5 +1,8 @@
 # -*- mode: sh -*-
 
+# Support for "relocation" in a manner similar to the now obsolete
+# https://github.com/aspiers/cfgctl/blob/master/lib/perl5/Cfg/Pkg/Relocatable.pm
+
 lib =
     symlink_from () {
         if [ $# != 1 ]; then
