@@ -57,7 +57,7 @@ configure_upstream_and_switch_to () {
 
 remove_origin_if_unused () {
     # Return true (0) iff origin was removed or not there in the
-    # first place
+    # first place or should not have been removed.
     upstream=`git upstream`
     remote="${upstream%/*}"
     if [ "$remote" = 'origin' ]; then
@@ -69,9 +69,19 @@ remove_origin_if_unused () {
         info "Won't remove origin still in use as upstream."
         return 1
     fi
-    if [ -z `git config "remote.origin.url"` ]; then
+    origin_url=`git config "remote.origin.url"`
+    if [ -z "$origin_url" ]; then
         return 0 # wasn't there in the first place
     fi
+    case "$origin_url" in
+        *spiers*)
+            ;;
+        *)
+            info "Not removing origin with URL $origin_url"
+            return 0
+            ;;
+    esac
+
     if git remote rm origin; then
         info "Removed origin remote"
         return 0
