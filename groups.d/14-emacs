@@ -35,7 +35,7 @@ lib = MR_EMAIL=orgmode@adamspiers.org
 checkout = github_clone
 remotes =
     auto_remotes
-    git_add_remote origin git://orgmode.org/worg.git
+    git_add_remote origin worg@orgmode.org:worg.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/cucumber-el]
