@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/rpm]
+lib = MR_GITHUB_NAME=rpm-tools
 skip = default_skipper || missing_exe rpm
 checkout = git_clone_my_repo
 remotes = auto_remotes
