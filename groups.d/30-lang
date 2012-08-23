@@ -1,5 +1,13 @@
 # -*- mode: sh -*-
 
+[$HOME/hack]
+lib =
+    # Contains Ruby books, and probably some embarrassing code.
+    MR_CONFIDENTIAL_REPO=yes
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
+
 [$HOME/.GIT/adamspiers.org/perl+mine]
 checkout = git_clone_my_repo
 remotes = auto_remotes
