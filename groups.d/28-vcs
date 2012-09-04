@@ -39,8 +39,10 @@ stowable = true
 skip = lazy || default_skipper || missing_exe git
 checkout = github_clone
 remotes =
-    git_add_remotes jonseymour git://github.com/jonseymour/git.git
-    git_add_remotes git        git://github.com/git/git.git
+    git_add_remotes "
+        jonseymour git://github.com/jonseymour/git.git
+        git        git://github.com/git/git.git
+    "
 fixups =
     make install prefix=$HOME/local
     if which asciidoc >/dev/null 2>&1 &&

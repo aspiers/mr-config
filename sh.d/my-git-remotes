@@ -1,19 +1,19 @@
 # -*- mode: sh -*-
 
 savannah_ro_remote () {
-    git_add_remotes savannah `savannah_ro_url`
+    git_add_remote savannah `savannah_ro_url`
 }
 
 savannah_rw_remote () {
-    git_add_remotes savannah `savannah_rw_url`
+    git_add_remote savannah `savannah_rw_url`
 }
 
 github_remote () {
-    git_add_remotes github `github_url`
+    git_add_remote github `github_url`
 }
 
 my_upstream_remote () {
-    git_add_remotes adamspiers.org `my_upstream_url`
+    git_add_remote adamspiers.org `my_upstream_url`
 }
 
 moosehall_remotes () {
@@ -24,12 +24,12 @@ moosehall_remotes () {
     # Note: uses URL rewriting so we can decide independently
     # whether to fetch over wired/wireless or even ADSL.
     git_add_remotes "
-    atlantic    atlantic:$repo
-    southern    southern:$repo
-    adriatic    adriatic:$repo
-    pacific      pacific:$repo
-    indian        indian:$repo
-    mc       mediacentre:$repo
+        atlantic REMOTE:$repo
+        southern REMOTE:$repo
+        adriatic REMOTE:$repo
+        pacific  REMOTE:$repo
+        indian   REMOTE:$repo
+        mc       mediacentre:$repo mediacentre
     "
 }
 
@@ -45,10 +45,10 @@ work_remotes () {
     repo="${MR_REPO#$HOME/}"
     my_upstream_remote
     git_add_remotes "
-    atlantic   atlantic:$repo
-    southern   southern:$repo
-    pacific    pacific:$repo
-    indian     indian:$repo
+        atlantic  REMOTE:$repo
+        southern  REMOTE:$repo
+        pacific   REMOTE:$repo
+        indian    REMOTE:$repo
     "
 }
 
