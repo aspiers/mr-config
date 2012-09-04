@@ -49,12 +49,20 @@ fixups =
 [$HOME/.GIT/3rd-party/screen]
 skip = lazy
 checkout = savannah_ro_clone screen
+stowable = true
+lib =
+    STOW_PKG_TYPE=directory
+    STOW_NO_AUTOMATIC_ACTIONS=yes
 fixups =
     cd src
     ./autogen.sh
     ./configure --prefix=$HOME/local
     make
-    make install prefix=$HOME/.STOW/screen
+    set_stow_common_opts
+    make install prefix=$STOW_PKG_PATH/local
+    rm $STOW_PKG_PATH/local/share/info/dir
+    mr_restow_regardless
+    install-info --info-dir=$HOME/local/share/info $STOW_PKG_PATH/local/share/info/screen.info
 
 [$HOME/.GIT/3rd-party/tmux]
 skip = lazy
