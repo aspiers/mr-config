@@ -13,10 +13,10 @@ skip = lazy || default_skipper
 checkout = git_clone git://git.kitenet.net/mpdtoys.git
 stowable = true
 lib =
-    STOW_PKG_TYPE=directory
-    STOW_NO_AUTOMATIC_ACTIONS=yes
+    mr_init_stow_package
 fixups =
-    set_stow_common_opts
+    # mpdtoys has a crappy Makefile which only supports
+    # DESTDIR and has prefix hardcoded to /usr
     [ -d $STOW_PKG_PATH ] || mkdir $STOW_PKG_PATH
     pushd $STOW_PKG_PATH
     [ -e bin/mpload ] && rm -rf * # try to be safe

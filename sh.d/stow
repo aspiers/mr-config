@@ -1,0 +1,29 @@
+# -*- mode: sh -*-
+
+# Helper functions for installing packages via GNU Stow.
+
+mr_init_stow_package () {
+    STOW_PKG_TYPE=directory
+    STOW_NO_AUTOMATIC_ACTIONS=yes
+    set_stow_common_opts
+}
+
+mr_stow_info_hooks () {
+    mr_pre_unstow () {
+        stow_uninstall_info
+    }
+    mr_post_stow () {
+        stow_install_info
+    }
+}
+
+# These are intended to be called from the mr_pre_unstow and
+# mr_post_stow hooks supported by the stow plug-in module for mr.
+
+stow_uninstall_info () {
+    install-info --delete --quiet --info-dir=$HOME/share/info $STOW_PKG_PATH/share/info/*.info
+}
+
+stow_install_info () {
+    install-info --info-dir=$HOME/share/info $STOW_PKG_PATH/share/info/*.info
+}

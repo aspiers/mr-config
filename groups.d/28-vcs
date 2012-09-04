@@ -43,15 +43,27 @@ remotes =
         jonseymour git://github.com/jonseymour/git.git
         git        git://github.com/git/git.git
     "
+stowable = true
+lib =
+    mr_init_stow_package
+    # git's Makefiles don't do uninstall
+    mr_post_stow () {
+        if which docbook2x-texi >/dev/null 2>&1; then
+            make install-info prefix=$HOME
+        fi
+    }
 fixups =
-    make install prefix=$HOME/local
-    if which asciidoc >/dev/null 2>&1 &&
-       which xmlto >/dev/null 2>&1; then
-        make install-doc prefix=$HOME/local
+    make install prefix=$STOW_PKG_PATH
+    if which asciidoc >/dev/null 2>&1; then
+        if which xmlto >/dev/null 2>&1; then
+            make install-doc prefix=$STOW_PKG_PATH
+        else
+            echo "asciidoc installed but not xmlto; skipping install-doc"
+        fi
+    else
+        echo "asciidoc not installed; skipping install-doc"
     fi
-    if which docbook2x-texi >/dev/null 2>&1; then
-        make install-info prefix=$HOME/local
-    fi
+    mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/github.sec]
 skip = lazy || default_skipper

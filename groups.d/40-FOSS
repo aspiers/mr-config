@@ -39,23 +39,31 @@ fixups =
 skip = lazy
 checkout = git_clone git://zsh.git.sf.net/gitroot/zsh/zsh
 remotes = auto_remotes
+stowable = true
 fixups = git_email
 lib =
-    install_zsh () {
-        if ! [ -x configure ]; then
-            autoreconf
-        fi
-        ./configure --prefix=$HOME/local
-        make install
-    }
-install = install_zsh
+    mr_init_stow_package
+    mr_stow_info_hooks
+fixups =
+    if ! [ -x configure ]; then
+        autoreconf
+    fi
+    ./configure --prefix=$HOME
+    make install install.info prefix=$STOW_PKG_PATH
+    rm $STOW_PKG_PATH/share/info/dir
+    mr_restow_regardless
 
 [$HOME/.GIT/3rd-party/smokeping]
 skip = lazy
 checkout = github_clone SmokePing
+lib =
+    mr_init_stow_package
+    mr_stow_info_hooks
 fixups =
     if ! [ -e configure ]; then
         ./autogen.sh
     fi
-    ./configure --prefix=$HOME/.STOW/smokeping
-    make install
+    ./configure --prefix=$HOME
+    make install prefix=$STOW_PKG_PATH
+    rm $STOW_PKG_PATH/share/info/dir
+    mr_restow_regardless
