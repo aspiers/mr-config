@@ -71,7 +71,7 @@ fix_upstream () {
             ;;
     esac
 
-    if remove_origin_if_unused; then
+    if clean_unused_remote_matching_URL origin "spiers|arctic"; then
         upstream_fixed=yes
     fi
 }

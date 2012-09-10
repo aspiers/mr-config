@@ -55,37 +55,48 @@ configure_upstream_and_switch_to () {
     fetch_and_switch_upstream_to "$remote"
 }
 
-remove_origin_if_unused () {
-    # Return true (0) iff origin was removed or not there in the
-    # first place or should not have been removed.
-    upstream=`git upstream`
-    remote="${upstream%/*}"
-    if [ "$remote" = 'origin' ]; then
-        if ! is_branch_present "$upstream"; then
-            # git upstream should catch this, so in theory should
-            # never get here
-            error "origin in use but not tracked locally!"
-        fi
-        info "Won't remove origin still in use as upstream."
-        return 1
-    fi
-    origin_url=`git config "remote.origin.url"`
-    if [ -z "$origin_url" ]; then
-        return 0 # wasn't there in the first place
-    fi
-    case "$origin_url" in
-        *spiers*)
-            ;;
-        *)
-            info "Not removing origin with URL $origin_url"
-            return 0
-            ;;
-    esac
+is_remote_in_use () {
+    # Return true (0) iff the given remote is "in use", i.e.
+    # there is a local branch tracking it.
+    remote="$1"
+    git config --list | grep -q "^branch\..*\.remote=$remote\$"
+}
 
-    if git remote rm origin; then
-        info "Removed origin remote"
+remove_remote () {
+    remote="$1"
+
+    if git remote rm $remote; then
+        info "Removed $remote remote"
         return 0
     else
-        error "Failed to remove origin remote."
+        error "Failed to remove $remote remote."
+        return 1
     fi
+}
+
+clean_unused_remote_matching_URL () {
+    # Removes any unused remote with a URL matching the given extended regexp.
+    # Returns true (0) iff a remote was successfully removed, or there
+    # was no need to remove a remote.
+    remote="$1"
+    eregexp="$2"
+
+    if is_remote_in_use "$remote"; then
+        using_branches=$( perl -lne "/^branch\.(.*)\.remote=$remote/ && print \$1" )
+        warning "$remote is still in use by the following local branches:"
+        warning "$using_branches"
+        return 1
+    fi
+
+    remote_url=`git config "remote.$remote.url"`
+    if [ -z "$remote_url" ]; then
+        return 0 # wasn't there in the first place
+    fi
+
+    if ! echo "$remote_url" | grep -Eq "$eregexp"; then
+        info "Not removing $remote remote with URL $remote_url (!~ /$eregexp/)"
+        return 0
+    fi
+
+    remove_remote $remote
 }
