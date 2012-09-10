@@ -4,16 +4,17 @@ switch_upstream_from_origin () {
     # Return true (0) if the switch was made
     origin_url=`git config "remote.origin.url"`
     case "$origin_url" in
+        git@github.com:aspiers/$MR_NAME.git | \
+        arctic:.GIT/3rd-party/mr)
+            if configure_upstream_and_switch_to 'github'; then
+                return 0
+            fi
+            ;;
         ssh://adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
         ssh://git.adamspiers.org/home/adam/.GIT/adamspiers.org/* | \
         ssh://git.adamspiers.org/home/adam/.config/mr | \
         ssh://adam@git.adamspiers.org/home/adam/.srv/git/*)
             if configure_upstream_and_switch_to 'adamspiers.org'; then
-                return 0
-            fi
-            ;;
-        git@github.com:aspiers/$MR_NAME.git)
-            if configure_upstream_and_switch_to 'github'; then
                 return 0
             fi
             ;;
