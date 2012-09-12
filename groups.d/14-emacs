@@ -132,8 +132,15 @@ fixups =
 
 [$HOME/.GIT/adamspiers.org/emacs_chrome]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe google-chrome
-lib = MR_EMAIL=emacs
+stowable = true
+lib =
+    MR_EMAIL=emacs
+    mr_init_stow_package
 checkout = git_clone git://github.com/stsquad/emacs_chrome.git
 remotes = auto_remotes
 fixups =
-    ensure_symlink_exists ~/lib/emacs/utils/edit-server.el "$MR_REPO/servers/edit-server.el"
+    mkdir -p "$STOW_PKG_PATH/lib/emacs/utils"
+    ensure_symlink_exists \
+        "$STOW_PKG_PATH/lib/emacs/utils/edit-server.el" \
+        "$MR_REPO/servers/edit-server.el"
+    mr_restow_regardless
