@@ -6,6 +6,7 @@ mr_init_stow_package () {
     STOW_PKG_TYPE=directory
     STOW_NO_AUTOMATIC_ACTIONS=yes
     set_stow_common_opts
+    [ -e "$STOW_PKG_PATH" ] || mkdir "$STOW_PKG_PATH"
 }
 
 mr_stow_info_hooks () {
