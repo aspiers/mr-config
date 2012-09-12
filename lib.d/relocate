@@ -4,9 +4,9 @@
 # https://github.com/aspiers/cfgctl/blob/master/lib/perl5/Cfg/Pkg/Relocatable.pm
 
 lib =
-    symlink_from () {
+    symlink_repo_from () {
         if [ $# != 1 ]; then
-            error "Usage: symlink_from SYMLINK"
+            error "Usage: symlink_repo_from SYMLINK"
         fi
         ensure_symlink_exists "$1" "$MR_REPO"
     }

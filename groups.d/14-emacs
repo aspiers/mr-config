@@ -26,7 +26,7 @@ checkout = github_clone
 remotes =
     auto_remotes
     git_add_remote origin git://repo.or.cz/org-mode.git
-fixups = symlink_from ~/lib/emacs/major-modes/org-mode.git
+fixups = symlink_repo_from ~/lib/emacs/major-modes/org-mode.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/worg]
@@ -43,14 +43,14 @@ skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-mod
 lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://github.com/michaelklishin/cucumber.el.git
 remotes = auto_remotes
-fixups = symlink_from ~/lib/emacs/major-modes/cucumber
+fixups = symlink_repo_from ~/lib/emacs/major-modes/cucumber
 push = unsafe
 
 # [$HOME/.GIT/3rd-party/elisp-behave]
 # skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 # checkout = git_clone git://github.com/tomtt/elisp_behave.git
 # remotes = auto_remotes
-# fixups = symlink_from ~/lib/emacs/major-modes/elisp-behave
+# fixups = symlink_repo_from ~/lib/emacs/major-modes/elisp-behave
 # push = unsafe
 
 [$HOME/.GIT/3rd-party/emacs-rails]
@@ -58,7 +58,7 @@ skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-mod
 lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://github.com/remvee/emacs-rails.git
 remotes = auto_remotes
-fixups = symlink_from ~/lib/emacs/major-modes/emacs-rails.remvee.git
+fixups = symlink_repo_from ~/lib/emacs/major-modes/emacs-rails.remvee.git
 push = unsafe
 
 # FIXME: add yasnippet (and a dependency)
@@ -66,20 +66,20 @@ push = unsafe
 # skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
 # checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
 # remotes = auto_remotes
-# fixups = symlink_from ~/lib/emacs/minor-modes/yasnippets-rails
+# fixups = symlink_repo_from ~/lib/emacs/minor-modes/yasnippets-rails
 
 [$HOME/.GIT/3rd-party/remember]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 lib = MR_EMAIL=emacs@adamspiers.org
 checkout = git_clone git://repo.or.cz/remember-el.git
 remotes = auto_remotes
-fixups = symlink_from ~/lib/emacs/major-modes/remember.git
+fixups = symlink_repo_from ~/lib/emacs/major-modes/remember.git
 push = unsafe
 
 # [$HOME/.GIT/3rd-party/dvc]
 # skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 # checkout = git_clone http://bzr.xsteve.at/dvc/
-# fixups = symlink_from ~/lib/emacs/major-modes/$MR_NAME
+# fixups = symlink_repo_from ~/lib/emacs/major-modes/$MR_NAME
 # stowable = true
 # push = unsafe
 
@@ -95,7 +95,7 @@ skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/
 lib = MR_EMAIL=emacs@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
-fixups = symlink_from ~/lib/emacs/major-modes/remember.git
+fixups = symlink_repo_from ~/lib/emacs/major-modes/remember.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/auto-complete-mode]
