@@ -130,7 +130,7 @@ remotes = auto_remotes
 fixups =
     ensure_symlink_exists ~/lib/emacs/minor-modes/vc-osc.el "$MR_REPO/vc-osc.el"
 
-[$HOME/.GIT/adamspiers.org/emacs_chrome]
+[$HOME/.GIT/3rd-party/emacs_chrome]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe google-chrome
 stowable = true
 lib =
