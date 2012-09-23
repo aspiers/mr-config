@@ -39,6 +39,7 @@ stowable = true
 skip = lazy || default_skipper || missing_exe git
 checkout = github_clone
 remotes =
+    auto_remotes
     git_add_remotes "
         jonseymour git://github.com/jonseymour/git.git
         git        git://github.com/git/git.git
