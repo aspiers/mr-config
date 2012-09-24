@@ -45,7 +45,7 @@ remotes =
 fixups = ln -sf $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
 
 [$HOME/.GIT/adamspiers.org/gmail-count]
-checkout = git_clone
+checkout = git_clone_my_repo
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/msmtp]
