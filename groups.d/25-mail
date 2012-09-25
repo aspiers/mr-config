@@ -23,7 +23,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/offlineimap]
-checkout = git_clone git://github.com/spaetz/offlineimap.git
+checkout = git_clone git://github.com/OfflineIMAP/offlineimap.git
 skip = not_host atlantic && not_host pacific && not_host southern && not_host indian
 remotes = auto_remotes
 fixups =
