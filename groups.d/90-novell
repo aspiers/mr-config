@@ -3,49 +3,49 @@
 [$HOME/.GIT/adamspiers.org/novell+shell-env.pub]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+shell-env.sec]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+emacs.pub]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+mail.pub]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+vpn.pub]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+mail.sec]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+vpn.sec]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+pso.sec]
 checkout = git_clone_my_repo
 stowable = true
-remotes = work_remotes
+remotes = auto_remotes
 
 [$HOME/SUSE]
 lib =
     MR_EMAIL=aspiers@suse.com
     MR_CONFIDENTIAL_REPO=yes
 checkout = moosehall_git_checkout indian
-remotes = work_remotes
+remotes = auto_remotes
 fixups =
     cd
     for d in OpenStack HA IBS OBS; do
