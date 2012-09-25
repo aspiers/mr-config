@@ -10,6 +10,14 @@ lib =
         check_repo_name
         #
         if work_repo; then
+            case "$MR_NAME" in
+                *.pub)
+                debug_skippers ". Work repo auto-detected as public"
+                return 1 # false
+                ;;
+            esac
+
+            debug_skippers "! Work repo defaults to confidential"
             return 0 # true
         fi
         #
