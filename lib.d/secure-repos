@@ -16,7 +16,7 @@ lib =
                 return 1 # false
                 ;;
             esac
-
+            #
             debug_skippers "! Work repo defaults to confidential"
             return 0 # true
         fi
