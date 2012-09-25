@@ -1,52 +1,5 @@
 # -*- mode: sh -*-
 
-lib =
-    confidential_repo () {
-        if [ -n "$MR_CONFIDENTIAL_REPO" ]; then
-            debug_skippers "! Repo manually set as confidential via \$MR_CONFIDENTIAL_REPO"
-            return 0 # true
-        fi
-        #
-        check_repo_name
-        #
-        if work_repo; then
-            case "$MR_NAME" in
-                *.pub)
-                debug_skippers ". Work repo auto-detected as public"
-                return 1 # false
-                ;;
-            esac
-            #
-            debug_skippers "! Work repo defaults to confidential"
-            return 0 # true
-        fi
-        #
-        case "$MR_NAME" in
-            *.sec)
-                debug_skippers "! Repo auto-detected as confidential"
-                return 0 # true
-                ;;
-            *)
-                debug_skippers ". Repo is not confidential"
-                return 1 # false
-                ;;
-        esac
-    }
-    #
-    work_repo () {
-        check_repo_name
-        case "$MR_NAME" in
-            *novell*|SUSE)
-                debug_skippers "! Repo auto-detected as work-related"
-                return 0 # true
-                ;;
-            *)
-                debug_skippers ". Repo is not work-related"
-                return 1 # false
-                ;;
-        esac
-    }
-
 fixups_append =
     if confidential_repo; then
         chmod go-rwx -R "$MR_REPO"
