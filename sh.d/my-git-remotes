@@ -55,6 +55,10 @@ work_remotes () {
 auto_remotes () {
     if work_repo; then
         work_remotes
+        if ! confidential_repo; then
+            my_upstream_remote
+            github_remote
+        fi
     elif confidential_repo; then
         private_repo_remotes
     else
