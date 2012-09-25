@@ -53,7 +53,14 @@ lib =
             make install-info prefix=$HOME
         fi
     }
+
 fixups =
+    cat <<-EOF > ~/.emacs.d/git
+    # Automatically generated via mr fixups for $MR_REPO; do not edit!
+    (add-to-list 'as-find-file-matching-regexp-alist
+        '("/.GIT/3rd-party/git/" . (lambda () (setq indent-tabs-mode t))))
+    EOF
+    cd "$MR_REPO"
     make install prefix=$STOW_PKG_PATH
     if which asciidoc >/dev/null 2>&1; then
         if which xmlto >/dev/null 2>&1; then
