@@ -2,7 +2,7 @@
 
 [$HOME/media]
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout atlantic
+checkout = moosehall_git_checkout pacific
 lib = MR_EMAIL=adam@spiers.net
 remotes =
     moosehall_remotes
@@ -29,7 +29,7 @@ fixups =
 
 [$HOME/video]
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout atlantic
+checkout = moosehall_git_checkout pacific
 lib = MR_EMAIL=adam@spiers.net
 remotes =
     moosehall_remotes
