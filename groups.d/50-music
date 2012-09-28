@@ -43,3 +43,4 @@ skip = lazy || ! music_machine
 checkout = moosehall_git_checkout pacific
 chain = true
 remotes = moosehall_remotes
+fixups = ln -sf music/MUSIC ~
