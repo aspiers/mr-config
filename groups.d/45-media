@@ -27,7 +27,7 @@ fixups =
 
 [$HOME/video]
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout pacific
+checkout = moosehall_git_checkout
 lib = set_email adam@spiers.net
 remotes =
     moosehall_remotes

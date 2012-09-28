@@ -3,13 +3,13 @@
 [$HOME/org]
 lib = MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout pacific
+checkout = moosehall_git_checkout
 remotes = moosehall_remotes
 
 [$HOME/finance]
 lib = MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout pacific
+checkout = moosehall_git_checkout
 remotes = moosehall_remotes
 
 [$HOME/soc]
@@ -17,7 +17,7 @@ lib =
     set_email adam@spiers.net
     MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout pacific
+checkout = moosehall_git_checkout
 remotes = moosehall_remotes
 
 [$HOME/OWRA]
@@ -25,7 +25,7 @@ lib =
     MR_CONFIDENTIAL_REPO=yes
     set_email oceanwharf@adamspiers.org
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout pacific
+checkout = moosehall_git_checkout
 remotes = moosehall_remotes
 
 [$HOME/.GIT/adamspiers.org/pim]
@@ -66,5 +66,5 @@ fixups =
 [$HOME/training]
 lib = MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout pacific
+checkout = moosehall_git_checkout
 remotes = moosehall_remotes

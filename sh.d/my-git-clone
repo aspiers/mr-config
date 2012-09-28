@@ -46,10 +46,10 @@ git_clone_my_repo () {
 }
 
 moosehall_git_checkout () {
-    if [ $# = 0 -o $# -gt 2 ]; then
-        error "Usage: moosehall_git_checkout HUB-HOST [REPO]"
+    if [ $# -gt 2 ]; then
+        error "Usage: moosehall_git_checkout [HUB-HOST [REPO]]"
     fi
-    hub="$1"
+    hub="${1:-pacific}"
     repo="${2:-${MR_REPO#$HOME/}}"
     read_localhost_nickname
     if [ "$hub" = "$localhost_nickname" ]; then
