@@ -39,6 +39,10 @@ checkout = github_clone
 remotes =
     auto_remotes
     git_add_remote wayneeseguin git://github.com/wayneeseguin/rvm.git
+fixups =
+    cd $MR_REPO
+    # See HACKING.md
+    ./install
 
 [$HOME/.GIT/adamspiers.org/java]
 skip = default_skipper || missing_exe java
