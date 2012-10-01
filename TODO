@@ -1,0 +1,24 @@
+- Write default_checkout function
+
+  global lib should have
+
+      checkout = default_checkout
+
+  and sh.d
+
+          register_upstream () {
+              case "$1" in
+                  github)
+                      MR_UPSTREAM_URL=`github_url`
+                      ;;
+                  ...
+              esac
+          }
+          
+
+  which will allow
+
+      [foo]
+      lib = register_upstream github
+
+- make sure I've forked every git repo I use and have that as default upstream
