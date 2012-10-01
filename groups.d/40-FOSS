@@ -20,7 +20,7 @@ skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
-lib = MR_EMAIL=gnu
+lib = set_email gnu@adamspiers.org
 
 [$HOME/.GIT/adamspiers.org/mysqldiff]
 skip = lazy
@@ -40,7 +40,7 @@ skip = lazy
 checkout = git_clone git://zsh.git.sf.net/gitroot/zsh/zsh
 remotes = auto_remotes
 stowable = true
-fixups = git_email
+fixups = git_config_email
 lib =
     mr_init_stow_package
     mr_stow_info_hooks

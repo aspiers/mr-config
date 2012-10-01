@@ -1,10 +1,12 @@
 # -*- mode: sh -*-
 
-# Usage: git_clone URL [EMAIL]
-# EMAIL defaults to MR_EMAIL if set, otherwise a sensible value
-# is guessed (see above).
+# Usage: git_clone URL
 git_clone () {
     check_repo_name
+    if [ -n "$2" ]; then
+        error "$MR_REPO: 2nd arg to git_clone no longer supported"
+        exit 1
+    fi
     info "Cloning from $1"
     remote_opt=
     if [ -n "$MR_GIT_REMOTE" ]; then
@@ -17,7 +19,7 @@ git_clone () {
         info "Default remote branch is $MR_GIT_REMOTE_BRANCH"
     fi
     git clone $remote_opt $branch_opt "$1" "$MR_REPO"
-    git_email "$2"
+    git_config_email
 }
 
 github_clone () {
@@ -40,12 +42,7 @@ git_clone_my_repo () {
     check_repo_name
     MR_GIT_REMOTE=adamspiers.org
     MR_GIT_REMOTE_BRANCH=master
-    if work_repo; then
-        email=
-    else
-        email="${MR_EMAIL:-dotfiles}"
-    fi
-    git_clone `my_upstream_url` "$email"
+    git_clone `my_upstream_url`
 }
 
 moosehall_git_checkout () {

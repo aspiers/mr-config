@@ -11,7 +11,7 @@ remotes =
     fi
     git_add_remote kitenet git://git.kitenet.net/mr
 fixups =
-    git_email
+    git_config_email
     for exe in mr mrdir mr-recache; do
         ep="$MR_REPO/$exe"
         [ -x "$ep" ] && ln -sf "$ep" ~/bin

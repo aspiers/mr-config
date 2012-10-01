@@ -30,12 +30,12 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/libanki]
 skip = lazy || ! music_machine
-checkout = git_clone git://github.com/dae/libanki.git anki
+checkout = git_clone git://github.com/dae/libanki.git
 remotes = moosehall_remotes
 
 [$HOME/.GIT/3rd-party/ankiqt]
 skip = lazy || ! music_machine
-checkout = git_clone git://github.com/dae/ankiqt.git anki
+checkout = git_clone git://github.com/dae/ankiqt.git
 remotes = moosehall_remotes
 
 [$HOME/music]

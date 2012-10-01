@@ -42,7 +42,7 @@ remotes = auto_remotes
 
 [$HOME/SUSE]
 lib =
-    MR_EMAIL=aspiers@suse.com
+    set_email aspiers@suse.com
     MR_CONFIDENTIAL_REPO=yes
 checkout = moosehall_git_checkout indian
 remotes = auto_remotes
@@ -61,4 +61,4 @@ fixups =
 [$HOME/.GIT/3rd-party/bugzilla-tools]
 checkout = git_clone https://github.com/mvidner/Bugzilla-Tools.git
 lib =
-    MR_EMAIL=aspiers@suse.com
+    set_email aspiers@suse.com

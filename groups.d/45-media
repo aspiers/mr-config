@@ -3,7 +3,7 @@
 [$HOME/media]
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout pacific
-lib = MR_EMAIL=adam@spiers.net
+lib = set_email adam@spiers.net
 remotes =
     moosehall_remotes
     git_add_remote "WD /media/WD/media"
@@ -30,6 +30,6 @@ fixups =
 [$HOME/video]
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout pacific
-lib = MR_EMAIL=adam@spiers.net
+lib = set_email adam@spiers.net
 remotes =
     moosehall_remotes

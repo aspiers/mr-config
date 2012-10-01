@@ -14,7 +14,7 @@ remotes = moosehall_remotes
 
 [$HOME/soc]
 lib =
-    MR_EMAIL=adam@spiers.net
+    set_email adam@spiers.net
     MR_CONFIDENTIAL_REPO=yes
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout pacific
@@ -23,7 +23,7 @@ remotes = moosehall_remotes
 [$HOME/OWRA]
 lib =
     MR_CONFIDENTIAL_REPO=yes
-    MR_EMAIL=oceanwharf@adamspiers.org
+    set_email oceanwharf@adamspiers.org
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout pacific
 remotes = moosehall_remotes

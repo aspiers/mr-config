@@ -1,6 +1,6 @@
 # -*- mode: sh -*-
 
-ge = git_email "$@"
+ge = git_config_email
 
 git_update = git pull --ff-only "$@"
 git_merge  = git pull "$@"

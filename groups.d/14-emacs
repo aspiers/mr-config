@@ -20,7 +20,7 @@ stowable = true
 [$HOME/.GIT/3rd-party/org-mode]
 lib =
     MR_GITHUB_NAME=orgmode
-    MR_EMAIL=orgmode@adamspiers.org
+    set_email orgmode@adamspiers.org
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 checkout = github_clone
 remotes =
@@ -31,7 +31,7 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/worg]
 skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
-lib = MR_EMAIL=orgmode@adamspiers.org
+lib = set_email orgmode@adamspiers.org
 checkout = github_clone
 remotes =
     auto_remotes
@@ -41,7 +41,7 @@ push = unsafe
 [$HOME/.GIT/3rd-party/cucumber-el]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
 lib =
-    MR_EMAIL=emacs@adamspiers.org
+    set_email emacs@adamspiers.org
     MR_GITHUB_NAME=cucumber.el
 checkout = github_clone
 remotes =
@@ -59,7 +59,7 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/emacs-rails]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe rails
-lib = MR_EMAIL=emacs@adamspiers.org
+lib = set_email emacs@adamspiers.org
 checkout = git_clone git://github.com/remvee/emacs-rails.git
 remotes = auto_remotes
 fixups = symlink_repo_from ~/lib/emacs/major-modes/emacs-rails.remvee.git
@@ -74,7 +74,7 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/remember]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
-lib = MR_EMAIL=emacs@adamspiers.org
+lib = set_email emacs@adamspiers.org
 checkout = git_clone git://repo.or.cz/remember-el.git
 remotes = auto_remotes
 fixups = symlink_repo_from ~/lib/emacs/major-modes/remember.git
@@ -90,13 +90,13 @@ push = unsafe
 [$HOME/.GIT/3rd-party/emacs]
 name = emacs-git
 skip = lazy || default_skipper
-lib = MR_EMAIL=emacs@adamspiers.org
+lib = set_email emacs@adamspiers.org
 checkout = git_clone git://git.savannah.gnu.org/emacs.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/magit]
 skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
-lib = MR_EMAIL=emacs@adamspiers.org
+lib = set_email emacs@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
 fixups = symlink_repo_from ~/lib/emacs/major-modes/remember.git
@@ -104,7 +104,7 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/auto-complete-mode]
 skip = lazy || default_skipper || missing_exe emacs
-lib = MR_EMAIL=emacs@adamspiers.org
+lib = set_email emacs@adamspiers.org
 #checkout = git_clone http://cx4a.org/repo/rsense.git
 checkout = git_clone git://github.com/m2ym/auto-complete.git
 fixups =
@@ -112,7 +112,7 @@ fixups =
 
 [$HOME/lib/emacs/minor-modes/rsense]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe ant || missing_exe ruby
-lib = MR_EMAIL=emacs@adamspiers.org
+lib = set_email emacs@adamspiers.org
 #checkout = git_clone http://cx4a.org/repo/rsense.git
 checkout = git_clone git://github.com/m2ym/rsense.git
 fixups =
@@ -128,7 +128,7 @@ checkout = cvs -d :pserver:anonymous@cvs.savannah.gnu.org:/sources/tramp co tram
 
 [$HOME/.GIT/adamspiers.org/vc-osc]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe osc
-lib = MR_EMAIL=aspiers@suse.com
+lib = set_email aspiers@suse.com
 checkout = github_clone
 remotes = auto_remotes
 fixups =
@@ -138,7 +138,7 @@ fixups =
 skip = lazy || default_skipper || missing_exe emacs || missing_exe google-chrome
 stowable = true
 lib =
-    MR_EMAIL=emacs
+    set_email emacs@adamspiers.org
     mr_init_stow_package
 checkout = git_clone git://github.com/stsquad/emacs_chrome.git
 remotes = auto_remotes

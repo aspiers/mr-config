@@ -19,10 +19,8 @@ include =
         echo "remotes = auto_remotes"
     fi
 lib =
-    git_email () {
-        git config user.email dotfiles@adamspiers.org
-    }
+    set_email dotfiles@adamspiers.org
 fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
-    git_email
+    git_config_email

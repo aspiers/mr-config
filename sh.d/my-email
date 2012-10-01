@@ -1,0 +1,46 @@
+# -*- mode: sh -*-
+
+# Helper for setting MR_EMAIL.  Per-repo use of this is optional
+# so don't put any policy here.
+set_email () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_email $*"
+        exit 1
+    fi
+
+    MR_EMAIL="$1"
+}
+
+# This must be called before using MR_EMAIL, since it ensures that a
+# sensible default value is set if no address was explicitly chosen.
+default_email () {
+    if [ -n "$MR_EMAIL" ]; then
+        #info "MR_EMAIL already set to $MR_EMAIL; not defaulting"
+        return
+    fi
+
+    if work_repo; then
+        MR_EMAIL="aspiers@suse.com"
+        return
+    fi
+
+    case "$MR_REPO" in
+        */adamspiers.org/*)
+            MR_EMAIL=dotfiles@adamspiers.org
+            ;;
+        *)
+            MR_EMAIL="$MR_NAME@adamspiers.org"
+            #info "Defaulting email to $MR_EMAIL"
+            ;;
+    esac
+}
+
+git_config_email () {
+    default_email
+    cd "$MR_REPO"
+    existing=$( git config user.email || true )
+    if [ "$MR_EMAIL" != "$existing" ]; then
+        git config user.email "$MR_EMAIL"
+        info "Set user.email from ${existing:-(none)} to $MR_EMAIL"
+    fi
+}
