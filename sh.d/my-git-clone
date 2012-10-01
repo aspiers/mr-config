@@ -23,7 +23,11 @@ git_clone () {
 github_clone () {
     MR_GIT_REMOTE=github
     MR_GIT_REMOTE_BRANCH=master
-    git_clone `github_url "$@"`
+    if [ $# -gt 0 ]; then
+        error "github_clone no longer supports parameters; use MR_GITHUB_NAME."
+        exit 1
+    fi
+    git_clone `github_url`
 }
 
 savannah_ro_clone () {

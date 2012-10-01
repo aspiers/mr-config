@@ -38,7 +38,9 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/maildir-dedupe]
-checkout = github_clone scripts
+lib =
+    MR_GITHUB_NAME=scripts
+checkout = github_clone
 remotes =
     auto_remotes
     git_add_remote kdeldycke git://github.com/kdeldycke/scripts.git

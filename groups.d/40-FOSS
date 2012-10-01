@@ -55,10 +55,11 @@ fixups =
 
 [$HOME/.GIT/3rd-party/smokeping]
 skip = lazy
-checkout = github_clone SmokePing
 lib =
+    MR_GITHUB_NAME=SmokePing
     mr_init_stow_package
     mr_stow_info_hooks
+checkout = github_clone
 fixups =
     if ! [ -e configure ]; then
         ./autogen.sh
