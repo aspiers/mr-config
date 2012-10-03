@@ -6,7 +6,6 @@ checkout = moosehall_git_checkout pacific
 lib = set_email adam@spiers.net
 remotes =
     moosehall_remotes
-    git_add_remote "WD /media/WD/media"
 
 [$HOME/software/audio/mpdtoys]
 skip = lazy || default_skipper
