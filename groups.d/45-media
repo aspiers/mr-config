@@ -2,7 +2,7 @@
 
 [$HOME/media]
 skip = lazy || default_skipper
-checkout = moosehall_git_checkout pacific
+checkout = git_clone_my_repo
 lib = set_email adam@spiers.net
 remotes = private_repo_remotes
 
