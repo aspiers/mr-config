@@ -4,8 +4,7 @@
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout pacific
 lib = set_email adam@spiers.net
-remotes =
-    moosehall_remotes
+remotes = private_repo_remotes
 
 [$HOME/software/audio/mpdtoys]
 skip = lazy || default_skipper
