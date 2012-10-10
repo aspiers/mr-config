@@ -115,7 +115,7 @@ work_machine () {
 music_machine () {
     read_localhost_nickname
     case "$localhost_nickname" in
-        atlantic|southern|adriatic|mediacentre|indian|pacific)
+        atlantic|southern|adriatic|mediacentre|indian|pacific|coral)
             debug_skippers ". $localhost_nickname is a music machine"
             return 0 # true
             ;;
