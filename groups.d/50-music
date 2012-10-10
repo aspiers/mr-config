@@ -42,5 +42,5 @@ remotes = moosehall_remotes
 skip = lazy || ! music_machine
 checkout = moosehall_git_checkout
 chain = true
-remotes = moosehall_remotes
+remotes = private_repo_remotes
 fixups = ln -sf music/MUSIC ~
