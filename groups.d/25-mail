@@ -26,11 +26,15 @@ stowable = true
 checkout = git_clone git://github.com/OfflineIMAP/offlineimap.git
 skip = not_host atlantic && not_host pacific && not_host southern && not_host indian
 remotes = auto_remotes
+stowable = true
+lib =
+    mr_init_stow_package
 fixups =
     # make clean breaks on first checkout for some reason
     #make clean
     make
-    python setup.py install --home ~
+    python setup.py install --prefix $STOW_PKG_PATH
+    mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/mailcap]
 checkout = git_clone_my_repo
