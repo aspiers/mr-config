@@ -12,6 +12,10 @@ github_remote () {
     git_add_remote github `github_url`
 }
 
+gitorious_remote () {
+    git_add_remote gitorious `gitorious_url`
+}
+
 my_upstream_remote () {
     git_add_remote adamspiers.org `my_upstream_url`
 }
