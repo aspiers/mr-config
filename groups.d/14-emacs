@@ -26,7 +26,9 @@ checkout = github_clone
 remotes =
     auto_remotes
     git_add_remote origin git://repo.or.cz/org-mode.git
-fixups = symlink_repo_from ~/lib/emacs/major-modes/org-mode.git
+fixups = 
+    symlink_repo_from ~/lib/emacs/major-modes/org-mode.git
+    cd "$MR_REPO/contrib/scripts" && gcc -lXss -lX11 x11idle.c -o ~/bin/x11idle
 push = unsafe
 
 [$HOME/.GIT/3rd-party/worg]
