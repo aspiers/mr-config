@@ -70,3 +70,8 @@ remotes =
     auto_remotes
 fixups =
     rake install_user
+
+[$HOME/.GIT/3rd-party/xdotool]
+skip = lazy || default_skipper
+checkout = git_clone git://github.com/jordansissel/xdotool.git
+remotes = auto_remotes
