@@ -64,7 +64,9 @@ stowable = true
 
 [$HOME/.GIT/3rd-party/ctoolu]
 skip = default_skipper || missing_exe ruby
-checkout = git_clone git://github.com/mvidner/ctoolu.git
-remotes = auto_remotes
+checkout = github_clone
+remotes =
+    git_add_remote origin git://github.com/mvidner/ctoolu.git
+    auto_remotes
 fixups =
     rake install_user
