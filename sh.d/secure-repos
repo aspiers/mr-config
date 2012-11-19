@@ -33,9 +33,8 @@ confidential_repo () {
 }
 
 work_repo () {
-    check_repo_name
-    case "$MR_NAME" in
-        *novell*|SUSE)
+    case "$MR_REPO" in
+        *novell*|*SUSE*)
             debug_skippers "! Repo auto-detected as work-related"
             return 0 # true
             ;;
