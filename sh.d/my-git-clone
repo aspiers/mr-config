@@ -32,6 +32,12 @@ github_clone () {
     git_clone `github_url`
 }
 
+gitorious_clone () {
+    MR_GIT_REMOTE=gitorious
+    MR_GIT_REMOTE_BRANCH=master
+    git_clone `gitorious_url`
+}
+
 savannah_ro_clone () {
     MR_GIT_REMOTE=savannah
     MR_GIT_REMOTE_BRANCH=master
