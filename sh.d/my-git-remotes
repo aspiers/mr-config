@@ -59,7 +59,15 @@ auto_remotes () {
         esac
     else
         moosehall_remotes
-        my_upstream_remote
+
+        case "$MR_NAME" in
+            mr)
+                # No mr repo on adamspiers.org - ensure we get it from github
+                ;;
+            *)
+                my_upstream_remote
+                ;;
+        esac
     fi
 
     if ! confidential_repo; then
