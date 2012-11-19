@@ -19,7 +19,7 @@ stowable = true
 
 [$HOME/.GIT/3rd-party/org-mode]
 lib =
-    MR_GITHUB_NAME=orgmode
+    set_github_name orgmode
     set_email orgmode@adamspiers.org
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 checkout = github_clone
@@ -44,7 +44,7 @@ push = unsafe
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
 lib =
     set_email emacs@adamspiers.org
-    MR_GITHUB_NAME=cucumber.el
+    set_github_name cucumber.el
 checkout = github_clone
 remotes =
     git_add_remote origin git://github.com/michaelklishin/cucumber.el.git

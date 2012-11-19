@@ -12,6 +12,15 @@ github_url () {
     echo "github:${MR_GITHUB_NAME:-$MR_NAME}.git"
 }
 
+set_github_name () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_github_name $*"
+        exit 1
+    fi
+
+    MR_GITHUB_NAME="$1"
+}
+
 gitorious_url () {
     echo "gitorious:${MR_GITORIOUS_NAME:-$MR_NAME}.git"
 }

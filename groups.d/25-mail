@@ -43,7 +43,7 @@ stowable = true
 
 [$HOME/.GIT/3rd-party/maildir-dedupe]
 lib =
-    MR_GITHUB_NAME=scripts
+    set_github_name scripts
 checkout = github_clone
 remotes =
     auto_remotes

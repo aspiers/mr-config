@@ -1,7 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/3rd-party/mr]
-lib = MR_GITHUB_NAME=kitenet-mr
+lib = set_github_name kitenet-mr
 checkout = github_clone
 remotes =
     moosehall_remotes
@@ -91,7 +91,7 @@ stowable = true
 
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/ssh]
-lib = MR_GITHUB_NAME=ssh-config
+lib = set_github_name ssh-config
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo
 remotes = auto_remotes
