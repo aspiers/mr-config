@@ -15,13 +15,18 @@ set_public_repo () {
         exit 1
     fi
 
-    MR_CONFIDENTIAL_REPO=
+    MR_CONFIDENTIAL_REPO=no
 }
 
 confidential_repo () {
-    if [ -n "$MR_CONFIDENTIAL_REPO" ]; then
+    if [ "$MR_CONFIDENTIAL_REPO" = 'yes' ]; then
         debug_skippers "! Repo manually set as confidential via \$MR_CONFIDENTIAL_REPO"
         return 0 # true
+    fi
+
+    if [ "$MR_CONFIDENTIAL_REPO" = 'no' ]; then
+        debug_skippers "! Repo manually set as public via \$MR_CONFIDENTIAL_REPO"
+        return 1 # false
     fi
 
     check_repo_name
