@@ -12,6 +12,10 @@ github_remote () {
     git_add_remote github `github_url`
 }
 
+github_origin_remote () {
+    git_add_remote origin `github_origin_url`
+}
+
 gitorious_remote () {
     git_add_remote gitorious `gitorious_url`
 }
@@ -72,5 +76,8 @@ auto_remotes () {
 
     if ! confidential_repo; then
         github_remote
+        if [ -n "$MR_GITHUB_ORIGIN" ]; then
+            github_origin_remote
+        fi
     fi
 }

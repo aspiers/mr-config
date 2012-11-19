@@ -8,10 +8,6 @@ savannah_rw_url () {
     echo "ssh://aspiers@git.sv.gnu.org/srv/git/${1:-$MR_NAME}.git"
 }
 
-github_url () {
-    echo "github:${MR_GITHUB_NAME:-$MR_NAME}.git"
-}
-
 set_github_name () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_github_name $*"
@@ -19,6 +15,23 @@ set_github_name () {
     fi
 
     MR_GITHUB_NAME="$1"
+}
+
+github_url () {
+    echo "github:${MR_GITHUB_NAME:-$MR_NAME}.git"
+}
+
+set_github_origin () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_github_origin $*"
+        exit 1
+    fi
+
+    MR_GITHUB_ORIGIN="$1"
+}
+
+github_origin_url () {
+    echo "git://github.com/$MR_GITHUB_ORIGIN/${MR_GITHUB_NAME:-$MR_NAME}.git"
 }
 
 gitorious_url () {

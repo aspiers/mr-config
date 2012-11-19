@@ -33,9 +33,10 @@ stowable = true
 [$HOME/.GIT/3rd-party/rvm]
 skip = lazy
 checkout = github_clone
+lib =
+    set_github_origin wayneeseguin
 remotes =
     auto_remotes
-    git_add_remote wayneeseguin git://github.com/wayneeseguin/rvm.git
 fixups =
     cd $MR_REPO
     # See HACKING.md
