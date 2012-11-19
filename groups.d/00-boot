@@ -4,8 +4,7 @@
 lib = set_github_name kitenet-mr
 checkout = github_clone
 remotes =
-    moosehall_remotes
-    github_remote
+    auto_remotes
     if git config remote.adamspiers.org.url >/dev/null; then
         git remote rm adamspiers.org
     fi

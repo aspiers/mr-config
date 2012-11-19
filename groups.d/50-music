@@ -31,18 +31,19 @@ push = unsafe
 [$HOME/.GIT/3rd-party/libanki]
 skip = lazy || ! music_machine
 checkout = git_clone git://github.com/dae/libanki.git
-remotes = moosehall_remotes
+remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/ankiqt]
 skip = lazy || ! music_machine
 checkout = git_clone git://github.com/dae/ankiqt.git
-remotes = moosehall_remotes
+remotes = auto_remotes
 
 [$HOME/music]
 skip = lazy || ! music_machine
+lib = set_confidential_repo
 checkout = git_clone_my_repo
 chain = true
-remotes = private_repo_remotes
+remotes = auto_remotes
 fixups = ln -sf music/MUSIC ~
 
 [$HOME/.GIT/3rd-party/opensuse-spotify-installer]

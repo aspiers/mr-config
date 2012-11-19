@@ -37,17 +37,8 @@ moosehall_remotes () {
     "
 }
 
-public_repo_remotes () {
-    moosehall_remotes && my_upstream_remote && github_remote
-}
-
-private_repo_remotes () {
-    moosehall_remotes && my_upstream_remote
-}
-
-work_remotes () {
+moosehall_work_remotes () {
     repo="${MR_REPO#$HOME/}"
-    my_upstream_remote
     git_add_remotes "
         atlantic  REMOTE:$repo
         southern  REMOTE:$repo
@@ -58,14 +49,20 @@ work_remotes () {
 
 auto_remotes () {
     if work_repo; then
-        work_remotes
-        if ! confidential_repo; then
-            my_upstream_remote
-            github_remote
-        fi
-    elif confidential_repo; then
-        private_repo_remotes
+        moosehall_work_remotes
+
+        case "$MR_REPO" in
+            */adamspiers.org/*)
+                # something like novell+vpn.pub
+                my_upstream_remote
+                ;;
+        esac
     else
-        public_repo_remotes
+        moosehall_remotes
+        my_upstream_remote
+    fi
+
+    if ! confidential_repo; then
+        github_remote
     fi
 }

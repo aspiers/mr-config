@@ -30,7 +30,7 @@ stowable = true
 [$HOME/.GIT/3rd-party/zsh-completions]
 skip = missing_exe zsh
 checkout = git_clone git://github.com/zsh-users/zsh-completions.git
-remotes = github_remote
+remotes = auto_remote
 fixups =
     zcpath=~/.zsh/functions/zsh-completions
     ln -sf "$MR_REPO" "$zcpath"
