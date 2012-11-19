@@ -47,3 +47,11 @@ skip = default_skipper || missing_exe java
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/.GIT/3rd-party/rake]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin jimweirich
+remotes =
+    auto_remotes
