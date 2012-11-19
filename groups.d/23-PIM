@@ -1,13 +1,13 @@
 # -*- mode: sh -*-
 
 [$HOME/org]
-lib = MR_CONFIDENTIAL_REPO=yes
+lib = set_confidential_repo
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = moosehall_remotes
 
 [$HOME/finance]
-lib = MR_CONFIDENTIAL_REPO=yes
+lib = set_confidential_repo
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = moosehall_remotes
@@ -15,14 +15,14 @@ remotes = moosehall_remotes
 [$HOME/soc]
 lib =
     set_email adam@spiers.net
-    MR_CONFIDENTIAL_REPO=yes
+    set_confidential_repo
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = moosehall_remotes
 
 [$HOME/OWRA]
 lib =
-    MR_CONFIDENTIAL_REPO=yes
+    set_confidential_repo
     set_email oceanwharf@adamspiers.org
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
@@ -64,7 +64,7 @@ fixups =
     python setup.py install --home ~
 
 [$HOME/training]
-lib = MR_CONFIDENTIAL_REPO=yes
+lib = set_confidential_repo
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = moosehall_remotes

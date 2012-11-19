@@ -1,12 +1,9 @@
 # -*- mode: sh -*-
 
 [$HOME/hack]
-# My programming laboratory, where I experiment with stuff,
-# and squirrel away documentation and other useful reference
-# material to help improve my hacking prowess.
 lib =
     # Contains Ruby books, and probably some embarrassing code.
-    MR_CONFIDENTIAL_REPO=yes
+    set_confidential_repo
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

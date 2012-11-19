@@ -43,7 +43,7 @@ remotes = auto_remotes
 [$HOME/SUSE]
 lib =
     set_email aspiers@suse.com
-    MR_CONFIDENTIAL_REPO=yes
+    set_confidential_repo
 checkout = moosehall_git_checkout indian
 remotes = auto_remotes
 fixups =

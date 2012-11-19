@@ -1,5 +1,23 @@
 # -*- mode: sh -*-
 
+set_confidential_repo () {
+    if [ $# != 0 ]; then
+        error "$MR_REPO: invoked set_confidential_repo $*"
+        exit 1
+    fi
+
+    MR_CONFIDENTIAL_REPO=yes
+}
+
+set_public_repo () {
+    if [ $# != 0 ]; then
+        error "$MR_REPO: invoked set_public_repo $*"
+        exit 1
+    fi
+
+    MR_CONFIDENTIAL_REPO=
+}
+
 confidential_repo () {
     if [ -n "$MR_CONFIDENTIAL_REPO" ]; then
         debug_skippers "! Repo manually set as confidential via \$MR_CONFIDENTIAL_REPO"

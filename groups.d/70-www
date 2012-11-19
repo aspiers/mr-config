@@ -5,7 +5,7 @@ name = www.adamspiers.org
 skip = lazy || default_skipper
 lib =
     set_email webmaster@adamspiers.org
-    MR_CONFIDENTIAL_REPO=y
+    set_confidential_repo
 checkout = git_clone_my_repo
 remotes = auto_remotes
 
@@ -14,6 +14,6 @@ name = www.tigerpig.org
 skip = lazy || default_skipper
 lib =
     set_email webmaster@tigerpig.org
-    MR_CONFIDENTIAL_REPO=y
+    set_confidential_repo
 checkout = git_clone_my_repo
 remotes = auto_remotes
