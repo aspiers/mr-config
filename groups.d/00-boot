@@ -5,7 +5,7 @@ lib = set_github_name kitenet-mr
 checkout = github_clone
 remotes =
     auto_remotes
-    git_add_remote kitenet git://git.kitenet.net/mr
+    git_add_remote origin git://git.kitenet.net/mr
 fixups =
     git_config_email
     for exe in mr mrdir mr-recache; do
