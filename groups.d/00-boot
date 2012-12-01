@@ -20,7 +20,7 @@ fixups =
 
 [$HOME/software/scm/stow]
 name = stow-release
-lib = MR_DOWNLOAD_URL=http://ftp.gnu.org/gnu/stow/stow-latest.tar.bz2
+lib = mr_set_download_url http://ftp.gnu.org/gnu/stow/stow-latest.tar.bz2
 checkout = mr_download_checkout
 fixups =
     cd "$MR_REPO"
