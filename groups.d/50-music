@@ -67,6 +67,7 @@ fixups =
     cat <<EOF > $exe
     #!/bin/sh
 
-    java -jar $MR_REPO/server/spotifycontrollerservergui.jar &
+    cd $MR_REPO/server
+    java -jar spotifycontrollerservergui.jar &
     EOF
     chmod +x $exe
