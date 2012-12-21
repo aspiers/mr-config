@@ -77,3 +77,9 @@ fixups =
     mkdir -p $STOW_PKG_PATH/share/doc/tmux/examples
     cp examples/*.conf $STOW_PKG_PATH/share/doc/tmux/examples
     mr_restow_regardless
+
+[$HOME/.GIT/adamspiers.org/weechat]
+skip = default_skipper || ( missing_exe weechat-curses && missing_exe weechat )
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
