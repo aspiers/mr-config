@@ -56,7 +56,7 @@ lib =
     }
 
 fixups =
-    cat <<-EOF > ~/.emacs.d/git
+    cat <<-EOF > ~/.emacs.d/git.el
     ;; Automatically generated via mr fixups for $MR_REPO; do not edit!
     (add-to-list 'as-find-file-matching-regexp-alist
         '("/.GIT/3rd-party/git/" . (lambda () (setq indent-tabs-mode t))))
