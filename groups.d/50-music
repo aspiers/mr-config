@@ -71,3 +71,12 @@ fixups =
     java -jar spotifycontrollerservergui.jar &
     EOF
     chmod +x $exe
+
+[$HOME/.GIT/3rd-party/python-midi]
+skip = lazy || ! music_machine || missing_exe python
+lib =
+    set_github_origin vishnubob
+    set_email python-midi@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
