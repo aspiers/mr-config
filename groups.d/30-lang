@@ -55,3 +55,9 @@ lib =
     set_github_origin jimweirich
 remotes =
     auto_remotes
+
+[$HOME/.GIT/adamspiers.org/python-env]
+skip = default_skipper || missing_exe python
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
