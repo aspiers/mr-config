@@ -1,5 +1,10 @@
 # -*- mode: sh -*-
 
+# Note that ~/.config/mr/bootstrap.sh will check out mr
+# in its own way, completely independently of this.  So
+# changing this has limited impact on the earlier parts
+# of the bootstrap sequence (although it would make sense
+# to run remotes and fixups on this repository later on).
 [$HOME/.GIT/3rd-party/mr]
 lib = set_github_name kitenet-mr
 checkout = github_clone
