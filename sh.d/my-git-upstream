@@ -25,6 +25,36 @@ switch_upstream_from_origin () {
     return 1
 }
 
+# Returns 0 iff $upstream is set
+get_upstream () {
+    # can't use git-head here because we might not have it installed yet
+    if ! head=$( git branch | awk '$1 == "*" { print $2 }' ); then
+	echo >&2 "Failed to determine HEAD in `pwd`"
+	return 1
+    fi
+
+    while true; do
+        # can't use git-upstream here because we might not have it installed yet
+	upstream=$( git config "branch.$head.remote" )
+	if [ -n "$upstream" ]; then
+	    return 0
+	fi
+
+	sleep 0.5 # allow time to Control-C out
+
+	echo >&2
+	echo >&2 "Upstream not set for `pwd`."
+
+	if ! [ -t 0 ]; then
+	    echo >&2 "Running non-interactively; can't fix upstream so aborting."
+	    return 1
+	fi
+
+	echo >&2 "Forking a new shell; please set now then exit shell:"
+	$SHELL
+    done
+}
+
 fix_upstream () {
     # A few aspects to this:
     #   1. Ensure that the right non-'origin' upstream remote is present
@@ -42,8 +72,8 @@ fix_upstream () {
         warning "upstream already fixed in this run; won't fix again."
         return 0
     fi
-    head=`git head`
-    upstream=`git upstream`
+    get_upstream || return 1
+
     remote="${upstream%/*}"
     remote_branch="${upstream#*/}"
     case "$remote" in
