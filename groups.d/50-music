@@ -50,7 +50,10 @@ fixups = ln -sf music/MUSIC ~
 skip = ! music_machine || ! grep -q 'openSUSE 12\.2' /etc/SuSE-release
 lib = set_email spotify-on-opensuse@adamspiers.org
 checkout = github_clone
-remotes = auto_remotes
+remotes =
+    auto_remotes
+    github_readonly_remote marguerite
+    github_readonly_remote Aidanie
 
 [$HOME/.GIT/3rd-party/ly2video]
 skip = lazy || ! music_machine || missing_exe lilypond
