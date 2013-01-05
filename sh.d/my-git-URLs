@@ -21,6 +21,10 @@ github_url () {
     echo "github:${MR_GITHUB_NAME:-$MR_NAME}.git"
 }
 
+github_readonly_url () {
+    echo "git://github.com/$1/${2:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
+}
+
 set_github_origin () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_github_origin $*"
@@ -31,7 +35,7 @@ set_github_origin () {
 }
 
 github_origin_url () {
-    echo "git://github.com/$MR_GITHUB_ORIGIN/${MR_GITHUB_NAME:-$MR_NAME}.git"
+    github_readonly_url "$MR_GITHUB_ORIGIN"
 }
 
 gitorious_url () {

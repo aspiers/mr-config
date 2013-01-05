@@ -12,6 +12,14 @@ github_remote () {
     git_add_remote github `github_url`
 }
 
+# usage: github_readonly_remote <REMOTE> [<USERNAME> [<REPONAME>]]
+github_readonly_remote () {
+    remote="$1"
+    username="${2:-$remote}"
+    reponame="$3"
+    git_add_remote "$remote" `github_readonly_url "$username" "$reponame"`
+}
+
 github_origin_remote () {
     git_add_remote origin `github_origin_url`
 }
