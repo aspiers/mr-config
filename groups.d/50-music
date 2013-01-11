@@ -61,6 +61,13 @@ lib = set_email lilypond@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
 
+[$HOME/.GIT/adamspiers.org/ly-lib]
+skip = lazy || ! music_machine || missing_exe lilypond
+lib = set_email lilypond@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+
 [$HOME/software/audio/SpotifyController]
 skip = ! music_machine
 lib = mr_set_download_url http://dl.dropbox.com/u/3072694/SpotifyController/SpotifyController.zip
