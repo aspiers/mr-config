@@ -16,6 +16,7 @@ include =
         . ~/.config/mr/library-loaders
         load_libraries ~/.config/mr/sh.d/*
         include_lib_dirs ~/.config/mr/lib.d
+        # Only set remotes if we've already bootstrapped.
         echo "remotes = auto_remotes"
     fi
 lib =
