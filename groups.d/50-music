@@ -21,6 +21,14 @@ skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
 checkout = git_clone https://github.com/gperciva/git-cl
 remotes = auto_remotes
 push = unsafe
+stowable = true
+lib =
+    mr_init_stow_package
+fixups =
+    bindir="$STOW_PKG_PATH/bin"
+    mkdir "$bindir"
+    ln -sf "$MR_REPO/upload.py" "$bindir"
+    ln -sf "$MR_REPO/git-cl" "$bindir"
 
 [$HOME/.GIT/3rd-party/lilypond-extra]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
