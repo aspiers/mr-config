@@ -79,6 +79,7 @@ fixups =
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/weechat]
+name = weechat-config
 skip = default_skipper || ( missing_exe weechat-curses && missing_exe weechat )
 checkout = git_clone_my_repo
 remotes = auto_remotes

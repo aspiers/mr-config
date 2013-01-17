@@ -68,3 +68,18 @@ fixups =
     make install prefix=$STOW_PKG_PATH
     rm $STOW_PKG_PATH/share/info/dir
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/weechat]
+skip = lazy
+checkout = savannah_ro_clone
+stowable = true
+lib =
+    mr_init_stow_package
+    mr_stow_info_hooks
+fixups =
+    # cd src
+    # ./autogen.sh
+    # ./configure --prefix=$HOME
+    # make install prefix=$STOW_PKG_PATH
+    # mr_restow_regardless
+
