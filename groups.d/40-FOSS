@@ -10,7 +10,7 @@ skip = lazy
 
 [$HOME/.GIT/3rd-party/gnulib]
 skip = lazy
-checkout = git_clone git://git.savannah.gnu.org/gnulib.git
+checkout = savannah_ro_clone
 remotes = auto_remotes
 fixups =
     ln -sf "$MR_REPO/build-aux/gnupload" ~/bin
