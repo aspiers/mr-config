@@ -75,11 +75,13 @@ checkout = savannah_ro_clone
 stowable = true
 lib =
     mr_init_stow_package
-    mr_stow_info_hooks
 fixups =
-    # cd src
+    ./autogen.sh
+    [ -d build ] || mkdir build
+    cd build
+    cmake .. -DPREFIX=$STOW_PKG_PATH # -DCMAKE_BUILD_TYPE=Debug
     # ./autogen.sh
     # ./configure --prefix=$HOME
-    # make install prefix=$STOW_PKG_PATH
-    # mr_restow_regardless
+    make install prefix=$STOW_PKG_PATH
+    mr_restow_regardless
 
