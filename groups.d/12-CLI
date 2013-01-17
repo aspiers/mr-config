@@ -48,7 +48,7 @@ fixups =
 
 [$HOME/.GIT/3rd-party/screen]
 skip = lazy
-checkout = savannah_ro_clone screen
+checkout = savannah_ro_clone
 stowable = true
 lib =
     mr_init_stow_package
