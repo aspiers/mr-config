@@ -97,4 +97,5 @@ lib =
     set_email python-midi@adamspiers.org
 checkout = github_clone
 remotes =
+    github_readonly_remote ebattenberg
     auto_remotes
