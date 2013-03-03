@@ -8,6 +8,9 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+########################################################################
+# Perl
+
 [$HOME/.GIT/adamspiers.org/perl+mine]
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -23,6 +26,18 @@ stowable = true
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+########################################################################
+# Java
+
+[$HOME/.GIT/adamspiers.org/java]
+skip = default_skipper || missing_exe java
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
+
+########################################################################
+# Ruby
 
 [$HOME/.GIT/adamspiers.org/ruby]
 skip = default_skipper || missing_exe ruby
@@ -42,12 +57,6 @@ fixups =
     # See HACKING.md
     ./install
 
-[$HOME/.GIT/adamspiers.org/java]
-skip = default_skipper || missing_exe java
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
-
 [$HOME/.GIT/3rd-party/rake]
 skip = lazy || missing_exe ruby
 checkout = github_clone
@@ -55,6 +64,9 @@ lib =
     set_github_origin jimweirich
 remotes =
     auto_remotes
+
+########################################################################
+# Python
 
 [$HOME/.GIT/adamspiers.org/python-env]
 skip = default_skipper || missing_exe python
