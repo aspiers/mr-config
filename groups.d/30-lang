@@ -65,6 +65,15 @@ lib =
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/pry-debugger]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin nixme
+remotes =
+    auto_remotes
+    github_readonly_remote jasonLaster
+
 ########################################################################
 # Python
 
