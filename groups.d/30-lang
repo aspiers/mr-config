@@ -74,6 +74,20 @@ remotes =
     auto_remotes
     github_readonly_remote jasonLaster
 
+[$HOME/.GIT/3rd-party/capistrano-unicorn]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin sosedoff
+remotes =
+    auto_remotes
+    # https://github.com/sosedoff/capistrano-unicorn/issues/45
+    for fuckwit in sshingler brianp miepleinc drogus saten matadon aviaron dorren oktoberliner astevens docwhat artiom 3den DaRizat reliantsecurity IndependentIP scarver2 blue-kite mskog danielkman toao gfi apptopia kennon alg pleary techbang Zorros ashmckenzie thatinstant lpgauth gfm tetsutan fernandoalmeida talho docunext pupca yournextleap dozeo orgsync
+    do
+        github_readonly_remote $fuckwit
+    done
+
+
 ########################################################################
 # Python
 
