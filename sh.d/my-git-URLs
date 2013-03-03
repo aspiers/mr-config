@@ -5,7 +5,7 @@ savannah_ro_url () {
 }
 
 savannah_rw_url () {
-    echo "ssh://aspiers@git.sv.gnu.org/srv/git/${1:-$MR_NAME}.git"
+    echo "savannah:${1:-$MR_NAME}.git"
 }
 
 set_github_name () {
