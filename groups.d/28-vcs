@@ -90,3 +90,8 @@ skip = default_skipper || missing_exe git
 checkout = git_clone git://repo.or.cz/topgit.git
 fixups = make install
 
+[$HOME/.GIT/3rd-party/hub]
+checkout = git_clone git://github.com/defunkt/hub.git
+fixups =
+    curl http://defunkt.io/hub/standalone -sLo ~/bin/hub &&
+      chmod +x ~/bin/hub
