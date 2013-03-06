@@ -87,6 +87,14 @@ remotes =
         github_readonly_remote $fuckwit
     done
 
+[$HOME/.GIT/3rd-party/github-gem]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin defunkt
+remotes =
+    auto_remotes
+
 
 ########################################################################
 # Python
