@@ -3,6 +3,15 @@
 # This file will be pointed to by an ~/.mrconfig symlink
 # created in the fixups section below.
 
+[DEFAULT]
+include =
+    if [ -e ~/.config/mr/library-loaders ]; then
+        # mr-config already checked out
+        . ~/.config/mr/library-loaders
+        load_libraries ~/.config/mr/sh.d/*
+        include_lib_dirs ~/.config/mr/lib.d
+    fi
+
 [.config/mr]
 name = mr-config
 checkout =
@@ -12,10 +21,6 @@ post_checkout =
 chain = true
 include =
     if [ -e ~/.config/mr/library-loaders ]; then
-        # mr-config already checked out
-        . ~/.config/mr/library-loaders
-        load_libraries ~/.config/mr/sh.d/*
-        include_lib_dirs ~/.config/mr/lib.d
         # Rather than defining remotes for this repo in the normal
         # way, we only set it if we've already bootstrapped and
         # cloned the repo, otherwise auto_remotes won't be defined yet.        

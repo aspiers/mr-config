@@ -1,13 +1,9 @@
 # -*- mode: sh -*-
 
 [DEFAULT]
-
 include =
     . ~/.config/mr/library-loaders
-    #
-    include_mr_extensions
-    load_libraries ~/.config/mr/sh.d/*
-    include_lib_dirs ~/.config/mr/lib.d ~/.config/mr/groups.d
+    include_lib_dirs ~/.config/mr/groups.d
 
 # N.B. anything placed here (i.e. after the above include) will not
 # any impact any repositories pulled in by the include.
