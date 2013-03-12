@@ -8,6 +8,7 @@ include =
     if [ -e ~/.config/mr/library-loaders ]; then
         # mr-config already checked out
         . ~/.config/mr/library-loaders
+        include_mr_extensions
         load_libraries ~/.config/mr/sh.d/*
         include_lib_dirs ~/.config/mr/lib.d
     fi
