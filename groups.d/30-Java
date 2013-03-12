@@ -1,0 +1,7 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/adamspiers.org/java]
+skip = default_skipper || missing_exe java
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true

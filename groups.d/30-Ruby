@@ -1,0 +1,57 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/adamspiers.org/ruby]
+skip = default_skipper || missing_exe ruby
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
+
+[$HOME/.GIT/3rd-party/rvm]
+skip = lazy
+checkout = github_clone
+lib =
+    set_github_origin wayneeseguin
+remotes =
+    auto_remotes
+fixups =
+    cd $MR_REPO
+    # See HACKING.md
+    ./install
+
+[$HOME/.GIT/3rd-party/rake]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin jimweirich
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/pry-debugger]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin nixme
+remotes =
+    auto_remotes
+    github_readonly_remote jasonLaster
+
+[$HOME/.GIT/3rd-party/capistrano-unicorn]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin sosedoff
+remotes =
+    auto_remotes
+    # https://github.com/sosedoff/capistrano-unicorn/issues/45
+    for fuckwit in BMorearty sshingler brianp miepleinc drogus saten matadon aviaron dorren oktoberliner astevens docwhat artiom 3den DaRizat reliantsecurity IndependentIP scarver2 blue-kite mskog danielkman toao gfi apptopia kennon alg pleary techbang Zorros ashmckenzie thatinstant lpgauth gfm tetsutan fernandoalmeida talho docunext pupca yournextleap dozeo orgsync
+    do
+        github_readonly_remote $fuckwit
+    done
+
+[$HOME/.GIT/3rd-party/github-gem]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin defunkt
+remotes =
+    auto_remotes
