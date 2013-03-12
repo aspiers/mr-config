@@ -96,3 +96,9 @@ checkout = git_clone git://github.com/defunkt/hub.git
 fixups =
     curl http://defunkt.io/hub/standalone -sLo ~/bin/hub &&
       chmod +x ~/bin/hub
+
+[$HOME/.GIT/3rd-party/mhs-tidbits]
+skip = default_skipper || missing_exe git
+checkout = git_clone git://github.com/mhs/tidbits.git
+fixups =
+    ln -sf $MR_REPO/lib/git-unmerged.rb ~/bin/git-unmerged
