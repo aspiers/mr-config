@@ -1,3 +1,11 @@
 [$HOME/software/web/wpscan]
 skip = lazy
 checkout = svn checkout http://wpscan.googlecode.com/svn/trunk/ $MR_NAME
+
+[$HOME/.GIT/3rd-party/slide-em-up]
+skip = lazy
+checkout = git_clone git://github.com/nono/slide-em-up.git
+
+[$HOME/.GIT/3rd-party/showoff]
+skip = lazy
+checkout = git_clone git://github.com/schacon/showoff.git
