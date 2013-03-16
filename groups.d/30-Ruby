@@ -55,3 +55,27 @@ lib =
     set_github_origin defunkt
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/guard-rsync]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin kselden
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/guard-rspec]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin guard
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/guard-minitest]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin guard
+remotes =
+    auto_remotes
