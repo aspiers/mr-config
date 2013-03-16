@@ -46,7 +46,7 @@ include_lib_dirs () {
 
 _ignore_lib () {
     case "${1##*/}" in
-        *.orig|*~|README*) return 0 ;;
+        *.orig|*~|README*|\#*\#) return 0 ;;
     esac
     return 1
 }
