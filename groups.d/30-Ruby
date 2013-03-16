@@ -79,3 +79,11 @@ lib =
     set_github_origin guard
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/spring]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin jonleighton
+remotes =
+    auto_remotes
