@@ -87,3 +87,12 @@ lib =
     set_github_origin jonleighton
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/bundler.el]
+skip = lazy || default_skipper || missing_exe emacs || missing_exe bundle
+checkout = github_clone
+lib =
+    set_github_origin tobiassvn
+remotes = auto_remotes
+fixups =
+    ensure_symlink_exists ~/lib/emacs/utils/bundler.el "$MR_REPO/bundler.el"
