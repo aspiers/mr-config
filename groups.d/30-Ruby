@@ -77,6 +77,23 @@ skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
     set_github_origin guard
+    github_readonly_remote bramswenson
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/guard-bundler]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin guard
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/minitest-reporters]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin CapnKernul
 remotes =
     auto_remotes
 
