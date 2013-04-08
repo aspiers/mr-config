@@ -56,6 +56,14 @@ lib =
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/guard]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin guard
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/3rd-party/guard-rsync]
 skip = lazy || missing_exe ruby
 checkout = github_clone
