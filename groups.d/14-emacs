@@ -160,3 +160,19 @@ fixups =
         "$STOW_PKG_PATH/lib/emacs/utils/edit-server.el" \
         "$MR_REPO/servers/edit-server.el"
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/edit-server-htmlize]
+skip = lazy || default_skipper || missing_exe emacs || missing_exe google-chrome
+stowable = true
+lib =
+    set_email emacs@adamspiers.org
+    set_github_origin frobtech
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    mkdir -p "$STOW_PKG_PATH/lib/emacs/utils"
+    ensure_symlink_exists \
+        "$STOW_PKG_PATH/lib/emacs/utils/edit-server-htmlize.el" \
+        "$MR_REPO/edit-server-htmlize.el"
+    mr_restow_regardless
