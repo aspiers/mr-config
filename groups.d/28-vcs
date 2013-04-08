@@ -72,6 +72,7 @@ fixups =
     else
         echo "asciidoc not installed; skipping install-doc"
     fi
+    ln -sf $MR_REPO/contrib/diff-highlight/diff-highlight $STOW_PKG_PATH/bin
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/github.sec]
