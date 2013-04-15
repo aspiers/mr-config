@@ -146,6 +146,14 @@ remotes = auto_remotes
 fixups =
     ensure_symlink_exists ~/lib/emacs/minor-modes/vc-osc.el "$MR_REPO/vc-osc.el"
 
+[$HOME/.GIT/adamspiers.org/smooth-scrolling]
+skip = lazy || default_skipper || missing_exe emacs
+lib = set_email emacs@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
+# fixups =
+#     ensure_symlink_exists ~/lib/emacs/minor-modes/smooth-scrolling.el "$MR_REPO/smooth-scrolling.el"
+
 [$HOME/.GIT/3rd-party/emacs_chrome]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe google-chrome
 stowable = true
