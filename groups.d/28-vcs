@@ -72,7 +72,12 @@ fixups =
     else
         echo "asciidoc not installed; skipping install-doc"
     fi
-    ln -sf $MR_REPO/contrib/diff-highlight/diff-highlight $STOW_PKG_PATH/bin
+    for exe in \
+        contrib/diff-highlight/diff-highlight \
+        contrib/remote-helpers/git-remote-{bzr,hg}
+    do
+        ln -sf $MR_REPO/$exe $STOW_PKG_PATH/bin
+    done
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/github.sec]
