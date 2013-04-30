@@ -4,3 +4,20 @@
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/.GIT/3rd-party/rapport]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_github_origin saschpe
+    mr_init_stow_package
+fixups =
+    python setup.py install \
+        --old-and-unmanageable \
+        --prefix $STOW_PKG_PATH
+    # python setup.py install \
+    #     --single-version-externally-managed \
+    #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
+    #     --prefix $STOW_PKG_PATH
+    mr_restow_regardless
