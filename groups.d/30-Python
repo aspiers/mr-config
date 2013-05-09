@@ -5,3 +5,21 @@ skip = default_skipper || missing_exe python
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/.GIT/3rd-party/jinja2]
+skip = lazy || default_skipper || missing_exe python
+stowable = true
+lib =
+    set_github_origin mitsuhiko
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    python setup.py install \
+        --old-and-unmanageable \
+        --prefix $STOW_PKG_PATH
+    # python setup.py install \
+    #     --single-version-externally-managed \
+    #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
+    #     --prefix $STOW_PKG_PATH
+    mr_restow_regardless
