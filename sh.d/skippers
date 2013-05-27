@@ -49,6 +49,13 @@ not_host () {
 }
 
 not_moosehall () {
+    if read_localhost_nickname; then
+        case "$localhost_nickname" in
+            coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic)
+                return 1 # false
+        esac
+    fi
+
     if awk '/^ *search/ { print $2; exit 0 }' /etc/resolv.conf | \
         sed 's/\.$//' | \
         grep -q moosehall
