@@ -20,8 +20,21 @@ github_readonly_remote () {
     git_add_remote "$remote" `github_readonly_url "$username" "$reponame"`
 }
 
+# usage: github_readwrite_remote <REMOTE> [<USERNAME> [<REPONAME>]]
+# required for (even read-only) forks of private repositories
+github_readwrite_remote () {
+    remote="$1"
+    username="${2:-$remote}"
+    reponame="$3"
+    git_add_remote "$remote" `github_readwrite_url "$username" "$reponame"`
+}
+
 github_origin_remote () {
     git_add_remote origin `github_origin_url`
+}
+
+github_origin_rw_remote () {
+    git_add_remote origin `github_origin_rw_url`
 }
 
 gitorious_remote () {
@@ -84,8 +97,15 @@ auto_remotes () {
 
     if ! confidential_repo; then
         github_remote
-        if [ -n "$MR_GITHUB_ORIGIN" ]; then
-            github_origin_remote
-        fi
+    fi
+
+    if [ -n "$MR_GITHUB_ORIGIN" ]; then
+        github_origin_remote
+    fi
+
+    # Even do this for confidential repos, since could be a private
+    # github repo (or a fork thereof).
+    if [ -n "$MR_GITHUB_RW_ORIGIN" ]; then
+        github_origin_rw_remote
     fi
 }

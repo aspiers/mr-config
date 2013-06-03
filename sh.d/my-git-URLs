@@ -25,6 +25,10 @@ github_readonly_url () {
     echo "git://github.com/$1/${2:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
 }
 
+github_readwrite_url () {
+    echo "git@github.com:$1/${2:-${MR_GITHUB_NAME:-$MR_NAME}}.git"
+}
+
 set_github_origin () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_github_origin $*"
@@ -34,8 +38,21 @@ set_github_origin () {
     MR_GITHUB_ORIGIN="$1"
 }
 
+set_github_rw_origin () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_github_rw_origin $*"
+        exit 1
+    fi
+
+    MR_GITHUB_RW_ORIGIN="$1"
+}
+
 github_origin_url () {
     github_readonly_url "$MR_GITHUB_ORIGIN"
+}
+
+github_origin_rw_url () {
+    github_readwrite_url "$MR_GITHUB_RW_ORIGIN"
 }
 
 gitorious_url () {
