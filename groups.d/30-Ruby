@@ -35,6 +35,14 @@ remotes =
     auto_remotes
     github_readonly_remote jasonLaster
 
+[$HOME/.GIT/3rd-party/rvm-capistrano]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin wayneeseguin
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/3rd-party/capistrano-unicorn]
 skip = lazy || missing_exe ruby
 checkout = github_clone
