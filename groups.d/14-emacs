@@ -110,7 +110,6 @@ lib = set_email emacs@adamspiers.org
 checkout = github_clone
 remotes =
     auto_remotes
-    set_github_origin magit
 fixups = symlink_repo_from ~/lib/emacs/major-modes/remember.git
 push = unsafe
 
