@@ -7,7 +7,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/rvm]
-skip = lazy
+skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
     set_github_origin wayneeseguin
@@ -15,8 +15,16 @@ remotes =
     auto_remotes
 fixups =
     cd $MR_REPO
+    rvm_path_saved="$rvm_path"
     # See HACKING.md
+    git submodule init
+    git submodule update
+    ./bin/rvm switch $MR_REPO
     ./install
+    ./bin/rvm switch "$rvm_path_saved"
+
+# [$HOME/.GIT/3rd-party/rvm-test]
+# rvm-test should be checked out as a submodule of the rvm repo
 
 [$HOME/.GIT/3rd-party/rake]
 skip = lazy || missing_exe ruby
