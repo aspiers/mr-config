@@ -98,9 +98,9 @@ fixups = make install
 
 [$HOME/.GIT/3rd-party/hub]
 skip = default_skipper || missing_exe git
-checkout = git_clone git://github.com/defunkt/hub.git
+checkout = git_clone git://github.com/github/hub.git
 fixups =
-    curl http://defunkt.io/hub/standalone -sLo ~/bin/hub &&
+    curl http://hub.github.com/standalone -sLo ~/bin/hub &&
       chmod +x ~/bin/hub
 
 [$HOME/.GIT/3rd-party/mhs-tidbits]
