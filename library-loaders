@@ -13,7 +13,8 @@ include_files () {
 
 include_mr_extensions () {
     mr_lib=$HOME/.GIT/3rd-party/mr/lib
-    for lib in "$mr_lib"/{stow,download,osc}; do
+    for lib in stow download osc; do
+        lib="$mr_lib/$lib"
         if [ -e "$lib" ]; then
             include_files "$lib"
         else
