@@ -34,6 +34,14 @@ lib =
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/rails]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin rails
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/3rd-party/pry-debugger]
 skip = lazy || missing_exe ruby
 checkout = github_clone
