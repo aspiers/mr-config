@@ -129,6 +129,14 @@ lib =
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/active_scaffold]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_github_origin activescaffold
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/3rd-party/bundler.el]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe bundle
 checkout = github_clone
