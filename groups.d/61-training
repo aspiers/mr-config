@@ -1,0 +1,8 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/adamspiers.org/pace-graph]
+skip = lazy
+checkout = git_clone_my_repo
+lib = set_email running@adamspiers.org
+remotes =
+    auto_remotes
