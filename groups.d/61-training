@@ -6,3 +6,12 @@ checkout = git_clone_my_repo
 lib = set_email running@adamspiers.org
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/flot]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email flot@adamspiers.org
+    set_github_origin flot
+remotes =
+    auto_remotes
