@@ -48,6 +48,15 @@ checkout = git_clone git://orgmode.org/org-sync.git
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/org2blog]
+skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
+lib =
+    set_email org2blog@adamspiers.org
+    set_github_origin punchagan
+checkout = github_clone
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/3rd-party/cucumber-el]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
 lib =
