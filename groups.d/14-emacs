@@ -57,6 +57,17 @@ checkout = github_clone
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/rpm-spec-mode]
+skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
+lib =
+    set_email rpm-spec-mode@adamspiers.org
+    set_github_origin bjorlykke
+checkout = github_clone
+remotes =
+    auto_remotes
+fixups =
+    ln -sf $MR_REPO/rpm-spec-mode.el ~/lib/emacs/major-modes
+
 [$HOME/.GIT/3rd-party/cucumber-el]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
 lib =
