@@ -1,5 +1,23 @@
 # -*- mode: sh -*-
 
+set_git_clone_remote () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_git_clone_remote $*"
+        exit 1
+    fi
+
+    MR_GIT_CLONE_REMOTE="$1"
+}
+
+set_git_clone_remote_branch () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_git_clone_remote_branch $*"
+        exit 1
+    fi
+
+    MR_GIT_CLONE_REMOTE_BRANCH="$1"
+}
+
 # Usage: git_clone URL
 git_clone () {
     check_repo_name
