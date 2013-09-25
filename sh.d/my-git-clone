@@ -52,7 +52,6 @@ github_rw_clone () {
 
 _github_clone () {
     MR_GIT_CLONE_REMOTE=github
-    MR_GIT_CLONE_REMOTE_BRANCH=master
     if [ $# -gt 0 ]; then
         error "github_clone no longer supports parameters; use MR_GITHUB_NAME."
         exit 1
@@ -62,20 +61,17 @@ _github_clone () {
 
 gitorious_clone () {
     MR_GIT_CLONE_REMOTE=gitorious
-    MR_GIT_CLONE_REMOTE_BRANCH=master
     git_clone `gitorious_url`
 }
 
 savannah_ro_clone () {
     MR_GIT_CLONE_REMOTE=savannah
-    MR_GIT_CLONE_REMOTE_BRANCH=master
     git_clone `savannah_ro_url "$@"`
 }
 
 git_clone_my_repo () {
     check_repo_name
     MR_GIT_CLONE_REMOTE=adamspiers.org
-    MR_GIT_CLONE_REMOTE_BRANCH=master
     git_clone `my_upstream_url`
 }
 
@@ -92,7 +88,6 @@ moosehall_git_checkout () {
         fi
     else
         MR_GIT_CLONE_REMOTE=$hub
-        MR_GIT_CLONE_REMOTE_BRANCH=master
         git_clone $hub:$repo
     fi
 }
