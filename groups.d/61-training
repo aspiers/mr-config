@@ -15,3 +15,12 @@ lib =
     set_github_origin flot
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/Garmin-Forerunner-610-Extractor]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email garmin@adamspiers.org
+    set_github_origin Tigge
+remotes =
+    auto_remotes
