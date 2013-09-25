@@ -8,6 +8,7 @@ savannah_rw_url () {
     echo "savannah:${1:-$MR_NAME}.git"
 }
 
+# This is the name of the repository from which we are going to clone.
 set_git_clone_name () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_git_clone_name $*"
@@ -33,6 +34,8 @@ github_readwrite_url () {
     echo "git@github.com:$1/${2:-`git_clone_name`}.git"
 }
 
+# This is the name of the github user who owns the repo to which
+# we are going to point the "origin" remote.
 set_github_origin () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_github_origin $*"
