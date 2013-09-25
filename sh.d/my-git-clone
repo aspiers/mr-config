@@ -9,14 +9,14 @@ git_clone () {
     fi
     info "Cloning from $1"
     remote_opt=
-    if [ -n "$MR_GIT_REMOTE" ]; then
-        remote_opt="-o $MR_GIT_REMOTE"
-        info "Default remote is $MR_GIT_REMOTE"
+    if [ -n "$MR_GIT_CLONE_REMOTE" ]; then
+        remote_opt="-o $MR_GIT_CLONE_REMOTE"
+        info "Default remote is $MR_GIT_CLONE_REMOTE"
     fi
     branch_opt=
-    if [ -n "$MR_GIT_REMOTE_BRANCH" ]; then
-        branch_opt="-b $MR_GIT_REMOTE_BRANCH"
-        info "Default remote branch is $MR_GIT_REMOTE_BRANCH"
+    if [ -n "$MR_GIT_CLONE_REMOTE_BRANCH" ]; then
+        branch_opt="-b $MR_GIT_CLONE_REMOTE_BRANCH"
+        info "Default remote branch is $MR_GIT_CLONE_REMOTE_BRANCH"
     fi
     git clone $remote_opt $branch_opt "$1" "$MR_REPO"
     git_config_email
@@ -33,8 +33,8 @@ github_rw_clone () {
 }
 
 _github_clone () {
-    MR_GIT_REMOTE=github
-    MR_GIT_REMOTE_BRANCH=master
+    MR_GIT_CLONE_REMOTE=github
+    MR_GIT_CLONE_REMOTE_BRANCH=master
     if [ $# -gt 0 ]; then
         error "github_clone no longer supports parameters; use MR_GITHUB_NAME."
         exit 1
@@ -43,21 +43,21 @@ _github_clone () {
 }
 
 gitorious_clone () {
-    MR_GIT_REMOTE=gitorious
-    MR_GIT_REMOTE_BRANCH=master
+    MR_GIT_CLONE_REMOTE=gitorious
+    MR_GIT_CLONE_REMOTE_BRANCH=master
     git_clone `gitorious_url`
 }
 
 savannah_ro_clone () {
-    MR_GIT_REMOTE=savannah
-    MR_GIT_REMOTE_BRANCH=master
+    MR_GIT_CLONE_REMOTE=savannah
+    MR_GIT_CLONE_REMOTE_BRANCH=master
     git_clone `savannah_ro_url "$@"`
 }
 
 git_clone_my_repo () {
     check_repo_name
-    MR_GIT_REMOTE=adamspiers.org
-    MR_GIT_REMOTE_BRANCH=master
+    MR_GIT_CLONE_REMOTE=adamspiers.org
+    MR_GIT_CLONE_REMOTE_BRANCH=master
     git_clone `my_upstream_url`
 }
 
@@ -73,8 +73,8 @@ moosehall_git_checkout () {
             error "This machine is supposed to be the hub for $MR_REPO but it didn't exist!"
         fi
     else
-        MR_GIT_REMOTE=$hub
-        MR_GIT_REMOTE_BRANCH=master
+        MR_GIT_CLONE_REMOTE=$hub
+        MR_GIT_CLONE_REMOTE_BRANCH=master
         git_clone $hub:$repo
     fi
 }
