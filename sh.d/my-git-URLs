@@ -32,6 +32,10 @@ github_origin_rw_url () {
     github_readwrite_url "$MR_GIT_ORIGIN_RW_USER"
 }
 
+gitorious_readonly_url () {
+    echo "git://gitorious.org/$1/${2:-`git_clone_name`}.git"
+}
+
 # For use when adding origin or auxiliary remotes
 github_readonly_url () {
     echo "git://github.com/$1/${2:-`git_clone_name`}.git"
