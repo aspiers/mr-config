@@ -37,7 +37,7 @@ github_origin_rw_remote () {
     git_add_remote origin `github_origin_rw_url`
 }
 
-gitorious_remote () {
+gitorious_clone_remote () {
     git_add_remote gitorious `gitorious_clone_url`
 }
 
