@@ -8,7 +8,7 @@ savannah_rw_remote () {
     git_add_remote savannah `savannah_rw_url`
 }
 
-github_remote () {
+github_clone_remote () {
     git_add_remote github `github_clone_url`
 }
 
@@ -96,7 +96,7 @@ auto_remotes () {
     fi
 
     if ! confidential_repo; then
-        github_remote
+        github_clone_remote
     fi
 
     if [ -n "$MR_GIT_ORIGIN_USER" ]; then
