@@ -41,22 +41,16 @@ git_clone () {
 }
 
 github_clone () {
-    github_clone_url=`github_clone_url`
-    _github_clone "$@"
+    _github_clone "`github_clone_url`"
 }
 
 github_rw_clone () {
-    github_clone_url=`github_readwrite_url aspiers`
-    _github_clone "$@"
+    _github_clone "`github_readwrite_url aspiers`"
 }
 
 _github_clone () {
     MR_GIT_CLONE_REMOTE=github
-    if [ $# -gt 0 ]; then
-        error "github_clone no longer supports parameters; use MR_GITHUB_NAME."
-        exit 1
-    fi
-    git_clone "$github_clone_url"
+    git_clone "$1"
 }
 
 gitorious_clone () {
