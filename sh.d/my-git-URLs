@@ -1,5 +1,11 @@
 # -*- mode: sh -*-
 
+# Here 'origin' refers to the original remote from which mine was
+# forked, not the repo from which the local one was cloned.  In these
+# cases where I have a fork, the clone will be from my fork (and the
+# name will be set to something like 'github' or 'gitorious'), and the
+# 'origin' remote will point to the upstream repository.
+
 my_upstream_url () {
     echo "${GIT_MY_UPSTREAM}${MR_NAME}.git"
 }
