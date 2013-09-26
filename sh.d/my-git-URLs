@@ -53,16 +53,7 @@ github_origin_rw_url () {
 }
 
 gitorious_clone_url () {
-    echo "gitorious:${MR_GITORIOUS_NAME:-$MR_NAME}.git"
-}
-
-set_gitorious_name () {
-    if [ $# != 1 ]; then
-        error "$MR_REPO: invoked set_gitorious_name $*"
-        exit 1
-    fi
-
-    MR_GITORIOUS_NAME="$1"
+    echo "gitorious:`git_clone_name`.git"
 }
 
 my_upstream_url () {
