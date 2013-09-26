@@ -12,6 +12,14 @@ github_clone_url () {
     echo "github:`git_clone_name`.git"
 }
 
+github_origin_url () {
+    github_readonly_url "$MR_GITHUB_ORIGIN"
+}
+
+github_origin_rw_url () {
+    github_readwrite_url "$MR_GITHUB_RW_ORIGIN"
+}
+
 # For use when adding origin or auxiliary remotes
 github_readonly_url () {
     echo "git://github.com/$1/${2:-`git_clone_name`}.git"
@@ -42,14 +50,6 @@ set_github_rw_origin_user () {
     fi
 
     MR_GITHUB_RW_ORIGIN="$1"
-}
-
-github_origin_url () {
-    github_readonly_url "$MR_GITHUB_ORIGIN"
-}
-
-github_origin_rw_url () {
-    github_readwrite_url "$MR_GITHUB_RW_ORIGIN"
 }
 
 gitorious_clone_url () {
