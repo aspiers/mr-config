@@ -52,7 +52,7 @@ github_origin_rw_url () {
     github_readwrite_url "$MR_GITHUB_RW_ORIGIN"
 }
 
-gitorious_url () {
+gitorious_clone_url () {
     echo "gitorious:${MR_GITORIOUS_NAME:-$MR_NAME}.git"
 }
 

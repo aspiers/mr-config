@@ -38,7 +38,7 @@ github_origin_rw_remote () {
 }
 
 gitorious_remote () {
-    git_add_remote gitorious `gitorious_url`
+    git_add_remote gitorious `gitorious_clone_url`
 }
 
 my_upstream_remote () {
