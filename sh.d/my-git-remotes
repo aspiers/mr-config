@@ -9,7 +9,7 @@ savannah_rw_remote () {
 }
 
 github_remote () {
-    git_add_remote github `github_url`
+    git_add_remote github `github_clone_url`
 }
 
 # usage: github_readonly_remote <REMOTE> [<USERNAME> [<REPONAME>]]

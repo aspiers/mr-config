@@ -9,7 +9,7 @@
           register_upstream () {
               case "$1" in
                   github)
-                      MR_UPSTREAM_URL=`github_url`
+                      MR_UPSTREAM_URL=`github_clone_url`
                       ;;
                   ...
               esac

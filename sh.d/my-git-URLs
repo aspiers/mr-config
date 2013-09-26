@@ -22,7 +22,7 @@ git_clone_name () {
     echo "${MR_GIT_CLONE_NAME:-$MR_NAME}"
 }
 
-github_url () {
+github_clone_url () {
     echo "github:`git_clone_name`.git"
 }
 

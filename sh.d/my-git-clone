@@ -41,7 +41,7 @@ git_clone () {
 }
 
 github_clone () {
-    github_clone_url=`github_url`
+    github_clone_url=`github_clone_url`
     _github_clone "$@"
 }
 
