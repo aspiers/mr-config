@@ -1,11 +1,19 @@
 # -*- mode: sh -*-
 
+my_upstream_url () {
+    echo "${GIT_MY_UPSTREAM}${MR_NAME}.git"
+}
+
 savannah_ro_url () {
     echo "git://git.sv.gnu.org/${1:-$MR_NAME}.git"
 }
 
 savannah_rw_url () {
     echo "savannah:${1:-$MR_NAME}.git"
+}
+
+gitorious_clone_url () {
+    echo "gitorious:`git_clone_name`.git"
 }
 
 github_clone_url () {
@@ -50,12 +58,4 @@ set_git_rw_origin_user () {
     fi
 
     MR_GIT_ORIGIN_RW_USER="$1"
-}
-
-gitorious_clone_url () {
-    echo "gitorious:`git_clone_name`.git"
-}
-
-my_upstream_url () {
-    echo "${GIT_MY_UPSTREAM}${MR_NAME}.git"
 }
