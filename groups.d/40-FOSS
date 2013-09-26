@@ -56,7 +56,7 @@ fixups =
 [$HOME/.GIT/3rd-party/smokeping]
 skip = lazy
 lib =
-    set_github_name SmokePing
+    set_git_clone_name SmokePing
     mr_init_stow_package
     mr_stow_info_hooks
 checkout = github_clone

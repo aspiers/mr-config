@@ -6,7 +6,7 @@
 # of the bootstrap sequence (although it would make sense
 # to run remotes and fixups on this repository later on).
 [$HOME/.GIT/3rd-party/mr]
-lib = set_github_name kitenet-mr
+lib = set_git_clone_name kitenet-mr
 checkout = github_clone
 remotes =
     auto_remotes
@@ -92,7 +92,7 @@ stowable = true
 
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/ssh]
-lib = set_github_name ssh-config
+lib = set_git_clone_name ssh-config
 skip = default_skipper || missing_exe ssh
 checkout = git_clone_my_repo
 remotes = auto_remotes
