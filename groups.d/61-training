@@ -12,7 +12,7 @@ skip = lazy
 checkout = github_clone
 lib =
     set_email flot@adamspiers.org
-    set_github_origin_user flot
+    set_git_origin_user flot
 remotes =
     auto_remotes
 
@@ -21,6 +21,6 @@ skip = lazy
 checkout = github_clone
 lib =
     set_email garmin@adamspiers.org
-    set_github_origin_user Tigge
+    set_git_origin_user Tigge
 remotes =
     auto_remotes

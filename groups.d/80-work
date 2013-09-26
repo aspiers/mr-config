@@ -10,7 +10,7 @@ checkout = github_clone
 remotes = auto_remotes
 stowable = true
 lib =
-    set_github_origin_user saschpe
+    set_git_origin_user saschpe
     mr_init_stow_package
 fixups =
     python setup.py install \
