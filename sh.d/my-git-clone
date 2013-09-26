@@ -9,6 +9,20 @@ set_git_clone_remote () {
     MR_GIT_CLONE_REMOTE="$1"
 }
 
+# This is the name of the repository from which we are going to clone.
+set_git_clone_name () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_git_clone_name $*"
+        exit 1
+    fi
+
+    MR_GIT_CLONE_NAME="$1"
+}
+
+git_clone_name () {
+    echo "${MR_GIT_CLONE_NAME:-$MR_NAME}"
+}
+
 set_git_clone_remote_branch () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_git_clone_remote_branch $*"
