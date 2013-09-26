@@ -10,7 +10,7 @@ stowable = true
 skip = lazy || default_skipper || missing_exe python
 stowable = true
 lib =
-    set_github_origin mitsuhiko
+    set_github_origin_user mitsuhiko
     mr_init_stow_package
 checkout = github_clone
 remotes = auto_remotes

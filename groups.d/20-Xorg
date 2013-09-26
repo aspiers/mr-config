@@ -65,7 +65,7 @@ stowable = true
 [$HOME/.GIT/3rd-party/ctoolu]
 skip = default_skipper || missing_exe ruby
 checkout = github_clone
-lib = set_github_origin mvidner
+lib = set_github_origin_user mvidner
 remotes =
     auto_remotes
 fixups =

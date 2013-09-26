@@ -52,7 +52,7 @@ remotes =
 skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
 lib =
     set_email org2blog@adamspiers.org
-    set_github_origin punchagan
+    set_github_origin_user punchagan
 checkout = github_clone
 remotes =
     auto_remotes
@@ -61,7 +61,7 @@ remotes =
 skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
 lib =
     set_email rpm-spec-mode@adamspiers.org
-    set_github_origin bjorlykke
+    set_github_origin_user bjorlykke
 checkout = github_clone
 remotes =
     auto_remotes
@@ -73,7 +73,7 @@ skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-mod
 lib =
     set_email emacs@adamspiers.org
     set_git_clone_name cucumber.el
-    set_github_origin michaelklishin
+    set_github_origin_user michaelklishin
 checkout = github_clone
 remotes =
     auto_remotes
@@ -193,7 +193,7 @@ skip = lazy || default_skipper || missing_exe emacs || missing_exe google-chrome
 stowable = true
 lib =
     set_email emacs@adamspiers.org
-    set_github_origin frobtech
+    set_github_origin_user frobtech
     mr_init_stow_package
 checkout = github_clone
 remotes = auto_remotes

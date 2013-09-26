@@ -22,16 +22,18 @@ github_readwrite_url () {
 
 # This is the name of the github user who owns the repo to which
 # we are going to point the "origin" remote.
-set_github_origin () {
+set_github_origin_user () {
     if [ $# != 1 ]; then
-        error "$MR_REPO: invoked set_github_origin $*"
+        error "$MR_REPO: invoked set_github_origin_user $*"
         exit 1
     fi
 
     MR_GITHUB_ORIGIN="$1"
 }
 
-set_github_rw_origin () {
+# Same as above, but for when we have write access to the origin
+# and want to be able to push to it.
+set_github_rw_origin_user () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_github_rw_origin $*"
         exit 1

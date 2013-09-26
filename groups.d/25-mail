@@ -44,7 +44,7 @@ stowable = true
 [$HOME/.GIT/3rd-party/maildir-dedupe]
 lib =
     set_git_clone_name maildir-deduplicate
-    set_github_origin kdeldycke
+    set_github_origin_user kdeldycke
 checkout = github_clone
 remotes =
     auto_remotes

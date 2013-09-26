@@ -67,7 +67,7 @@ remotes =
 skip = ! music_machine || ! grep -q 'openSUSE' /etc/SuSE-release
 lib =
     set_email spotify-on-opensuse@adamspiers.org
-    set_github_origin leamas
+    set_github_origin_user leamas
 checkout = github_clone
 remotes =
     auto_remotes
@@ -102,7 +102,7 @@ fixups =
 [$HOME/.GIT/3rd-party/python-midi]
 skip = lazy || ! music_machine || missing_exe python
 lib =
-    set_github_origin vishnubob
+    set_github_origin_user vishnubob
     set_email python-midi@adamspiers.org
 checkout = github_clone
 remotes =

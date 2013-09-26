@@ -10,7 +10,7 @@ stowable = true
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin wayneeseguin
+    set_github_origin_user wayneeseguin
 remotes =
     auto_remotes
 fixups =
@@ -30,7 +30,7 @@ fixups =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin jimweirich
+    set_github_origin_user jimweirich
 remotes =
     auto_remotes
 
@@ -38,7 +38,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin rails
+    set_github_origin_user rails
 remotes =
     auto_remotes
 
@@ -46,7 +46,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin nixme
+    set_github_origin_user nixme
 remotes =
     auto_remotes
     github_readonly_remote jasonLaster
@@ -55,7 +55,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin wayneeseguin
+    set_github_origin_user wayneeseguin
 remotes =
     auto_remotes
 
@@ -63,7 +63,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin sosedoff
+    set_github_origin_user sosedoff
 remotes =
     auto_remotes
     # https://github.com/sosedoff/capistrano-unicorn/issues/45
@@ -76,7 +76,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin defunkt
+    set_github_origin_user defunkt
 remotes =
     auto_remotes
 
@@ -84,7 +84,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin guard
+    set_github_origin_user guard
 remotes =
     auto_remotes
 
@@ -92,7 +92,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin kselden
+    set_github_origin_user kselden
 remotes =
     auto_remotes
 
@@ -100,7 +100,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin guard
+    set_github_origin_user guard
 remotes =
     auto_remotes
 
@@ -108,7 +108,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin guard
+    set_github_origin_user guard
     github_readonly_remote bramswenson
 remotes =
     auto_remotes
@@ -117,7 +117,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin guard
+    set_github_origin_user guard
 remotes =
     auto_remotes
 
@@ -125,7 +125,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin CapnKernul
+    set_github_origin_user CapnKernul
 remotes =
     auto_remotes
 
@@ -133,7 +133,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin jonleighton
+    set_github_origin_user jonleighton
 remotes =
     auto_remotes
 
@@ -141,7 +141,7 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = github_clone
 lib =
-    set_github_origin activescaffold
+    set_github_origin_user activescaffold
 remotes =
     auto_remotes
 
@@ -149,7 +149,7 @@ remotes =
 skip = lazy || default_skipper || missing_exe emacs || missing_exe bundle
 checkout = github_clone
 lib =
-    set_github_origin tobiassvn
+    set_github_origin_user tobiassvn
 remotes = auto_remotes
 fixups =
     ensure_symlink_exists ~/lib/emacs/utils/bundler.el "$MR_REPO/bundler.el"
