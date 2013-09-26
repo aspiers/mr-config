@@ -20,6 +20,10 @@ github_clone_url () {
     echo "github:`git_clone_name`.git"
 }
 
+gitorious_origin_url () {
+    gitorious_readonly_url "$MR_GIT_ORIGIN_USER"
+}
+
 github_origin_url () {
     github_readonly_url "$MR_GIT_ORIGIN_USER"
 }
