@@ -99,13 +99,13 @@ auto_remotes () {
         github_remote
     fi
 
-    if [ -n "$MR_GITHUB_ORIGIN" ]; then
+    if [ -n "$MR_GIT_ORIGIN_USER" ]; then
         github_origin_remote
     fi
 
     # Even do this for confidential repos, since could be a private
     # github repo (or a fork thereof).
-    if [ -n "$MR_GITHUB_RW_ORIGIN" ]; then
+    if [ -n "$MR_GIT_ORIGIN_RW_USER" ]; then
         github_origin_rw_remote
     fi
 }

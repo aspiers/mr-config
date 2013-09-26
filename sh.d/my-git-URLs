@@ -13,11 +13,11 @@ github_clone_url () {
 }
 
 github_origin_url () {
-    github_readonly_url "$MR_GITHUB_ORIGIN"
+    github_readonly_url "$MR_GIT_ORIGIN_USER"
 }
 
 github_origin_rw_url () {
-    github_readwrite_url "$MR_GITHUB_RW_ORIGIN"
+    github_readwrite_url "$MR_GIT_ORIGIN_RW_USER"
 }
 
 # For use when adding origin or auxiliary remotes
@@ -38,7 +38,7 @@ set_git_origin_user () {
         exit 1
     fi
 
-    MR_GITHUB_ORIGIN="$1"
+    MR_GIT_ORIGIN_USER="$1"
 }
 
 # Same as above, but for when we have write access to the origin
@@ -49,7 +49,7 @@ set_git_rw_origin_user () {
         exit 1
     fi
 
-    MR_GITHUB_RW_ORIGIN="$1"
+    MR_GIT_ORIGIN_RW_USER="$1"
 }
 
 gitorious_clone_url () {
