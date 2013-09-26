@@ -63,23 +63,23 @@ github_rw_clone () {
 }
 
 _github_clone () {
-    MR_GIT_CLONE_REMOTE=github
+    set_git_clone_remote github
     git_clone "$1"
 }
 
 gitorious_clone () {
-    MR_GIT_CLONE_REMOTE=gitorious
+    set_git_clone_remote gitorious
     git_clone `gitorious_clone_url`
 }
 
 savannah_ro_clone () {
-    MR_GIT_CLONE_REMOTE=savannah
+    set_git_clone_remote savannah
     git_clone `savannah_ro_url "$@"`
 }
 
 git_clone_my_repo () {
     check_repo_name
-    MR_GIT_CLONE_REMOTE=adamspiers.org
+    set_git_clone_remote adamspiers.org
     git_clone `my_upstream_url`
 }
 
@@ -95,7 +95,7 @@ moosehall_git_checkout () {
             error "This machine is supposed to be the hub for $MR_REPO but it didn't exist!"
         fi
     else
-        MR_GIT_CLONE_REMOTE=$hub
+        set_git_clone_remote $hub
         git_clone $hub:$repo
     fi
 }
