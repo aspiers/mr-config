@@ -90,3 +90,16 @@ fixups =
     # FIXME: src/Makefile.am does chown / chmod u+s
     sudo make install prefix=$STOW_PKG_PATH
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/FFcast2]
+stowable = true
+lib =
+    mr_init_stow_package
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user lolilolicon
+    set_email ffcast2@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    make install PREFIX=$STOW_PKG_PATH
