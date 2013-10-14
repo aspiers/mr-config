@@ -34,3 +34,24 @@ lib =
     set_email adam@spiers.net
     set_confidential_repo
 remotes = auto_remotes
+
+[$HOME/.SVN/pyroscope]
+skip = lazy || default_skipper
+checkout = svn checkout http://pyroscope.googlecode.com/svn/trunk $MR_REPO
+lib =
+    set_email pyroscope@adamspiers.org
+remotes = auto_remotes
+fixups =
+    #./update-to-head.sh
+    cd pyrocore/docs/rtorrent-extended
+    #./build.sh download
+    if ! [ -d /usr/include/sigc++-2.0 ]; then
+        echo >&2 "WARNING: try zypper in libsigc++2-devel first"
+    fi
+    if ! [ -d /usr/include/torrent ]; then
+        echo >&2 "WARNING: try zypper in libtorrent-devel first"
+    fi
+    if ! [ -d /usr/include/xmlrpc-c ]; then
+        echo >&2 "WARNING: try zypper in xmlrpc-c-devel first"
+    fi
+    ./build.sh all
