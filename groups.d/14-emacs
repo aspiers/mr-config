@@ -120,9 +120,14 @@ push = unsafe
 [$HOME/.GIT/3rd-party/emacs]
 name = emacs-git
 skip = lazy || default_skipper
-lib = set_email emacs@adamspiers.org
+lib =
+    set_email emacs@adamspiers.org
+    set_git_origin_user mirrors
+    set_git_clone_name emacs
 checkout = savannah_ro_clone emacs
 push = unsafe
+remotes =
+    auto_remotes
 
 [$HOME/.GIT/3rd-party/magit]
 skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
