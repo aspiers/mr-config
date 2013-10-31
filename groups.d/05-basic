@@ -22,7 +22,7 @@ checkout = git_clone git://git-annex.branchable.com/
 remotes = auto_remotes
 fixups =
     cabal update
-    cabal install c2hs
+    cabal install --bindir=$HOME/bin c2hs
     cabal install --only-dependencies
     cabal configure
     cabal build
