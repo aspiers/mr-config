@@ -96,16 +96,31 @@ auto_remotes () {
     fi
 
     if ! confidential_repo; then
+        # only do this if cloned from local
         github_clone_remote
     fi
 
+    # Ensure "origin" is included in the automatically generated
+    # remotes.  The challenge is to determine at which upstream
+    # service it should point (e.g. github, gitorious etc.).  During
+    # cloning, set_git_clone_remote is called, so we know which
+    # service the repo was cloned from.  However we also need to know
+    # this post-clone, for re-runs of "mr remotes" etc.  It's
+    # reasonable to assume that if this repo was cloned from a fork of
+    # mine, the original it was forked from originates from the same
+    # service.  But which service?  If called post-cloning, do we have
+    # any way of knowing?  Previously there was a version of
+    # MR_GIT_ORIGIN_USER for each service, so we could tell that
+    # way.  FIXME: move definition of repo to clone from to lib,
+    # so that we can access it post-cloning.
+    #
+    #echo "MR_GIT_CLONE_REMOTE is $MR_GIT_CLONE_REMOTE"
+    #(cd $MR_REPO; git remote -v)
     if [ -n "$MR_GIT_ORIGIN_USER" ]; then
         github_origin_remote
-    fi
-
-    # Even do this for confidential repos, since could be a private
-    # github repo (or a fork thereof).
-    if [ -n "$MR_GIT_ORIGIN_RW_USER" ]; then
+    elif [ -n "$MR_GIT_ORIGIN_RW_USER" ]; then
+        # Even do this for confidential repos, since could be a
+        # private github repo (or a fork thereof).
         github_origin_rw_remote
     fi
 }
