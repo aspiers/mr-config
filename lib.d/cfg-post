@@ -8,7 +8,11 @@ fixups_append =
             s="$ZDOTDIR/$dir/$stowed"
             if [ -x "$s" ]; then
                 info "Running $s ..."
-                "$s"
+                if "$s"; then
+                    info "$s succeeded"
+                else
+                    error "$s failed"
+                fi
             else
                 error "$f not stowed as $s; can't run"
             fi
