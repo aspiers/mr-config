@@ -52,8 +52,11 @@ github_readwrite_url () {
     echo "git@github.com:$1/${2:-`git_clone_name`}.git"
 }
 
-# This is the name of the github user who owns the repo to which
-# we are going to point the "origin" remote.
+# This is the name of the user who owns the repo to which
+# we are going to point the "origin" remote.  This will be
+# used by service-specific code for multiple services, but
+# that's OK, because we can only ever have one 'origin'
+# remote per repo.
 set_git_origin_user () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_git_origin_user $*"
