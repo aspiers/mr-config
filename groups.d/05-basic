@@ -14,9 +14,20 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/git-annex]
+stowable = true
+lib =
+    mr_init_stow_package
 skip = default_skipper || missing_exe git
 checkout = git_clone git://git-annex.branchable.com/
 remotes = auto_remotes
+fixups =
+    cabal update
+    cabal install c2hs
+    cabal install --only-dependencies
+    cabal configure
+    cabal build
+    cabal install --bindir=$STOW_PKG_PATH/bin
+    mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/gnupg]
 deleted = true
