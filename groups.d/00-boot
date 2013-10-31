@@ -105,6 +105,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/dvcs-autosync]
+skip = lazy
 lib = set_git_clone_remote gitorious
 checkout = git_clone git@gitorious.org:~aspiers/dvcs-autosync/aspiers-dvcs-autosync.git
 remotes =
