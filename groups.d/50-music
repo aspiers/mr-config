@@ -54,6 +54,14 @@ chain = true
 remotes = auto_remotes
 fixups = ln -sf music/MUSIC ~
 
+[$HOME/music/RotC/website/public/htdocs]
+skip = lazy || ! music_machine
+lib =
+    set_confidential_repo
+    set_email music@adamspiers.org
+checkout = moosehall_git_checkout
+remotes = auto_remotes
+
 [$HOME/.GIT/3rd-party/opensuse-spotify-installer]
 skip = ! music_machine || ! grep -q 'openSUSE' /etc/SuSE-release
 lib = set_email spotify-on-opensuse@adamspiers.org
