@@ -152,4 +152,4 @@ lib =
     set_git_origin_user tobiassvn
 remotes = auto_remotes
 fixups =
-    ensure_symlink_exists ~/lib/emacs/utils/bundler.el "$MR_REPO/bundler.el"
+    #ensure_symlink_exists ~/lib/emacs/utils/bundler.el "$MR_REPO/bundler.el"
