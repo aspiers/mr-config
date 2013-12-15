@@ -168,7 +168,7 @@ lib = set_email aspiers@suse.com
 checkout = github_clone
 remotes = auto_remotes
 fixups =
-    ensure_symlink_exists ~/lib/emacs/minor-modes/vc-osc.el "$MR_REPO/vc-osc.el"
+    # loaded via el-get now
 
 [$HOME/.GIT/adamspiers.org/smooth-scrolling]
 skip = lazy || default_skipper || missing_exe emacs
