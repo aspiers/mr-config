@@ -153,3 +153,10 @@ lib =
 remotes = auto_remotes
 fixups =
     #ensure_symlink_exists ~/lib/emacs/utils/bundler.el "$MR_REPO/bundler.el"
+
+[$HOME/.GIT/3rd-party/capistrano-deploytags]
+skip = lazy || default_skipper || missing_exe ruby
+checkout = github_clone
+lib =
+    set_git_origin_user mydrive
+remotes = auto_remotes
