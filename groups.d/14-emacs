@@ -202,11 +202,12 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
-    mkdir -p "$STOW_PKG_PATH/lib/emacs/utils"
-    ensure_symlink_exists \
-        "$STOW_PKG_PATH/lib/emacs/utils/edit-server-htmlize.el" \
-        "$MR_REPO/edit-server-htmlize.el"
-    mr_restow_regardless
+    # loaded via el-get now
+    # mkdir -p "$STOW_PKG_PATH/lib/emacs/utils"
+    # ensure_symlink_exists \
+    #     "$STOW_PKG_PATH/lib/emacs/utils/edit-server-htmlize.el" \
+    #     "$MR_REPO/edit-server-htmlize.el"
+    # mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/projectile]
 skip = lazy || default_skipper || missing_exe emacs
