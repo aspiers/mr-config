@@ -99,9 +99,12 @@ fixups = make install
 [$HOME/.GIT/3rd-party/hub]
 skip = default_skipper || missing_exe git
 checkout = git_clone git://github.com/github/hub.git
+lib =
+    set_git_origin_user github
 fixups =
     curl http://hub.github.com/standalone -sLo ~/bin/hub &&
       chmod +x ~/bin/hub
+remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/mhs-tidbits]
 skip = default_skipper || missing_exe git
