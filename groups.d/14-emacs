@@ -66,7 +66,6 @@ checkout = github_clone
 remotes =
     auto_remotes
 fixups =
-    ln -sf $MR_REPO/rpm-spec-mode.el ~/lib/emacs/major-modes
 
 [$HOME/.GIT/3rd-party/cucumber-el]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
