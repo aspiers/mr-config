@@ -57,10 +57,10 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
-# [$HOME/.GIT/adamspiers.org/backgrounds]
-# checkout = git_clone_my_repo
-# remotes = auto_remotes
-# stowable = true
+[$HOME/.GIT/adamspiers.org/backgrounds]
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
 
 [$HOME/.GIT/3rd-party/ctoolu]
 skip = default_skipper || missing_exe ruby
