@@ -136,7 +136,6 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
-fixups = symlink_repo_from ~/lib/emacs/major-modes/remember.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/auto-complete-mode]
