@@ -124,3 +124,14 @@ fixups =
     cd "$MR_REPO"
     python setup.py install --prefix $STOW_PKG_PATH
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/googledriveannex]
+skip = default_skipper || missing_exe git-annex
+checkout = github_clone
+lib =
+    set_git_origin_user TobiasTheViking
+fixups =
+    cd "$MR_REPO"
+    chmod +x git-annex-remote-googledrive
+    sudo ln -sf "$MR_REPO"/git-annex-remote-googledrive ~/bin
+remotes = auto_remotes
