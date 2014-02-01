@@ -151,7 +151,7 @@ checkout = github_clone
 lib =
     set_git_origin_user tobiassvn
 remotes = auto_remotes
-fixups =
+#fixups =
     #ensure_symlink_exists ~/lib/emacs/utils/bundler.el "$MR_REPO/bundler.el"
 
 [$HOME/.GIT/3rd-party/capistrano-deploytags]
