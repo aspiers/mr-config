@@ -24,3 +24,12 @@ lib =
     set_git_origin_user Tigge
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/openant]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email garmin@adamspiers.org
+    set_git_origin_user Tigge
+remotes =
+    auto_remotes
