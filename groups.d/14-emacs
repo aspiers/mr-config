@@ -239,3 +239,10 @@ fixups =
     #   https://github.com/dimitri/el-get/issues/1171
     # Maybe create a mr helper function to create a recipe pointing to $MR_REPO?
     #el_get_local_recipe
+
+[$HOME/.GIT/3rd-party/phi-search]
+skip = lazy || default_skipper || missing_exe emacs
+lib =
+    set_git_origin_user zk-phi
+checkout = github_clone
+remotes = auto_remotes
