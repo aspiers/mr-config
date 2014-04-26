@@ -221,14 +221,14 @@ fixups =
     #     "$MR_REPO/edit-server-htmlize.el"
     # mr_restow_regardless
 
-[$HOME/.GIT/adamspiers.org/projectile]
+[$HOME/.GIT/3rd-party/projectile]
 skip = lazy || default_skipper || missing_exe emacs
 lib =
     set_git_origin_user bbatsov
 checkout = github_clone
 remotes = auto_remotes
 
-[$HOME/.GIT/adamspiers.org/multiple-cursors.el]
+[$HOME/.GIT/3rd-party/multiple-cursors.el]
 skip = lazy || default_skipper || missing_exe emacs
 lib =
     set_git_origin_user magnars
