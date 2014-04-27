@@ -113,6 +113,14 @@ lib =
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/bundler]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_git_origin_user bundler
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/3rd-party/guard-bundler]
 skip = lazy || missing_exe ruby
 checkout = github_clone
