@@ -94,3 +94,12 @@ fixups =
     cd "$MR_REPO"
     python setup.py install --prefix $STOW_PKG_PATH
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/git-when-merged]
+skip = default_skipper || missing_exe git
+checkout = github_clone
+lib =
+    set_git_origin_user mhagger
+fixups =
+    ln -sf $MR_REPO/bin/$MR_NAME ~/bin/$MR_NAME
+remotes = auto_remotes
