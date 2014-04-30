@@ -73,7 +73,12 @@ remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/mhs-tidbits]
 skip = default_skipper || missing_exe git
-checkout = git_clone git://github.com/mhs/tidbits.git
+lib =
+    mr_init_stow_package
+    set_git_clone_name tidbits
+    set_git_origin_user mhs
+checkout = github_clone
+remotes = auto_remotes
 fixups =
     ln -sf $MR_REPO/lib/git-unmerged.rb ~/bin/git-unmerged
 
