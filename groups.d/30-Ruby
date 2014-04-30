@@ -176,3 +176,11 @@ lib =
     set_git_origin_user mitchell
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/vagrant-libvirt]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_git_origin_user pradels
+remotes =
+    auto_remotes
