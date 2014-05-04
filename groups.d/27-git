@@ -1,5 +1,7 @@
 # -*- mode: sh -*-
 
+# [$HOME/.GIT/adamspiers.org/git] is in 00-boot
+
 [$HOME/.GIT/3rd-party/git]
 skip = lazy || default_skipper || missing_exe git
 checkout = github_clone
