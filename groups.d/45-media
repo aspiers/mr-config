@@ -55,3 +55,10 @@ fixups =
         echo >&2 "WARNING: try zypper in xmlrpc-c-devel first"
     fi
     ./build.sh all
+
+[$HOME/.GIT/adamspiers.org/PDFexploder]
+skip = lazy || default_skipper
+checkout = git_clone_my_repo
+lib =
+    set_email pdfexploder@adamspiers.org
+remotes = auto_remotes
