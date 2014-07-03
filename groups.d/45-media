@@ -60,5 +60,5 @@ fixups =
 skip = lazy || default_skipper
 checkout = git_clone_my_repo
 lib =
-    set_email pdfexploder@adamspiers.org
+    set_email pdf-exploder@adamspiers.org
 remotes = auto_remotes
