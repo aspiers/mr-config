@@ -47,6 +47,12 @@ fixups =
     done
     mr_restow_regardless
 
+[$HOME/.GIT/adamspiers.org/git.adam_spiers.pub]
+skip = default_skipper
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+
 [$HOME/.GIT/adamspiers.org/github.sec]
 skip = lazy || default_skipper
 checkout = git_clone_my_repo
