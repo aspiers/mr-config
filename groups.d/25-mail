@@ -69,3 +69,16 @@ fixups =
     make install prefix=$STOW_PKG_PATH
     rm $STOW_PKG_PATH/share/info/dir
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/mutt-ics]
+checkout = github_clone
+lib =
+    set_git_origin_user dmedvinsky
+fixups =
+    virtualenv .env
+    .env/bin/pip install -r requirements.txt
+    cat > ~/bin/show-ics <<EOF
+    #!/bin/sh
+    $MR_REPO/.env/bin/python $MR_REPO/src/main.py "\$@"
+    EOF
+    chmod u+x ~/bin/show-ics
