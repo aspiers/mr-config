@@ -70,6 +70,7 @@ stowable = true
 lib =
     set_git_origin_user saschpe
     mr_init_stow_package
+    set_email aspiers@suse.com
 fixups =
     python setup.py install \
         --old-and-unmanageable \
