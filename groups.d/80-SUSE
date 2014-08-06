@@ -62,3 +62,20 @@ fixups =
 checkout = git_clone https://github.com/mvidner/Bugzilla-Tools.git
 lib =
     set_email aspiers@suse.com
+
+[$HOME/.GIT/3rd-party/rapport]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user saschpe
+    mr_init_stow_package
+fixups =
+    python setup.py install \
+        --old-and-unmanageable \
+        --prefix $STOW_PKG_PATH
+    # python setup.py install \
+    #     --single-version-externally-managed \
+    #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
+    #     --prefix $STOW_PKG_PATH
+    mr_restow_regardless
