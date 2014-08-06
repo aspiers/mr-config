@@ -80,3 +80,11 @@ fixups =
     #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
     #     --prefix $STOW_PKG_PATH
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/maildir-to-ics]
+checkout = github_clone
+lib =
+    set_git_origin_user vuntz
+remotes = auto_remotes
+fixups =
+    ensure_symlink_exists ~/bin/maildir-to-ics "$MR_REPO/maildir-to-ics"
