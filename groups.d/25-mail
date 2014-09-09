@@ -72,6 +72,7 @@ fixups =
 
 [$HOME/.GIT/3rd-party/mutt-ics]
 checkout = github_clone
+remotes = auto_remotes
 lib =
     set_git_origin_user dmedvinsky
 fixups =
