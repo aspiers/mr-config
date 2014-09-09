@@ -16,6 +16,14 @@ compile =
     export LYMAKE='make -j3 CPU_COUNT=3'
     $LYMAKE
 
+[$HOME/.GIT/3rd-party/openlilylib]
+skip = lazy || ! music_machine
+checkout = github_clone
+lib =
+    set_git_origin_user openlilylib
+remotes = auto_remotes
+push = unsafe
+
 [$HOME/.GIT/3rd-party/git-cl]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
 checkout = git_clone https://github.com/gperciva/git-cl
