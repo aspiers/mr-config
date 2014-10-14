@@ -184,3 +184,20 @@ lib =
     set_git_origin_user pradels
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/fog]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_git_origin_user fog
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/fog-core]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_email fog@adamspiers.org
+    set_git_origin_user fog
+remotes =
+    auto_remotes
