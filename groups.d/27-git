@@ -29,7 +29,7 @@ fixups =
         '("/.GIT/3rd-party/git/" . (lambda () (setq indent-tabs-mode t))))
     EOF
     cd "$MR_REPO"
-    make ${MAKE_FLAGS--j} install prefix=$STOW_PKG_PATH ${CFLAGS:+CFLAGS="$CFLAGS"}
+    nice -n15 make ${MAKE_FLAGS--j2} install prefix=$STOW_PKG_PATH ${CFLAGS:+CFLAGS="$CFLAGS"}
     if which asciidoc >/dev/null 2>&1; then
         if which xmlto >/dev/null 2>&1; then
             make ${MAKE_FLAGS--j} install-doc prefix=$STOW_PKG_PATH ${CFLAGS:+CFLAGS="$CFLAGS"}
