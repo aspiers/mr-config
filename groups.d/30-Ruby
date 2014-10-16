@@ -201,3 +201,11 @@ lib =
     set_git_origin_user fog
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/ruby-libvirt]
+skip = lazy || missing_exe ruby
+checkout = git_clone git://libvirt.org/ruby-libvirt.git
+lib =
+    set_email libvirt@adamspiers.org
+remotes =
+    auto_remotes
