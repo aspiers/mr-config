@@ -53,22 +53,22 @@ moosehall_remotes () {
     # Note: uses URL rewriting so we can decide independently
     # whether to fetch over wired/wireless or even ADSL.
     git_add_remotes "
-        atlantic REMOTE:$repo
-        southern REMOTE:$repo
-        adriatic REMOTE:$repo
-        pacific  REMOTE:$repo
-        indian   REMOTE:$repo
-        mc       mediacentre:$repo mediacentre
+        atlantic REMOTE:${repo// /\\ }
+        southern REMOTE:${repo// /\\ }
+        adriatic REMOTE:${repo// /\\ }
+        pacific  REMOTE:${repo// /\\ }
+        indian   REMOTE:${repo// /\\ }
+        mc       mediacentre:${repo// /\\ } mediacentre
     "
 }
 
 moosehall_work_remotes () {
     repo="${MR_REPO#$HOME/}"
     git_add_remotes "
-        atlantic  REMOTE:$repo
-        southern  REMOTE:$repo
-        pacific   REMOTE:$repo
-        indian    REMOTE:$repo
+        atlantic  REMOTE:${repo// /\\ }
+        southern  REMOTE:${repo// /\\ }
+        pacific   REMOTE:${repo// /\\ }
+        indian    REMOTE:${repo// /\\ }
     "
 }
 
