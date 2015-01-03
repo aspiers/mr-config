@@ -62,3 +62,13 @@ checkout = git_clone_my_repo
 lib =
     set_email pdf-exploder@adamspiers.org
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/get_iplayer]
+skip = lazy || default_skipper
+checkout = git_clone git://git.infradead.org/get_iplayer.git
+lib =
+    set_email get_iplayer@adamspiers.org
+remotes = auto_remotes
+fixups =
+    ensure_symlink_exists $HOME/bin/get_iplayer $MR_REPO/get_iplayer
+    ensure_symlink_exists $HOME/share/man/man1/get_iplayer.1 $MR_REPO/get_iplayer.1
