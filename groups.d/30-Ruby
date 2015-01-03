@@ -206,6 +206,9 @@ remotes =
 skip = lazy || missing_exe ruby
 checkout = git_clone git://libvirt.org/ruby-libvirt.git
 lib =
-    set_email libvirt@adamspiers.org
+    #set_email libvirt@adamspiers.org
+    set_email aspiers@suse.com
+fixups =
+    git config format.subjectprefix "ruby PATCH"
 remotes =
     auto_remotes
