@@ -45,6 +45,7 @@ fixups =
     do
         ln -sf $MR_REPO/$exe $STOW_PKG_PATH/bin
     done
+    ( cd contrib/subtree && make prefix=$STOW_PKG_PATH install install-doc )
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/git.adam_spiers.pub]

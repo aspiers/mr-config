@@ -1,46 +1,5 @@
 # -*- mode: sh -*-
 
-savannah_ro_remote () {
-    git_add_remote savannah `savannah_ro_url`
-}
-
-savannah_rw_remote () {
-    git_add_remote savannah `savannah_rw_url`
-}
-
-github_clone_remote () {
-    git_add_remote github `github_clone_url`
-}
-
-# usage: github_readonly_remote <REMOTE> [<USERNAME> [<REPONAME>]]
-github_readonly_remote () {
-    remote="$1"
-    username="${2:-$remote}"
-    reponame="$3"
-    git_add_remote "$remote" `github_readonly_url "$username" "$reponame"`
-}
-
-# usage: github_readwrite_remote <REMOTE> [<USERNAME> [<REPONAME>]]
-# required for (even read-only) forks of private repositories
-github_readwrite_remote () {
-    remote="$1"
-    username="${2:-$remote}"
-    reponame="$3"
-    git_add_remote "$remote" `github_readwrite_url "$username" "$reponame"`
-}
-
-github_origin_remote () {
-    git_add_remote origin `github_origin_url`
-}
-
-github_origin_rw_remote () {
-    git_add_remote origin `github_origin_rw_url`
-}
-
-gitorious_clone_remote () {
-    git_add_remote gitorious `gitorious_clone_url`
-}
-
 my_upstream_remote () {
     git_add_remote adamspiers.org `my_upstream_url`
 }
@@ -53,22 +12,22 @@ moosehall_remotes () {
     # Note: uses URL rewriting so we can decide independently
     # whether to fetch over wired/wireless or even ADSL.
     git_add_remotes "
-        atlantic REMOTE:$repo
-        southern REMOTE:$repo
-        adriatic REMOTE:$repo
-        pacific  REMOTE:$repo
-        indian   REMOTE:$repo
-        mc       mediacentre:$repo mediacentre
+        atlantic REMOTE:${repo// /\\ }
+        southern REMOTE:${repo// /\\ }
+        adriatic REMOTE:${repo// /\\ }
+        pacific  REMOTE:${repo// /\\ }
+        indian   REMOTE:${repo// /\\ }
+        mc       mediacentre:${repo// /\\ } mediacentre
     "
 }
 
 moosehall_work_remotes () {
     repo="${MR_REPO#$HOME/}"
     git_add_remotes "
-        atlantic  REMOTE:$repo
-        southern  REMOTE:$repo
-        pacific   REMOTE:$repo
-        indian    REMOTE:$repo
+        atlantic  REMOTE:${repo// /\\ }
+        southern  REMOTE:${repo// /\\ }
+        pacific   REMOTE:${repo// /\\ }
+        indian    REMOTE:${repo// /\\ }
     "
 }
 
