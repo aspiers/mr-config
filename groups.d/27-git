@@ -112,3 +112,12 @@ lib =
 fixups =
     ln -sf $MR_REPO/bin/$MR_NAME ~/bin/$MR_NAME
 remotes = auto_remotes
+
+[$HOME/.GIT/adamspiers.org/git-deps]
+skip = default_skipper || missing_exe git
+checkout = github_clone
+lib =
+    set_email git@adamspiers.org
+remotes = auto_remotes
+fixups =
+    ln -sf $MR_REPO/$MR_NAME ~/bin/$MR_NAME
