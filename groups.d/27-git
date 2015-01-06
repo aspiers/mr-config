@@ -91,6 +91,19 @@ remotes = auto_remotes
 fixups =
     ln -sf $MR_REPO/lib/git-unmerged.rb ~/bin/git-unmerged
 
+[$HOME/.GIT/3rd-party/libgit2]
+skip = default_skipper || missing_exe git
+stowable = true
+lib =
+    mr_init_stow_package
+    set_git_origin_user libgit2
+checkout = github_clone
+remotes = auto_remotes
+# fixups =
+#     cd "$MR_REPO"
+#     python setup.py install --prefix $STOW_PKG_PATH
+#     mr_restow_regardless
+
 [$HOME/.GIT/3rd-party/pygit2]
 skip = default_skipper || missing_exe git
 stowable = true
