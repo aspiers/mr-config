@@ -134,3 +134,6 @@ lib =
 remotes = auto_remotes
 fixups =
     ln -sf $MR_REPO/$MR_NAME ~/bin/$MR_NAME
+    ln -sf $MR_REPO/gitfile-handler ~/bin
+    ln -sf $MR_REPO/gitfile-handler.desktop ~/.local/share/applications
+    xdg-mime default gitfile-handler.desktop x-scheme-handler/gitfile
