@@ -43,4 +43,8 @@ git_config_email () {
         git config user.email "$MR_EMAIL"
         info "Set user.email from ${existing:-(none)} to $MR_EMAIL"
     fi
+
+    if work_repo; then
+        git config sendemail.smtpserver $HOME/bin/msmtp-novell
+    fi
 }
