@@ -42,13 +42,22 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/maildir-dedupe]
+#stowable = true
 lib =
     set_git_clone_name maildir-deduplicate
     set_git_origin_user kdeldycke
+#    mr_init_stow_package
 checkout = github_clone
 remotes =
     auto_remotes
-fixups = ln -sf $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
+fixups =
+    ln -sf $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
+    # rm -f ~/bin/maildir-deduplicate # nuke any old install
+    # python setup.py install \
+    #     --record $STOW_PKG_PATH/.install.log \
+    #     --single-version-externally-managed \
+    #     --prefix $STOW_PKG_PATH
+    # mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/gmail-count]
 checkout = git_clone_my_repo
