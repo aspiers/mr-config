@@ -69,6 +69,12 @@ fixups = ln -sf $MR_REPO/bin/git-wtf ~/bin
 skip = default_skipper || missing_exe git
 checkout = git_clone git://repo.or.cz/topgit.git
 fixups = make install
+remotes =
+    auto_remotes
+    for user in deepfire 4z3 imz greenrd
+    do
+        github_readonly_remote $user
+    done
 
 [$HOME/.GIT/3rd-party/hub]
 skip = default_skipper || missing_exe git
