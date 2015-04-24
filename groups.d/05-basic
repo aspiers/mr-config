@@ -24,6 +24,7 @@ fixups =
     cabal update
     cabal install --bindir=$HOME/bin c2hs
     cabal install --only-dependencies
+    # cabal clean ?
     cabal configure
     cabal build
     cabal install --bindir=$STOW_PKG_PATH/bin
