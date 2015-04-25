@@ -84,8 +84,10 @@ checkout = git_clone git://github.com/github/hub.git
 lib =
     set_git_origin_user github
 fixups =
-    curl http://hub.github.com/standalone -sLo ~/bin/hub &&
-      chmod +x ~/bin/hub
+    ./script/build
+    cp hub ~/bin
+    # curl http://hub.github.com/standalone -sLo ~/bin/hub &&
+    #   chmod +x ~/bin/hub
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/mhs-tidbits]
