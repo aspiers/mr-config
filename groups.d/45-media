@@ -72,3 +72,13 @@ remotes = auto_remotes
 fixups =
     ensure_symlink_exists $HOME/bin/get_iplayer $MR_REPO/get_iplayer
     ensure_symlink_exists $HOME/share/man/man1/get_iplayer.1 $MR_REPO/get_iplayer.1
+
+[$HOME/.GIT/3rd-party/glacier-cli]
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user basak
+    #set_git_origin_branch glacier
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    ensure_symlink_exists $HOME/bin/glacier $MR_REPO/glacier.py
