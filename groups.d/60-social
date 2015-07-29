@@ -9,3 +9,10 @@ checkout = git_clone git://github.com/nono/slide-em-up.git
 [$HOME/.GIT/3rd-party/showoff]
 skip = lazy
 checkout = git_clone git://github.com/schacon/showoff.git
+
+[$HOME/.GIT/adamspiers.org/recipe-timelines]
+skip = default_skipper || missing_exe git
+checkout = github_clone
+lib =
+    set_email git@adamspiers.org
+remotes = auto_remotes
