@@ -12,6 +12,16 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+[$HOME/.GIT/3rd-party/solarized]
+lib =
+    set_git_origin_user altercation
+skip = default_skipper || missing_exe X
+checkout = github_clone
+remotes = auto_remotes
+# see also:
+#   - https://github.com/chriskempson/base16
+#   - http://ciembor.github.io/4bit/
+
 # [$HOME/.GIT/adamspiers.org/gkrellm]
 # skip = default_skipper || missing_exe gkrellm
 # checkout = git_clone_my_repo
