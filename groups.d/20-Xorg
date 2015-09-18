@@ -1,6 +1,6 @@
 # -*- mode: sh -*-
 
-[$HOME/.GIT/adamspiers.org/SESSION]
+[$HOME/.GIT/adamspiers.org/desktop-config]
 skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
