@@ -87,3 +87,13 @@ remotes = auto_remotes
 stowable = true
 lib =
     set_confidential_repo
+
+[$HOME/software/file/rclone]
+skip = default_skipper
+lib =
+    MR_DOWNLOAD_URL="http://downloads.rclone.org/rclone-v1.17-linux-amd64.zip"
+    MR_DOWNLOAD_FILE=rclone-v1.17-linux-amd64.zip
+checkout = mr_download_checkout
+fixups =
+    cd "$MR_REPO"
+    ln -sf "$MR_REPO/rclone" ~/bin
