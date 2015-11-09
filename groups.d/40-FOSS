@@ -13,7 +13,9 @@ skip = lazy
 checkout = savannah_ro_clone
 remotes = auto_remotes
 fixups =
-    ln -sf "$MR_REPO/build-aux/gnupload" ~/bin
+    for bin in gnulib-tool build-aux/{gnupload,gendocs.sh}; do
+        ensure_symlink_exists ~/bin/${bin##*/} "$MR_REPO/$bin"
+    done
 
 [$HOME/.GIT/adamspiers.org/gnu.sec]
 skip = default_skipper || not_moosehall
