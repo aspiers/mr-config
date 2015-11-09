@@ -113,3 +113,11 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     make install PREFIX=$STOW_PKG_PATH
+
+[$HOME/.GIT/3rd-party/kpie]
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user skx
+    set_email kpie@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
