@@ -27,9 +27,12 @@ include =
         # cloned the repo, otherwise auto_remotes won't be defined yet.        
         echo "remotes = auto_remotes"
     fi
-lib =
-    set_email dotfiles@adamspiers.org
 fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
-    git_config_email
+    if which git_config_email; then
+        git_config_email
+    else
+        echo >&2 "WARNING: git_config_email not defined so won't set email address for $MR_REPO"
+        echo >&2 "Hopefully you're bootstrapping, so it will get set later."
+    fi
