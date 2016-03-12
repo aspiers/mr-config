@@ -8,6 +8,10 @@ debug_skippers () {
 }
 
 missing_exe () {
+    if [ $# != 1 ]; then
+	echo >&2 "BUG: missing_exe called with parameters: $*"
+	exit 1
+    fi
     if which "$1" >/dev/null 2>&1; then
         debug_skippers ". Found $1 in \$PATH"
         return 1 # false
