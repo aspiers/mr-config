@@ -216,6 +216,9 @@ echo
 
 div ############################################################
 
+# Install mrcd
+mr -i -r mr fixups
+
 boot=( ssh ssh.adam_spiers.sec mr-util git-config )
 pkgs="${boot[@]}"
 pkgs="${pkgs// /,}"
