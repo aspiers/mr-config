@@ -55,6 +55,9 @@ skip = default_skipper
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+# FIXME: Can't have this because it stops cfg-post hook?!
+# fixups =
+#     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/github.sec]
 skip = lazy || default_skipper
