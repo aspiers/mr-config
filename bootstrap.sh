@@ -143,14 +143,16 @@ fi
 div ############################################################
 
 up=$HOME/bin/up
-# We need 'up' installed first, so that the download
+unpack=$HOME/bin/unpack
+# We need 'up' / 'unpack' installed first, so that the download
 # plugin can unpack stow.
 if [ -x $up ]; then
     echo "'up' utility already exists ..."
 else
-    echo "Downloading 'up' utility ..."
-    curl -o $up https://raw.github.com/aspiers/shell-env/master/bin/up
-    chmod +x $up
+    echo "Downloading 'unpack' utility ..."
+    curl -o $unpack https://raw.githubusercontent.com/aspiers/shell-env/master/bin/unpack
+    ln -s unpack $up
+    chmod +x $up $unpack
 fi
 
 div ############################################################
@@ -204,6 +206,9 @@ echo
 div ############################################################
 
 # shell-env is needed by mr-util for zrec
+
+# Avoid Stow conflicts
+rm -f $up $unpack
 
 echo "Retrieving shell-env ..."
 mr -i -r shell-env up
