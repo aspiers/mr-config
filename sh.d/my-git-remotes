@@ -9,25 +9,29 @@ moosehall_remotes () {
         return 0
     fi
     repo="${MR_REPO#$HOME/}"
+    # quote spaces to avoid passing too many parameters to
+    # git_add_remotes
+    repo=$( echo "$repo" | sed 's/ /\\ /g' )
+
     # Note: uses URL rewriting so we can decide independently
     # whether to fetch over wired/wireless or even ADSL.
     git_add_remotes "
-        atlantic REMOTE:${repo// /\\ }
-        southern REMOTE:${repo// /\\ }
-        adriatic REMOTE:${repo// /\\ }
-        pacific  REMOTE:${repo// /\\ }
-        indian   REMOTE:${repo// /\\ }
-        mc       mediacentre:${repo// /\\ } mediacentre
+        southern REMOTE:$repo
+        pacific  REMOTE:$repo
+        indian   REMOTE:$repo
+        mc       mediacentre:$repo mediacentre
     "
 }
 
 moosehall_work_remotes () {
     repo="${MR_REPO#$HOME/}"
+    # quote spaces to avoid passing too many parameters to
+    # git_add_remotes
+    repo=$( echo "$repo" | sed 's/ /\\ /g' )
     git_add_remotes "
-        atlantic  REMOTE:${repo// /\\ }
-        southern  REMOTE:${repo// /\\ }
-        pacific   REMOTE:${repo// /\\ }
-        indian    REMOTE:${repo// /\\ }
+        southern  REMOTE:$repo
+        pacific   REMOTE:$repo
+        indian    REMOTE:$repo
     "
 }
 
