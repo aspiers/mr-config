@@ -88,3 +88,6 @@ lib =
 remotes = auto_remotes
 fixups =
     ensure_symlink_exists ~/bin/maildir-to-ics "$MR_REPO/maildir-to-ics"
+
+# N.B. When adding repos here, make sure they are matched by the
+# work_repo function in sh.d/secure-repos.
