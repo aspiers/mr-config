@@ -26,6 +26,24 @@ remotes =
     auto_remotes
 
 [$HOME/.GIT/3rd-party/openant]
+skip = lazy || default_skipper || missing_exe python
+#stowable = true
+checkout = github_clone
+lib =
+    # mr_init_stow_package
+    set_email garmin@adamspiers.org
+    set_git_origin_user Tigge
+remotes =
+    auto_remotes
+fixups =
+    sudo python setup.py install
+    # python setup.py install \
+    #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
+    #     --prefix $STOW_PKG_PATH
+    # sudo cp resources/ant-usbstick2.rules /etc/udev/rules.d
+    # mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/antfs-cli]
 skip = lazy
 checkout = github_clone
 lib =
@@ -33,3 +51,6 @@ lib =
     set_git_origin_user Tigge
 remotes =
     auto_remotes
+fixups =
+    # for some reason this installs openant itself even when I already installed it
+    sudo python setup.py install
