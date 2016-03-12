@@ -16,9 +16,9 @@ include =
 [.config/mr]
 name = mr-config
 checkout =
-    git clone -o adamspiers.org ssh://adam@git.adamspiers.org/home/adam/.srv/git/mr-config.git "$MR_REPO"
+    git clone -o adamspiers.org adamspiers.org:mr-config.git "$MR_REPO"
 post_checkout =
-    cd "$MR_REPO" && git remote add github git@github.com:aspiers/mr-config.git
+    cd "$MR_REPO" && git remote add github github:mr-config.git
 chain = true
 include =
     if [ -e ~/.config/mr/library-loaders ]; then

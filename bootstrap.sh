@@ -16,10 +16,13 @@ git_host=git.adamspiers.org
 git_local_hostname=coral
 git_user=adam
 git_user_at_host=$git_user@$git_host
+# The following git clone strings require appropriate
+# insteadOf to be set up.
 # On a vanilla bootstrap, we may not have an ssh key with
 # access to this URL:
-#mr_upstream_repo="git@github.com:aspiers/kitenet-mr.git"
-mr_upstream_repo="$git_local_hostname:.GIT/3rd-party/mr"
+#mr_upstream_repo="github:kitenet-mr.git"
+# so instead get it from my server:
+mr_upstream_repo="adamspiers.org:mr.git"
 
 div () {
     echo
@@ -92,7 +95,7 @@ div ############################################################
 
 echo "Configuring git ..."
 which git >&/dev/null || fatal "git not found on \$PATH; aborting."
-git config --global url.ssh://$git_host/home/$git_user/.insteadof $git_local_hostname:
+git config --global url.ssh://$git_host/home/$git_user/.srv/git/.insteadof adamspiers.org:
 
 div ############################################################
 
