@@ -17,7 +17,7 @@ stowable = true
 stowable = true
 lib =
     mr_init_stow_package
-skip = default_skipper || missing_exe git
+skip = default_skipper || missing_exe git || missing_exe cabal
 checkout = git_clone git://git-annex.branchable.com/
 remotes = auto_remotes
 fixups =
