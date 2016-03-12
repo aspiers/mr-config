@@ -135,7 +135,7 @@ remotes = auto_remotes
 #     mr_restow_regardless
 
 [$HOME/.GIT/3rd-party/pygit2]
-skip = default_skipper || missing_exe git
+skip = default_skipper || missing_exe git || lazy
 stowable = true
 lib =
     mr_init_stow_package
