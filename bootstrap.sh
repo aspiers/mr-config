@@ -241,6 +241,17 @@ mr -i -r ssh fixups
 
 div ############################################################
 
+# get moosehall-git-URL-rewriters
+mr    -r moosehall+shell-env up
+mr -i -r moosehall+shell-env fix
+
+# get public git hosting URL rewriters
+mr    -r git.adam_spiers.pub up
+mr -i -r git.adam_spiers.pub stow
+mr -i -r git.adam_spiers.pub fix
+
+div ############################################################
+
 echo "Running mr checkout ..."
 mr -s -i up
 
