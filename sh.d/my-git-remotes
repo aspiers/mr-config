@@ -49,9 +49,6 @@ auto_remotes () {
         moosehall_remotes
 
         case "$MR_NAME" in
-            mr)
-                # No mr repo on adamspiers.org - ensure we get it from github
-                ;;
             *)
                 my_upstream_remote
                 ;;
