@@ -21,6 +21,15 @@ missing_exe () {
     fi
 }
 
+missing_exes () {
+    for i in "$@"; do
+	if missing_exe "$i"; then
+	    return 0 # true
+	fi
+    done
+    return 1 # false
+}
+
 missing_file () {
     if [ -f "$1" ]; then
         debug_skippers ". Found $1"
