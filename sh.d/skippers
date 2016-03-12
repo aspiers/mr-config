@@ -99,7 +99,7 @@ user_not_adam () {
 insecure_machine () {
     read_localhost_nickname
     case "$localhost_nickname" in
-        coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic)
+        coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic|nuc)
             debug_skippers ". $localhost_nickname secure"
             return 1 # false
             ;;
@@ -135,7 +135,7 @@ work_machine () {
 music_machine () {
     read_localhost_nickname
     case "$localhost_nickname" in
-        atlantic|southern|adriatic|mediacentre|indian|pacific|coral)
+        atlantic|southern|adriatic|mediacentre|indian|pacific|coral|nuc)
             debug_skippers ". $localhost_nickname is a music machine"
             return 0 # true
             ;;
