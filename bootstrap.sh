@@ -35,7 +35,12 @@ fatal () {
     exit 1
 }
 
-which curl >/dev/null 2>&1 || fatal "mr can't bootstrap without curl"
+for prog in curl git ruby rake virtualenv; do
+    if ! which "$prog" >/dev/null 2>&1; then
+	fatal "mr can't bootstrap without $prog"
+    fi
+done
+
 [ -d ~/.stow ] && fatal "Rogue ~/.stow - delete it first."
 
 cd
