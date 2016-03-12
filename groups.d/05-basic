@@ -30,6 +30,14 @@ fixups =
     cabal install --bindir=$STOW_PKG_PATH/bin
     mr_restow_regardless
 
+[$HOME/software/scm/git-annex.static]
+lib = mr_set_download_url https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz
+checkout = mr_download_checkout
+fixups =
+    for prog in git-annex git-annex-shell git-annex-webapp; do
+        ensure_symlink_exists ~/bin/$prog "$MR_REPO/$prog"
+    done
+
 [$HOME/.GIT/adamspiers.org/gnupg]
 deleted = true
 
