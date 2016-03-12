@@ -125,7 +125,10 @@ else
     ( cd $third_party_git/mr && git checkout master )
 fi
 ln -sf $third_party_git/mr/mr ~/bin
-echo '~/.config/mr/.mrconfig' > ~/.mrtrust
+
+if ! [ -e ~/.mrtrust ]; then
+    echo '~/.config/mr/.mrconfig' > ~/.mrtrust
+fi
 
 div ############################################################
 
