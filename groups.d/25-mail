@@ -80,6 +80,7 @@ fixups =
     mr_restow_regardless
 
 [$HOME/.GIT/3rd-party/mutt-ics]
+skip = default_skipper || missing_exe virtualenv
 checkout = github_clone
 remotes = auto_remotes
 lib =
