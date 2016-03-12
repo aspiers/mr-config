@@ -52,7 +52,7 @@ fixups =
 
 [$HOME/.GIT/adamspiers.org/git.adam_spiers.pub]
 skip = default_skipper
-checkout = github_clone
+checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
