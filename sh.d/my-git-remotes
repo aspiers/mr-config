@@ -20,6 +20,8 @@ moosehall_remotes () {
         pacific  REMOTE:$repo
         indian   REMOTE:$repo
         mc       mediacentre:$repo mediacentre
+        nuc      REMOTE:$repo
+        arabian  REMOTE:$repo
     "
 }
 
@@ -32,6 +34,7 @@ moosehall_work_remotes () {
         southern  REMOTE:$repo
         pacific   REMOTE:$repo
         indian    REMOTE:$repo
+        arabian   REMOTE:$repo
     "
 }
 

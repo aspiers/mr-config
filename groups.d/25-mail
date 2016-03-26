@@ -24,7 +24,12 @@ stowable = true
 
 [$HOME/.GIT/3rd-party/offlineimap]
 checkout = git_clone git://github.com/OfflineIMAP/offlineimap.git
-skip = not_host atlantic && not_host pacific && not_host southern && not_host indian
+skip =
+    not_host atlantic &&
+    not_host pacific &&
+    not_host southern &&
+    not_host indian &&
+    not_host arabian
 remotes = auto_remotes
 stowable = true
 lib =

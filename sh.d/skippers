@@ -64,7 +64,7 @@ not_host () {
 not_moosehall () {
     if read_localhost_nickname; then
         case "$localhost_nickname" in
-            coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic)
+            coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic|arabian|nuc)
                 return 1 # false
         esac
     fi
@@ -99,7 +99,7 @@ user_not_adam () {
 insecure_machine () {
     read_localhost_nickname
     case "$localhost_nickname" in
-        coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic|nuc)
+        coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic|nuc|arabian)
             debug_skippers ". $localhost_nickname secure"
             return 1 # false
             ;;
@@ -117,7 +117,7 @@ insecure_machine () {
 work_machine () {
     read_localhost_nickname
     case "$localhost_nickname" in
-        atlantic|southern|pacific|indian)
+        atlantic|southern|pacific|indian|arabian)
             debug_skippers ". $localhost_nickname is a work machine"
             return 0 # true
             ;;
@@ -135,7 +135,7 @@ work_machine () {
 music_machine () {
     read_localhost_nickname
     case "$localhost_nickname" in
-        atlantic|southern|adriatic|mediacentre|indian|pacific|coral|nuc)
+        atlantic|southern|adriatic|mediacentre|indian|pacific|coral|nuc|arabian)
             debug_skippers ". $localhost_nickname is a music machine"
             return 0 # true
             ;;
