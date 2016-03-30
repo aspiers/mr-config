@@ -87,3 +87,10 @@ fixups =
     make install prefix=$STOW_PKG_PATH
     mr_restow_regardless
 
+[$HOME/.GIT/3rd-party/presentation-template]
+skip = lazy
+lib =
+    set_email github@adamspiers.org
+    set_git_origin_user fghaas
+checkout = github_clone
+remotes = auto_remotes
