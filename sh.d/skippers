@@ -1,5 +1,7 @@
 # -*- mode: sh -*-
 
+PROPS=$HOME/.localhost-props
+
 debug_skippers () {
     check_repo_name
     if [ -n "$MR_DEBUG_SKIP" ]; then
@@ -61,24 +63,20 @@ not_host () {
     fi
 }
 
-not_moosehall () {
-    if read_localhost_nickname; then
-        case "$localhost_nickname" in
-            coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic|arabian|nuc)
-                return 1 # false
-        esac
-    fi
+machine_has_property () {
+    prop="$1"
 
-    if awk '/^ *search/ { print $2; exit 0 }' /etc/resolv.conf | \
-        sed 's/\.$//' | \
-        grep -q moosehall
-    then
-        debug_skippers ". Found moosehall in /etc/resolv.conf search path"
-        return 1 # false
-    else
-        debug_skippers "! Didn't find moosehall in /etc/resolv.conf search path"
+    if grep -q "^$prop\$" $PROPS; then
+        debug_skippers ". Found $prop in $PROPS"
         return 0 # true
+    else
+        debug_skippers "! Didn't find $prop in $PROPS"
+        return 1 # false
     fi
+}
+
+not_moosehall () {
+    ! machine_has_property "moosehall"
 }
 
 user_not_adam () {
@@ -97,57 +95,15 @@ user_not_adam () {
 }
 
 insecure_machine () {
-    read_localhost_nickname
-    case "$localhost_nickname" in
-        coral|arctic|atlantic|pacific|indian|southern|mediacentre|adriatic|nuc|arabian)
-            debug_skippers ". $localhost_nickname secure"
-            return 1 # false
-            ;;
-        '')
-            debug_skippers "! WARNING: \$localhost_nickname was not set"
-            return 0 # true
-            ;;
-        *)
-            debug_skippers "! $localhost_nickname is not secure"
-            return 0 # true
-            ;;
-    esac
+    ! machine_has_property "secure"
 }
 
 work_machine () {
-    read_localhost_nickname
-    case "$localhost_nickname" in
-        atlantic|southern|pacific|indian|arabian)
-            debug_skippers ". $localhost_nickname is a work machine"
-            return 0 # true
-            ;;
-        '')
-            debug_skippers "! WARNING: \$localhost_nickname was not set"
-            return 1 # false
-            ;;
-        *)
-            debug_skippers "! $localhost_nickname is not a work machine"
-            return 1 # false
-            ;;
-    esac
+    machine_has_property "SUSE"
 }
 
 music_machine () {
-    read_localhost_nickname
-    case "$localhost_nickname" in
-        atlantic|southern|adriatic|mediacentre|indian|pacific|coral|nuc|arabian)
-            debug_skippers ". $localhost_nickname is a music machine"
-            return 0 # true
-            ;;
-        '')
-            debug_skippers "! WARNING: \$localhost_nickname was not set"
-            return 1 # false
-            ;;
-        *)
-            debug_skippers "! $localhost_nickname is not a music machine"
-            return 1 # false
-            ;;
-    esac
+    machine_has_property "music"
 }
 
 my_public_web_server () {

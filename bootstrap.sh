@@ -47,6 +47,21 @@ cd
 
 [ -e ~/.zdotuser           ] || ${EDITOR:-vi} ~/.zdotuser
 [ -e ~/.localhost-nickname ] || ${EDITOR:-vi} ~/.localhost-nickname
+if ! [ -e ~/.localhost-props ]; then
+    cat <<EOF > ~/.localhost-props
+# List of properties for this machine, which governs how mr manages
+# the repositories on it.
+#
+# See ~/.config/mr/sh.d/skippers for more details.
+
+moosehall
+#main-console
+SUSE
+music
+secure
+EOF
+    ${EDITOR:-vi} ~/.localhost-props
+fi
 
 echo "Setting ZDOTDIR to $HOME"
 export ZDOTDIR=$HOME
