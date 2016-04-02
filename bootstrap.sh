@@ -59,6 +59,7 @@ moosehall
 SUSE
 music
 secure
+routine
 EOF
     ${EDITOR:-vi} ~/.localhost-props
 fi
