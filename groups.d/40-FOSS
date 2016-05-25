@@ -94,3 +94,11 @@ lib =
     set_git_origin_user fghaas
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/notell]
+skip = lazy
+lib =
+    set_email notell@adamspiers.org
+    set_git_origin_user ysmood
+checkout = github_clone
+remotes = auto_remotes
