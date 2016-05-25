@@ -130,12 +130,19 @@ stowable = true
 lib =
     mr_init_stow_package
     set_git_origin_user libgit2
+    # pygit2 needs to build against a release, not latest master:
+    # https://github.com/libgit2/pygit2/issues/612#issuecomment-201813187
+    set_git_clone_remote_branch v0.24.1
 checkout = github_clone
 remotes = auto_remotes
-# fixups =
-#     cd "$MR_REPO"
-#     python setup.py install --prefix $STOW_PKG_PATH
-#     mr_restow_regardless
+fixups =
+    cd "$MR_REPO"
+    # https://libgit2.github.com/docs/guides/build-and-link/
+    mkdir -p build
+    cd build && \
+        cmake .. -DCMAKE_INSTALL_PREFIX=$STOW_PKG_PATH && \
+        cmake --build . --target install
+    mr_restow_regardless
 
 [$HOME/.GIT/3rd-party/pygit2]
 skip = default_skipper || missing_exe git || lazy
@@ -147,6 +154,10 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     cd "$MR_REPO"
+    # http://www.pygit2.org/install.html
+    export LIBGIT2=$HOME # tell pygit2 where to find libgit2
+    # -rpath prevents the need to put $LIBGIT2/lib in LD_LIBRARY_PATH
+    export LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags"
     python setup.py install --prefix $STOW_PKG_PATH
     mr_restow_regardless
 
@@ -166,7 +177,7 @@ lib =
     set_email git@adamspiers.org
 remotes = auto_remotes
 fixups =
-    ln -sf $MR_REPO/$MR_NAME ~/bin/$MR_NAME
+    ln -sf $MR_REPO/$MR_NAME.py ~/bin/$MR_NAME
     ln -sf $MR_REPO/gitfile-handler ~/bin
     ln -sf $MR_REPO/gitfile-handler.desktop ~/.local/share/applications
     xdg-mime default gitfile-handler.desktop x-scheme-handler/gitfile
