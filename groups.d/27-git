@@ -173,3 +173,21 @@ fixups =
     ln -sf $MR_REPO/gitfile-handler ~/bin
     ln -sf $MR_REPO/gitfile-handler.desktop ~/.local/share/applications
     xdg-mime default gitfile-handler.desktop x-scheme-handler/gitfile
+
+[$HOME/.GIT/3rd-party/github3.py]
+skip = lazy || default_skipper || missing_exe python
+stowable = true
+lib =
+    set_git_origin_user sigmavirus24
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    python setup.py install \
+        --old-and-unmanageable \
+        --prefix $STOW_PKG_PATH
+    # python setup.py install \
+    #     --single-version-externally-managed \
+    #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
+    #     --prefix $STOW_PKG_PATH
+    mr_restow_regardless
