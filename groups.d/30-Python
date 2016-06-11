@@ -23,3 +23,21 @@ fixups =
     #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
     #     --prefix $STOW_PKG_PATH
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/py2pack]
+skip = lazy || default_skipper || missing_exe python
+stowable = true
+lib =
+    set_git_origin_user saschpe
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    python setup.py install \
+        --old-and-unmanageable \
+        --prefix $STOW_PKG_PATH
+    # python setup.py install \
+    #     --single-version-externally-managed \
+    #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
+    #     --prefix $STOW_PKG_PATH
+    mr_restow_regardless
