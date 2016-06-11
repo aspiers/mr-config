@@ -24,7 +24,7 @@ include =
     if [ -e ~/.config/mr/library-loaders ]; then
         # Rather than defining remotes for this repo in the normal
         # way, we only set it if we've already bootstrapped and
-        # cloned the repo, otherwise auto_remotes won't be defined yet.        
+        # cloned the repo, otherwise auto_remotes won't be defined yet.
         echo "remotes = auto_remotes"
     fi
 fixups =
