@@ -161,7 +161,9 @@ fixups =
     export LIBGIT2=$HOME # tell pygit2 where to find libgit2
     # -rpath prevents the need to put $LIBGIT2/lib in LD_LIBRARY_PATH
     export LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags"
-    python setup.py install --prefix $STOW_PKG_PATH
+    python setup.py install \
+        --old-and-unmanageable \
+        --prefix $STOW_PKG_PATH
     mr_restow_regardless
 
 [$HOME/.GIT/3rd-party/git-when-merged]
