@@ -175,14 +175,19 @@ remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/git-deps]
 skip = default_skipper || missing_exe git
+stowable = true
 checkout = github_clone
 lib =
     set_email git@adamspiers.org
+    mr_init_stow_package
 remotes = auto_remotes
 fixups =
-    ln -sf $MR_REPO/$MR_NAME.py ~/bin/$MR_NAME
-    ln -sf $MR_REPO/gitfile-handler ~/bin
-    ln -sf $MR_REPO/gitfile-handler.desktop ~/.local/share/applications
+    # ln -sf $MR_REPO/$MR_NAME.py ~/bin/$MR_NAME
+    # ln -sf $MR_REPO/gitfile-handler ~/bin
+    # ln -sf $MR_REPO/gitfile-handler.desktop ~/.local/share/applications
+    python setup.py install \
+        --old-and-unmanageable \
+        --prefix $STOW_PKG_PATH
     xdg-mime default gitfile-handler.desktop x-scheme-handler/gitfile
 
 [$HOME/.GIT/3rd-party/github3.py]
