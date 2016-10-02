@@ -187,12 +187,11 @@ lib =
     mr_init_stow_package
 remotes = auto_remotes
 fixups =
-    # ln -sf $MR_REPO/$MR_NAME.py ~/bin/$MR_NAME
-    # ln -sf $MR_REPO/gitfile-handler ~/bin
-    # ln -sf $MR_REPO/gitfile-handler.desktop ~/.local/share/applications
     python setup.py install \
         --old-and-unmanageable \
         --prefix $STOW_PKG_PATH
+    ln -sf $STOW_PKG_PATH/share/git_deps/gitfile-handler.desktop \
+       ~/.local/share/applications
     xdg-mime default gitfile-handler.desktop x-scheme-handler/gitfile
 
 [$HOME/.GIT/3rd-party/github3.py]
