@@ -97,3 +97,12 @@ checkout = mr_download_checkout
 fixups =
     cd "$MR_REPO"
     ln -sf "$MR_REPO/rclone" ~/bin
+
+[$HOME/.GIT/3rd-party/logmerge]
+skip = lazy
+lib =
+    set_git_origin_user abel-navarro
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    ln -sf "$MR_REPO/logmerge.py" ~/bin/logmerge
