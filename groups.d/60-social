@@ -4,11 +4,15 @@ checkout = svn checkout http://wpscan.googlecode.com/svn/trunk/ $MR_NAME
 
 [$HOME/.GIT/3rd-party/slide-em-up]
 skip = lazy
-checkout = git_clone git://github.com/nono/slide-em-up.git
+lib =
+    set_git_origin_user nono
+checkout = github_clone
 
 [$HOME/.GIT/3rd-party/showoff]
 skip = lazy
-checkout = git_clone git://github.com/schacon/showoff.git
+lib =
+    set_git_origin_user schacon
+checkout = github_clone
 
 [$HOME/.GIT/adamspiers.org/recipe-timelines]
 skip = default_skipper || missing_exe git || lazy

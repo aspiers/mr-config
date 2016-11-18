@@ -54,7 +54,9 @@ stowable = true
 
 [$HOME/.GIT/3rd-party/zsh-completions]
 skip = missing_exe zsh
-checkout = git_clone git://github.com/zsh-users/zsh-completions.git
+lib =
+    set_git_origin_user zsh-users
+checkout = github_clone
 remotes = auto_remotes
 fixups =
     zcpath=~/.zsh/functions/zsh-completions

@@ -26,7 +26,9 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/git-cl]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
-checkout = git_clone https://github.com/gperciva/git-cl
+lib =
+    set_git_origin_user gperciva
+checkout = github_clone
 remotes = auto_remotes
 push = unsafe
 stowable = true
@@ -40,18 +42,24 @@ fixups =
 
 [$HOME/.GIT/3rd-party/lilypond-extra]
 skip = missing_dir $HOME/.GIT/3rd-party/lilypond || ! music_machine
-checkout = git_clone https://github.com/gperciva/lilypond-extra
+lib =
+    set_git_origin_user gperciva
+checkout = github_clone
 remotes = auto_remotes
 push = unsafe
 
 [$HOME/.GIT/3rd-party/libanki]
 skip = lazy || ! music_machine
-checkout = git_clone git://github.com/dae/libanki.git
+lib =
+    set_git_origin_user dae
+checkout = github_clone
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/ankiqt]
 skip = lazy || ! music_machine
-checkout = git_clone git://github.com/dae/ankiqt.git
+lib =
+    set_git_origin_user dae
+checkout = github_clone
 remotes = auto_remotes
 
 [$HOME/music]

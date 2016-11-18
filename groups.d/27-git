@@ -89,9 +89,9 @@ remotes =
 
 [$HOME/.GIT/3rd-party/hub]
 skip = default_skipper || missing_exes git go
-checkout = git_clone git://github.com/github/hub.git
 lib =
     set_git_origin_user github
+checkout = github_clone
 fixups =
     ./script/build
     cp hub ~/bin

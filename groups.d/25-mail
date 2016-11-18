@@ -23,7 +23,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/3rd-party/offlineimap]
-checkout = git_clone git://github.com/OfflineIMAP/offlineimap.git
+checkout = github_clone
 skip =
     not_host atlantic &&
     not_host pacific &&
@@ -33,6 +33,7 @@ skip =
 remotes = auto_remotes
 stowable = true
 lib =
+    set_git_origin_user OfflineIMAP
     mr_init_stow_package
 fixups =
     # make clean breaks on first checkout for some reason
