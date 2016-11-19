@@ -132,3 +132,6 @@ lib =
     set_email lnav@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
+fixups =
+    mkdir -p ~/.lnav/formats
+    ln -s $MR_REPO ~/.lnav/formats/https___github_com_aspiers_lnav-formats_git
