@@ -16,3 +16,13 @@ checkout = github_clone
 lib =
     set_email git@adamspiers.org
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/MUTI]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email hackbrexit@adamspiers.org
+    set_git_clone_name MinistersUnderTheInfluence
+    set_git_origin_user HackBrexit
+remotes =
+    auto_remotes
