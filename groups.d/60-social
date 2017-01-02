@@ -30,3 +30,11 @@ lib =
     set_git_origin_user HackBrexit
 remotes =
     auto_remotes
+
+[$HOME/soc]
+lib =
+    set_email adam@spiers.net
+    set_confidential_repo
+skip = lazy || default_skipper
+checkout = moosehall_git_checkout
+remotes = auto_remotes
