@@ -38,3 +38,11 @@ lib =
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = auto_remotes
+
+[$HOME/soc/Jayme-Stone/sendy]
+lib =
+    set_email jaymestone@adamspiers.org
+    set_confidential_repo
+skip = lazy || default_skipper
+checkout = git_clone ssh://jaymestone.com/home/jaymestone/public_html/sendy
+remotes = auto_remotes
