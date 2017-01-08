@@ -30,6 +30,7 @@ lib =
     set_git_origin_user HackBrexit
 remotes =
     auto_remotes
+    github_readonly_remote Greatlemer
 
 [$HOME/soc]
 lib =
