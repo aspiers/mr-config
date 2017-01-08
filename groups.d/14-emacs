@@ -81,7 +81,10 @@ push = unsafe
 
 # [$HOME/.GIT/3rd-party/elisp-behave]
 # skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
-# checkout = git_clone git://github.com/tomtt/elisp_behave.git
+# lib =
+#     set_git_origin_user tomtt
+#     set_git_clone_name elisp_behave
+# checkout = github_clone
 # remotes = auto_remotes
 # fixups = symlink_repo_from ~/lib/emacs/major-modes/elisp-behave
 # push = unsafe
@@ -89,7 +92,10 @@ push = unsafe
 [$HOME/.GIT/3rd-party/emacs-rails]
 skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe rails
 lib = set_email emacs@adamspiers.org
-checkout = git_clone git://github.com/remvee/emacs-rails.git
+lib =
+    set_git_origin_user remvee
+    set_git_clone_name emacs-rails
+checkout = github_clone
 remotes = auto_remotes
 fixups = symlink_repo_from ~/lib/emacs/major-modes/emacs-rails.remvee.git
 push = unsafe
@@ -97,7 +103,9 @@ push = unsafe
 # FIXME: add yasnippet (and a dependency)
 # [$HOME/.GIT/3rd-party/yasnippets-rails]
 # skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/minor-modes
-# checkout = git_clone git://github.com/eschulte/yasnippets-rails.git
+# lib =
+#     set_git_origin_user eschulte
+# checkout = github_clone
 # remotes = auto_remotes
 # fixups = symlink_repo_from ~/lib/emacs/minor-modes/yasnippets-rails
 
@@ -150,17 +158,21 @@ push = unsafe
 
 [$HOME/.GIT/3rd-party/auto-complete-mode]
 skip = lazy || default_skipper || missing_exe emacs
-lib = set_email emacs@adamspiers.org
-#checkout = git_clone http://cx4a.org/repo/rsense.git
-checkout = git_clone git://github.com/m2ym/auto-complete.git
+lib =
+    set_email emacs@adamspiers.org
+    set_git_origin_user m2ym
+    set_git_clone_name auto-complete
+checkout = github_clone
 fixups =
     make install DIR=$HOME/.emacs.d/
 
 [$HOME/lib/emacs/minor-modes/rsense]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe ant || missing_exe ruby
-lib = set_email emacs@adamspiers.org
+lib =
+    set_email emacs@adamspiers.org
+    set_git_origin_user m2ym
+checkout = github_clone
 #checkout = git_clone http://cx4a.org/repo/rsense.git
-checkout = git_clone git://github.com/m2ym/rsense.git
 fixups =
     ant
     export RSENSE_HOME=$STOW_DIR/$MR_NAME
@@ -194,7 +206,8 @@ skip = lazy || default_skipper || missing_exe emacs || missing_exe google-chrome
 lib =
     set_email emacs@adamspiers.org
     mr_init_stow_package
-checkout = git_clone git://github.com/stsquad/emacs_chrome.git
+    set_git_origin_user stsquad
+checkout = github_clone
 remotes = auto_remotes
 fixups =
     # loaded via el-get now

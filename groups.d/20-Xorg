@@ -83,7 +83,9 @@ fixups =
 
 [$HOME/.GIT/3rd-party/xdotool]
 skip = lazy || default_skipper
-checkout = git_clone git://github.com/jordansissel/xdotool.git
+lib =
+    set_git_origin_user jordansissel
+checkout = github_clone
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/logkeys]
