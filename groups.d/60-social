@@ -27,7 +27,7 @@ checkout = github_clone
 lib =
     set_email hackbrexit@adamspiers.org
     set_git_clone_name MinistersUnderTheInfluence
-    set_git_origin_user HackBrexit
+    set_git_rw_origin_user HackBrexit
 remotes =
     auto_remotes
     github_readonly_remote Greatlemer
