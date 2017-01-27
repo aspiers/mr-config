@@ -1,0 +1,19 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/3rd-party/sysdig]
+skip = default_skipper
+checkout = github_clone
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/sysstat]
+skip = default_skipper
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    mr_init_stow_package
+fixups =
+    set_stow_common_opts
+    ./configure --prefix=$HOME
+    make install DESTDIR=$STOW_PKG_PATH IGNORE_FILE_ATTRIBUTES=y
+    mr_restow_regardless
