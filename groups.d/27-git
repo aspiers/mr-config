@@ -223,3 +223,11 @@ fixups =
         --old-and-unmanageable \
         --prefix $STOW_PKG_PATH
 
+[$HOME/.GIT/adamspiers.org/github-notifications]
+skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
+checkout = git_clone_my_repo
+remotes = auto_remotes
+lib =
+    set_email git@adamspiers.org
+fixups =
+    ensure_symlink_exists $HOME/bin/github-notifications "$MR_REPO/github-notifications"
