@@ -212,3 +212,12 @@ fixups =
     git config format.subjectprefix "ruby PATCH"
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/ruby-style-guide]
+skip = lazy || missing_exe ruby
+checkout = github_clone
+lib =
+    set_email ruby@adamspiers.org
+    set_git_origin_user bbatsov
+remotes =
+    auto_remotes
