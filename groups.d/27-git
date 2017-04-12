@@ -231,3 +231,10 @@ lib =
     set_email git@adamspiers.org
 fixups =
     ensure_symlink_exists $HOME/bin/github-notifications "$MR_REPO/github-notifications"
+
+[$HOME/.GIT/adamspiers.org/aspiers.github.io]
+skip = default_skipper || missing_exe git
+checkout = github_clone
+lib =
+    set_email github@adamspiers.org
+remotes = auto_remotes
