@@ -1,5 +1,6 @@
 # -*- mode: sh -*-
 
+# This is the name of the remote which will point to the cloned repository.
 set_git_clone_remote () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_git_clone_remote $*"
@@ -19,10 +20,12 @@ set_git_clone_name () {
     MR_GIT_CLONE_NAME="$1"
 }
 
+# Name of the remote repository, excluding the user / organisation.
 git_clone_name () {
     echo "${MR_GIT_CLONE_NAME:-$MR_NAME}"
 }
 
+# Use this to clone a branch other than master.
 set_git_clone_remote_branch () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_git_clone_remote_branch $*"
@@ -54,15 +57,18 @@ git_clone () {
     git_config_email
 }
 
+# Use this to clone my fork of a repository I don't have push access to.
 github_clone () {
-    _github_clone "`github_clone_url`"
+    _github_clone_my_fork "`github_clone_url`"
 }
 
+# Use this to clone my fork of a repository I have push access to.
 github_rw_clone () {
-    _github_clone "`github_readwrite_url aspiers`"
+    _github_clone_my_fork "`github_readwrite_url aspiers`"
 }
 
-_github_clone () {
+_github_clone_my_fork () {
+    # This assumes we're cloning my fork
     set_git_clone_remote github
     git_clone "$1"
 }
