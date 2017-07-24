@@ -238,3 +238,14 @@ checkout = github_clone
 lib =
     set_email github@adamspiers.org
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/git-series]
+skip = default_skipper || missing_exes git
+stowable = true
+lib =
+    mr_init_stow_package
+    set_git_origin_user github
+checkout = github_clone
+fixups =
+    cargo install --root $STOW_PKG_PATH $MR_NAME
+remotes = auto_remotes
