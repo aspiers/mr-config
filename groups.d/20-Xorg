@@ -123,3 +123,10 @@ lib =
     set_email kpie@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/xkb]
+skip = lazy || default_skipper
+lib =
+    set_email xkb@adamspiers.org
+checkout = git_clone git://anongit.freedesktop.org/git/xkeyboard-config
+remotes = auto_remotes
