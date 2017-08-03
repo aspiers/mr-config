@@ -10,7 +10,8 @@ set_git_clone_remote () {
     MR_GIT_CLONE_REMOTE="$1"
 }
 
-# This is the name of the repository from which we are going to clone.
+# This is the name of the repository from which we are going to clone,
+# excluding the user / organisation.
 set_git_clone_name () {
     if [ $# != 1 ]; then
         error "$MR_REPO: invoked set_git_clone_name $*"
