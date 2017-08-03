@@ -51,6 +51,7 @@ fixups =
     for d in OpenStack HA IBS OBS; do
         ensure_symlink_exists ~/$d $MR_REPO/$d
     done
+    ensure_symlink_exists ~/.cfg-post.d/SUSE-git $MR_REPO/lib/SUSE-git
 
 [$HOME/.GIT/3rd-party/bugzilla-tools]
 checkout = git_clone https://github.com/mvidner/Bugzilla-Tools.git
