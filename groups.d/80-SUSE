@@ -49,13 +49,7 @@ remotes = auto_remotes
 fixups =
     cd
     for d in OpenStack HA IBS OBS; do
-        if ! [ -L $d ]; then
-            if ! [ -e $d ]; then
-                ln -s SUSE/$d
-            else
-                echo "WARNING: ~/$d exists but is not a symlink"
-            fi
-        fi
+        ensure_symlink_exists ~/$d $MR_REPO/$d
     done
 
 [$HOME/.GIT/3rd-party/bugzilla-tools]
