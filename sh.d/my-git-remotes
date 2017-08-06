@@ -38,10 +38,16 @@ moosehall_work_remotes () {
     "
 }
 
-auto_remotes () {
+auto_moosehall_remotes () {
     if work_repo; then
         moosehall_work_remotes
+    else
+        moosehall_remotes
+    fi
+}
 
+auto_my_upstream_remote () {
+    if work_repo; then
         case "$MR_REPO" in
             */adamspiers.org/*)
                 # something like novell+vpn.pub
@@ -49,21 +55,31 @@ auto_remotes () {
                 ;;
         esac
     else
-        moosehall_remotes
-
         case "$MR_NAME" in
             *)
                 my_upstream_remote
                 ;;
         esac
     fi
+}
 
+auto_personal_remotes () {
+    auto_moosehall_remotes
+    auto_my_upstream_remote
+}
+
+auto_external_remotes () {
     set_origin_remote
 
     if ! confidential_repo; then
         # only do this if cloned from local
         github_clone_remote
     fi
+}
+
+auto_remotes () {
+    auto_personal_remotes
+    auto_external_remotes
 }
 
 set_origin_remote () {
