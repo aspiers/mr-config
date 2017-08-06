@@ -109,9 +109,9 @@ set_origin_remote () {
 # to lib section, so that we can access it post-cloning and determine
 # these things without auto-detection heuristics.
 auto_detect_git_service () {
-    if git config remote.gitlab.url | grep -q gitlab.suse.de; then
+    if git config remote.gitlab.url | grep -q suse; then
         MR_GIT_SERVICE=gitlab-suse-de
-    elif git config remote.github.url | grep -q github.com; then
+    elif git config remote.github.url | grep -q github; then
         MR_GIT_SERVICE=github
     else
         MR_GIT_SERVICE=unknown
