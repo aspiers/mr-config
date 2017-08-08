@@ -64,9 +64,10 @@ fixups =
 [$HOME/.GIT/3rd-party/tmux]
 skip = lazy
 #checkout = svn co https://tmux.svn.sourceforge.net/svnroot/tmux/trunk tmux
-checkout = git_clone git://git.code.sf.net/p/tmux/tmux-code
+checkout = github_clone
 stowable = true
 lib =
+    set_git_origin_user tmux
     mr_init_stow_package
 fixups =
     if ! [ -e configure ]; then
