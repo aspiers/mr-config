@@ -79,6 +79,7 @@ fixups =
     mkdir -p $STOW_PKG_PATH/share/doc/tmux/examples
     cp examples/*.conf $STOW_PKG_PATH/share/doc/tmux/examples
     mr_restow_regardless
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/weechat]
 name = weechat-config
