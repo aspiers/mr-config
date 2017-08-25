@@ -53,6 +53,7 @@ git_clone () {
         branch_opt="-b $MR_GIT_CLONE_REMOTE_BRANCH"
         info "Default remote branch is $MR_GIT_CLONE_REMOTE_BRANCH"
     fi
+    echo git clone $remote_opt $branch_opt "$1" "$MR_REPO"
     git clone $remote_opt $branch_opt "$1" "$MR_REPO"
     git_config_email
 }
