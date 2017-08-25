@@ -38,10 +38,16 @@ moosehall_work_remotes () {
     "
 }
 
-auto_remotes () {
+auto_moosehall_remotes () {
     if work_repo; then
         moosehall_work_remotes
+    else
+        moosehall_remotes
+    fi
+}
 
+auto_my_upstream_remote () {
+    if work_repo; then
         case "$MR_REPO" in
             */adamspiers.org/*)
                 # something like novell+vpn.pub
@@ -49,20 +55,34 @@ auto_remotes () {
                 ;;
         esac
     else
-        moosehall_remotes
-
         case "$MR_NAME" in
             *)
                 my_upstream_remote
                 ;;
         esac
     fi
+}
+
+auto_personal_remotes () {
+    auto_moosehall_remotes
+    auto_my_upstream_remote
+}
+
+auto_external_remotes () {
+    set_origin_remote
 
     if ! confidential_repo; then
         # only do this if cloned from local
         github_clone_remote
     fi
+}
 
+auto_remotes () {
+    auto_personal_remotes
+    auto_external_remotes
+}
+
+set_origin_remote () {
     # Ensure "origin" is included in the automatically generated
     # remotes.  The challenge is to determine at which upstream
     # service it should point (e.g. github, gitorious etc.).  During
@@ -74,16 +94,43 @@ auto_remotes () {
     # service.  But which service?  If called post-cloning, do we have
     # any way of knowing?  Previously there was a version of
     # MR_GIT_ORIGIN_USER for each service, so we could tell that
-    # way.  FIXME: move definition of repo to clone from to lib,
-    # so that we can access it post-cloning.
-    #
-    #echo "MR_GIT_CLONE_REMOTE is $MR_GIT_CLONE_REMOTE"
-    #(cd $MR_REPO; git remote -v)
+    # way.  For now let's just use some heuristics based on the
+    # remotes.
+    auto_detect_git_service
+
     if [ -n "$MR_GIT_ORIGIN_USER" ]; then
-        github_origin_remote
+        case "$MR_GIT_SERVICE" in
+            gitlab-suse-de)
+                gitlab_origin_remote
+                ;;
+            github)
+                github_origin_remote
+                ;;
+        esac
     elif [ -n "$MR_GIT_ORIGIN_RW_USER" ]; then
         # Even do this for confidential repos, since could be a
         # private github repo (or a fork thereof).
-        github_origin_rw_remote
+        case "$MR_GIT_SERVICE" in
+            gitlab-suse-de)
+                gitlab_origin_rw_remote
+                ;;
+            github)
+                github_origin_rw_remote
+                ;;
+        esac
+    fi
+}
+
+# FIXME: move definition of upstream service / repo to clone from
+# to lib section, so that we can access it post-cloning and determine
+# these things without auto-detection heuristics.
+auto_detect_git_service () {
+    if git config remote.gitlab.url | grep -q suse; then
+        MR_GIT_SERVICE=gitlab-suse-de
+    elif git config remote.github.url | grep -q github; then
+        MR_GIT_SERVICE=github
+    else
+        MR_GIT_SERVICE=unknown
+        echo >&2 "WARNING: couldn't figure out what origin remote should be"
     fi
 }
