@@ -79,6 +79,7 @@ fixups =
     mkdir -p $STOW_PKG_PATH/share/doc/tmux/examples
     cp examples/*.conf $STOW_PKG_PATH/share/doc/tmux/examples
     mr_restow_regardless
+remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/weechat]
 name = weechat-config
@@ -89,6 +90,15 @@ stowable = true
 lib =
     set_confidential_repo
 
+[$HOME/.GIT/3rd-party/weechat-matrix-protocol-script]
+skip = default_skipper || ( missing_exe weechat-curses && missing_exe weechat )
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    mkdir -p ~/.weechat/lua/autoload
+    ensure_symlink_exists ~/.weechat/lua/matrix.lua "$MR_REPO/matrix.lua"
+    #ensure_symlink_exists ~/.weechat/lua/autoload/matrix.lua "$MR_REPO/matrix.lua"
+
 [$HOME/software/file/rclone]
 skip = default_skipper
 lib =
@@ -96,7 +106,6 @@ lib =
     MR_DOWNLOAD_FILE=rclone-v1.17-linux-amd64.zip
 checkout = mr_download_checkout
 fixups =
-    cd "$MR_REPO"
     ln -sf "$MR_REPO/rclone" ~/bin
 
 [$HOME/.GIT/3rd-party/logmerge]

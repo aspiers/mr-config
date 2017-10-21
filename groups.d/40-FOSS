@@ -93,7 +93,10 @@ lib =
     set_email github@adamspiers.org
     set_git_origin_user fghaas
 checkout = github_clone
-remotes = auto_remotes
+remotes =
+    auto_remotes
+    github_readonly_remote github-compute-ha aspiers compute-ha-presentation
+    github_readonly_remote github-austin-compute-ha aspiers openstack-summit-2016-austin-compute-ha
 
 [$HOME/.GIT/3rd-party/notell]
 skip = lazy
