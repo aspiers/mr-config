@@ -41,17 +41,15 @@ stowable = true
 remotes = auto_remotes
 
 [$HOME/SUSE]
+stowable = true
 lib =
     set_email aspiers@suse.com
     set_confidential_repo
+    export STOW_PKG_TYPE=symlink
+    export STOW_SOURCE_PATH="$MR_REPO/.STOW"
+    mr_init_stow_package
 checkout = moosehall_git_checkout indian
 remotes = auto_remotes
-fixups =
-    cd
-    for d in cloud OpenStack HA IBS OBS Ardana; do
-        ensure_symlink_exists ~/$d $MR_REPO/$d
-    done
-    ensure_symlink_exists ~/.cfg-post.d/SUSE-git $MR_REPO/lib/SUSE-git
 
 [$HOME/.GIT/3rd-party/bugzilla-tools]
 checkout = git_clone https://github.com/mvidner/Bugzilla-Tools.git
