@@ -43,3 +43,9 @@ lib =
     set_git_rw_origin_user keyboardio
 checkout = github_clone_rw_origin
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/keyboardio-xkb]
+lib =
+    set_git_origin_user andrewgdotcom
+checkout = github_clone
+remotes = auto_remotes
