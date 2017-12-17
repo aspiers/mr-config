@@ -11,6 +11,7 @@ checkout = github_clone
 remotes = auto_remotes
 stowable = true
 lib =
+    set_git_origin_user sysstat
     mr_init_stow_package
 fixups =
     set_stow_common_opts
