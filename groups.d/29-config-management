@@ -1,0 +1,18 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/3rd-party/ansible-viz]
+skip = default_skipper || missing_exe ansible
+checkout = github_clone
+lib =
+    set_git_origin_user lxsli
+fixups =
+    cd "$MR_REPO"
+    bundle
+    wrapper=$HOME/bin/ansible-viz
+    cat <<EOF >$wrapper
+    #!/bin/sh
+    cd $MR_REPO
+    bundle exec ruby ansible-viz.rb "\$@"
+    EOF
+    chmod +x $wrapper
+remotes = auto_remotes

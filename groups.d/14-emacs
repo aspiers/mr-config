@@ -274,3 +274,12 @@ lib =
     set_git_origin_user edvorg
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/magit-gh-pulls]
+skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+lib =
+    set_email emacs@adamspiers.org
+    set_git_origin_user sigma
+checkout = github_clone
+remotes =
+    auto_remotes

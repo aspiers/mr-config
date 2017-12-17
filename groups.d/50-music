@@ -132,3 +132,11 @@ checkout = github_clone
 remotes =
     github_readonly_remote ebattenberg
     auto_remotes
+
+[$HOME/.GIT/3rd-party/supercollider]
+skip = lazy || ! music_machine
+lib =
+    set_git_origin_user supercollider
+    set_email supercollider@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
