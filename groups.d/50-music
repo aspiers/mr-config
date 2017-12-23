@@ -135,8 +135,50 @@ remotes =
 
 [$HOME/.GIT/3rd-party/supercollider]
 skip = lazy || ! music_machine
+stowable = true
 lib =
+    mr_init_stow_package
     set_git_origin_user supercollider
+    # Default GitHub branch is develop
+    #set_git_clone_remote_branch develop
     set_email supercollider@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
+fixups =
+    sudo zypper in \
+        alsa-lib-devel \
+        avahi-devel \
+        cmake \
+        emacs-nox \
+        fdupes \
+        fftw3-devel \
+        gcc-c++ \
+        libQt5WebKit5-devel \
+        libQt5WebKitWidgets-devel \
+        libX11-devel \
+        libXt-devel \
+        libcurl-devel \
+        libcwiid-devel \
+        libicu-devel \
+        libjack-devel \
+        libqt5-qtbase-devel \
+        libqt5-qtlocation-devel \
+        libqt5-qtsensors-devel \
+        libqt5-qttools-devel \
+        libsndfile-devel \
+        libtool \
+        libudev-devel \
+        pkgconfig \
+        readline-devel \
+        ruby \
+        w3m \
+        yaml-cpp-devel \
+        'pkgconfig(atomic_ops)' \
+        jack
+    exit 0
+    git submodule init
+    git submodule update
+    mkdir build
+    cd build
+    cmake -DCMAKE_INSTALL_PREFIX=$STOW_PKG_PATH ..
+    make install
