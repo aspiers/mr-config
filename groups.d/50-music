@@ -175,13 +175,12 @@ fixups =
         yaml-cpp-devel \
         'pkgconfig(atomic_ops)' \
         jack
-    exit 0
     git submodule init
     git submodule update
-    mkdir build
+    mkdir -p build
     cd build
     cmake -DCMAKE_INSTALL_PREFIX=$STOW_PKG_PATH ..
-    make install
+    make ${MAKE_FLAGS--j3} install
 
 [$HOME/.GIT/3rd-party/supercollider.github.io]
 skip = lazy || ! music_machine
