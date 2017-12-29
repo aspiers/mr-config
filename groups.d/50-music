@@ -189,3 +189,11 @@ lib =
     set_email supercollider@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/adamspiers.org/guard-sclang]
+skip = lazy || missing_exe ruby || missing_exe sclang
+checkout = github_clone
+lib =
+    #set_git_origin_user guard
+remotes =
+    auto_remotes
