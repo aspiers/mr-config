@@ -166,6 +166,16 @@ remotes =
     auto_remotes
 push = unsafe
 
+[$HOME/.GIT/3rd-party/magithub]
+skip = default_skipper || missing_exe emacs
+lib =
+    set_email emacs@adamspiers.org
+    set_git_origin_user vermiculus
+checkout = github_clone
+remotes =
+    auto_remotes
+push = unsafe
+
 [$HOME/.GIT/3rd-party/auto-complete-mode]
 skip = lazy || default_skipper || missing_exe emacs
 lib =
