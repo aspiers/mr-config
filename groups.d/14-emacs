@@ -137,7 +137,7 @@ remotes =
     auto_remotes
 
 [$HOME/.GIT/3rd-party/magit]
-skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+skip = default_skipper || missing_exe emacs || missing_exe git
 lib =
     set_email emacs@adamspiers.org
     set_git_origin_user magit
@@ -147,7 +147,7 @@ remotes =
 push = unsafe
 
 [$HOME/.GIT/3rd-party/git-modes]
-skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+skip = default_skipper || missing_exe emacs || missing_exe git
 lib =
     set_email emacs@adamspiers.org
     set_git_origin_user magit
@@ -157,7 +157,7 @@ remotes =
 push = unsafe
 
 [$HOME/.GIT/3rd-party/ghub]
-skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+skip = default_skipper || missing_exe emacs || missing_exe git
 lib =
     set_email emacs@adamspiers.org
     set_git_origin_user magit
