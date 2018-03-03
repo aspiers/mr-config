@@ -1,0 +1,5 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/3rd-party/docutils]
+checkout = git_clone https://repo.or.cz/docutils.git
+remotes = auto_remotes
