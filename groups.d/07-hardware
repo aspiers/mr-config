@@ -1,12 +1,16 @@
 # -*- mode: sh -*-
 
+# SKETCHBOOK_DIR, KALEIDOSCOPE_AVR_DIR, and KALEIDOSCOPE_AVR_LIBRARIES set by
+# ~/.GIT/adamspiers.org/shell-env.adam_spiers.pub/.shared_rc.d/person-adam.spiers/keyboardio
+
 [$HOME/.GIT/3rd-party/Model01-Firmware]
 lib =
     set_git_origin_user keyboardio
 checkout = github_clone
 remotes = auto_remotes
 fixups =
-    ensure_symlink_exists $SKETCHBOOK_DIR/$MR_NAME $MR_REPO
+    ensure_symlink_exists             $SKETCHBOOK_DIR/$MR_NAME $MR_REPO
+    ensure_symlink_exists $KALEIDOSCOPE_AVR_LIBRARIES/$MR_NAME $MR_REPO
 
 [$HOME/.GIT/3rd-party/Arduino-Boards]
 lib =
@@ -16,7 +20,7 @@ remotes = auto_remotes
 fixups =
     make checkout-submodules
     mkdir -p $SKETCHBOOK_DIR/hardware/keyboardio
-    ensure_symlink_exists $SKETCHBOOK_DIR/hardware/keyboardio/avr $MR_REPO
+    ensure_symlink_exists $KALEIDOSCOPE_AVR_DIR $MR_REPO
 
 [$HOME/.GIT/3rd-party/Kaleidoscope-LEDEffect-DigitalRain]
 lib =
@@ -24,13 +28,15 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
-    ensure_symlink_exists $SKETCHBOOK_DIR/hardware/keyboardio/avr/libraries/$MR_NAME $MR_REPO
+    ensure_symlink_exists $KALEIDOSCOPE_AVR_LIBRARIES/$MR_NAME $MR_REPO
 
 [$HOME/.GIT/3rd-party/Kaleidoscope]
 lib =
     set_git_origin_user keyboardio
 checkout = github_clone
 remotes = auto_remotes
+fixups =
+    ensure_symlink_exists $KALEIDOSCOPE_AVR_LIBRARIES/$MR_NAME $MR_REPO
 
 [$HOME/.GIT/3rd-party/Model01-Legends]
 lib =
