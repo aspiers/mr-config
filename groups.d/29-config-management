@@ -12,7 +12,7 @@ fixups =
     cat <<EOF >$wrapper
     #!/bin/sh
     cd $MR_REPO
-    bundle exec ruby ansible-viz.rb "\$@"
+    bundle exec ruby bin/ansible-viz.rb "\$@"
     EOF
     chmod +x $wrapper
 remotes = auto_remotes
