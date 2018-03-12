@@ -194,6 +194,6 @@ remotes = auto_remotes
 skip = lazy || missing_exe ruby || missing_exe sclang
 checkout = github_clone
 lib =
-    #set_git_origin_user guard
+    set_email supercollider@adamspiers.org
 remotes =
     auto_remotes
