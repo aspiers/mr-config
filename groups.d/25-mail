@@ -99,3 +99,11 @@ fixups =
     $MR_REPO/.env/bin/python $MR_REPO/src/main.py "\$@"
     EOF
     chmod u+x ~/bin/show-ics
+
+[$HOME/software/web/MoonMail]
+skip = ! music_machine
+lib =
+    set_email moonmail@adamspiers.org
+    set_git_origin_user microapps
+checkout = github_clone
+remotes = auto_remotes
