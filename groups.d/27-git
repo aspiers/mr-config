@@ -211,16 +211,12 @@ fixups =
 
 [$HOME/.GIT/adamspiers.org/git-explode]
 skip = default_skipper || missing_exe git
-stowable = true
 checkout = github_clone
 lib =
     set_email git@adamspiers.org
-    mr_init_stow_package
 remotes = auto_remotes
 fixups =
-    python setup.py install \
-        --old-and-unmanageable \
-        --prefix $STOW_PKG_PATH
+    pip install --user -e .
 
 [$HOME/.GIT/adamspiers.org/github-notifications]
 skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
