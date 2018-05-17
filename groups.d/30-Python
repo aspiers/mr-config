@@ -50,3 +50,12 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     ensure_symlink_exists ~/.pyenv $MR_REPO
+
+[$HOME/.GIT/3rd-party/tox]
+skip = lazy || default_skipper || missing_exe python
+lib =
+    set_git_origin_user tox-dev
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    ensure_symlink_exists ~/.pyenv $MR_REPO
