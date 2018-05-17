@@ -187,7 +187,7 @@ remotes = auto_remotes
 fixups =
     #PYTHONUSERBASE=$STOW_PKG_PATH pip install --user -e .
     pip install --user -e .
-    ln -sf $STOW_PKG_PATH/share/git_deps/gitfile-handler.desktop \
+    ln -sf ~/.local/share/git_deps/gitfile-handler.desktop \
        ~/.local/share/applications
     xdg-mime default gitfile-handler.desktop x-scheme-handler/gitfile
 
