@@ -250,3 +250,12 @@ fixups =
     # To install from upstream
     #cargo install --root $STOW_PKG_PATH $MR_NAME
 remotes = auto_remotes
+
+[$HOME/.GIT/adamspiers.org/london-git-automagic-may-2018]
+skip = lazy
+lib =
+    set_email git@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readonly_remote self-healing aspiers openstack-meetup-london-march-2018-self-healing
