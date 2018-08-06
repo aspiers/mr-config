@@ -15,7 +15,9 @@ lib =
     mr_init_stow_package
 fixups =
     set_stow_common_opts
-    # fixme
-    ./configure --prefix=$HOME
-    make install DESTDIR=$STOW_PKG_PATH IGNORE_FILE_ATTRIBUTES=y
+    ./configure --prefix=$STOW_PKG_PATH
+    make install install_man \
+         prefix=$STOW_PKG_PATH \
+         SYSCONFIG_DIR=$STOW_PKG_PATH/etc \
+         IGNORE_FILE_ATTRIBUTES=y
     mr_restow_regardless
