@@ -47,3 +47,14 @@ lib =
 skip = lazy || default_skipper
 checkout = git_clone ssh://jaymestone.com/home/jaymestone/public_html/sendy
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/BrexitRealityCheck]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email hackbrexit@adamspiers.org
+    set_git_clone_name BrexitRealityCheck
+    set_git_rw_origin_user GreatBritishHackOff
+remotes =
+    auto_remotes
+    #github_readonly_remote Greatlemer
