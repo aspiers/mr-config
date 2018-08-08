@@ -165,6 +165,8 @@ fixups =
         libqt5-qtlocation-devel \
         libqt5-qtsensors-devel \
         libqt5-qttools-devel \
+        libqt5-qtwebengine-devel \
+        libqt5-qtwebengine-private-headers-devel \
         libsndfile-devel \
         libtool \
         libudev-devel \

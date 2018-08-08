@@ -65,8 +65,9 @@ remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/get_iplayer]
 skip = lazy || default_skipper
-checkout = git_clone git://git.infradead.org/get_iplayer.git
+checkout = github_clone
 lib =
+    set_git_origin_user get-iplayer
     set_email get_iplayer@adamspiers.org
 remotes = auto_remotes
 fixups =
