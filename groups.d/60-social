@@ -52,7 +52,7 @@ remotes = auto_remotes
 skip = lazy
 checkout = github_clone
 lib =
-    set_email hackbrexit@adamspiers.org
+    set_email tech4uk@adamspiers.org
     set_git_clone_name BrexitRealityCheck
     set_git_rw_origin_user GreatBritishHackOff
 remotes =
