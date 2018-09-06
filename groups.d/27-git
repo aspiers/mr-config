@@ -254,7 +254,18 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+    github_readonly_remote presentation-template aspiers presentation-template
     github_readonly_remote self-healing aspiers openstack-meetup-london-march-2018-self-healing
+
+[$HOME/.GIT/adamspiers.org/denver-git-automagic-sept-2018]
+skip = lazy
+lib =
+    set_email git@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readonly_remote presentation-template aspiers presentation-template
+    github_readonly_remote london-git aspiers london-git-automagic-may-2018
 
 [$HOME/.GIT/3rd-party/git.github.io]
 skip = lazy
