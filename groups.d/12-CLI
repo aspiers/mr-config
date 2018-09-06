@@ -153,3 +153,29 @@ remotes = auto_remotes
 fixups =
     mkdir -p ~/.lnav/formats
     ln -s $MR_REPO ~/.lnav/formats/https___github_com_aspiers_lnav-formats_git
+
+[$HOME/.GIT/3rd-party/demoshell]
+skip = default_skipper || missing_exe git
+#stowable = true
+checkout = github_clone
+lib =
+    set_git_origin_user dhellmann
+    set_email python@adamspiers.org
+    #mr_init_stow_package
+remotes = auto_remotes
+fixups =
+    #PYTHONUSERBASE=$STOW_PKG_PATH pip install --user -e .
+    pip install --user -e .
+
+[$HOME/.GIT/3rd-party/doitlive]
+skip = default_skipper || missing_exe git
+#stowable = true
+checkout = github_clone
+lib =
+    set_git_origin_user sloria
+    set_email python@adamspiers.org
+    #mr_init_stow_package
+remotes = auto_remotes
+fixups =
+    #PYTHONUSERBASE=$STOW_PKG_PATH pip install --user -e .
+    pip install --user -e .
