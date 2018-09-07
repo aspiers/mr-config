@@ -265,7 +265,8 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
-    github_readonly_remote presentation-template aspiers presentation-template
+    git_add_remote presentation-template ~/.GIT/3rd-party/presentation-template
+    github_readonly_remote github-presentation-template aspiers presentation-template
     github_readonly_remote london-git aspiers london-git-automagic-may-2018
 
 [$HOME/.GIT/3rd-party/git.github.io]
