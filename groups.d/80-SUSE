@@ -16,6 +16,8 @@ stowable = true
 remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/novell+mail.pub]
+lib =
+    set_git_clone_name novell-mail.pub
 checkout = git_clone_my_repo
 stowable = true
 remotes = auto_remotes
