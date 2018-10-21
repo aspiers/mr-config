@@ -123,3 +123,10 @@ remotes = auto_remotes
 #stowable = true
 fixups =
     ensure_symlink_exists ~/bin/rescue-gmane-URL "$MR_REPO/rescue-gmane-URL.py"
+
+[$HOME/.GIT/3rd-party/linux]
+skip = default_skipper
+lib =
+    set_email linux@adamspiers.org
+checkout = git_clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+remotes = auto_remotes
