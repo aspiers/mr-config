@@ -80,3 +80,14 @@ lib =
 remotes =
     auto_remotes
     #github_readonly_remote Greatlemer
+
+[$HOME/.GIT/3rd-party/Represent-django]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email tech4uk@adamspiers.org
+    #set_git_clone_name ReactLite
+    set_git_rw_origin_user eddowding
+remotes =
+    auto_remotes
+    #github_readonly_remote Greatlemer
