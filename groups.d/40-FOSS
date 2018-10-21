@@ -115,3 +115,13 @@ lib =
     set_git_origin_user ansible
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/adamspiers.org/list-utils]
+skip = default_skipper
+lib =
+    set_email github@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
+#stowable = true
+fixups =
+    ensure_symlink_exists ~/bin/rescue-gmane-URL "$MR_REPO/rescue-gmane-URL.py"
