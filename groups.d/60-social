@@ -60,7 +60,7 @@ remotes =
     #github_readonly_remote Greatlemer
 
 [$HOME/.GIT/3rd-party/represent-lite]
-skip = lazy
+skip = true # lazy
 checkout = github_clone
 lib =
     set_email tech4uk@adamspiers.org
