@@ -97,6 +97,8 @@ remotes =
     auto_remotes
     github_readonly_remote github-compute-ha aspiers compute-ha-presentation
     github_readonly_remote github-austin-compute-ha aspiers openstack-summit-2016-austin-compute-ha
+    github_readonly_remote github-israel aspiers openstack-day-israel-2017-compute-ha
+    git_add_remote israel ~/OpenStack/git/openstack-day-israel-2017-compute-ha
 
 [$HOME/.GIT/3rd-party/notell]
 skip = lazy

@@ -1,0 +1,6 @@
+# -*- mode: sh -*-
+
+[$HOME/blockchain]
+checkout = git_clone_my_repo
+remotes = auto_remotes
+
