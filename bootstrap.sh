@@ -52,16 +52,19 @@ cd
 if ! [ -e ~/.localhost-props ]; then
     cat <<EOF > ~/.localhost-props
 # List of properties for this machine, which governs how mr manages
-# the repositories on it.
+# the repositories on it, and how other custom scripts treat the machine.
 #
-# See ~/.config/mr/sh.d/skippers for more details.
+# See ~/org/notes/localhost-props.org for documentation.
 
 moosehall
+
 #main-console
+#laptop
+openvpn-server
+routine
 SUSE
 music
 secure
-routine
 EOF
     ${EDITOR:-vi} ~/.localhost-props
 fi
