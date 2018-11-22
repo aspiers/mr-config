@@ -106,7 +106,7 @@ lib =
     mr_init_stow_package
     export STOW_PKG_TYPE=symlink
     mr_set_download_url \
-        https://github.com/github/hub/releases/download/v2.2.1/hub-linux-amd64-2.2.1.tar.gz
+        https://github.com/github/hub/releases/download/v2.6.0/hub-linux-amd64-2.6.0.tgz
 checkout = mr_download_checkout
 stowable = true
 fixups =
