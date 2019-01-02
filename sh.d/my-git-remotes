@@ -22,6 +22,7 @@ moosehall_remotes () {
         mc       mediacentre:$repo mediacentre
         nuc      REMOTE:$repo
         arabian  REMOTE:$repo
+        ionian   REMOTE:$repo
     "
 }
 
@@ -35,6 +36,7 @@ moosehall_work_remotes () {
         pacific   REMOTE:$repo
         indian    REMOTE:$repo
         arabian   REMOTE:$repo
+        ionian    REMOTE:$repo
     "
 }
 
