@@ -96,8 +96,10 @@ Host *
 EOF
     chmod 600 ~/.ssh/config
     echo "Wrote ~/.ssh/config:"
-    echo
+    echo "--------- 8< --------- 8< --------- 8< --------- 8< ---------"
     cat ~/.ssh/config
+    echo "--------- 8< --------- 8< --------- 8< --------- 8< ---------"
+    echo
 fi
 
 ssh_socket=$HOME/.ssh/master-${git_user_at_host}:22
