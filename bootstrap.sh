@@ -171,18 +171,18 @@ up=$HOME/bin/up
 unpack=$HOME/bin/unpack
 # We need 'up' / 'unpack' installed first, so that the download
 # plugin can unpack stow.
-if [ -x $unpack ]; then
+if [ -e $unpack ]; then
     echo "'unpack' utility already exists ..."
 else
     echo "Downloading 'unpack' utility ..."
     curl -o $unpack https://raw.githubusercontent.com/aspiers/shell-env/master/bin/unpack
+    chmod +x $unpack
 fi
 
 if [ -x $up ]; then
-    echo "'unpack' utility already exists ..."
+    echo "'up' utility already exists ..."
 else
     ln -s unpack $up
-    chmod +x $up $unpack
 fi
 
 div ############################################################
