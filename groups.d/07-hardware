@@ -9,6 +9,9 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
+    require_env \
+        ~/.GIT/adamspiers.org/shell-env.adam_spiers.pub/.shared_rc.d/person-adam.spiers/keyboardio \
+        SKETCHBOOK_DIR KALEIDOSCOPE_AVR_LIBRARIES
     ensure_symlink_exists             $SKETCHBOOK_DIR/$MR_NAME $MR_REPO
     ensure_symlink_exists $KALEIDOSCOPE_AVR_LIBRARIES/$MR_NAME $MR_REPO
 
@@ -18,6 +21,9 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
+    require_env \
+        ~/.GIT/adamspiers.org/shell-env.adam_spiers.pub/.shared_rc.d/person-adam.spiers/keyboardio \
+        SKETCHBOOK_DIR KALEIDOSCOPE_AVR_DIR
     make checkout-submodules
     mkdir -p $SKETCHBOOK_DIR/hardware/keyboardio
     ensure_symlink_exists $KALEIDOSCOPE_AVR_DIR $MR_REPO
@@ -28,6 +34,9 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
+    require_env \
+        ~/.GIT/adamspiers.org/shell-env.adam_spiers.pub/.shared_rc.d/person-adam.spiers/keyboardio \
+        KALEIDOSCOPE_AVR_LIBRARIES
     ensure_symlink_exists $KALEIDOSCOPE_AVR_LIBRARIES/$MR_NAME $MR_REPO
 
 [$HOME/.GIT/3rd-party/Kaleidoscope]
@@ -36,6 +45,9 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
+    require_env \
+        ~/.GIT/adamspiers.org/shell-env.adam_spiers.pub/.shared_rc.d/person-adam.spiers/keyboardio \
+        KALEIDOSCOPE_AVR_LIBRARIES
     ensure_symlink_exists $KALEIDOSCOPE_AVR_LIBRARIES/$MR_NAME $MR_REPO
 
 [$HOME/.GIT/3rd-party/Model01-Legends]

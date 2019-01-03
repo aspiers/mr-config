@@ -1,0 +1,27 @@
+# -*- mode: sh -*-
+
+require_env () {
+    local file="$1"
+    local load_required load_failed
+    shift
+
+    for var in "$@"; do
+        if [ "${!var-UNSET_VAR}" == 'UNSET_VAR' ]; then
+            echo "$var not set"
+            load_required=y
+        fi
+    done
+    if [ -n "$load_required" ]; then
+        source "$file"
+    fi
+
+    for var in "$@"; do
+        if [ "${!var-UNSET_VAR}" == 'UNSET_VAR' ]; then
+            warning "$var did not get set by ${file/$HOME/\~}!"
+            load_failed=y
+        fi
+    done
+    if [ -n "$load_failed" ]; then
+        error "source'ing ${file/$HOME/\~} failed to load some variables"
+    fi
+}
