@@ -25,6 +25,7 @@ git_user_at_host=$git_user@$git_host
 #mr_upstream_repo="github:kitenet-mr.git"
 # so instead get it from my server:
 mr_upstream_repo="adamspiers.org:mr.git"
+# N.B. this uses the URL rewrite set below
 
 div () {
     echo
@@ -134,7 +135,7 @@ div ############################################################
 
 echo "Configuring git ..."
 which git >&/dev/null || fatal "git not found on \$PATH; aborting."
-git config --global url.ssh://$git_host/home/$git_user/.srv/git/.insteadof adamspiers.org:
+git config --global url.ssh://$git_user_at_host/home/$git_user/.srv/git/.insteadof adamspiers.org:
 
 div ############################################################
 
