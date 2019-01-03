@@ -79,7 +79,7 @@ checkout = moosehall_git_checkout
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/opensuse-spotify-installer]
-skip = ! music_machine || ! grep -q 'openSUSE' /etc/SuSE-release
+skip = ! music_machine || ! grep -q 'openSUSE' /etc/os-release
 lib = set_email spotify-on-opensuse@adamspiers.org
 checkout = github_clone
 remotes =
@@ -88,7 +88,7 @@ remotes =
     github_readonly_remote Aidanie
 
 [$HOME/.GIT/3rd-party/spotify-make]
-skip = ! music_machine || ! grep -q 'openSUSE' /etc/SuSE-release
+skip = ! music_machine || ! grep -q 'openSUSE' /etc/os-release
 lib =
     set_email spotify-on-opensuse@adamspiers.org
     set_git_origin_user leamas

@@ -12,7 +12,7 @@ name = SUSE-dist
 # Check out on adamspiers.org web server so we can publish files
 skip =
     default_skipper || \
-    ( missing_file /etc/SuSE-release &&
+    ( ! grep -iq suse /etc/os-release &&
       ! my_public_web_server )
 checkout = git_clone_my_repo
 remotes = auto_remotes
