@@ -2,6 +2,9 @@
 
 fixups_append =
     dir=.cfg-post.d
+    if [ -z "$ZDOTDIR" ]; then
+        error "ZDOTDIR not set; can't run $dir hoooks"
+    fi
     for f in "$MR_REPO/$dir"/*; do
         if [ -x "$f" ]; then
             stowed="${f##*/}"
