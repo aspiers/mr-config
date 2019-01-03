@@ -38,6 +38,23 @@ fatal () {
     exit 1
 }
 
+mr_update_stow_fixups () {
+    local pkg="$1"
+
+    echo "Retrieving $1 ..."
+
+    # N.B. -i is omitted the first time, since the fixups are expected
+    # to fail due to it not having been stowed yet.
+    mr    -r "$1" up || :
+
+    mr -i -r "$1" stow
+
+    # fixups should now work after stowing
+    mr -i -r "$1" fix
+
+    echo
+}
+
 # There's a whole bunch more we could check for here, but we don't
 # because we want it to work for bare bones installs.
 for prog in curl git ruby rake virtualenv; do
@@ -247,9 +264,7 @@ div ############################################################
 # Avoid Stow conflicts
 rm -f $up $unpack
 
-echo "Retrieving shell-env ..."
-mr -i -r shell-env up
-echo
+mr_update_stow_fixups shell-env
 
 echo "Running mr fixups ..."
 mr -i -r mr fixups
@@ -281,19 +296,8 @@ done
 div ############################################################
 
 # Get moosehall-git-URL-rewriters.
-#
-# N.B. -i is omitted the first time, since the fixups are expected
-# to fail due to it not having been stowed yet.
-mr    -r moosehall+shell-env up
-mr -i -r moosehall+shell-env stow
-# fixups should now work after stowing
-mr -i -r moosehall+shell-env fix
-
-# Get public git hosting URL rewriters.  Same trick here.
-mr    -r git.adam_spiers.pub up
-mr -i -r git.adam_spiers.pub stow
-# fixups should now work after stowing
-mr -i -r git.adam_spiers.pub fix
+mr_update_stow_fixups moosehall+shell-env
+mr_update_stow_fixups git.adam_spiers.pub
 
 div ############################################################
 
