@@ -216,7 +216,9 @@ div ############################################################
 
 # We need stow installed first, so that the other
 # repos can stow themselves.
-if ! which stow >&/dev/null; then
+if which stow >&/dev/null; then
+    echo "stow already installed"
+else
     echo "Installing stow-release ..."
     mr -r stow-release checkout
 
@@ -250,11 +252,9 @@ EOF
     fi
 done
 
-echo
-
 div ############################################################
 
-# Prevent accidental folding ASAP
+echo "Prevent accidental folding ASAP via ANTIFOLD ..."
 mr -i -r ANTIFOLD up
 
 div ############################################################
@@ -276,13 +276,10 @@ div ############################################################
 # bits so that passwordless ssh still works.
 
 boot=( ssh ssh.adam_spiers.sec mr-util git-config )
-pkgs="${boot[@]}"
-pkgs="${pkgs// /,}"
-echo "Retrieving ${pkgs//,/, } ..."
-mr -i -r $pkgs co
 
-echo "Stowing ${pkgs//,/, } ..."
-mr -i -r $pkgs stow
+for pkg in "${boot[@]}"; do
+    mr_update_stow_fixups $pkg
+done
 
 echo "Removing $ssh_bootstrap_conf and rebuilding ssh config ..."
 rm $ssh_bootstrap_conf
@@ -294,6 +291,9 @@ while ! [ -e ~/.ssh/id_rsa ]; do
 done
 
 div ############################################################
+
+# Get other core dependencies
+mr_update_stow_fixups shell-env.adam_spiers.pub
 
 # Get moosehall-git-URL-rewriters.
 mr_update_stow_fixups moosehall+shell-env
