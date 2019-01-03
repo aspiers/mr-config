@@ -7,11 +7,12 @@ require_env () {
 
     for var in "$@"; do
         if [ "${!var-UNSET_VAR}" == 'UNSET_VAR' ]; then
-            echo "$var not set"
+            : "$var not set"
             load_required=y
         fi
     done
     if [ -n "$load_required" ]; then
+        warning "Some env variables not set; source-ing ${file/$HOME/\~}"
         source "$file"
     fi
 
@@ -22,6 +23,6 @@ require_env () {
         fi
     done
     if [ -n "$load_failed" ]; then
-        error "source'ing ${file/$HOME/\~} failed to load some variables"
+        error "source-ing ${file/$HOME/\~} failed to load some variables"
     fi
 }
