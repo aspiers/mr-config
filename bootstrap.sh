@@ -199,22 +199,12 @@ if ! which stow >&/dev/null; then
     fi
 fi
 
-if [ -d ~/.cfg ]; then
-    touch ~/.cfg/.stow
-    export MR_STOW_OVER=.
-fi
-
 if [ -e $up -a ! -L $up ]; then
     echo "Removing temporary $up"
     rm $up
 fi
 
 div ############################################################
-
-# cfgctl used to be needed early on for lib/libhooks.sh, but that got
-# moved to shell-env.  It's possibly needed for other things too,
-# but let's try to manage without.
-#mr -r cfgctl up
 
 echo "Checking for files which distros are likely to provide ..."
 
