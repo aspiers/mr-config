@@ -227,6 +227,11 @@ echo
 
 div ############################################################
 
+# Prevent accidental folding ASAP
+mr -i -r ANTIFOLD up
+
+div ############################################################
+
 # shell-env is needed by mr-util for zrec
 
 # Avoid Stow conflicts
