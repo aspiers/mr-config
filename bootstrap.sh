@@ -9,6 +9,8 @@
 #   - runs mr bootstrap on a remote copy of home-mrconfig
 #   - uses mr to install GNU Stow
 #   - uses mr to check out and fixup all repositories
+#
+# It is designed to be idempotent so can be re-run on failure.
 
 set -e
 
@@ -167,11 +169,16 @@ up=$HOME/bin/up
 unpack=$HOME/bin/unpack
 # We need 'up' / 'unpack' installed first, so that the download
 # plugin can unpack stow.
-if [ -x $up ]; then
-    echo "'up' utility already exists ..."
+if [ -x $unpack ]; then
+    echo "'unpack' utility already exists ..."
 else
     echo "Downloading 'unpack' utility ..."
     curl -o $unpack https://raw.githubusercontent.com/aspiers/shell-env/master/bin/unpack
+fi
+
+if [ -x $up ]; then
+    echo "'unpack' utility already exists ..."
+else
     ln -s unpack $up
     chmod +x $up $unpack
 fi
@@ -180,12 +187,14 @@ div ############################################################
 
 # We need stow installed first, so that the other
 # repos can stow themselves.
-echo "Installing stow-release ..."
-mr -r stow-release checkout
-
 if ! which stow >&/dev/null; then
-    echo "stow installation failed; aborting." >&2
-    exit 1
+    echo "Installing stow-release ..."
+    mr -r stow-release checkout
+
+    if ! which stow >&/dev/null; then
+        echo "stow installation failed; aborting." >&2
+        exit 1
+    fi
 fi
 
 if [ -d ~/.cfg ]; then
