@@ -39,20 +39,17 @@ fatal () {
 }
 
 mr_update_stow_fixups () {
-    local pkg="$1"
-
-    echo "Retrieving $1 ..."
-
-    # N.B. -i is omitted the first time, since the fixups are expected
-    # to fail due to it not having been stowed yet.
-    mr    -r "$1" up || :
-
-    mr -i -r "$1" stow
-
-    # fixups should now work after stowing
-    mr -i -r "$1" fix
-
-    echo
+    cd
+    for pkg in "$@"; do
+        echo "Retrieving $1 ..."
+        # N.B. -i is omitted the first time, since the fixups are expected
+        # to fail due to it not having been stowed yet.
+        mr    -r "$pkg" up || :
+        mr -i -r "$pkg" stow
+        # fixups should now work after stowing
+        mr -i -r "$pkg" fix
+        echo
+    done
 }
 
 # There's a whole bunch more we could check for here, but we don't
@@ -277,9 +274,7 @@ div ############################################################
 
 boot=( ssh ssh.adam_spiers.sec mr-util git-config )
 
-for pkg in "${boot[@]}"; do
-    mr_update_stow_fixups $pkg
-done
+mr_update_stow_fixups "${boot[@]}"
 
 echo "Removing $ssh_bootstrap_conf and rebuilding ssh config ..."
 rm $ssh_bootstrap_conf
