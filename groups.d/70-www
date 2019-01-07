@@ -17,3 +17,12 @@ lib =
     set_confidential_repo
 checkout = git_clone_my_repo
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/gatsby]
+skip = lazy
+lib =
+    set_git_origin_user gatsbyjs
+    set_email javascript@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
