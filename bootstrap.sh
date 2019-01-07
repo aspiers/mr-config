@@ -287,17 +287,52 @@ done
 
 div ############################################################
 
-# Get other core dependencies
-mr_update_stow_fixups shell-env.adam_spiers.pub
+echo "Installing other core dependencies ..."
+mr_update_stow_fixups shell-env.adam_spiers.{pub,sec}
 
 # Get moosehall-git-URL-rewriters.
 mr_update_stow_fixups moosehall+shell-env
 mr_update_stow_fixups git.adam_spiers.pub
 
+mr_update_stow_fixups moosehall+ssh.{pub,sec}
+
 div ############################################################
 
-echo "Running mr checkout ..."
-mr -s -i up
+echo "Installing 05-basic ..."
+mr_update_stow_fixups desktop-config screenrc git-annex.static
+mr_update_stow_fixups gnupg{,.sec}
+
+div ############################################################
+
+echo "Bootstrapping emacs ..."
+mr_update_stow_fixups emacs
+
+div ############################################################
+
+echo "Installing important stuff from 10-moosehall ..."
+mr_update_stow_fixups moosehall+{xsession,watchlogs.pub,ldap.{pub,sec}}
+
+div ############################################################
+
+echo "Installing important stuff from 12-CLI ..."
+mr_update_stow_fixups lftp fastdup xdiskusage weechat-config lnav lnav-formats
+
+div ############################################################
+
+echo "Installing important stuff from 20-Xorg ..."
+mr_update_stow_fixups fonts solarized rxvt graphics audio watchlogs xkb
+
+div ############################################################
+
+echo "Running mr up for everything else ..."
+# Ignore errors like for mr_update_stow_fixups
+mr -s up
+
+echo "Running mr stow for everything else ..."
+mr -s -i stow
+
+echo "Running mr fix for everything else ..."
+mr -s -i fix
 
 cat <<EOF
 
