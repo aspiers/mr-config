@@ -292,7 +292,7 @@ skip = lazy || default_skipper || missing_exe emacs
 lib =
     set_email emacs@adamspiers.org
     set_git_origin_user edvorg
-checkout = github_clone
+checkout = gitlab_clone
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/magit-gh-pulls]
