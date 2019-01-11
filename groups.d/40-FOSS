@@ -132,3 +132,10 @@ lib =
     set_email linux@adamspiers.org
 checkout = git_clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/osem]
+lib =
+    set_git_origin_user openSUSE
+checkout = github_clone
+skip = default_skipper
+remotes = auto_remotes
