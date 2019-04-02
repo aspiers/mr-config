@@ -91,3 +91,12 @@ lib =
 remotes =
     auto_remotes
     #github_readonly_remote Greatlemer
+
+[$HOME/.GIT/3rd-party/copernicus]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email tech4uk@adamspiers.org
+    set_git_rw_origin_user TechForUK
+remotes =
+    auto_remotes
