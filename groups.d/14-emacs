@@ -209,7 +209,7 @@ skip = lazy || default_skipper || missing_exe emacs || missing_exe osc
 lib = set_email aspiers@suse.com
 checkout = github_clone
 remotes = auto_remotes
-fixups =
+#fixups =
     # loaded via el-get now
 
 [$HOME/.GIT/adamspiers.org/smooth-scrolling]
