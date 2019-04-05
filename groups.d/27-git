@@ -271,6 +271,20 @@ remotes =
 fixups =
     ensure_symlink_exists ~/public_html/$MR_NAME $MR_REPO
 
+[$HOME/.GIT/adamspiers.org/nashville-git-automagic-april-2019]
+skip = lazy
+lib =
+    set_email git@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+    git_add_remote presentation-template ~/.GIT/3rd-party/presentation-template
+    github_readonly_remote github-presentation-template aspiers presentation-template
+    github_readonly_remote london-git aspiers london-git-automagic-may-2018
+    github_readonly_remote denver-git aspiers denver-git-automagic-sept-2018
+fixups =
+    ensure_symlink_exists ~/public_html/$MR_NAME $MR_REPO
+
 [$HOME/.GIT/3rd-party/git.github.io]
 skip = lazy
 lib =
