@@ -145,38 +145,40 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
-    sudo zypper in \
-        alsa-lib-devel \
-        avahi-devel \
-        cmake \
-        emacs-nox \
-        fdupes \
-        fftw3-devel \
-        gcc-c++ \
-        libQt5WebKit5-devel \
-        libQt5WebKitWidgets-devel \
-        libX11-devel \
-        libXt-devel \
-        libcurl-devel \
-        libcwiid-devel \
-        libicu-devel \
-        libjack-devel \
-        libqt5-qtbase-devel \
-        libqt5-qtlocation-devel \
-        libqt5-qtsensors-devel \
-        libqt5-qttools-devel \
-        libqt5-qtwebengine-devel \
-        libqt5-qtwebengine-private-headers-devel \
-        libsndfile-devel \
-        libtool \
-        libudev-devel \
-        pkgconfig \
-        readline-devel \
-        ruby \
-        w3m \
-        yaml-cpp-devel \
-        'pkgconfig(atomic_ops)' \
-        jack
+    if [ -n "$MR_INSTALL_DEPS" ]; then
+        sudo zypper in \
+            alsa-lib-devel \
+            avahi-devel \
+            cmake \
+            emacs-nox \
+            fdupes \
+            fftw3-devel \
+            gcc-c++ \
+            libQt5WebKit5-devel \
+            libQt5WebKitWidgets-devel \
+            libX11-devel \
+            libXt-devel \
+            libcurl-devel \
+            libcwiid-devel \
+            libicu-devel \
+            libjack-devel \
+            libqt5-qtbase-devel \
+            libqt5-qtlocation-devel \
+            libqt5-qtsensors-devel \
+            libqt5-qttools-devel \
+            libqt5-qtwebengine-devel \
+            libqt5-qtwebengine-private-headers-devel \
+            libsndfile-devel \
+            libtool \
+            libudev-devel \
+            pkgconfig \
+            readline-devel \
+            ruby \
+            w3m \
+            yaml-cpp-devel \
+            'pkgconfig(atomic_ops)' \
+            jack
+    fi
     git submodule init
     git submodule update
     mkdir -p build
