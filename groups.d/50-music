@@ -183,7 +183,9 @@ fixups =
     git submodule update
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=$STOW_PKG_PATH ..
+    cmake -DCMAKE_INSTALL_PREFIX=$STOW_PKG_PATH \
+          -DSC_ABLETON_LINK=OFF \
+          ..
     make ${MAKE_FLAGS--j3} install
 
 [$HOME/.GIT/3rd-party/supercollider.github.io]
