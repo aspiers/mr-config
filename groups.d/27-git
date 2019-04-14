@@ -279,3 +279,94 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/git-related]
+skip = lazy
+lib =
+    set_git_origin_user felipec
+    set_email git@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+fixups =
+    ensure_symlink_exists ~/bin/git-related $MR_REPO/git-related
+
+[$HOME/.GIT/3rd-party/kal-shlib-core]
+skip = lazy
+checkout = github_clone
+stowable = true
+lib =
+    set_git_origin_user vaab
+    mr_init_stow_package
+fixups =
+    if ! [ -e configure ]; then
+        bash ./autogen.sh
+    fi
+    export STOW_COMMAND="sudo stow"
+    export STOW_TARGET=/
+    set_stow_common_opts
+    ./configure --prefix=$STOW_PKG_PATH --libdir=$STOW_PKG_PATH/lib
+    make install prefix=$STOW_PKG_PATH
+    #sudo stow -d ~/.STOW -t / $MR_NAME
+    mr_restow_regardless
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/kal-shlib-common]
+skip = lazy
+checkout = github_clone
+stowable = true
+lib =
+    set_git_origin_user vaab
+    mr_init_stow_package
+fixups =
+    if ! [ -e configure ]; then
+        bash ./autogen.sh
+    fi
+    export STOW_COMMAND="sudo stow"
+    export STOW_TARGET=/usr
+    set_stow_common_opts
+    ./configure --prefix=$STOW_PKG_PATH --libdir=$STOW_PKG_PATH/lib
+    make install prefix=$STOW_PKG_PATH
+    #sudo stow -d ~/.STOW -t / $MR_NAME
+    mr_restow_regardless
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/kal-shlib-pretty]
+skip = lazy
+checkout = github_clone
+stowable = true
+lib =
+    set_git_origin_user vaab
+    mr_init_stow_package
+fixups =
+    if ! [ -e configure ]; then
+        bash ./autogen.sh
+    fi
+    export STOW_COMMAND="sudo stow"
+    export STOW_TARGET=/usr
+    set_stow_common_opts
+    ./configure --prefix=$STOW_PKG_PATH --libdir=$STOW_PKG_PATH/lib
+    make install prefix=$STOW_PKG_PATH
+    #sudo stow -d ~/.STOW -t / $MR_NAME
+    mr_restow_regardless
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/git-irebase]
+skip = lazy
+checkout = github_clone
+stowable = true
+lib =
+    set_git_origin_user 0k
+fixups =
+    ensure_symlink_exists ~/bin/git-irebase $MR_REPO/bin/git-irebase
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/git-reviewers]
+skip = lazy
+checkout = github_clone
+stowable = true
+lib =
+    set_git_origin_user johnnadratowski
+fixups =
+    pip install --user -e .
+remotes = auto_remotes
