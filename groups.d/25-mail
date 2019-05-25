@@ -107,3 +107,11 @@ lib =
     set_git_origin_user microapps
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/docker-mautic]
+skip = ! music_machine
+lib =
+    set_email mautic@adamspiers.org
+    set_git_origin_user mautic
+checkout = github_clone
+remotes = auto_remotes
