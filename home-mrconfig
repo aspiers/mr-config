@@ -30,7 +30,7 @@ include =
 fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
     ln -sf "$MR_REPO/.stow-global-ignore" ~
-    if declare -f git_config_email >/dev/null; then
+    if type git_config_email >/dev/null; then
         git_config_email
     else
         echo >&2 "WARNING: git_config_email not defined so won't set email address for $MR_REPO"
