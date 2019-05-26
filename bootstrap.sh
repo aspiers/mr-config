@@ -292,6 +292,16 @@ mr_update_stow_fixups shell-env.adam_spiers.{pub,sec}
 
 # Get moosehall-git-URL-rewriters.
 mr_update_stow_fixups moosehall+shell-env
+
+source ~/lib/libhost.sh  # from shell-env
+read_localhost_nickname
+while ! grep "$localhost_nickname" ~/etc/hosts-moosehall; do
+    echo "$localhost_nickname not found in ~/etc/hosts-moosehall"
+    echo "Please follow steps in TweaksForAll.org, and exit shell when done ..."
+    $SHELL
+    mrupc moosehall+shell-env
+done
+
 mr_update_stow_fixups git.adam_spiers.pub
 
 mr_update_stow_fixups moosehall+ssh.{pub,sec}
