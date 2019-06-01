@@ -54,7 +54,7 @@ mr_update_stow_fixups () {
 
 # There's a whole bunch more we could check for here, but we don't
 # because we want it to work for bare bones installs.
-for prog in curl git ruby rake virtualenv; do
+for prog in curl git ruby rake virtualenv make; do
     if ! which "$prog" >/dev/null 2>&1; then
 	fatal "mr can't bootstrap without $prog"
     fi
@@ -292,6 +292,16 @@ mr_update_stow_fixups shell-env.adam_spiers.{pub,sec}
 
 # Get moosehall-git-URL-rewriters.
 mr_update_stow_fixups moosehall+shell-env
+
+source ~/lib/libhost.sh  # from shell-env
+read_localhost_nickname
+while ! grep "$localhost_nickname" ~/etc/hosts-moosehall; do
+    echo "$localhost_nickname not found in ~/etc/hosts-moosehall"
+    echo "Please follow steps in TweaksForAll.org, and exit shell when done ..."
+    $SHELL
+    mrupc moosehall+shell-env
+done
+
 mr_update_stow_fixups git.adam_spiers.pub
 
 mr_update_stow_fixups moosehall+ssh.{pub,sec}
