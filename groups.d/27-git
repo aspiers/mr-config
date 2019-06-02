@@ -93,10 +93,10 @@ lib =
     set_git_origin_user github
 checkout = github_clone
 fixups =
-    ./script/build
-    cp hub ~/bin
-    # curl http://hub.github.com/standalone -sLo ~/bin/hub &&
-    #   chmod +x ~/bin/hub
+    export GOPATH=~/software/go
+    echo "FIXME: hub compilation doesn't work" >&2
+    #./script/build
+    #cp hub ~/bin
 remotes = auto_remotes
 
 [$HOME/software/scm/hub]
@@ -106,7 +106,7 @@ lib =
     mr_init_stow_package
     export STOW_PKG_TYPE=symlink
     mr_set_download_url \
-        https://github.com/github/hub/releases/download/v2.6.0/hub-linux-amd64-2.6.0.tgz
+        https://github.com/github/hub/releases/download/v2.11.2/hub-linux-amd64-2.11.2.tgz
 checkout = mr_download_checkout
 stowable = true
 fixups =
