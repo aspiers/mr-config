@@ -108,6 +108,32 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 
+[$HOME/.GIT/3rd-party/mautic]
+skip = ! music_machine
+lib =
+    set_email mautic@adamspiers.org
+    set_git_origin_user mautic
+checkout = github_clone
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/mautic-documentation]
+skip = ! music_machine
+lib =
+    set_email mautic@adamspiers.org
+    set_git_clone_name documentation
+    set_git_origin_user mautic
+checkout = github_clone
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/mautic-dev-docs]
+skip = ! music_machine
+lib =
+    set_email mautic@adamspiers.org
+    set_git_clone_name developer-documentation
+    set_git_origin_user mautic
+checkout = github_clone
+remotes = auto_remotes
+
 [$HOME/.GIT/3rd-party/docker-mautic]
 skip = ! music_machine
 lib =
