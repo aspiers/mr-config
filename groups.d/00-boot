@@ -50,8 +50,7 @@ remotes = auto_remotes && savannah_rw_remote
 
 fixups =
     cd "$MR_REPO"
-    autoconf
-    automake --add-missing
+    autoreconf -iv
     ./configure --prefix=$HOME
     make install
 
