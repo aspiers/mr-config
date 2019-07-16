@@ -148,3 +148,10 @@ lib =
 checkout = github_clone
 skip = default_skipper
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/log-parser-plugin]
+lib =
+    set_git_origin_user jenkinsci
+checkout = github_clone
+skip = default_skipper
+remotes = auto_remotes
