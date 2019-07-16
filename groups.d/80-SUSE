@@ -32,6 +32,11 @@ checkout = git_clone_my_repo
 stowable = true
 remotes = auto_remotes
 
+[$HOME/.GIT/adamspiers.org/suse+mail.sec]
+checkout = git_clone_my_repo
+stowable = true
+remotes = auto_remotes
+
 [$HOME/.GIT/adamspiers.org/novell+vpn.sec]
 checkout = git_clone_my_repo
 stowable = true
