@@ -384,3 +384,19 @@ lib =
 fixups =
     pip install --user -e .
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/palaver]
+skip = lazy
+checkout = github_clone
+lib =
+    set_git_origin_user markmc
+fixups =
+    cat <<EOF > ~/bin/palaver
+    #!/bin/sh
+    export GIT_NOTES_REF=refs/notes/palaver
+    #export PATH=$PATH:$MR_REPO/bin
+    export PYTHONPATH=$PYTHONPATH:$MR_REPO
+    python2 $MR_REPO/bin/palaver "$@"
+    EOF
+    chmod +x ~/bin/palaver
+remotes = auto_remotes
