@@ -203,3 +203,11 @@ lib =
     set_email supercollider@adamspiers.org
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/musescore]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email musescore@adamspiers.org
+remotes =
+    auto_remotes
