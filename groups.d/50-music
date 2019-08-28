@@ -207,7 +207,13 @@ remotes =
 [$HOME/.GIT/3rd-party/musescore]
 skip = lazy
 checkout = github_clone
+stowable = true
 lib =
+    mr_init_stow_package
     set_email musescore@adamspiers.org
 remotes =
     auto_remotes
+fixups =
+    #sudo zypper in alsa-devel 'cmake >= 3.0' fdupes freetype2-devel gcc-c++ hicolor-icon-theme jack-devel libQt5WebKitWidgets-devel libmp3lame-devel libpulse-devel libqt5-linguist-devel libqt5-qtbase-devel libqt5-qtsvg-devel libqt5-qttools-devel libqt5-qtwebengine-devel libqt5-qtxmlpatterns-devel libsndfile-devel libvorbis-devel portaudio-devel portmidi-devel update-desktop-files
+    make PREFIX=$STOW_PKG_PATH
+    make install PREFIX=$STOW_PKG_PATH
