@@ -155,3 +155,19 @@ lib =
 checkout = github_clone
 skip = default_skipper
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/libvirt]
+stowable = true
+lib =
+    set_git_origin_user libvirt
+    mr_init_stow_package
+checkout = github_clone
+skip = default_skipper
+remotes = auto_remotes
+fixups =
+    if ! [ -e configure ]; then
+        ./autogen.sh
+    fi
+    ./configure --prefix=$STOW_PKG_PATH
+    make -n install
+    #mr_restow_regardless
