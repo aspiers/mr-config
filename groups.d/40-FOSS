@@ -166,9 +166,13 @@ checkout = github_clone
 skip = default_skipper
 remotes = auto_remotes
 fixups =
+    sudo zypper in -y libnl-devel libgnutls-devel libpciaccess-devel \
+         device-mapper-devel
     if ! [ -e configure ]; then
         ./autogen.sh
     fi
     ./configure --prefix=$STOW_PKG_PATH
-    make -n install
+    make -j3
+    make -C docs
+    make install
     #mr_restow_regardless
