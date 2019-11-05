@@ -33,11 +33,12 @@ remotes = auto_remotes
 # skip = default_skipper || missing_exe gkrellm
 # checkout = git_clone_my_repo
 
-[$HOME/.GIT/adamspiers.org/rxvt]
-skip = default_skipper || missing_exe urxvt
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
+# Obsolete:
+# [$HOME/.GIT/adamspiers.org/rxvt]
+# skip = default_skipper || missing_exe urxvt
+# checkout = git_clone_my_repo
+# remotes = auto_remotes
+# stowable = true
 
 [$HOME/.GIT/adamspiers.org/xwrits]
 skip = default_skipper || missing_exe xwrits
