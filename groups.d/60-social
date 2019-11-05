@@ -100,3 +100,12 @@ lib =
     set_git_rw_origin_user TechForUK
 remotes =
     auto_remotes
+
+[$HOME/soc/politics/swapmyvote]
+skip = lazy
+checkout = github_clone
+lib =
+    set_email tech4uk@adamspiers.org
+    set_git_rw_origin_user swapmyvote
+remotes =
+    auto_remotes
