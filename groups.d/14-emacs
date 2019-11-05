@@ -146,6 +146,18 @@ remotes =
     auto_remotes
 push = unsafe
 
+[$HOME/.GIT/3rd-party/magit-gerrit]
+skip = default_skipper || missing_exe emacs || missing_exe git
+lib =
+    set_email emacs@adamspiers.org
+    set_git_origin_user terranpro
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readonly_remote darcylee
+    github_readonly_remote somtin
+push = unsafe
+
 [$HOME/.GIT/3rd-party/git-modes]
 skip = default_skipper || missing_exe emacs || missing_exe git
 lib =
