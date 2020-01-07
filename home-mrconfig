@@ -19,6 +19,7 @@ checkout =
     git clone -o adamspiers.org adamspiers.org:mr-config.git "$MR_REPO"
 post_checkout =
     cd "$MR_REPO" && git remote add github github:mr-config.git
+# This loads .config/mr/.mrconfig:
 chain = true
 include =
     if [ -e ~/.config/mr/library-loaders ]; then
