@@ -19,6 +19,7 @@ checkout =
     git clone -o adamspiers.org adamspiers.org:mr-config.git "$MR_REPO"
 post_checkout =
     cd "$MR_REPO" && git remote add github github:mr-config.git
+# This loads .config/mr/.mrconfig:
 chain = true
 include =
     if [ -e ~/.config/mr/library-loaders ]; then
@@ -35,4 +36,20 @@ fixups =
     else
         echo >&2 "WARNING: git_config_email not defined so won't set email address for $MR_REPO"
         echo >&2 "Hopefully you're bootstrapping, so it will get set later."
+    fi
+
+# Separate repo for personal extensions to mr config
+[.config/mr.sec]
+name = mr-config.sec
+checkout =
+    git clone -o adamspiers.org adamspiers.org:mr-config.git "$MR_REPO"
+# This loads .config/mr.sec/.mrconfig:
+chain = true
+include =
+    if [ -e ~/.config/mr/library-loaders ]; then
+        # Rather than defining remotes for this repo in the normal
+        # way, we only set it if we've already bootstrapped and
+        # cloned the repo, otherwise auto_remotes won't be defined yet.
+        echo "lib = set_confidential_repo"
+        echo "remotes = auto_remotes"
     fi

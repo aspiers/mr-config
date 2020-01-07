@@ -1,5 +1,7 @@
 # -*- mode: sh -*-
 
+# This gets loaded via "chain = yes" from ~/.mrconfig
+
 [DEFAULT]
 include =
     . ~/.config/mr/library-loaders
