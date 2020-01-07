@@ -42,7 +42,7 @@ fixups =
 [.config/mr.sec]
 name = mr-config.sec
 checkout =
-    git clone -o adamspiers.org adamspiers.org:mr-config.git "$MR_REPO"
+    git clone -o adamspiers.org adamspiers.org:mr-config.sec.git "$MR_REPO"
 # This loads .config/mr.sec/.mrconfig:
 chain = true
 include =
