@@ -23,6 +23,7 @@ moosehall_remotes () {
         nuc      REMOTE:$repo
         arabian  REMOTE:$repo
         ionian   REMOTE:$repo
+        aegean   REMOTE:$repo
     "
 }
 
@@ -37,6 +38,7 @@ moosehall_work_remotes () {
         indian    REMOTE:$repo
         arabian   REMOTE:$repo
         ionian    REMOTE:$repo
+        aegean    REMOTE:$repo
     "
 }
 
