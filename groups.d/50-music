@@ -217,3 +217,23 @@ fixups =
     #sudo zypper in alsa-devel 'cmake >= 3.0' fdupes freetype2-devel gcc-c++ hicolor-icon-theme jack-devel libQt5WebKitWidgets-devel libmp3lame-devel libpulse-devel libqt5-linguist-devel libqt5-qtbase-devel libqt5-qtsvg-devel libqt5-qttools-devel libqt5-qtwebengine-devel libqt5-qtxmlpatterns-devel libsndfile-devel libvorbis-devel portaudio-devel portmidi-devel update-desktop-files
     make PREFIX=$STOW_PKG_PATH
     make install PREFIX=$STOW_PKG_PATH
+
+[$HOME/.GIT/3rd-party/music21]
+skip = lazy || ! music_machine || missing_exe python
+lib =
+    set_git_origin_user cuthbertLab
+    set_email music@adamspiers.org
+checkout = github_clone
+remotes =
+    #github_readonly_remote ebattenberg
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/music21j]
+skip = lazy || ! music_machine || missing_exe python
+lib =
+    set_git_origin_user cuthbertLab
+    set_email music@adamspiers.org
+checkout = github_clone
+remotes =
+    #github_readonly_remote ebattenberg
+    auto_remotes
