@@ -44,7 +44,10 @@ mr_update_stow_fixups () {
         echo "Retrieving $1 ..."
         # N.B. -i is omitted the first time, since the fixups are expected
         # to fail due to it not having been stowed yet.
-        mr    -r "$pkg" up || :
+        echo "(Any fixups are likely to fail since not yet stowed)"
+        if ! mr -r "$pkg" up; then
+            echo "It's probably safe to ignore fixup failures above; about to stow and retry fixups ..."
+        fi
         mr -i -r "$pkg" stow
         # fixups should now work after stowing
         mr -i -r "$pkg" fix
