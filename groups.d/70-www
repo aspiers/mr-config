@@ -26,3 +26,9 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+
+[$HOME/software/web/heroku]
+lib = mr_set_download_url https://cli-assets.heroku.com/heroku-linux-x64.tar.gz
+checkout = mr_download_checkout
+fixups =
+    ensure_symlink_exists ~/bin/heroku "$MR_REPO/bin/heroku"
