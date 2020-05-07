@@ -59,7 +59,7 @@ mr_update_stow_fixups () {
 # because we want it to work for bare bones installs.
 for prog in curl git ruby rake virtualenv make zsh; do
     if ! which "$prog" >/dev/null 2>&1; then
-	fatal "mr can't bootstrap without $prog"
+        fatal "mr can't bootstrap without $prog"
     fi
 done
 
