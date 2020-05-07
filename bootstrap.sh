@@ -80,9 +80,9 @@ moosehall
 
 #main-console
 #laptop
-openvpn-server
 routine
-SUSE
+#openvpn-server
+#SUSE
 music
 secure
 EOF
