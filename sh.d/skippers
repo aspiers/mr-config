@@ -98,7 +98,7 @@ insecure_machine () {
     ! machine_has_property "secure"
 }
 
-work_machine () {
+SUSE_machine () {
     machine_has_property "SUSE"
 }
 
@@ -113,7 +113,7 @@ my_public_web_server () {
 default_skipper () {
     # Default policy is not to skip unless we find a reason to.
     if work_repo; then
-        if ! work_machine; then
+        if ! SUSE_machine; then
             debug_skippers "! Work repo on non-work machine"
             return 0 # true
         else
