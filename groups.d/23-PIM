@@ -82,3 +82,12 @@ checkout = github_clone
 skip = default_skipper
 remotes = auto_remotes
 #stowable = true
+
+[$HOME/.GIT/3rd-party/bitwarden-browser]
+lib =
+    set_git_origin_user bitwarden
+    set_git_clone_name browser
+checkout = github_clone
+skip = default_skipper
+remotes = auto_remotes
+#stowable = true
