@@ -104,3 +104,51 @@ git_add_remotes () {
         git_add_remote "$remote" "$url"
     done
 }
+
+# git_rm_remote REMOTE-NAME
+git_rm_remote () {
+    remote="$1"
+    if git remote show "$remote" >/dev/null 2>&1; then
+        git remote remove "$remote"
+    else
+        echo "$remote remote was already removed"
+    fi
+}
+
+# git_rm_remotes REMOTES
+#
+# REMOTES is a multi-line string with one remote per line.
+# Invokes git_rm_remote for each line.
+git_rm_remotes () {
+    cd "$MR_REPO"
+    read_localhost_nickname
+    # Needs to be exported to while-read subshell
+    export LOCALHOST_NICKNAME="$localhost_nickname"
+    echo "$*" | while read remote; do
+        if [ -z "$remote$url" ]; then
+            # presumably got a blank line
+            continue
+        fi
+
+        git_rm_remote "$remote"
+    done
+}
+
+# git_ignore_remotes REMOTES
+#
+# REMOTES is a multi-line string with one remote per line.
+# Tells git annex to ignore the list of remotes.
+git_ignore_remotes () {
+    cd "$MR_REPO"
+    read_localhost_nickname
+    # Needs to be exported to while-read subshell
+    export LOCALHOST_NICKNAME="$localhost_nickname"
+    echo "$*" | while read remote; do
+        if [ -z "$remote$url" ]; then
+            # presumably got a blank line
+            continue
+        fi
+
+        git config remote."$remote".annex-ignore true
+    done
+}

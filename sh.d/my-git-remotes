@@ -15,11 +15,20 @@ moosehall_remotes () {
 
     # Note: uses URL rewriting so we can decide independently
     # whether to fetch over wired/wireless or even ADSL.
+
+    # Old remotes:
+    git_rm_remotes "
+        southern
+        mc
+    "
+    # git_ignore_remotes "
+    #     southern
+    #     mc
+    # "
+
     git_add_remotes "
-        southern  REMOTE:$repo
         pacific   REMOTE:$repo
         indian    REMOTE:$repo
-        mc        mediacentre:$repo mediacentre
         nuc       REMOTE:$repo
         arabian   REMOTE:$repo
         ionian    REMOTE:$repo
