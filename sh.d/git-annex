@@ -1,0 +1,5 @@
+# -*- mode: sh -*-
+
+git_annex_no_autocommit () {
+    git annex config --set annex.autocommit false
+}

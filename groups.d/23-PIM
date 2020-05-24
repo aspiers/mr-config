@@ -5,6 +5,8 @@ lib = set_confidential_repo
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = auto_remotes
+fixups =
+    git_annex_no_autocommit
 
 [$HOME/finance]
 lib = set_confidential_repo
