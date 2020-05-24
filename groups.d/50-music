@@ -237,3 +237,12 @@ checkout = github_clone
 remotes =
     #github_readonly_remote ebattenberg
     auto_remotes
+
+[$HOME/.GIT/3rd-party/jamulus]
+skip = lazy || ! music_machine
+lib =
+    set_git_origin_user corrados
+    set_email music@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
