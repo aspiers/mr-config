@@ -108,8 +108,12 @@ git_add_remotes () {
 # git_rm_remote REMOTE-NAME
 git_rm_remote () {
     remote="$1"
-    if git remote show "$remote" >/dev/null 2>&1; then
-        git remote remove "$remote"
+    if git config remote."$remote".url >/dev/null; then
+        if git remote remove "$remote"; then
+            echo "Removed remote $remote"
+        else
+            echo >&2 "WARNING: Failed to remove remote $remote"
+        fi
     else
         echo "$remote remote was already removed"
     fi
