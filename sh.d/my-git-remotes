@@ -18,6 +18,8 @@ moosehall_remotes () {
 
     # Old remotes:
     git_rm_remotes "
+        adriatic
+        arctic
         southern
         mc
     "
