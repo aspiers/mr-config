@@ -21,20 +21,22 @@ moosehall_remotes () {
         adriatic
         arctic
         southern
-        mc
     "
-    # git_ignore_remotes "
-    #     southern
-    #     mc
-    # "
 
     git_add_remotes "
+        atlantic  REMOTE:$repo
         pacific   REMOTE:$repo
         indian    REMOTE:$repo
         nuc       REMOTE:$repo
         arabian   REMOTE:$repo
         ionian    REMOTE:$repo
         aegean    REMOTE:$repo
+    "
+
+    git_ignore_remotes "
+        atlantic
+        southern
+        mc
     "
 }
 
