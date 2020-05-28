@@ -21,3 +21,17 @@ fixups =
          SYSCONFIG_DIR=$STOW_PKG_PATH/etc \
          IGNORE_FILE_ATTRIBUTES=y
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/inotify-tools]
+skip = default_skipper
+lib =
+    set_git_origin_user inotify-tools
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+fixups =
+    ./autogen.sh
+    ./configure --prefix=$HOME
+    make install prefix=$STOW_PKG_PATH
+    mr_restow_regardless
