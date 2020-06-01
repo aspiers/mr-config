@@ -40,31 +40,12 @@ moosehall_remotes () {
     "
 }
 
-moosehall_work_remotes () {
-    repo="${MR_REPO#$HOME/}"
-    # quote spaces to avoid passing too many parameters to
-    # git_add_remotes
-    repo=$( echo "$repo" | sed 's/ /\\ /g' )
-    git_add_remotes "
-        southern  REMOTE:$repo
-        pacific   REMOTE:$repo
-        indian    REMOTE:$repo
-        arabian   REMOTE:$repo
-        ionian    REMOTE:$repo
-        aegean    REMOTE:$repo
-    "
-}
-
 auto_moosehall_remotes () {
-    if work_repo; then
-        moosehall_work_remotes
-    else
-        moosehall_remotes
-    fi
+    moosehall_remotes
 }
 
 auto_my_upstream_remote () {
-    if work_repo; then
+    if SUSE_job_repo; then
         case "$MR_REPO" in
             */adamspiers.org/*)
                 # something like novell+vpn.pub

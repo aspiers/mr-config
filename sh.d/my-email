@@ -19,7 +19,7 @@ default_email () {
         return
     fi
 
-    if work_repo; then
+    if SUSE_job_repo; then
         MR_EMAIL="aspiers@suse.com"
         return
     fi
@@ -44,7 +44,7 @@ git_config_email () {
         info "Set user.email from ${existing:-(none)} to $MR_EMAIL"
     fi
 
-    if work_repo; then
+    if SUSE_job_repo; then
         git config sendemail.smtpserver $HOME/bin/msmtp-novell
     fi
 }

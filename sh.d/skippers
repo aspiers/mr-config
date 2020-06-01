@@ -112,7 +112,7 @@ my_public_web_server () {
 
 default_skipper () {
     # Default policy is not to skip unless we find a reason to.
-    if work_repo; then
+    if SUSE_job_repo; then
         if ! SUSE_machine; then
             debug_skippers "! Work repo on non-work machine"
             return 0 # true

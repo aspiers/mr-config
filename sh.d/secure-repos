@@ -38,15 +38,15 @@ confidential_repo () {
             ;;
     esac
 
-    if work_repo; then
+    if SUSE_job_repo; then
         case "$MR_NAME" in
             *.pub)
-                debug_skippers ". Work repo auto-detected as public"
+                debug_skippers ". SUSE work repo but explicitly marked public"
                 return 1 # false
                 ;;
         esac
 
-        debug_skippers "! Work repo defaults to confidential"
+        debug_skippers "! SUSE work repo defaults to confidential"
         return 0 # true
     fi
 
@@ -62,14 +62,17 @@ confidential_repo () {
     esac
 }
 
-work_repo () {
+SUSE_job_repo () {
     case "$MR_REPO" in
+        SUSE-dist)
+            return 1 # false
+            ;;
         *novell*|*SUSE*|rapport)
-            debug_skippers "! Repo auto-detected as work-related"
+            debug_skippers "! Repo auto-detected as related to SUSE job"
             return 0 # true
             ;;
         *)
-            debug_skippers ". Repo is not work-related"
+            debug_skippers ". Repo is not related to SUSE job"
             return 1 # false
             ;;
     esac
