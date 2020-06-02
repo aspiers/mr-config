@@ -179,3 +179,18 @@ remotes = auto_remotes
 fixups =
     #PYTHONUSERBASE=$STOW_PKG_PATH pip install --user -e .
     pip install --user -e .
+
+[$HOME/.GIT/3rd-party/sshdo]
+skip = default_skipper
+#stowable = true
+checkout = github_clone
+lib =
+    set_git_origin_user raf
+    set_email sshdo@adamspiers.org
+    #set_stow_common_opts
+    #mr_init_stow_package
+remotes = auto_remotes
+fixups =
+    #mkdir -p $STOW_PKG_PATH/etc
+    #make install PREFIX=$HOME DESTDIR=$STOW_PKG_PATH
+    echo sudo make install
