@@ -53,7 +53,7 @@ remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/audio]
-skip = default_skipper || not_moosehall
+skip = default_skipper || ! machine_has_property music
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
