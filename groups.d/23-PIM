@@ -93,3 +93,5 @@ checkout = github_clone
 skip = default_skipper
 remotes = auto_remotes
 #stowable = true
+
+# See 14-emacs for organice
