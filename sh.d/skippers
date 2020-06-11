@@ -34,20 +34,20 @@ missing_exes () {
 
 missing_file () {
     if [ -f "$1" ]; then
-        debug_skippers ". Found $1"
+        debug_skippers ". Found file $1"
         return 1 # false
     else
-        debug_skippers "! Didn't find $1"
+        debug_skippers "! Didn't find file $1"
         return 0 # true
     fi
 }
 
 missing_dir () {
     if [ -d "$1" ]; then
-        debug_skippers ". Found $1"
+        debug_skippers ". Found dir $1"
         return 1 # false
     else
-        debug_skippers "! Didn't find $1"
+        debug_skippers "! Didn't find dir $1"
         return 0 # true
     fi
 }
