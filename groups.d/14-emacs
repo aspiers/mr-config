@@ -322,10 +322,29 @@ lib =
     set_git_origin_user 200ok-ch
 checkout = github_clone
 remotes = auto_remotes
+fixups =
+    cat <<EOF >~/.emacs.d/init.d/$MR_NAME-dir-class.el
+    (dir-locals-set-directory-class "$MR_REPO/" 'prettier-js)
+    EOF
+    # yarn install
 
 [$HOME/.GIT/3rd-party/org-parser]
 skip = lazy || default_skipper || missing_exe emacs
 lib =
     set_git_origin_user 200ok-ch
 checkout = github_clone
+remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/prettier.el]
+skip = lazy || default_skipper || missing_exe emacs
+lib =
+    set_git_origin_user jscheid
+    set_git_clone_remote_branch melpa
+checkout = github_clone
+fixups =
+    yarn install
+    make
+    cat <<EOF >~/.emacs.d/init.d/$MR_NAME-dir-class.el
+    (dir-locals-set-directory-class "$MR_REPO/" 'prettier-js)
+    EOF
 remotes = auto_remotes
