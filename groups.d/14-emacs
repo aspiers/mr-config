@@ -339,7 +339,7 @@ remotes = auto_remotes
 skip = lazy || default_skipper || missing_exe emacs
 lib =
     set_git_origin_user jscheid
-    set_git_clone_remote_branch melpa
+    set_git_clone_remote_branch working
 checkout = github_clone
 fixups =
     yarn install
