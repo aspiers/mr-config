@@ -52,6 +52,16 @@ missing_dir () {
     fi
 }
 
+missing_rpm () {
+    if rpm -q "$1" >/dev/null; then
+        debug_skippers ". Found rpm $1"
+        return 1 # false
+    else
+        debug_skippers "! Didn't find rpm $1"
+        return 0 # true
+    fi
+}
+
 not_host () {
     read_localhost_nickname
     if [ "$localhost_nickname" != "$1" ]; then
