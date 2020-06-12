@@ -153,6 +153,16 @@ git_ignore_remotes () {
             continue
         fi
 
+        if [ "$LOCALHOST_NICKNAME" = "$remote" ]; then
+            info "Won't ignore self"
+            continue
+        fi
+
+        if ! git remote | grep -q "$remote"; then
+            # Don't set annex-ignore if the remote doesn't exist
+            continue
+        fi
+
         if git config --type=bool remote."$remote".annex-ignore | grep -q true
         then
             echo "$remote remote already had annex-ignore set to true"
@@ -176,6 +186,16 @@ git_ping_remotes () {
     echo "$*" | while read remote; do
         if [ -z "$remote$url" ]; then
             # presumably got a blank line
+            continue
+        fi
+
+        if [ "$LOCALHOST_NICKNAME" = "$remote" ]; then
+            info "Won't ping self"
+            continue
+        fi
+
+        if ! git remote | grep -q "$remote"; then
+            # Don't set annex-ping if the remote doesn't exist
             continue
         fi
 
