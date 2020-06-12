@@ -38,6 +38,13 @@ moosehall_remotes () {
         southern
         mc
     "
+
+    # These are often down
+    git_ping_remotes "
+        nuc
+        aegean
+        arabian
+    "
 }
 
 auto_moosehall_remotes () {

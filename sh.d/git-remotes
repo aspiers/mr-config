@@ -162,3 +162,29 @@ git_ignore_remotes () {
         fi
     done
 }
+
+# git_ping_remotes REMOTES
+#
+# REMOTES is a multi-line string with one remote per line.
+# Tells auto-sync-daemon to check whether these remotes are reachable
+# before an annex sync, and if not, exclude them from the sync.
+git_ping_remotes () {
+    cd "$MR_REPO"
+    read_localhost_nickname
+    # Needs to be exported to while-read subshell
+    export LOCALHOST_NICKNAME="$localhost_nickname"
+    echo "$*" | while read remote; do
+        if [ -z "$remote$url" ]; then
+            # presumably got a blank line
+            continue
+        fi
+
+        if git config --type=bool remote."$remote".annex-ping | grep -q true
+        then
+            echo "$remote remote already had annex-ping set to true"
+        else
+            git config remote."$remote".annex-ping true
+            echo "Set $remote remote annex-ping to true"
+        fi
+    done
+}
