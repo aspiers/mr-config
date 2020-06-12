@@ -153,6 +153,12 @@ git_ignore_remotes () {
             continue
         fi
 
-        git config remote."$remote".annex-ignore true
+        if git config --type=bool remote."$remote".annex-ignore | grep -q true
+        then
+            echo "$remote remote already had annex-ignore set to true"
+        else
+            git config remote."$remote".annex-ignore true
+            echo "Set $remote remote annex-ignore to true"
+        fi
     done
 }
