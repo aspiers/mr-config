@@ -349,6 +349,9 @@ lib =
     set_git_clone_remote_branch working
 checkout = github_clone
 fixups =
+    if missing_exe panflute; then
+        sudo zypper in python3-panflute
+    fi
     yarn install
     make
     cat <<EOF >~/.emacs.d/init.d/$MR_NAME-dir-class.el
