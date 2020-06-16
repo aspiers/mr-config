@@ -152,7 +152,7 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     mkdir -p ~/.lnav/formats
-    ln -s $MR_REPO ~/.lnav/formats/https___github_com_aspiers_lnav-formats_git
+    ln -s $MR_REPO ~/.lnav/formats/https___github_com_aspiers_lnav_formats_git
 
 [$HOME/.GIT/3rd-party/demoshell]
 skip = default_skipper || missing_exe git
