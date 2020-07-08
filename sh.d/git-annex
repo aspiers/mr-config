@@ -7,4 +7,15 @@ git_annex_no_autocommit () {
         git annex config --set annex.autocommit false
     fi
 }
+
+ensure_git_annex () {
+    if ! [ -d "$MR_REPO/.git/annex" ]; then
+        cd "$MR_REPO"
+        git annex init
+    fi
+}
+
+git_annex_autosync () {
+    ensure_git_annex
+    setup_auto_sync
 }

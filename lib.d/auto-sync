@@ -1,0 +1,35 @@
+setupautosync = setup_auto_sync
+setupautocommit = setup_auto_commit
+setupauto =
+    setup_auto_commit
+    setup_auto_sync
+
+enableautosync = enable_auto_sync
+enableautocommit = enable_auto_commit
+enableauto =
+    enable_auto_commit
+    enable_auto_sync
+
+disableautosync = disable_auto_sync
+disableautocommit = disable_auto_commit
+disableauto =
+    disable_auto_commit
+    disable_auto_sync
+
+startautosync = start_auto_sync
+startautocommit = start_auto_commit
+startauto =
+    start_auto_commit
+    start_auto_sync
+
+stopautosync = stop_auto_sync
+stopautocommit = stop_auto_commit
+stopauto =
+    stop_auto_commit
+    stop_auto_sync
+
+statusautosync = status_auto_sync
+statusautocommit = status_auto_commit
+statusauto =
+    status_auto_commit
+    status_auto_sync

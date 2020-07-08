@@ -1,0 +1,82 @@
+# -*- mode: sh -*-
+
+SYSTEMD_USER_DIR=$HOME/.config/systemd/user
+
+auto_commit_enabled () {
+    if ! AUTO_COMMIT_DAEMON=$(which auto-commit-daemon); then
+        warn "! auto-commit-daemon not found"
+        return 1
+    fi
+    AUTO_COMMIT_SVC=auto-commit-$MR_NAME
+    AUTO_COMMIT_SVC_FILE=$SYSTEMD_USER_DIR/$AUTO_COMMIT_SVC.service
+
+    if [ -e $MR_REPO/.autocommit ]; then
+        return 0
+    else
+        # echo "x No .autocommit in this repo; auto-commit disabled"
+        return 1
+    fi
+}
+
+setup_auto_commit () {
+    auto_commit_enabled || return 0
+
+    mkdir -p $SYSTEMD_USER_DIR
+    cat <<EOF >$AUTO_COMMIT_SVC_FILE.new
+[Service]
+ExecStart=/bin/sh -c "$AUTO_COMMIT_DAEMON $MR_REPO"
+Restart=always
+NoNewPrivileges=true
+SyslogIdentifier=$AUTO_COMMIT_SVC
+EnvironmentFile=$MR_REPO/.autocommit
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    if [ -e $AUTO_COMMIT_SVC_FILE ]; then
+        if cmp -s $AUTO_COMMIT_SVC_FILE $AUTO_COMMIT_SVC_FILE.new; then
+            echo ". No change to $AUTO_COMMIT_SVC_FILE"
+            rm $AUTO_COMMIT_SVC_FILE.new
+            return 0
+        else
+            echo "+ Updating $AUTO_COMMIT_SVC_FILE"
+        fi
+
+        preexisting=y
+    else
+        preexisting=
+    fi
+
+    mv $AUTO_COMMIT_SVC_FILE.new $AUTO_COMMIT_SVC_FILE
+    systemctl --user daemon-reload
+
+    # When installing the first time, also enable
+    if [ -z "$preexisting" ]; then
+        enable_auto_commit
+    fi
+}
+
+enable_auto_commit () {
+    auto_commit_enabled || return 0
+    systemctl --user enable $AUTO_COMMIT_SVC
+}
+
+disable_auto_commit () {
+    auto_commit_enabled || return 0
+    systemctl --user disable $AUTO_COMMIT_SVC
+}
+
+start_auto_commit () {
+    auto_commit_enabled || return 0
+    systemctl --user start $AUTO_COMMIT_SVC
+}
+
+stop_auto_commit () {
+    auto_commit_enabled || return 0
+    systemctl --user stop $AUTO_COMMIT_SVC
+}
+
+status_auto_commit () {
+    auto_commit_enabled || return 0
+    systemctl --user status $AUTO_COMMIT_SVC || :
+}

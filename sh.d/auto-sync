@@ -1,0 +1,81 @@
+# -*- mode: sh -*-
+
+SYSTEMD_USER_DIR=$HOME/.config/systemd/user
+
+auto_sync_enabled () {
+    if ! AUTO_SYNC_DAEMON=$(which auto-sync-daemon); then
+        warn "! auto-sync-daemon not found"
+        return 1
+    fi
+    AUTO_SYNC_SVC=auto-sync-$MR_NAME
+    AUTO_SYNC_SVC_FILE=$SYSTEMD_USER_DIR/$AUTO_SYNC_SVC.service
+
+    if [ -e $MR_REPO/.autosync ]; then
+        return 0
+    else
+        # echo "x No .autosync in this repo; auto-sync disabled"
+        return 1
+    fi
+}
+
+setup_auto_sync () {
+    auto_sync_enabled || return 0
+
+    mkdir -p $SYSTEMD_USER_DIR
+    cat <<EOF >$AUTO_SYNC_SVC_FILE.new
+[Service]
+ExecStart=/bin/sh -c "$AUTO_SYNC_DAEMON $MR_REPO"
+Restart=always
+NoNewPrivileges=true
+SyslogIdentifier=$AUTO_SYNC_SVC
+
+[Install]
+WantedBy=multi-user.target
+EOF
+    if [ -e $AUTO_SYNC_SVC_FILE ]; then
+        if cmp -s $AUTO_SYNC_SVC_FILE $AUTO_SYNC_SVC_FILE.new; then
+            echo ". No change to $AUTO_SYNC_SVC_FILE"
+            rm $AUTO_SYNC_SVC_FILE.new
+            return 0
+        else
+            echo "+ Updating $AUTO_SYNC_SVC_FILE"
+        fi
+
+        preexisting=y
+    else
+        preexisting=
+    fi
+
+    mv $AUTO_SYNC_SVC_FILE.new $AUTO_SYNC_SVC_FILE
+    systemctl --user daemon-reload
+
+    # When installing the first time, also enable
+    if [ -z "$preexisting" ]; then
+        enable_auto_sync
+    fi
+}
+
+enable_auto_sync () {
+    auto_sync_enabled || return 0
+    systemctl --user enable $AUTO_SYNC_SVC
+}
+
+disable_auto_sync () {
+    auto_sync_enabled || return 0
+    systemctl --user disable $AUTO_SYNC_SVC
+}
+
+start_auto_sync () {
+    auto_sync_enabled || return 0
+    systemctl --user start $AUTO_SYNC_SVC
+}
+
+stop_auto_sync () {
+    auto_sync_enabled || return 0
+    systemctl --user stop $AUTO_SYNC_SVC
+}
+
+status_auto_sync () {
+    auto_sync_enabled || return 0
+    systemctl --user status $AUTO_SYNC_SVC || :
+}
