@@ -323,7 +323,8 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
-    cat <<EOF >~/.emacs.d/init.d/$MR_NAME-dir-class.el
+    feature=as-$MR_NAME-dir-class
+    cat <<EOF >~/.emacs.d/init.d/$feature.el
     ;; Add organice to dir-locals-class-alist
     (dir-locals-set-class-variables
      'organice
@@ -332,6 +333,8 @@ fixups =
 
     ;; Add organice dir to dir-locals-directory-cache
     (dir-locals-set-directory-class "$MR_REPO/" 'organice)
+
+    (provide '$feature)
     EOF
     # yarn install
 
@@ -354,7 +357,10 @@ fixups =
     fi
     yarn install
     make
-    cat <<EOF >~/.emacs.d/init.d/$MR_NAME-dir-class.el
+    feature=as-$MR_NAME-dir-class
+    cat <<EOF >~/.emacs.d/init.d/$feature.el
     (dir-locals-set-directory-class "$MR_REPO/" 'prettier-js)
+
+    (provide '$feature)
     EOF
 remotes = auto_remotes
