@@ -51,6 +51,9 @@ skip = default_skipper || missing_exe gpg
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+fixups =
+    cd ~/.gnupg
+    gcc -Wall -O2 -shared -fPIC -o idea idea.c
 
 [$HOME/.GIT/3rd-party/zsh-completions]
 skip = missing_exe zsh
