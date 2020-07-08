@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 git_annex_no_autocommit () {
+    ensure_git_annex
     if git annex config --get annex.autocommit | grep -q false; then
         echo ". annex.autocommit already false"
     else
