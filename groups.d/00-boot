@@ -17,6 +17,7 @@ fixups =
         ep="$MR_REPO/$exe"
         [ -x "$ep" ] && ln -sf "$ep" ~/bin
     done
+    ln -s mrdir ~/bin/mrname
     # FIXME: This has been known to break during bootstrapping,
     # probably due to ~/.zsh/functions somehow being a symlink to
     # within shell-env.  I don't understand why though, because
