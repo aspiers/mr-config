@@ -4,7 +4,7 @@ SYSTEMD_USER_DIR=$HOME/.config/systemd/user
 
 auto_commit_enabled () {
     if ! AUTO_COMMIT_DAEMON=$(which auto-commit-daemon); then
-        warn "! auto-commit-daemon not found"
+        warning "! auto-commit-daemon not found"
         return 1
     fi
     AUTO_COMMIT_SVC=auto-commit-$MR_NAME

@@ -4,7 +4,7 @@ SYSTEMD_USER_DIR=$HOME/.config/systemd/user
 
 auto_sync_enabled () {
     if ! AUTO_SYNC_DAEMON=$(which auto-sync-daemon); then
-        warn "! auto-sync-daemon not found"
+        warning "! auto-sync-daemon not found"
         return 1
     fi
     AUTO_SYNC_SVC=auto-sync-$MR_NAME
