@@ -13,7 +13,7 @@ auto_sync_enabled () {
     if [ -e $MR_REPO/.autosync ]; then
         return 0
     else
-        # echo "x No .autosync in this repo; auto-sync disabled"
+        echo "x No .autosync in this repo; auto-sync disabled"
         return 1
     fi
 }
