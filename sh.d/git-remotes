@@ -27,7 +27,7 @@ git_add_new_remote () {
     remote="$1"
     url="$2"
     if git remote add "$remote" "$url"; then
-        info "+ Added remote $remote -> $url"
+        echo "+ Added remote $remote -> $url"
         return 0
     else
         error "! Failed to add remote $remote"
