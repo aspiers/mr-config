@@ -38,7 +38,20 @@ fixups =
     mr_restow_regardless
 
 [$HOME/software/scm/git-annex.static]
-lib = mr_set_download_url https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-amd64.tar.gz
+lib =
+    case "`arch`" in
+        x86_64)
+            arch=amd64 ;;
+        i686)
+            arch=i386 ;;
+        arm*)
+            # UNTESTED
+            arch=armel ;;
+        *)
+            error "Unsupported arch `arch` for $MR_REPO"
+            ;;
+    esac
+    mr_set_download_url https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-$arch.tar.gz
 checkout = mr_download_checkout
 fixups =
     for prog in git-annex git-annex-shell git-annex-webapp; do
