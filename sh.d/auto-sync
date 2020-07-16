@@ -28,6 +28,8 @@ auto_sync_enabled () {
 setup_auto_sync () {
     auto_sync_enabled || return 0
 
+    ensure_git_annex
+
     mkdir -p $SYSTEMD_USER_DIR
     cat <<EOF >$AUTO_SYNC_SVC_FILE.new
 [Service]
