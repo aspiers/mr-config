@@ -27,6 +27,13 @@ git_annex_no_smudge () {
     done
 }
 
+git_annex_re_smudge () {
+    # Reverse git_annex_no_smudge, e.g. for testing performance, or if
+    # behaviour is desired on repos with annex.
+    git config filter.annex.smudge "git-annex smudge -- %f"
+    git config filter.annex.clean "git-annex smudge --clean -- %f"
+}
+
 ensure_git_annex () {
     if ! [ -d "$MR_REPO/.git/annex" ]; then
         cd "$MR_REPO"
