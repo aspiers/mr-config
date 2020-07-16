@@ -34,5 +34,3 @@ post_checkout =
 
 # Try to avoid ambiguating 'fixups' or 'update' actions.
 git_chkupstream = fix_upstream
-
-unsmudge = git_annex_no_smudge

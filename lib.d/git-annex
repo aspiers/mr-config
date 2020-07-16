@@ -1,0 +1,3 @@
+# -*- mode: sh -*-
+
+unsmudge = git_annex_no_smudge
