@@ -1,3 +1,4 @@
 # -*- mode: sh -*-
 
 unsmudge = git_annex_no_smudge
+post_update_append = git_annex_no_smudge
