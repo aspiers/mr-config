@@ -69,7 +69,6 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 fixups =
-    git_annex_no_autocommit
     git_annex_autosync
 
 [$HOME/.GIT/adamspiers.org/git]

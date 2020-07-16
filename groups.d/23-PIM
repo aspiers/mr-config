@@ -6,7 +6,6 @@ skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = auto_remotes
 fixups =
-    git_annex_no_autocommit
     git_annex_autosync
 
 [$HOME/finance]

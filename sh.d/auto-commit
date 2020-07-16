@@ -21,6 +21,9 @@ auto_commit_enabled () {
 setup_auto_commit () {
     auto_commit_enabled || return 0
 
+    # Make sure git-annex doesn't interfere with git-auto-commit
+    git_annex_no_autocommit
+
     mkdir -p $SYSTEMD_USER_DIR
     cat <<EOF >$AUTO_COMMIT_SVC_FILE.new
 [Service]
