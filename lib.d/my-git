@@ -30,6 +30,7 @@ post_checkout =
     if [ -d .git ]; then
         mr remotes
     fi
+    setup_git_autocommit_and_annex_autosync
 
 # Try to avoid ambiguating 'fixups' or 'update' actions.
 git_chkupstream = fix_upstream

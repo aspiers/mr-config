@@ -69,7 +69,7 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 fixups =
-    git_annex_autosync
+    setup_git_autocommit_and_annex_autosync
 
 [$HOME/.GIT/adamspiers.org/git]
 name = git-config

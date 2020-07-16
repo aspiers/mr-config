@@ -10,7 +10,7 @@ fixups =
     # stowed before fixups_append from mr/lib.d/cfg-post kicks in?
     # (post_update_append from mr stow module may be too late?)
     mr_restow_regardless
-    git_annex_autosync
+    setup_git_autocommit_and_annex_autosync
 
 [$HOME/.GIT/adamspiers.org/screen]
 name = screenrc

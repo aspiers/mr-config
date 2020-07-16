@@ -33,8 +33,3 @@ ensure_git_annex () {
         git annex init
     fi
 }
-
-git_annex_autosync () {
-    ensure_git_annex
-    setup_auto_sync
-}

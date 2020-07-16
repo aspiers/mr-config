@@ -2,6 +2,13 @@
 
 SYSTEMD_USER_DIR=$HOME/.config/systemd/user
 
+# This is the DWIM function which acts based on the presence of
+# .autosync and .autocommit
+setup_git_autocommit_and_annex_autosync () {
+    setup_auto_sync
+    setup_auto_commit
+}
+
 auto_sync_enabled () {
     if ! AUTO_SYNC_DAEMON=$(which auto-sync-daemon); then
         warning "! auto-sync-daemon not found"
