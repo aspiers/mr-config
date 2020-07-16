@@ -9,6 +9,24 @@ git_annex_no_autocommit () {
     fi
 }
 
+git_annex_no_smudge () {
+    # git annex init puts this in .git/config:
+    #
+    # [filter "annex"]
+    # 	smudge = git-annex smudge -- %f
+    # 	clean = git-annex smudge --clean -- %f
+    #
+    # which causes abysmal performance:
+    # https://git-annex.branchable.com/bugs/smudge_filter_drastically_slows_down_git_diff/
+    for c in smudge clean; do
+        cfg=filter.annex.$c
+        if git config --get $cfg | grep -q .; then
+            echo "- Removing $cfg for performance"
+            git config --unset $cfg
+        fi
+    done
+}
+
 ensure_git_annex () {
     if ! [ -d "$MR_REPO/.git/annex" ]; then
         cd "$MR_REPO"
