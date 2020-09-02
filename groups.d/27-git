@@ -163,8 +163,7 @@ fixups =
     # -rpath prevents the need to put $LIBGIT2/lib in LD_LIBRARY_PATH
     export LDFLAGS="-Wl,-rpath='$LIBGIT2/lib',--enable-new-dtags"
     python setup.py install \
-        --old-and-unmanageable \
-        --prefix $STOW_PKG_PATH
+        --prefix $STOW_PKG_PATH/.local
     mr_restow_regardless
 
 [$HOME/.GIT/3rd-party/git-when-merged]
@@ -202,12 +201,11 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     python setup.py install \
-        --old-and-unmanageable \
-        --prefix $STOW_PKG_PATH
+        --prefix $STOW_PKG_PATH/.local
     # python setup.py install \
     #     --single-version-externally-managed \
     #     --record=$STOW_PKG_PATH/$MR_NAME-install.log \
-    #     --prefix $STOW_PKG_PATH
+    #     --prefix $STOW_PKG_PATH/.local
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/git-explode]
