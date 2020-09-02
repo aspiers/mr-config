@@ -32,8 +32,9 @@ lib =
 fixups =
     # make clean breaks on first checkout for some reason
     #make clean
-    make
-    python setup.py install --prefix $STOW_PKG_PATH
+    # N.B. Makefile hardcoded to use python2; Python 3 still experimental
+    make  # does setup.py build
+    python2 setup.py install --prefix $STOW_PKG_PATH/.local
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/mailcap]
