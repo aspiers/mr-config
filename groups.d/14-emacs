@@ -33,7 +33,7 @@ stowable = true
 lib =
     set_git_clone_name orgmode
     set_email orgmode@adamspiers.org
-skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+skip = default_skipper || missing_exe emacs
 checkout = github_clone
 remotes =
     auto_remotes
@@ -44,7 +44,7 @@ fixups =
 push = unsafe
 
 [$HOME/.GIT/3rd-party/worg]
-skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+skip = lazy || default_skipper || missing_exe emacs
 lib = set_email orgmode@adamspiers.org
 checkout = github_clone
 remotes =
@@ -53,7 +53,7 @@ remotes =
 push = unsafe
 
 [$HOME/.GIT/3rd-party/org-sync]
-skip = lazy || default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+skip = lazy || default_skipper || missing_exe emacs
 lib =
     set_email orgmode@adamspiers.org
 checkout = git_clone git://orgmode.org/org-sync.git
@@ -80,7 +80,7 @@ remotes =
 fixups =
 
 [$HOME/.GIT/3rd-party/cucumber-el]
-skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe cucumber
+skip = default_skipper || missing_exe emacs || missing_exe cucumber
 lib =
     set_email emacs@adamspiers.org
     set_git_clone_name cucumber.el
@@ -92,7 +92,7 @@ fixups = symlink_repo_from ~/lib/emacs/major-modes/cucumber
 push = unsafe
 
 # [$HOME/.GIT/3rd-party/elisp-behave]
-# skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+# skip = default_skipper || missing_exe emacs
 # lib =
 #     set_git_origin_user tomtt
 #     set_git_clone_name elisp_behave
@@ -102,7 +102,7 @@ push = unsafe
 # push = unsafe
 
 [$HOME/.GIT/3rd-party/emacs-rails]
-skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes || missing_exe rails
+skip = default_skipper || missing_exe emacs || missing_exe rails
 lib = set_email emacs@adamspiers.org
 lib =
     set_git_origin_user remvee
@@ -122,7 +122,7 @@ push = unsafe
 # fixups = symlink_repo_from ~/lib/emacs/minor-modes/yasnippets-rails
 
 # [$HOME/.GIT/3rd-party/dvc]
-# skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
+# skip = default_skipper || missing_exe emacs
 # checkout = git_clone http://bzr.xsteve.at/dvc/
 # fixups = symlink_repo_from ~/lib/emacs/major-modes/$MR_NAME
 # stowable = true
@@ -300,7 +300,7 @@ checkout = gitlab_clone
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/magit-gh-pulls]
-skip = default_skipper || missing_exe emacs || missing_exe git || missing_dir ~/lib/emacs/major-modes
+skip = default_skipper || missing_exe emacs || missing_exe git
 lib =
     set_email emacs@adamspiers.org
     set_git_origin_user sigma
