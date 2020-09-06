@@ -39,7 +39,7 @@ NoNewPrivileges=true
 SyslogIdentifier=$AUTO_SYNC_SVC
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 EOF
     if [ -e $AUTO_SYNC_SVC_FILE ]; then
         if cmp -s $AUTO_SYNC_SVC_FILE $AUTO_SYNC_SVC_FILE.new; then
