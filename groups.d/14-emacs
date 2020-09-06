@@ -121,14 +121,6 @@ push = unsafe
 # remotes = auto_remotes
 # fixups = symlink_repo_from ~/lib/emacs/minor-modes/yasnippets-rails
 
-[$HOME/.GIT/3rd-party/remember]
-skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
-lib = set_email emacs@adamspiers.org
-checkout = git_clone git://repo.or.cz/remember-el.git
-remotes = auto_remotes
-fixups = symlink_repo_from ~/lib/emacs/major-modes/remember.git
-push = unsafe
-
 # [$HOME/.GIT/3rd-party/dvc]
 # skip = default_skipper || missing_exe emacs || missing_dir ~/lib/emacs/major-modes
 # checkout = git_clone http://bzr.xsteve.at/dvc/
