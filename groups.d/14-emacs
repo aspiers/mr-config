@@ -23,6 +23,15 @@ push = unsafe
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/elpa]
+skip = lazy || default_skipper
+lib =
+    set_email emacs@adamspiers.org
+checkout = savannah_ro_clone emacs/elpa
+push = unsafe
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/adamspiers.org/emacs]
 skip = default_skipper || missing_exe emacs
 checkout = git_clone_my_repo
