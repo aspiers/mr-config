@@ -41,3 +41,17 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/figma-linux-font-helper-py]
+skip = lazy
+lib =
+    set_git_origin_user tryvin
+    set_git_clone_name figma-linux-font-helper
+    set_email figma@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+fixups =
+    if ! rpm -q python3-flask; then
+        sudo zypper in python3-flask
+    fi
