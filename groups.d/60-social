@@ -1,3 +1,5 @@
+# -*- mode: sh -*-
+
 [$HOME/software/web/wpscan]
 skip = lazy
 checkout = svn checkout http://wpscan.googlecode.com/svn/trunk/ $MR_NAME
