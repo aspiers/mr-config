@@ -58,7 +58,12 @@ lib = set_email orgmode@adamspiers.org
 checkout = github_clone
 remotes =
     auto_remotes
-    git_add_remote origin worg@orgmode.org:worg.git
+    # old:
+    # git_add_remote origin worg@orgmode.org:worg.git
+    # read-only, for peons:
+    git_add_remote origin https://code.orgmode.org/bzg/worg.git
+    # read-write, for collaborators
+    #git_add_remote origin git@code.orgmode.org:bzg/worg.git
 push = unsafe
 
 [$HOME/.GIT/3rd-party/org-sync]
