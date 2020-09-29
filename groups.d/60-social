@@ -4,7 +4,7 @@ checkout = svn checkout http://wpscan.googlecode.com/svn/trunk/ $MR_NAME
 
 [$HOME/software/comms/telegram]
 name = telegram
-lib = mr_set_download_url 
+lib = mr_set_download_url
 checkout = mr_download_checkout
 fixups =
     cd "$MR_REPO"
