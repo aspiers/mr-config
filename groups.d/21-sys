@@ -35,3 +35,8 @@ fixups =
     ./configure --prefix=$HOME
     make install prefix=$STOW_PKG_PATH
     mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/systemd]
+skip = default_skipper
+checkout = github_clone
+remotes = auto_remotes
