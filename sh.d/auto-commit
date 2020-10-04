@@ -10,7 +10,7 @@ auto_commit_enabled () {
     AUTO_COMMIT_SVC=auto-commit-$MR_NAME
     AUTO_COMMIT_SVC_FILE=$SYSTEMD_USER_DIR/$AUTO_COMMIT_SVC.service
 
-    if [ -e $MR_REPO/.autocommit ]; then
+    if [ -e "$MR_REPO/.autocommit" ]; then
         return 0
     else
         # echo "x No .autocommit in this repo; auto-commit disabled"
@@ -27,11 +27,11 @@ setup_auto_commit () {
     mkdir -p $SYSTEMD_USER_DIR
     cat <<EOF >$AUTO_COMMIT_SVC_FILE.new
 [Service]
-ExecStart=/bin/sh -c "$AUTO_COMMIT_DAEMON $MR_REPO"
+ExecStart=/bin/sh -c "$AUTO_COMMIT_DAEMON \\"$MR_REPO\\""
 Restart=always
 NoNewPrivileges=true
 SyslogIdentifier=$AUTO_COMMIT_SVC
-EnvironmentFile=$MR_REPO/.autocommit
+EnvironmentFile="$MR_REPO/.autocommit"
 
 [Install]
 WantedBy=default.target

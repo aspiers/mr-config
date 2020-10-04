@@ -17,7 +17,7 @@ auto_sync_enabled () {
     AUTO_SYNC_SVC=auto-sync-$MR_NAME
     AUTO_SYNC_SVC_FILE=$SYSTEMD_USER_DIR/$AUTO_SYNC_SVC.service
 
-    if [ -e $MR_REPO/.autosync ]; then
+    if [ -e "$MR_REPO/.autosync" ]; then
         return 0
     else
         echo "x No .autosync in this repo; auto-sync disabled"
@@ -33,7 +33,7 @@ setup_auto_sync () {
     mkdir -p $SYSTEMD_USER_DIR
     cat <<EOF >$AUTO_SYNC_SVC_FILE.new
 [Service]
-ExecStart=/bin/sh -c "$AUTO_SYNC_DAEMON $MR_REPO"
+ExecStart=/bin/sh -c "$AUTO_SYNC_DAEMON \\"$MR_REPO\\""
 Restart=always
 NoNewPrivileges=true
 SyslogIdentifier=$AUTO_SYNC_SVC
