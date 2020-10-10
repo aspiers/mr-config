@@ -370,3 +370,10 @@ fixups =
     (provide '$feature)
     EOF
 remotes = auto_remotes
+
+[$HOME/.emacs.d/straight/repos/straight.el]
+skip = lazy || default_skipper || missing_exe emacs
+lib =
+    set_git_origin_user raxod502
+checkout = github_clone
+remotes = auto_remotes
