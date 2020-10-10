@@ -31,6 +31,7 @@ moosehall_remotes () {
         arabian   REMOTE:$repo
         ionian    REMOTE:$repo
         aegean    REMOTE:$repo
+        slate     REMOTE:$repo
     "
 
     git_ignore_remotes "
