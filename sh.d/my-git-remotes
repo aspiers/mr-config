@@ -45,6 +45,7 @@ moosehall_remotes () {
         nuc
         aegean
         arabian
+        slate
     "
 }
 
