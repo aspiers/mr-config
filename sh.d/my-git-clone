@@ -102,7 +102,7 @@ moosehall_git_checkout () {
     if [ $# -gt 2 ]; then
         error "Usage: moosehall_git_checkout [HUB-HOST [REPO]]"
     fi
-    hub="${1:-pacific}"
+    hub="${1:-ionian}"
     repo="${2:-${MR_REPO#$HOME/}}"
     read_localhost_nickname
     if [ "$hub" = "$localhost_nickname" ]; then
