@@ -31,7 +31,7 @@ ExecStart=/bin/sh -c "$AUTO_COMMIT_DAEMON \\"$MR_REPO\\""
 Restart=always
 NoNewPrivileges=true
 SyslogIdentifier=$AUTO_COMMIT_SVC
-EnvironmentFile="$MR_REPO/.autocommit"
+EnvironmentFile=$MR_REPO/.autocommit
 
 [Install]
 WantedBy=default.target
