@@ -179,7 +179,10 @@ fi
 ln -sf $third_party_git/mr/mr ~/bin
 
 if ! [ -e ~/.mrtrust ]; then
-    echo '~/.config/mr/.mrconfig' > ~/.mrtrust
+    cat <<EOF >~/.mrtrust
+~/.config/mr/.mrconfig
+~/.config/mr.sec/.mrconfig
+EOF
 fi
 
 div ############################################################
