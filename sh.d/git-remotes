@@ -144,6 +144,11 @@ git_rm_remotes () {
 # Tells git annex to ignore the list of remotes.
 git_ignore_remotes () {
     cd "$MR_REPO"
+
+    if ! [ -d .git/annex ]; then
+        return
+    fi
+
     read_localhost_nickname
     # Needs to be exported to while-read subshell
     export LOCALHOST_NICKNAME="$localhost_nickname"
@@ -180,6 +185,11 @@ git_ignore_remotes () {
 # before an annex sync, and if not, exclude them from the sync.
 git_ping_remotes () {
     cd "$MR_REPO"
+
+    if ! [ -d .git/annex ]; then
+        return
+    fi
+
     read_localhost_nickname
     # Needs to be exported to while-read subshell
     export LOCALHOST_NICKNAME="$localhost_nickname"
