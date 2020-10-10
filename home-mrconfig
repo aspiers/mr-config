@@ -37,7 +37,12 @@ fixups =
         echo >&2 "WARNING: git_config_email not defined so won't set email address for $MR_REPO"
         echo >&2 "Hopefully you're bootstrapping, so it will get set later."
     fi
-    setup_git_autocommit_and_annex_autosync
+    if type setup_git_autocommit_and_annex_autosync >/dev/null; then
+        setup_git_autocommit_and_annex_autosync
+    else
+        echo >&2 "WARNING: setup_git_autocommit_and_annex_autosync not defined so won't set up for $MR_REPO"
+        echo >&2 "Hopefully you're bootstrapping, so it will get set up later."
+    fi
 
 # Separate repo for personal extensions to mr config
 [.config/mr.sec]
