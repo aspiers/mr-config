@@ -25,11 +25,7 @@ auto_sync_enabled () {
     fi
 }
 
-setup_auto_sync () {
-    auto_sync_enabled || return 0
-
-    ensure_git_annex
-
+setup_auto_sync_service () {
     mkdir -p $SYSTEMD_USER_DIR
     cat <<EOF >$AUTO_SYNC_SVC_FILE.new
 [Service]
@@ -57,6 +53,14 @@ EOF
 
     mv $AUTO_SYNC_SVC_FILE.new $AUTO_SYNC_SVC_FILE
     systemctl --user daemon-reload
+}
+
+setup_auto_sync () {
+    auto_sync_enabled || return 0
+
+    ensure_git_annex
+
+    setup_auto_sync_service
 
     # When installing the first time, also enable
     if [ -z "$preexisting" ]; then
