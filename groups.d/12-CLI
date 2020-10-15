@@ -129,19 +129,20 @@ remotes = auto_remotes
 stowable = true
 fixups =
     set_stow_common_opts
-    # sudo zypper in gcc7-c++ 'sqlite3-devel >= 3.9.0'
-    export CXX=g++-7
-    export CFLAGS='-fmessage-length=0 -grecord-gcc-switches -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g'
-    export CXXFLAGS="$CFLAGS"
-    export FFLAGS="$CFLAGS"
+    # sudo zypper in gcc7-c++ 'sqlite3-devel >= 3.9.0' gpm-devel
+    export CXX=g++-10
+    # export CFLAGS='-fmessage-length=0 -grecord-gcc-switches -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g'
+    # export CXXFLAGS="$CFLAGS"
+    # export FFLAGS="$CFLAGS"
     if ! [ -e configure ]; then
         bash ./autogen.sh
     fi
     ./configure \
         --prefix=$HOME \
         --with-ncurses \
-        --with-readline
-    make -j2 install prefix=$STOW_PKG_PATH
+        --with-readline \
+        --enable-profiling
+    make -j install prefix=$STOW_PKG_PATH
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/lnav-formats]
