@@ -55,11 +55,18 @@ EOF
     systemctl --user daemon-reload
 }
 
+setup_push_to_checkout_hook () {
+    ensure_symlink_exists \
+        $MR_REPO/.git/hooks/push-to-checkout \
+        ~/bin/git-safe-push-to-checkout
+}
+
 setup_auto_sync () {
     auto_sync_enabled || return 0
 
     ensure_git_annex
 
+    setup_push_to_checkout_hook
     setup_auto_sync_service
 
     # When installing the first time, also enable
