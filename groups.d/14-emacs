@@ -377,3 +377,11 @@ lib =
     set_git_origin_user raxod502
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/adamspiers.org/etrace]
+skip = lazy || default_skipper || missing_exe emacs
+lib = set_email emacs@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
+# fixups =
+#     ensure_symlink_exists ~/lib/emacs/minor-modes/smooth-scrolling.el "$MR_REPO/smooth-scrolling.el"
