@@ -52,6 +52,16 @@ fixups =
     cd "$MR_REPO/contrib/scripts" && gcc -lXss -lX11 x11idle.c -o ~/bin/x11idle
 push = unsafe
 
+[$HOME/.GIT/3rd-party/orgweb]
+lib =
+    set_git_clone_name orgmode
+    set_email orgmode@adamspiers.org
+skip = default_skipper || missing_exe emacs
+checkout = git_clone https://code.orgmode.org/bzg/$MR_NAME.git
+remotes =
+    auto_remotes
+push = unsafe
+
 [$HOME/.GIT/3rd-party/worg]
 skip = lazy || default_skipper || missing_exe emacs
 lib = set_email orgmode@adamspiers.org
