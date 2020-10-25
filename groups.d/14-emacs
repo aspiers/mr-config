@@ -395,5 +395,3 @@ skip = lazy || default_skipper || missing_exe emacs
 lib = set_email emacs@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
-# fixups =
-#     ensure_symlink_exists ~/lib/emacs/minor-modes/smooth-scrolling.el "$MR_REPO/smooth-scrolling.el"
