@@ -24,7 +24,16 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+[$HOME/.GIT/3rd-party/fastdup]
+skip = default_skipper
+checkout = github_clone
+fixups =
+    cd "$MR_REPO"
+    make
+    ln -sf "$MR_REPO/fastdup" ~/bin
+
 [$HOME/software/file/fastdup]
+name = fastdup-sf
 skip = default_skipper
 lib =
     # Also at https://github.com/rburchell/fastdup
