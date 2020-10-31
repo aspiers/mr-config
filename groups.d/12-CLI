@@ -27,6 +27,7 @@ stowable = true
 [$HOME/software/file/fastdup]
 skip = default_skipper
 lib =
+    # Also at https://github.com/rburchell/fastdup
     MR_DOWNLOAD_URL="http://sourceforge.net/projects/fastdup/files/latest/download?source=files"
     MR_DOWNLOAD_FILE=fastdup-0.3.tar.bz2
 checkout = mr_download_checkout
