@@ -1,2 +1,4 @@
 Files in this directory are automatically included in the mr config
 via ~/.mrconfig (i.e. ../home-mrconfig).
+
+See also sh.d/, which contains raw shell code.
