@@ -53,5 +53,5 @@ remotes =
     auto_remotes
 fixups =
     if ! rpm -q python3-flask; then
-        sudo zypper in python3-flask
+        zypper_install python3-flask
     fi

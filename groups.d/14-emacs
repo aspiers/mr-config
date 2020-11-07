@@ -371,7 +371,7 @@ lib =
 checkout = github_clone
 fixups =
     if missing_exe panflute; then
-        sudo zypper in python3-panflute
+        zypper_install python3-panflute
     fi
     yarn install
     make

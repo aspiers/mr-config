@@ -1,0 +1,7 @@
+# -*- mode: sh -*-
+
+zypper_install () {
+    if [ -n "$MR_INSTALL_DEPS" ]; then
+        sudo zypper install "$@"
+    fi
+}

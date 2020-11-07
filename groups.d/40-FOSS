@@ -166,7 +166,7 @@ checkout = github_clone
 skip = default_skipper
 remotes = auto_remotes
 fixups =
-    sudo zypper in -y libnl-devel libgnutls-devel libpciaccess-devel \
+    zypper_install -y libnl-devel libgnutls-devel libpciaccess-devel \
          device-mapper-devel
     if ! [ -e configure ]; then
         ./autogen.sh

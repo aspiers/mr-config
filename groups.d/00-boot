@@ -132,7 +132,7 @@ fixups =
     #
     # for openSUSE add devel:languages:python
     #sudo zypper ar http://download.opensuse.org/repositories/devel:/languages:/python/openSUSE_12.1/devel:languages:python.repo
-    #sudo zypper in python-xmpppy
+    #zypper_install python-xmpppy
     #
     # for Fedora:
     # yum install python-xmpp
