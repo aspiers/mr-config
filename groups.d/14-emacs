@@ -46,6 +46,7 @@ skip = default_skipper || missing_exe emacs
 checkout = git_clone https://code.orgmode.org/bzg/$MR_NAME.git
 remotes =
     auto_remotes
+    github_readwrite_remote github aspiers orgmode
 fixups =
     # See also as-straight-setup-git-config in
     # ~/.emacs.d/init.d/as-package-loading.el
