@@ -55,3 +55,21 @@ fixups =
     if ! rpm -q python3-flask; then
         zypper_install python3-flask
     fi
+
+[$HOME/.GIT/3rd-party/create-react-app]
+skip = lazy
+lib =
+    set_git_origin_user facebook
+    set_email javascript@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/webpack]
+skip = lazy
+lib =
+    set_git_origin_user webpack
+    set_email javascript@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
