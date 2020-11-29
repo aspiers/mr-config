@@ -73,3 +73,11 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+fixups =
+    feature=as-$MR_NAME-dir-class
+    cat <<EOF >~/.emacs.d/init.d/$feature.el
+    ;; Add organice dir to dir-locals-directory-cache
+    (dir-locals-set-directory-class "$MR_REPO/" 'js2-tab-8-indent)
+
+    (provide '$feature)
+    EOF
