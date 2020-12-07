@@ -1,0 +1,3 @@
+install =
+    echo "Setting MR_INSTALL_DEPS=y"
+    MR_INSTALL_DEPS=y mr fix "$@"
