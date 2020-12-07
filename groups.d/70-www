@@ -77,7 +77,7 @@ fixups =
     feature=as-$MR_NAME-dir-class
     cat <<EOF >~/.emacs.d/init.d/$feature.el
     ;; Add organice dir to dir-locals-directory-cache
-    (dir-locals-set-directory-class "$MR_REPO/" 'js2-tab-8-indent)
+    (dir-locals-set-directory-class "$MR_REPO/" 'js-indent-8-tabs)
 
     (provide '$feature)
     EOF
