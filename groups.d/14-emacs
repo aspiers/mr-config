@@ -52,6 +52,7 @@ fixups =
     # ~/.emacs.d/init.d/as-package-loading.el
     git config user.sendemail emacs-orgmode@gnu.org
     symlink_repo_from $HOME/.GIT/3rd-party/$MR_NAME
+    zypper_install libXss-devel
     cd "$MR_REPO/contrib/scripts" && gcc -lXss -lX11 x11idle.c -o ~/bin/x11idle
 push = unsafe
 
