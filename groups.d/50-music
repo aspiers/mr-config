@@ -145,6 +145,9 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
+    ensure_symlink_exists \
+        ~/.emacs.d/straight/repos/supercollider \
+        $MR_REPO
     zypper_install \
         alsa-lib-devel \
         avahi-devel \
