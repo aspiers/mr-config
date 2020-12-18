@@ -402,3 +402,11 @@ remotes = auto_remotes
 fixups =
     symlink_repo_from $HOME/.GIT/adamspiers.org/$MR_NAME
     symlink_repo_from $HOME/.GIT/3rd-party/$MR_NAME
+
+[$HOME/.emacs.d/straight/repos/lispy]
+skip = lazy || default_skipper || missing_exe emacs
+lib =
+    set_email emacs@adamspiers.org
+    set_git_origin_user abo-abo
+checkout = github_clone
+remotes = auto_remotes
