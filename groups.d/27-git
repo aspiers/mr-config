@@ -23,6 +23,7 @@ lib =
     }
 
 fixups =
+    zypper_install asciidoc
     cat <<-EOF > ~/.emacs.d/init.d/as-git.el
     ;; Automatically generated via mr fixups for $MR_REPO; do not edit!
 
