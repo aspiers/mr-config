@@ -398,4 +398,5 @@ lib =
     set_git_origin_user wavexx
 fixups =
     ensure_symlink_exists $HOME/bin/git-assembler $MR_REPO/git-assembler
+    git config --global alias.as assembler
 remotes = auto_remotes
