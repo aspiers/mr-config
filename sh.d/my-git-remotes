@@ -93,7 +93,7 @@ auto_remotes () {
 set_origin_remote () {
     # Ensure "origin" is included in the automatically generated
     # remotes.  The challenge is to determine at which upstream
-    # service it should point (e.g. github, gitorious etc.).  During
+    # service it should point (e.g. github, gitlab etc.).  During
     # cloning, set_git_clone_remote is called, so we know which
     # service the repo was cloned from.  However we also need to know
     # this post-clone, for re-runs of "mr remotes" etc.  It's

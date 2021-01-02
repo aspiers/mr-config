@@ -82,9 +82,9 @@ github_clone_rw_origin () {
     git_clone "`github_origin_rw_url`"
 }
 
-gitorious_clone () {
-    set_git_clone_remote gitorious
-    git_clone `gitorious_clone_url`
+gitlab_clone () {
+    set_git_clone_remote gitlab
+    git_clone `gitlab_clone_url`
 }
 
 savannah_ro_clone () {
