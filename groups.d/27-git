@@ -389,3 +389,13 @@ fixups =
     EOF
     chmod +x ~/bin/palaver
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/git-assembler]
+skip = lazy
+checkout = gitlab_clone
+stowable = true
+lib =
+    set_git_origin_user wavexx
+fixups =
+    ensure_symlink_exists $HOME/bin/git-assembler $MR_REPO/git-assembler
+remotes = auto_remotes
