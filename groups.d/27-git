@@ -24,16 +24,6 @@ lib =
 
 fixups =
     zypper_install asciidoc
-    cat <<-EOF > ~/.emacs.d/init.d/as-git.el
-    ;; Automatically generated via mr fixups for $MR_REPO; do not edit!
-
-    (require 'as-find-file-matching-regexp-hook)
-
-    (add-to-list 'as-find-file-matching-regexp-alist
-        '("/.GIT/3rd-party/git/" . (lambda () (setq indent-tabs-mode t))))
-
-    (provide 'as-git)
-    EOF
     cd "$MR_REPO"
     ionice -c 3 \
     nice -n15 \
