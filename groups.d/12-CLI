@@ -24,6 +24,7 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+# Unmaintained; use fdupes instead
 [$HOME/.GIT/3rd-party/fastdup]
 skip = default_skipper
 checkout = github_clone
@@ -32,6 +33,7 @@ fixups =
     make
     ln -sf "$MR_REPO/fastdup" ~/bin
 
+# Unmaintained; use fdupes instead
 [$HOME/software/file/fastdup]
 name = fastdup-sf
 skip = default_skipper
