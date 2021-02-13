@@ -11,6 +11,7 @@ remotes =
         junio      git://github.com/gitster/git.git
         jonseymour git://github.com/jonseymour/git.git
         git        git://github.com/git/git.git
+        prot       https://gitlab.com/protesilaos/git-experimental
     "
 stowable = true
 lib =
@@ -25,6 +26,7 @@ lib =
 fixups =
     zypper_install asciidoc
     cd "$MR_REPO"
+    git config format.to 'git list <git@vger.kernel.org>'
     ionice -c 3 \
     nice -n15 \
         make ${MAKE_FLAGS--j} install \
