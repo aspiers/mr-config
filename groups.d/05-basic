@@ -27,7 +27,7 @@ skip = default_skipper || missing_exe git
 checkout = git_clone git://git-annex.branchable.com/
 remotes = auto_remotes
 fixups =
-    zypper_install cabal-install ghc
+    zypper_install cabal-install ghc file-devel
     if missing_exe cabal; then
         fatal "cabal not installed; can't build git-annex"
     fi
