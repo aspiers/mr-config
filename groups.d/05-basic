@@ -23,10 +23,13 @@ stowable = true
 stowable = true
 lib =
     mr_init_stow_package
-skip = default_skipper || missing_exe git || missing_exe cabal
+skip = default_skipper || missing_exe git
 checkout = git_clone git://git-annex.branchable.com/
 remotes = auto_remotes
 fixups =
+    if missing_exe cabal; then
+        fatal "cabal not installed; can't build git-annex"
+    fi
     cabal update
     cabal install --bindir=$HOME/bin c2hs
     cabal install --only-dependencies
