@@ -55,10 +55,17 @@ lib =
             ;;
     esac
     mr_set_download_url https://downloads.kitenet.net/git-annex/linux/current/git-annex-standalone-$arch.tar.gz
+    GIT_ANNEX_PROGS="git-annex git-annex-shell git-annex-webapp"
 checkout = mr_download_checkout
 fixups =
-    for prog in git-annex git-annex-shell git-annex-webapp; do
+    for prog in $GIT_ANNEX_PROGS; do
         ensure_symlink_exists ~/bin/$prog "$MR_REPO/$prog"
+    done
+uninstall =
+    for prog in $GIT_ANNEX_PROGS; do
+        if [[ $(readlink ~/bin/$prog) == "$MR_REPO/$prog" ]]; then
+            rm ~/bin/$prog
+        fi
     done
 
 [$HOME/.GIT/adamspiers.org/gnupg]
