@@ -247,3 +247,23 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/ardour]
+skip = lazy || ! music_machine
+lib =
+    set_git_origin_user ardour
+    set_email music@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+
+[$HOME/.GIT/3rd-party/ardour-manual]
+skip = lazy || ! music_machine
+lib =
+    set_git_origin_user ardour
+    set_git_clone_name manual
+    set_email music@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+
