@@ -1,0 +1,24 @@
+#!/bin/bash
+
+run_cfg_post () {
+    dir=.cfg-post.d
+    if [ -z "$ZDOTDIR" ]; then
+        error "ZDOTDIR not set; can't run $dir hoooks"
+    fi
+    for f in "$MR_REPO/$dir"/*; do
+        if [ -x "$f" ]; then
+            stowed="${f##*/}"
+            s="$ZDOTDIR/$dir/$stowed"
+            if [ -x "$s" ]; then
+                info "Running $s ..."
+                if "$s"; then
+                    info "$s succeeded"
+                else
+                    error "$s failed"
+                fi
+            else
+                error "$f not stowed as $s; can't run"
+            fi
+        fi
+    done
+}
