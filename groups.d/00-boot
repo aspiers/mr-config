@@ -50,6 +50,7 @@ checkout = github_clone
 remotes = auto_remotes && savannah_rw_remote
 
 fixups =
+    zypper_install perl-{Module-Build,IO-stringy,Test-Output}
     cd "$MR_REPO"
     autoreconf -iv
     ./configure --prefix=$HOME
