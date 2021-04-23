@@ -1,6 +1,11 @@
 # -*- mode: sh -*-
 
 [$HOME/blockchain]
+stowable = true
 checkout = git_clone_my_repo
 remotes = auto_remotes
+lib =
+    export STOW_PKG_TYPE=symlink
+    export STOW_SOURCE_PATH="$MR_REPO/.STOW"
+    mr_init_stow_package
 chain = true
