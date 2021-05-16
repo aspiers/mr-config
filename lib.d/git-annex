@@ -4,3 +4,5 @@ unsmudge = git_annex_no_smudge
 resmudge = git_annex_re_smudge
 
 post_update_append = git_annex_no_smudge
+
+sync = ggans
