@@ -50,6 +50,11 @@ name = mr-config.sec
 checkout =
     git clone -o adamspiers.org adamspiers.org:mr-config.sec.git "$MR_REPO"
 # This loads .config/mr.sec/.mrconfig:
+stowable = true
+lib =
+    export STOW_PKG_TYPE=symlink
+    export STOW_SOURCE_PATH="$MR_REPO/.STOW"
+    mr_init_stow_package
 chain = true
 include =
     if [ -e ~/.config/mr/library-loaders ]; then
