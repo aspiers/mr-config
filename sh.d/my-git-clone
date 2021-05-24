@@ -78,12 +78,12 @@ _github_clone_my_fork () {
 # Use this to clone a repository I haven't forked but have push access to,
 # e.g. a github wiki.
 github_clone_rw_origin () {
-    set_git_clone_remote origin
+    set_git_clone_remote "${1:-origin}"
     git_clone "`github_origin_rw_url`"
 }
 
 gitlab_clone () {
-    set_git_clone_remote gitlab
+    set_git_clone_remote "${1:-gitlab}"
     git_clone `gitlab_clone_url`
 }
 
