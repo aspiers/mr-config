@@ -116,7 +116,7 @@ remotes =
 skip = lazy
 checkout = github_clone
 lib =
-    set_email tech4uk@adamspiers.org
+    set_email swapmyvote@adamspiers.org
     set_git_rw_origin_user swapmyvote
 remotes =
     auto_remotes
