@@ -11,6 +11,10 @@ set_email () {
     MR_EMAIL="$1"
 }
 
+set_anon_email () {
+    set_email example@example.com
+}
+
 # This must be called before using MR_EMAIL, since it ensures that a
 # sensible default value is set if no address was explicitly chosen.
 default_email () {
