@@ -22,6 +22,7 @@ set_git_clone_name () {
 }
 
 # Name of the remote repository, excluding the user / organisation.
+# Set this via set_git_clone_name
 git_clone_name () {
     echo "${MR_GIT_CLONE_NAME:-$MR_NAME}"
 }
@@ -80,6 +81,12 @@ _github_clone_my_fork () {
 github_clone_rw_origin () {
     set_git_clone_remote "${1:-origin}"
     git_clone "`github_origin_rw_url`"
+}
+
+# Use this to clone a repository I haven't forked and don't push access to.
+github_clone_ro_origin () {
+    set_git_clone_remote "${1:-origin}"
+    git_clone "`github_origin_url`"
 }
 
 gitlab_clone () {
