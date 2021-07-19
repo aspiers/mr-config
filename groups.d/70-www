@@ -81,3 +81,11 @@ fixups =
 
     (provide '$feature)
     EOF
+
+[$HOME/.GIT/adamspiers.org/Discord-custom-nicks-userscript]
+skip = lazy
+lib =
+    set_email userscripts@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
