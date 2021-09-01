@@ -74,13 +74,7 @@ checkout = github_clone
 remotes =
     auto_remotes
 fixups =
-    feature=as-$MR_NAME-dir-class
-    cat <<EOF >~/.emacs.d/init.d/$feature.el
-    ;; Add organice dir to dir-locals-directory-cache
-    (dir-locals-set-directory-class "$MR_REPO/" 'js-indent-8-tabs)
-
-    (provide '$feature)
-    EOF
+    emacs_dir_class js-indent-8-tabs
 
 [$HOME/.GIT/adamspiers.org/Discord-custom-nicks-userscript]
 skip = lazy
