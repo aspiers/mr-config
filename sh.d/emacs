@@ -1,0 +1,16 @@
+# -*- mode: sh -*-
+
+emacs_feature () {
+    feature=as-$1
+    cat >~/.emacs.d/init.d/$feature.el
+    cat <<EOF >>~/.emacs.d/init.d/$feature.el
+
+(provide '$feature)
+EOF
+}
+
+emacs_dir_class () {
+    emacs_feature $MR_NAME-dir-class <<EOF
+(dir-locals-set-directory-class "$MR_REPO/" '$1)
+EOF
+}
