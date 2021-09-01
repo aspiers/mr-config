@@ -83,3 +83,11 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+
+[$HOME/.GIT/adamspiers.org/etheriopia]
+skip = lazy
+lib =
+    set_email blockchain@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
