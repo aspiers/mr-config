@@ -176,3 +176,10 @@ fixups =
     make -C docs
     make install
     #mr_restow_regardless
+
+[$HOME/.GIT/3rd-party/reuse-tool]
+lib =
+    set_git_origin_user fsfe
+checkout = github_clone
+skip = default_skipper
+remotes = auto_remotes
