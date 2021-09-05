@@ -294,7 +294,7 @@ checkout = github_clone
 remotes =
     auto_remotes
 fixups =
-    ensure_symlink_exists ~/bin/git-related $MR_REPO/git-related
+    make install
 
 [$HOME/.GIT/3rd-party/kal-shlib-core]
 skip = lazy
