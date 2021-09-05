@@ -182,4 +182,8 @@ lib =
     set_git_origin_user fsfe
 checkout = github_clone
 skip = default_skipper
-remotes = auto_remotes
+remotes =
+    auto_remotes
+    github_readonly_remote fwolfst
+fixups =
+    pip3 install --user --no-use-pep517 -e .
