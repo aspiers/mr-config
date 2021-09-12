@@ -3,6 +3,10 @@
 emacs_feature () {
     feature=as-$1
     cat >~/.emacs.d/init.d/$feature.el
+    emacs_add_feature_footer
+}
+
+emacs_add_feature_footer () {
     cat <<EOF >>~/.emacs.d/init.d/$feature.el
 
 (provide '$feature)
@@ -10,7 +14,14 @@ EOF
 }
 
 emacs_dir_class () {
-    emacs_feature $MR_NAME-dir-class <<EOF
-(dir-locals-set-directory-class "$MR_REPO/" '$1)
+    emacs_dir_classes "$1"
+}
+
+emacs_dir_classes () {
+    for class in "$@"; do
+        cat <<EOF
+(dir-locals-set-directory-class "$MR_REPO/" '$class)
 EOF
+    done |
+    emacs_feature $MR_NAME-dir-class
 }
