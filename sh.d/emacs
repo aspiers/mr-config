@@ -16,14 +16,7 @@ EOF
 }
 
 emacs_dir_class () {
-    emacs_dir_classes "$1"
-}
-
-emacs_dir_classes () {
-    for class in "$@"; do
-        cat <<EOF
-(dir-locals-set-directory-class "$MR_REPO/" '$class)
+    emacs_feature $MR_NAME-dir-class <<EOF
+(dir-locals-set-directory-class "$MR_REPO/" '$1)
 EOF
-    done |
-    emacs_feature $MR_NAME-dir-class
 }
