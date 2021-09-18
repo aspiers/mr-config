@@ -2,8 +2,10 @@
 
 emacs_feature () {
     feature=as-$1
-    cat >~/.emacs.d/init.d/$feature.el
+    feature_file=~/.emacs.d/init.d/$feature.el
+    cat >"$feature_file"
     emacs_add_feature_footer
+    echo "Wrote $feature_file"
 }
 
 emacs_add_feature_footer () {
