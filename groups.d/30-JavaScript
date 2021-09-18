@@ -1,0 +1,9 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/3rd-party/vscode-eslint]
+skip = lazy
+checkout = github_clone
+lib =
+    set_git_origin_user microsoft
+remotes =
+    auto_remotes
