@@ -374,6 +374,9 @@ fixups =
     fi
     yarn install
     make
+    ensure_symlink_exists \
+        ~/.emacs.d/straight/repos/prettier.el \
+        ~/.GIT/3rd-party/prettier.el
     emacs_dir_class prettier-js
     srepo=~/.emacs.d/straight/repos/prettier.el
     sbuild=~/.emacs.d/straight/build/prettier
