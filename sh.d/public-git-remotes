@@ -41,3 +41,19 @@ gitlab_clone_remote () {
     git_add_remote gitlab `gitlab_clone_url`
 }
 
+# usage: gitlab_readwrite_remote <REMOTE> [<USERNAME> [<REPONAME>]]
+# required for (even read-only) forks of private repositories
+gitlab_readwrite_remote () {
+    remote="$1"
+    username="${2:-$remote}"
+    reponame="$3"
+    git_add_remote "$remote" `gitlab_readwrite_url "$username" "$reponame"`
+}
+
+gitlab_readonly_remote () {
+    remote="$1"
+    username="${2:-$remote}"
+    reponame="$3"
+    git_add_remote "$remote" `gitlab_readonly_url "$username" "$reponame"`
+}
+
