@@ -33,7 +33,8 @@ fixups =
             prefix=$STOW_PKG_PATH ${CFLAGS:+CFLAGS="$CFLAGS"}
     if which asciidoc >/dev/null 2>&1; then
         if which xmlto >/dev/null 2>&1; then
-            make ${MAKE_FLAGS--j} install-doc prefix=$STOW_PKG_PATH ${CFLAGS:+CFLAGS="$CFLAGS"}
+            make ${MAKE_FLAGS--j} install-doc prefix=$STOW_PKG_PATH
+            make ${MAKE_FLAGS--j} install-html prefix=$STOW_PKG_PATH
         else
             echo "asciidoc installed but not xmlto; skipping install-doc"
         fi
