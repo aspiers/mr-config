@@ -375,6 +375,16 @@ fixups =
     yarn install
     make
     emacs_dir_class prettier-js
+    srepo=~/.emacs.d/straight/repos/prettier.el
+    sbuild=~/.emacs.d/straight/build/prettier
+    if ! [ -e $sbuild ]; then
+        ensure_symlink_exists $sbuild "$MR_REPO"
+    else
+        warning "$sbuild already exists; trying to symlink base64 file to $srepo"
+        for f in prettier-el.js.gz.base64 bootstrap-min.js; do
+            ensure_symlink_exists $sbuild/$f $srepo/$f
+        done
+    fi
 remotes = auto_remotes
 
 [$HOME/.emacs.d/straight/repos/straight.el]
