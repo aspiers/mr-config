@@ -91,3 +91,11 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/reactime]
+skip = lazy
+lib =
+    set_git_origin_user open-source-labs
+checkout = github_clone
+remotes =
+    auto_remotes
