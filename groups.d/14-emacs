@@ -385,7 +385,7 @@ fixups =
     else
         warning "$sbuild already exists; trying to symlink base64 file to $srepo"
         for f in prettier-el.js.gz.base64 bootstrap-min.js; do
-            ensure_symlink_exists $sbuild/$f $srepo/$f
+            ensure_symlink_exists $sbuild/$f $srepo/dist/$f
         done
     fi
 remotes = auto_remotes
