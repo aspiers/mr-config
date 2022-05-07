@@ -38,8 +38,12 @@ github_origin_rw_url () {
     github_readwrite_url "$MR_GIT_ORIGIN_RW_USER"
 }
 
+gitlab_origin_rw_url () {
+    gitlab_readwrite_url "$MR_GIT_ORIGIN_RW_USER"
+}
+
 gitlab_readonly_url () {
-    echo "https://gitlab.com/$1/${2:-`git_clone_name`}.git"
+    echo "git@gitlab.com:$1/${2:-`git_clone_name`}.git"
 }
 
 gitlab_readwrite_url () {
