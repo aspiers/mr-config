@@ -94,6 +94,11 @@ gitlab_clone () {
     git_clone `gitlab_clone_url`
 }
 
+gitlab_clone_rw_origin () {
+    set_git_clone_remote "${1:-origin}"
+    git_clone `gitlab_origin_rw_url`
+}
+
 savannah_ro_clone () {
     set_git_clone_remote savannah
     git_clone `savannah_ro_url "$@"`
