@@ -52,7 +52,7 @@ gitlab_readwrite_url () {
 
 # For use when adding origin or auxiliary remotes
 github_readonly_url () {
-    echo "git://github.com/$1/${2:-`git_clone_name`}.git"
+    echo "https://github.com/$1/${2:-`git_clone_name`}.git"
 }
 
 # For use when adding origin or auxiliary remotes

@@ -8,9 +8,9 @@ checkout = github_clone
 remotes =
     auto_remotes
     git_add_remotes "
-        junio      git://github.com/gitster/git.git
-        jonseymour git://github.com/jonseymour/git.git
-        git        git://github.com/git/git.git
+        junio      https://github.com/gitster/git.git
+        jonseymour https://github.com/jonseymour/git.git
+        git        https://github.com/git/git.git
         prot       https://gitlab.com/protesilaos/git-experimental
     "
 stowable = true
