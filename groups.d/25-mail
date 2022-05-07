@@ -157,3 +157,32 @@ fixups =
     zypper_install {notmuch,lib{idn,gpgme}}-devel
     ./configure --prefix= --ssl --gnutls --gpgme --notmuch --zlib --lmdb && \
         make -j install DESTDIR=$STOW_PKG_PATH
+
+[$HOME/.GIT/3rd-party/notmuch]
+stowable = true
+lib =
+    set_email notmuch@adamspiers.org
+    mr_init_stow_package
+checkout = git_clone https://git.notmuchmail.org/git/notmuch
+remotes = auto_remotes
+fixups =
+    zypper_install \
+        libxapian{30,-devel} \
+        libgmime-3_0-0 gmime-devel \
+        libtalloc{2,-devel}
+    ./configure --prefix= && \
+        make -j install DESTDIR=$STOW_PKG_PATH && \
+        rm $STOW_PKG_PATH/share/info/dir
+
+[$HOME/.GIT/3rd-party/lieer]
+skip = default_skipper
+#stowable = true
+checkout = github_clone
+lib =
+    set_email github@adamspiers.org
+    set_git_origin_user gauteh
+    #mr_init_stow_package
+remotes = auto_remotes
+fixups =
+    #PYTHONUSERBASE=$STOW_PKG_PATH pip install --user -e .
+    pip install --user -e .
