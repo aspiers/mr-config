@@ -27,6 +27,7 @@ github_readwrite_remote () {
     username="${2:-$remote}"
     reponame="$3"
     git_add_remote "$remote" `github_readwrite_url "$username" "$reponame"`
+    git config remote.pushDefault "$remote"
 }
 
 github_origin_remote () {
@@ -35,6 +36,7 @@ github_origin_remote () {
 
 github_origin_rw_remote () {
     git_add_remote origin `github_origin_rw_url`
+    git config remote.pushDefault origin
 }
 
 gitlab_clone_remote () {
@@ -48,6 +50,7 @@ gitlab_readwrite_remote () {
     username="${2:-$remote}"
     reponame="$3"
     git_add_remote "$remote" `gitlab_readwrite_url "$username" "$reponame"`
+    git config remote.pushDefault "$remote"
 }
 
 gitlab_readonly_remote () {
