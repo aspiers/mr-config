@@ -77,8 +77,6 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 fixups =
-    cd ~/.gnupg
-    gcc -Wall -O2 -shared -fPIC -o idea idea.c
     run_cfg_post
 
 [$HOME/.GIT/3rd-party/zsh-completions]
