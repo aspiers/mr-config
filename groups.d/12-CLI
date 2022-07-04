@@ -93,6 +93,17 @@ fixups =
     mr_restow_regardless
 remotes = auto_remotes
 
+[$HOME/.GIT/3rd-party/tpm]
+skip = default_skipper || missing_exe tmux
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user tmux-plugins
+fixups =
+    mkdir -p ~/.tmux.d/plugins
+    ensure_symlink_exists ~/.tmux.d/plugins/tpm $MR_REPO
+
 [$HOME/.GIT/adamspiers.org/weechat]
 name = weechat-config
 skip = default_skipper || ( missing_exe weechat-curses && missing_exe weechat )
