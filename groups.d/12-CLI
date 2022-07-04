@@ -101,8 +101,8 @@ stowable = true
 lib =
     set_git_origin_user tmux-plugins
 fixups =
-    mkdir -p ~/.tmux.d/plugins
-    ensure_symlink_exists ~/.tmux.d/plugins/tpm $MR_REPO
+    mkdir -p ~/.tmux/plugins
+    ensure_symlink_exists ~/.tmux/plugins/tpm $MR_REPO
 
 [$HOME/.GIT/adamspiers.org/weechat]
 name = weechat-config
