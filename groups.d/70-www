@@ -65,6 +65,15 @@ checkout = github_clone
 remotes =
     auto_remotes
 
+[$HOME/.GIT/3rd-party/react]
+skip = lazy
+lib =
+    set_git_origin_user facebook
+    set_email javascript@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+
 [$HOME/.GIT/3rd-party/webpack]
 skip = lazy
 lib =
