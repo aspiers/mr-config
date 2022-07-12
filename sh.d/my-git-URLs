@@ -27,19 +27,19 @@ github_clone_url () {
 }
 
 gitlab_origin_url () {
-    gitlab_readonly_url "$MR_GIT_ORIGIN_USER"
+    gitlab_readonly_url "$MR_GIT_ORIGIN_USER" "$MR_GIT_ORIGIN_NAME"
 }
 
 github_origin_url () {
-    github_readonly_url "$MR_GIT_ORIGIN_USER"
+    github_readonly_url "$MR_GIT_ORIGIN_USER" "$MR_GIT_ORIGIN_NAME"
 }
 
 github_origin_rw_url () {
-    github_readwrite_url "$MR_GIT_ORIGIN_RW_USER"
+    github_readwrite_url "$MR_GIT_ORIGIN_RW_USER" "$MR_GIT_ORIGIN_NAME"
 }
 
 gitlab_origin_rw_url () {
-    gitlab_readwrite_url "$MR_GIT_ORIGIN_RW_USER"
+    gitlab_readwrite_url "$MR_GIT_ORIGIN_RW_USER" "$MR_GIT_ORIGIN_NAME"
 }
 
 gitlab_readonly_url () {
@@ -72,6 +72,18 @@ set_git_origin_user () {
     fi
 
     MR_GIT_ORIGIN_USER="$1"
+}
+
+# This is the name of the origin repository (as opposed to the one
+# from which we are going to clone), excluding the user /
+# organisation.
+set_git_origin_name () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_git_origin_name $*"
+        exit 1
+    fi
+
+    MR_GIT_ORIGIN_NAME="$1"
 }
 
 # Same as above, but for when we have write access to the origin
