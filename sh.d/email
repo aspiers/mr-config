@@ -1,0 +1,7 @@
+# -*- mode: sh -*-
+
+ensure_maildirs_exist () {
+    for dir in "$@"; do
+        mkdir -p "$dir"/{cur,new,tmp}
+    done
+}
