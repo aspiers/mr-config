@@ -24,13 +24,14 @@ moosehall_remotes () {
     "
 
     git_add_remotes "
-        atlantic  REMOTE:$repo
-        pacific   REMOTE:$repo
-        indian    REMOTE:$repo
-        nuc       REMOTE:$repo
-        arabian   REMOTE:$repo
-        ionian    REMOTE:$repo
         aegean    REMOTE:$repo
+        arabian   REMOTE:$repo
+        atlantic  REMOTE:$repo
+        celtic    REMOTE:$repo
+        indian    REMOTE:$repo
+        ionian    REMOTE:$repo
+        nuc       REMOTE:$repo
+        pacific   REMOTE:$repo
         slate     REMOTE:$repo
     "
 
