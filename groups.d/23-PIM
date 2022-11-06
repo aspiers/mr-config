@@ -102,4 +102,12 @@ skip = default_skipper
 remotes = auto_remotes
 #stowable = true
 
+[$HOME/.GIT/3rd-party/gcal-multical-event-merge]
+lib =
+    set_git_origin_user HCAWN
+checkout = github_clone
+skip = default_skipper
+remotes = auto_remotes
+#stowable = true
+
 # See 14-emacs for organice
