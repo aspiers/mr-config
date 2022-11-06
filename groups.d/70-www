@@ -108,3 +108,13 @@ lib =
 checkout = github_clone
 remotes =
     auto_remotes
+
+[$HOME/.GIT/3rd-party/chrome-session-dump]
+skip = lazy
+lib =
+    set_git_origin_user lemnos
+checkout = github_clone
+remotes =
+    auto_remotes
+fixups =
+    go build -o ~/bin/chrome-session-dump *.go
