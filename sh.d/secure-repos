@@ -63,7 +63,7 @@ confidential_repo () {
 }
 
 SUSE_job_repo () {
-    case "$MR_REPO" in
+    case "$MR_NAME" in
         SUSE-dist)
             return 1 # false
             ;;
