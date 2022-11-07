@@ -145,3 +145,11 @@ lib =
     set_email xfce@adamspiers.org
 checkout = git_clone https://git.xfce.org/xfce/exo
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/touche]
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user JoseExposito
+    set_email touche@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
