@@ -366,13 +366,13 @@ remotes = auto_remotes
 skip = lazy || default_skipper || missing_exe emacs
 lib =
     set_git_origin_user jscheid
-    set_git_clone_remote_branch working
+    #set_git_clone_remote_branch working
 checkout = github_clone
 fixups =
     if missing_exe panflute; then
         zypper_install python3-panflute
     fi
-    yarn install
+    npm install
     make
     ensure_symlink_exists \
         ~/.emacs.d/straight/repos/prettier.el \
