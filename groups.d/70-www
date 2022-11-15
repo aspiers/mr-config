@@ -43,7 +43,8 @@ remotes =
     auto_remotes
 
 [$HOME/.GIT/3rd-party/figma-linux-font-helper-py]
-skip = lazy
+# Use figma-agent-linux instead; see below.
+skip = true
 lib =
     set_git_origin_user tryvin
     set_git_clone_name figma-linux-font-helper
@@ -55,6 +56,17 @@ fixups =
     if ! rpm -q python3-flask; then
         zypper_install python3-flask
     fi
+
+[$HOME/.GIT/3rd-party/figma-agent-linux]
+skip = lazy
+lib =
+    set_git_origin_user neetly
+    set_email figma@adamspiers.org
+checkout = github_clone
+remotes =
+    auto_remotes
+fixups =
+    echo FIXME
 
 [$HOME/.GIT/3rd-party/create-react-app]
 skip = lazy
