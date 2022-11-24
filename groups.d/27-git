@@ -403,3 +403,13 @@ fixups =
     ensure_symlink_exists $HOME/bin/git-assembler $MR_REPO/git-assembler
     git config --global alias.as assembler
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/git-filter-repo]
+skip = lazy
+checkout = github_clone
+stowable = true
+lib =
+    set_git_origin_user newren
+fixups =
+    ensure_symlink_exists $HOME/bin/git-filter-repo $MR_REPO/git-filter-repo
+remotes = auto_remotes
