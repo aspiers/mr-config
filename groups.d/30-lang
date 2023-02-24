@@ -7,3 +7,9 @@ lib =
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+
+[$HOME/.GIT/3rd-party/ijq]
+checkout = git_clone https://git.sr.ht/~gpanders/ijq
+fixups =
+    zypper_install scdoc
+    make prefix=~ install
