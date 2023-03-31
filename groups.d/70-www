@@ -97,6 +97,13 @@ remotes =
 fixups =
     emacs_dir_class js-indent-8-tabs
 
+[$HOME/software/comms/discord]
+lib = mr_set_download_url 'https://discord.com/api/download?platform=linux&format=tar.gz'
+# redirects to something like https://dl.discordapp.net/apps/linux/0.0.26/discord-0.0.26.tar.gz
+# mr/lib/download currently relies on the download filename being stable across versions but
+# could potentially use wget --trust-server-names in the future
+checkout = mr_download_checkout
+
 [$HOME/.GIT/adamspiers.org/Discord-custom-nicks-userscript]
 skip = lazy
 lib =
