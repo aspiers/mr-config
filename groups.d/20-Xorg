@@ -5,6 +5,9 @@ skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+fixups =
+    # chrome-session-tabs --fzf needs pyfzf
+    pip3 install --user pyfzf
 
 [$HOME/.GIT/adamspiers.org/fonts]
 skip = default_skipper || missing_exe X
