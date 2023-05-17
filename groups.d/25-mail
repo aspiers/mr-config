@@ -52,7 +52,8 @@ checkout = github_clone
 remotes =
     auto_remotes
 fixups =
-    ln -sf $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
+    pip3 install --user .
+    # ln -sf $MR_REPO/maildir-deduplicate.py ~/bin/maildir-deduplicate
     # rm -f ~/bin/maildir-deduplicate # nuke any old install
     # python setup.py install \
     #     --record $STOW_PKG_PATH/.install.log \
