@@ -139,3 +139,12 @@ remotes =
     auto_remotes
 fixups =
     go build -o ~/bin/chrome-session-dump *.go
+
+[$HOME/.GIT/3rd-party/typio-form-recovery-reboot]
+skip = lazy
+lib =
+    set_git_origin_user ctsstc
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readonly_remote tsukumijima
