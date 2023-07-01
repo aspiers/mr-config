@@ -99,3 +99,8 @@ status_auto_sync () {
     auto_sync_enabled || return 0
     systemctl --user status $AUTO_SYNC_SVC || :
 }
+
+setup_auto_sync_org_lockfiles () {
+    git config --replace-all auto-sync.lockfile '.#*.org'
+    git config --add auto-sync.lockfile '**/.#*.org'
+}

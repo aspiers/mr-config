@@ -6,9 +6,8 @@ skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = auto_remotes
 fixups =
+    setup_auto_sync_org_lockfiles
     setup_git_autocommit_and_annex_autosync
-    git config --replace-all auto-sync.lockfile '.#*.org'
-    git config --add auto-sync.lockfile '**/.#*.org'
 
 [$HOME/finance]
 lib = set_confidential_repo
