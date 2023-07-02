@@ -168,4 +168,4 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     # zypper_install wayland-devel
-    make PREFIX=$HOME DESTDIR=$STOW_PKG_PATH DISABLE_WAYLAND=1
+    make PREFIX= DESTDIR=$STOW_PKG_PATH DISABLE_WAYLAND=1 install
