@@ -156,3 +156,16 @@ lib =
     set_email touche@adamspiers.org
 checkout = github_clone
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/warpd]
+stowable = true
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user rvaiya
+    set_email github@adamspiers.org
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    # zypper_install wayland-devel
+    make PREFIX=$HOME DESTDIR=$STOW_PKG_PATH DISABLE_WAYLAND=1
