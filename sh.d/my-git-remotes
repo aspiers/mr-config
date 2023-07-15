@@ -43,6 +43,7 @@ moosehall_remotes () {
 
     # These are often down
     git_ping_remotes "
+        celtic
         pacific
         indian
         nuc
