@@ -6,7 +6,9 @@ lib = set_confidential_repo
 checkout = git_clone_my_repo
 chain = true
 remotes = auto_remotes
-fixups = ln -sf music/MUSIC ~
+fixups =
+    ln -sf music/MUSIC ~
+    setup_git_autocommit_and_annex_autosync
 
 [$HOME/.GIT/3rd-party/lilypond]
 skip = lazy || ! music_machine
