@@ -218,3 +218,13 @@ fixups =
     #mkdir -p $STOW_PKG_PATH/etc
     #make install PREFIX=$HOME DESTDIR=$STOW_PKG_PATH
     echo sudo make install
+
+[$HOME/.GIT/adamspiers.org/bat-extras]
+skip = default_skipper || missing_exe bat
+checkout = github_clone
+lib =
+    set_git_origin_user eth-p
+remotes = auto_remotes
+stowable = true
+fixups =
+    ./build.sh --install --prefix=$HOME
