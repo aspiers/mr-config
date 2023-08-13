@@ -198,13 +198,18 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     zypper_install cargo
-    cargo install toml-cli
     cargo build --release
     # Get machine-specific config from git branch
-    # ~/.cargo/bin/toml \
-    #     set illuminanced.toml \
-    #     general.illuminance_file \
-    #     /sys/bus/iio/devices/iio:device0/in_illuminance_raw \
-    #     > illuminanced.toml.new
-    # mv illuminanced.toml.new illuminanced.toml
+    # instead of configuring like this:
+    #
+    #   cargo install toml-cli
+    #   ~/.cargo/bin/toml \
+    #       set illuminanced.toml \
+    #       general.illuminance_file \
+    #       /sys/bus/iio/devices/iio:device0/in_illuminance_raw \
+    #       > illuminanced.toml.new
+    #   mv illuminanced.toml.new illuminanced.toml
+    #
+    # To change the config:
+    # sudo cp $G3/illuminanced/illuminanced.toml /usr/local/etc/illuminanced.toml AD sre illuminanced
     sudo ./install.sh
