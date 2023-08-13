@@ -187,3 +187,24 @@ fixups =
     cmake -DCMAKE_INSTALL_PREFIX=stage -DCMAKE_INSTALL_RPATH="$(pwd)/stage/lib" ..
     make
     #make install
+
+[$HOME/.GIT/3rd-party/illuminanced]
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user mikhail-m1
+    set_git_clone_remote_branch celtic
+    set_email $MR_NAME@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    zypper_install cargo
+    cargo install toml-cli
+    cargo build --release
+    # Get machine-specific config from git branch
+    # ~/.cargo/bin/toml \
+    #     set illuminanced.toml \
+    #     general.illuminance_file \
+    #     /sys/bus/iio/devices/iio:device0/in_illuminance_raw \
+    #     > illuminanced.toml.new
+    # mv illuminanced.toml.new illuminanced.toml
+    sudo ./install.sh
