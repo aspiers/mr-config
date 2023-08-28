@@ -104,6 +104,14 @@ fixups =
     mkdir -p ~/.tmux/plugins
     ensure_symlink_exists ~/.tmux/plugins/tpm $MR_REPO
 
+[$HOME/.tmux/plugins/tmux-fingers]
+skip = default_skipper || missing_exe tmux
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user Morantron
+
 [$HOME/.GIT/adamspiers.org/weechat]
 name = weechat-config
 skip = default_skipper || ( missing_exe weechat-curses && missing_exe weechat )
