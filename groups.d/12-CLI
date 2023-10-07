@@ -236,3 +236,20 @@ remotes = auto_remotes
 stowable = true
 fixups =
     ./build.sh --install --prefix=$HOME
+
+[$HOME/.GIT/3rd-party/sysz]
+skip = default_skipper || missing_exes systemctl fzf
+checkout = github_clone
+lib =
+    set_git_origin_user joehillen
+    set_git_clone_remote_branch emacs-bindings
+remotes = auto_remotes
+fixups =
+    make
+    ensure_symlink_exists ~/bin/sysz $MR_REPO/sysz
+    ensure_symlink_exists ~/bin/sz sysz
+    cat <<'EOF' >~/bin/usz
+    #!/bin/sh
+    sysz -u "$@"
+    EOF
+    chmod +x ~/bin/usz
