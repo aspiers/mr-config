@@ -120,3 +120,6 @@ lib =
     set_git_rw_origin_user swapmyvote
 remotes =
     auto_remotes
+    github_readwrite_remote stevebaxter
+remotes =
+    auto_remotes
