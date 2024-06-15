@@ -122,5 +122,11 @@ remotes =
     auto_remotes
     github_readwrite_remote baob
     github_readwrite_remote stevebaxter
+
+[$HOME/soc/politics/euworthit]
+skip = lazy
+checkout = gitlab_clone
+lib =
+    set_email euworthit@adamspiers.org
 remotes =
     auto_remotes
