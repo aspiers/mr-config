@@ -159,6 +159,18 @@ fixups =
     ./configure --prefix= --ssl --gnutls --gpgme --notmuch --zlib --lmdb && \
         make -j install DESTDIR=$STOW_PKG_PATH
 
+[$HOME/.GIT/3rd-party/sfsexp]
+stowable = true
+lib =
+    set_email sfsexp@adamspiers.org
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    autoreconf -i
+    ./configure --prefix=$HOME/.local && \
+        make -j install DESTDIR=$STOW_PKG_PATH prefix=/.local
+
 [$HOME/.GIT/3rd-party/notmuch]
 stowable = true
 lib =
@@ -171,9 +183,12 @@ fixups =
         libxapian{30,-devel} \
         libgmime-3_0-0 gmime-devel \
         libtalloc{2,-devel}
-    ./configure --prefix= && \
+    export PKG_CONFIG_PATH=~/.local/lib64/pkgconfig
+    export LD_LIBRARY_PATH=~/.local/lib64
+    mkdir -p $STOW_PKG_PATH/.local
+    ./configure --prefix=/.local && \
         make -j install DESTDIR=$STOW_PKG_PATH && \
-        rm $STOW_PKG_PATH/share/info/dir
+        rm $STOW_PKG_PATH/.local/share/applications/mimeinfo.cache
 
 [$HOME/.GIT/3rd-party/lieer]
 skip = default_skipper
