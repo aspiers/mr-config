@@ -203,4 +203,4 @@ remotes = auto_remotes
 fixups =
     zypper_install python311-pipx
     #PYTHONUSERBASE=$STOW_PKG_PATH pip install --user -e .
-    pipx install .
+    pipx install --force .
