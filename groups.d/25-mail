@@ -184,8 +184,8 @@ fixups =
         libgmime-3_0-0 gmime-devel \
         libtalloc{2,-devel} \
         python311-Sphinx
-    export PKG_CONFIG_PATH=~/.local/lib64/pkgconfig
-    export LD_LIBRARY_PATH=~/.local/lib64
+    export PKG_CONFIG_PATH=~/.local/lib/pkgconfig:~/.local/lib64/pkgconfig
+    export LD_LIBRARY_PATH=~/.local/lib:~/.local/lib64
     mkdir -p $STOW_PKG_PATH/.local
     ./configure --prefix=/.local && \
         make -j install DESTDIR=$STOW_PKG_PATH && \
