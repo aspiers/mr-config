@@ -155,7 +155,7 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 fixups =
-    zypper_install {notmuch,lib{idn,gpgme}}-devel
+    zypper_install {notmuch,lib{idn,gnutls,gpgme}}-devel
     ./configure --prefix= --ssl --gnutls --gpgme --notmuch --zlib --lmdb && \
         make -j install DESTDIR=$STOW_PKG_PATH
 
