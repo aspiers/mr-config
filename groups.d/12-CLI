@@ -82,14 +82,11 @@ lib =
     set_git_origin_user tmux
     mr_init_stow_package
 fixups =
-    if ! [ -e configure ]; then
-        bash ./autogen.sh
-    fi
+    bash ./autogen.sh
     set_stow_common_opts
     ./configure --prefix=$HOME
     make install prefix=$STOW_PKG_PATH
     mkdir -p $STOW_PKG_PATH/share/doc/tmux/examples
-    cp examples/*.conf $STOW_PKG_PATH/share/doc/tmux/examples
     mr_restow_regardless
 remotes = auto_remotes
 
