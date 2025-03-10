@@ -148,3 +148,11 @@ checkout = github_clone
 remotes =
     auto_remotes
     github_readonly_remote tsukumijima
+
+[$HOME/.GIT/3rd-party/chrome-extension-tabs-queue]
+skip = lazy
+lib =
+    set_git_origin_user rubenmv
+checkout = github_clone
+remotes =
+    auto_remotes
