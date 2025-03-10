@@ -115,7 +115,7 @@ git_rm_remote () {
             echo >&2 "WARNING: Failed to remove remote $remote"
         fi
     else
-        echo ". $remote remote was already removed"
+        : echo ". $remote remote was already removed"
     fi
 }
 
