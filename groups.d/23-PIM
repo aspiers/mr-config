@@ -111,4 +111,10 @@ skip = default_skipper
 remotes = auto_remotes
 #stowable = true
 
+[$HOME/.GIT/adamspiers.org/email2ics]
+checkout = git_clone_my_repo
+skip = default_skipper || user_not_adam
+remotes = auto_remotes
+stowable = true
+
 # See 14-emacs for organice
