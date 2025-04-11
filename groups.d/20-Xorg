@@ -168,7 +168,8 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     # zypper_install wayland-devel
-    make PREFIX= DESTDIR=$STOW_PKG_PATH DISABLE_WAYLAND=1 install
+    zypper_install libXft-devel libXi-devel libXtst-devel libXinerama-devel
+    make PREFIX= DESTDIR=$STOW_PKG_PATH DISABLE_WAYLAND=1
 
 [$HOME/.GIT/3rd-party/evdipp]
 stowable = true
