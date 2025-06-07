@@ -13,6 +13,8 @@ github_clone_remote () {
 }
 
 # usage: github_readonly_remote <REMOTE> [<USERNAME> [<REPONAME>]]
+# NOTE: this uses a https:// URL (preferred over git:// these days).
+# If the URL is invalid it will ask for a username.
 github_readonly_remote () {
     remote="$1"
     username="${2:-$remote}"
