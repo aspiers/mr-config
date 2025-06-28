@@ -26,6 +26,7 @@ lib =
     set_git_origin_user google-gemini
 fixups =
     npm install
+    export GEMINI_SANDBOX=docker
     npm run build:all
     script=~/bin/gm
     cat <<EOF >$script
