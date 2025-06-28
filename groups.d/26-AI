@@ -24,6 +24,9 @@ remotes = auto_remotes
 stowable = true
 lib =
     set_git_origin_user google-gemini
+    # Needs to be one of the emails configured in my Google account
+    # so that Google's CLA signing process works.
+    set_email github@adamspiers.org
 fixups =
     npm install
     export GEMINI_SANDBOX=docker
