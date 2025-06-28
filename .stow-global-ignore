@@ -60,3 +60,6 @@ COPYING
 \.autosync
 \.autocommit
 \.mypy_cache
+\.env
+\.env\..*
+\.cursor
