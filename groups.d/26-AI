@@ -1,5 +1,10 @@
 # -*- mode: sh -*-
 
+[$HOME/.GIT/adamspiers.org/ai-config]
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
+
 [$HOME/.GIT/3rd-party/opencode]
 checkout = github_clone
 remotes = auto_remotes
