@@ -413,3 +413,10 @@ lib =
 fixups =
     ensure_symlink_exists $HOME/bin/git-filter-repo $MR_REPO/git-filter-repo
 remotes = auto_remotes
+
+[$HOME/.GIT/3rd-party/commitlint]
+skip = lazy
+checkout = github_clone
+lib =
+    set_git_origin_user conventional-changelog
+remotes = auto_remotes
