@@ -14,6 +14,12 @@ skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+lib =
+    mr_post_stow () {
+        fc-cache -v
+    }
+fixups =
+    fc-cache
 
 [$HOME/.GIT/3rd-party/solarized]
 lib =
