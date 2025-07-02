@@ -63,3 +63,6 @@ COPYING
 \.env
 \.env\..*
 \.cursor
+AGENTS.md
+CLAUDE.md
+GEMINI.md
