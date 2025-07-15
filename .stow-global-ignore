@@ -63,6 +63,8 @@ COPYING
 \.env
 \.env\..*
 \.cursor
-AGENTS.md
-CLAUDE.md
-GEMINI.md
+^/AGENTS.md
+^/CLAUDE.md
+^/GEMINI.md
+^/.prettier.*
+^/.editorconfig
