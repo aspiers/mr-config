@@ -136,7 +136,7 @@ set_origin_remote () {
 # to lib section, so that we can access it post-cloning and determine
 # these things without auto-detection heuristics.
 auto_detect_git_service () {
-    if git config remote.origin.url | egrep -q 'open(dev|stack)'; then
+    if git config remote.origin.url | grep -Eq 'open(dev|stack)'; then
         MR_GIT_SERVICE=opendev
     elif git config remote.gitlab.url | grep -q suse; then
         MR_GIT_SERVICE=gitlab-suse-de
