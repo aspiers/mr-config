@@ -68,3 +68,4 @@ COPYING
 ^/GEMINI.md
 ^/.prettier.*
 ^/.editorconfig
+^/node_modules
