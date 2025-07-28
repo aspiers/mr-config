@@ -66,6 +66,7 @@ COPYING
 ^/AGENTS.md
 ^/CLAUDE.md
 ^/GEMINI.md
+^/\.claude/settings.json
 ^/\.prettier.*
 ^/\.editorconfig
 ^/node_modules
