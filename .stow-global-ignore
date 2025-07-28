@@ -66,6 +66,6 @@ COPYING
 ^/AGENTS.md
 ^/CLAUDE.md
 ^/GEMINI.md
-^/.prettier.*
-^/.editorconfig
+^/\.prettier.*
+^/\.editorconfig
 ^/node_modules
