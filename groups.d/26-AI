@@ -51,3 +51,31 @@ fixups =
     $node "$MR_REPO/packages/cli" "\$@"
     EOF
     chmod +x $script
+
+[$HOME/.GIT/3rd-party/claude-agents]
+checkout = github_clone
+remotes = auto_remotes
+# stowable = true
+lib =
+    set_git_origin_user wshobson
+    set_git_origin_name agents
+    # export STOW_PKG_TYPE=symlink
+    # export STOW_SOURCE_PATH="$MR_REPO"
+    # export STOW_TARGET=$HOME/.claude/agents
+    # mr_init_stow_package
+fixups =
+    # cat <<EOF > $MR_REPO/.stow-local-ignore
+    # code-reviewer.md
+    # EOF
+    # mkdir ~/.STOW/$MR_NAME
+    for agent in *.md; do
+        case "$agent" in
+            README.md|unity*|code-reviewer.md)
+                continue
+                ;;
+        esac
+
+        # ln -s $MR_REPO/$agent ~/.STOW/$MR_NAME/$agent
+        # cp $MR_REPO/$agent ~/.STOW/$MR_NAME/$agent
+        ln -sf $MR_REPO/$agent ~/.claude/agents/$agent
+    done
