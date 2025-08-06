@@ -69,8 +69,9 @@ fixups =
     # EOF
     # mkdir ~/.STOW/$MR_NAME
     for agent in *.md; do
-        case "$agent" in
-            README.md|unity*|code-reviewer.md)
+        case "${agent%.md}" in
+            README|unity*|code-reviewer.md|
+            csharp-pro|dx-optimizer|elixir-pro|ios*|java-pro)
                 continue
                 ;;
         esac
