@@ -83,3 +83,10 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     ensure_symlink_exists $HOME/bin/glacier $MR_REPO/glacier.py
+
+[$HOME/.GIT/adamspiers.org/svg-annotator]
+skip = lazy || default_skipper
+lib =
+    set_email github@adamspiers.org
+checkout = github_clone
+remotes = auto_remotes
