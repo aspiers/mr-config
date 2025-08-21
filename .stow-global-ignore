@@ -63,10 +63,12 @@ COPYING
 \.env
 \.env\..*
 \.cursor
+^/AGENT.md
 ^/AGENTS.md
 ^/CLAUDE.md
 ^/GEMINI.md
 ^/\.claude/settings.json
+^/\.claude/settings.local.json
 ^/\.prettier.*
 ^/\.editorconfig
 ^/node_modules
