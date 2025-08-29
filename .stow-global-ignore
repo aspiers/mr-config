@@ -69,6 +69,7 @@ COPYING
 ^/GEMINI.md
 ^/\.claude/settings.json
 ^/\.claude/settings.local.json
+^/\.opencode
 ^/\.prettier.*
 ^/\.editorconfig
 ^/node_modules
