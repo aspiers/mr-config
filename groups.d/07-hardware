@@ -75,3 +75,9 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 
+[$HOME/.GIT/3rd-party/auto-cpufreq]
+lib =
+    set_git_origin_user AdnanHodzic
+checkout = github_clone
+remotes = auto_remotes
+fixups =
