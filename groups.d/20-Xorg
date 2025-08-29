@@ -220,3 +220,17 @@ fixups =
     # To change the config:
     # sudo cp $G3/illuminanced/illuminanced.toml /usr/local/etc/illuminanced.toml AD sre illuminanced
     sudo ./install.sh
+
+[$HOME/.GIT/3rd-party/awrit]
+skip = lazy || default_skipper
+lib =
+    set_email github@adamspiers.org
+    set_git_origin_user chase
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    bun install
+    cd awrit-native-rs
+    bun install
+    bun make
+    bun src/runner/index.ts
