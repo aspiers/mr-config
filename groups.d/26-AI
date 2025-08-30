@@ -80,3 +80,20 @@ fixups =
         # cp $MR_REPO/$agent ~/.STOW/$MR_NAME/$agent
         ln -sf $MR_REPO/$agent ~/.claude/agents/$agent
     done
+
+[$HOME/.GIT/3rd-party/whispering]
+skip = lazy
+checkout = github_clone
+lib =
+    set_git_origin_user epicenter-so
+    set_git_origin_name epicenter
+    set_git_clone_name epicenter
+remotes = auto_remotes
+fixups =
+    bun install
+    cat <<EOF >~/bin/$MR_NAME
+    #!/bin/bash
+
+    cd "$MR_REPO/apps/whispering"
+    bun dev "\$@"
+    EOF
