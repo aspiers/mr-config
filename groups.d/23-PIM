@@ -1,10 +1,15 @@
 # -*- mode: sh -*-
 
 [$HOME/org]
-lib = set_confidential_repo
+lib =
+    set_confidential_repo
+    export STOW_PKG_TYPE=symlink
+    export STOW_SOURCE_PATH="$MR_REPO/.STOW"
+    mr_init_stow_package
 skip = lazy || default_skipper
 checkout = moosehall_git_checkout
 remotes = auto_remotes
+stowable = true
 fixups =
     setup_auto_sync_org_lockfiles
     setup_git_autocommit_and_annex_autosync
