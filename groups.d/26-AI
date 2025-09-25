@@ -82,7 +82,7 @@ fixups =
         ln -sf $MR_REPO/$agent ~/.claude/agents/$agent
     done
 
-[$HOME/.GIT/3rd-party/whispering]
+[$HOME/software/AI/whispering]
 skip = lazy
 checkout = github_clone
 lib =
@@ -96,5 +96,5 @@ fixups =
     #!/bin/bash
 
     cd "$MR_REPO/apps/whispering"
-    bun dev "\$@"
+    WEBKIT_DISABLE_COMPOSITING_MODE=1 bun tauri dev "\$@"
     EOF
