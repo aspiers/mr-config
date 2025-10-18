@@ -234,3 +234,10 @@ fixups =
     bun install
     bun make
     bun src/runner/index.ts
+
+[$HOME/.GIT/3rd-party/efck]
+skip = default_skipper || missing_exe X
+lib =
+    set_git_origin_user efck-chat-keyboard
+checkout = github_clone
+remotes = auto_remotes
