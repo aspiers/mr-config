@@ -241,3 +241,5 @@ lib =
     set_git_origin_user efck-chat-keyboard
 checkout = github_clone
 remotes = auto_remotes
+fixups =
+    uv tool install --with PyQt6 .
