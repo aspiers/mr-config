@@ -168,8 +168,7 @@ fixups =
     ./configure \
         --prefix=$HOME \
         --with-ncurses \
-        --with-readline \
-        --enable-profiling
+        --with-readline
     make -j install prefix=$STOW_PKG_PATH
     mr_restow_regardless
 
