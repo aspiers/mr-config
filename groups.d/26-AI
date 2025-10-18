@@ -40,6 +40,7 @@ fixups =
     nvm use 22
     npm install
     export GEMINI_SANDBOX=docker
+    sudo systemctl start docker
     npm run clean
     npm run build:all
     script=~/bin/gm
