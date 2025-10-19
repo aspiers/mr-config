@@ -73,3 +73,5 @@ COPYING
 ^/\.prettier.*
 ^/\.editorconfig
 ^/node_modules
+tmp
+nohup\.out
