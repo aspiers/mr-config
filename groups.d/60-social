@@ -33,6 +33,7 @@ remotes =
     auto_remotes
     github_readonly_remote bitbeckers
     github_readonly_remote hypercerts-org
+    git_add_remote test test.certified.app:atproto
 checkout = github_clone
 
 [$HOME/.GIT/3rd-party/pds]
@@ -43,4 +44,5 @@ remotes =
     auto_remotes
     github_readonly_remote bitbeckers
     github_readonly_remote hypercerts-org
+    git_add_remote test test.certified.app:pds
 checkout = github_clone
