@@ -32,4 +32,15 @@ lib =
 remotes =
     auto_remotes
     github_readonly_remote bitbeckers
+    github_readonly_remote hypercerts-org
+checkout = github_clone
+
+[$HOME/.GIT/3rd-party/pds]
+skip = lazy
+lib =
+    set_git_origin_user bluesky-social
+remotes =
+    auto_remotes
+    github_readonly_remote bitbeckers
+    github_readonly_remote hypercerts-org
 checkout = github_clone
