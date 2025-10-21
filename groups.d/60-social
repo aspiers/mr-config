@@ -46,3 +46,11 @@ remotes =
     github_readonly_remote hypercerts-org
     git_add_remote test test.certified.app:pds
 checkout = github_clone
+
+[$HOME/.GIT/3rd-party/bluesky-pds-docker]
+skip = lazy
+lib =
+    set_git_origin_user davepeck
+remotes =
+    auto_remotes
+checkout = github_clone
