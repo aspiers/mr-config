@@ -54,3 +54,12 @@ lib =
 remotes =
     auto_remotes
 checkout = github_clone
+
+[$HOME/.GIT/3rd-party/pdsls]
+skip = lazy
+lib =
+    set_git_origin_user @pdsls.dev
+remotes =
+    auto_remotes
+    git_add_remote origin git@tangled.org:adamspiers.org/pdsls
+checkout = git_clone git@knot.pdsls.dev:pdsls.dev/pdsls
