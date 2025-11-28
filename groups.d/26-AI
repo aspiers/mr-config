@@ -42,6 +42,7 @@ fixups =
     export GEMINI_SANDBOX=docker
     sudo systemctl start docker
     npm run clean
+    rm -rf "$MR_REPO/packages/core/dist/"
     npm run build:all
     script=~/bin/gm
     node=`nvm which 22`
