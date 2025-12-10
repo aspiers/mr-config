@@ -109,3 +109,5 @@ lib =
     set_git_origin_user steveyegge
 fixups =
     go build -o ~/bin/bd ./cmd/bd
+    mkdir -p ~/.claude/skills/
+    ln -s "$MR_REPO/examples/claude-code-skill" ~/.claude/skills/bd-issue-tracking
