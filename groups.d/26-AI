@@ -111,3 +111,12 @@ fixups =
     go build -o ~/bin/bd ./cmd/bd
     mkdir -p ~/.claude/skills/
     ln -s "$MR_REPO/examples/claude-code-skill" ~/.claude/skills/bd-issue-tracking
+
+[$HOME/.GIT/3rd-party/beads_viewer]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user Dicklesworthstone
+fixups =
+    GO111MODULE=on CGO_ENABLED=0 go build -o ~/bin/bv ./cmd/bv
