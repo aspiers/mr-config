@@ -100,3 +100,12 @@ fixups =
     cd "$MR_REPO/apps/whispering"
     WEBKIT_DISABLE_COMPOSITING_MODE=1 bun tauri dev "\$@"
     EOF
+
+[$HOME/.GIT/3rd-party/beads]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user steveyegge
+fixups =
+    go build -o ~/bin/bd ./cmd/bd
