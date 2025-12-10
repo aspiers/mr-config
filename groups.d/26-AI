@@ -1,5 +1,9 @@
 # -*- mode: sh -*-
 
+[DEFAULT]
+lib =
+    set_email ai@adamspiers.org
+
 [$HOME/.GIT/adamspiers.org/ai-config]
 checkout = git_clone_my_repo
 remotes = auto_remotes
