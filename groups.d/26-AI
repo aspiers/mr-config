@@ -124,3 +124,21 @@ lib =
     set_git_origin_user Dicklesworthstone
 fixups =
     GO111MODULE=on CGO_ENABLED=0 go build -o ~/bin/bv ./cmd/bv
+
+[$HOME/.GIT/3rd-party/bdui]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user assimelha
+fixups =
+    bun install
+    bun run build
+    ln -sf "$MR_REPO/bdui" ~/bin/bdui
+
+[$HOME/.GIT/3rd-party/perles]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user zjrosen
+fixups =
+    make install
