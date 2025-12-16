@@ -133,7 +133,7 @@ lib =
 fixups =
     bun install
     bun run build
-    ln -sf "$MR_REPO/bdui" ~/bin/bdui
+    ln -sf "$MR_REPO/bdui" ~/bin/
 
 [$HOME/.GIT/3rd-party/perles]
 checkout = github_clone
@@ -141,4 +141,5 @@ remotes = auto_remotes
 lib =
     set_git_origin_user zjrosen
 fixups =
-    make install
+    make build
+    ln -sf "$MR_REPO/perles" ~/bin/
