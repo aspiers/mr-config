@@ -105,42 +105,51 @@ Used in `skip = ...` to conditionally skip repositories:
 
 ## Common Operations
 
-**Note:** The `-r <repo>` option is only needed when running commands from outside the repository directory. When already in a repo directory, omit `-r` to operate on the current repo.
+**Note:** When working from within a repository directory, you can run `mr <action>` directly. When working from elsewhere, use either:
+- `mr -r <repo-name>` (requires being in `$HOME`)
+- The `mr*` convenience commands from `mr-util` (work from any directory)
 
-### Checking repository status
+### mr-util Convenience Commands
+
+These wrapper commands (from `~/.GIT/adamspiers.org/mr-util/bin/`) simplify repository operations:
+
+```bash
+mrco <repo> [<repo2> ...]   # Checkout one or more repos
+mrup <repo> [<repo2> ...]   # Update repos
+mrf <repo> [<repo2> ...]    # Run fixups
+mrs <repo> [<repo2> ...]    # Check status
+mrst <repo> [<repo2> ...]   # Stow repos
+mrrest <repo> [<repo2> ...] # Restow repos
+mrchk <repo> [<repo2> ...]  # Check upstream
+```
+
+**Examples:**
+```bash
+mrco Gittyup              # Checkout Gittyup from anywhere
+mrf Gittyup               # Build and install Gittyup
+mrco shell-env git-config # Checkout multiple repos at once
+```
+
+### Standard mr Commands
+
+For all repositories or when in a repo directory:
 
 ```bash
 mr status         # Check status of all repos
 mr -s status      # Silent mode, only show changes
-mr -r <repo> status  # Check specific repo (from any location)
-```
-
-### Updating repositories
-
-```bash
 mr up             # Update all repos
-mr -r <repo> up   # Update specific repo (from any location)
-```
-
-### Managing remotes
-
-```bash
 mr remotes        # Set up remotes for all repos
-mr -r <repo> remotes  # Set up remotes for specific repo (from any location)
-```
-
-### Stowing packages
-
-```bash
 mr stow           # Stow all stowable packages
-mr -r <repo> stow # Stow specific package (from any location)
+mr fix            # Run fixups for all repos
 ```
 
-### Running fixups (post-checkout setup)
+For specific repos (must be run from `$HOME`):
 
 ```bash
-mr fix            # Run fixups for all repos
-mr -r <repo> fix  # Run fixups for specific repo (from any location)
+mr -r <repo-name> checkout
+mr -r <repo-name> update
+mr -r <repo-name> fixups
+mr -r <repo-name> status
 ```
 
 ## Key Conventions
