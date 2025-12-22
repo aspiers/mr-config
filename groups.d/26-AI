@@ -105,6 +105,11 @@ fixups =
     WEBKIT_DISABLE_COMPOSITING_MODE=1 bun tauri dev "\$@"
     EOF
 
+[$HOME/.GIT/adamspiers.org/agent-doctor]
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
+
 [$HOME/.GIT/3rd-party/beads]
 checkout = github_clone
 remotes = auto_remotes
