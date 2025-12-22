@@ -33,6 +33,7 @@ remotes =
     auto_remotes
     github_readwrite_remote bitbeckers
     github_readwrite_remote hypercerts-org
+    github_readwrite_remote kzoeps
     git_add_remote test test.certified.app:atproto
 checkout = github_clone
 
