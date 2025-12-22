@@ -62,5 +62,16 @@ lib =
     set_git_origin_user @pdsls.dev
 remotes =
     auto_remotes
-    git_add_remote origin git@tangled.org:adamspiers.org/pdsls
-checkout = git_clone git@knot.pdsls.dev:pdsls.dev/pdsls
+    github_readwrite_remote hypercerts-org
+    git_add_remote origin git@knot.pdsls.dev:pdsls.dev/pdsls
+checkout = git_clone git@tangled.org:adamspiers.org/pdsls
+
+[$HOME/.GIT/3rd-party/pds-entryway]
+skip = lazy
+lib =
+    set_git_origin_user ThisIsMissEm
+    set_git_clone_name bluesky-social-pds-entryway
+remotes =
+    auto_remotes
+    github_readwrite_remote hypercerts-org
+checkout = github_clone
