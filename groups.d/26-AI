@@ -119,7 +119,9 @@ lib =
 fixups =
     go build -o ~/bin/bd ./cmd/bd
     mkdir -p ~/.claude/skills/
-    ln -s "$MR_REPO/examples/claude-code-skill" ~/.claude/skills/bd-issue-tracking
+    ensure_symlink_exists \
+        ~/.claude/skills/bd-issue-tracking \
+        "$MR_REPO/examples/claude-code-skill"
 
 [$HOME/.GIT/3rd-party/beads_viewer]
 checkout = github_clone
