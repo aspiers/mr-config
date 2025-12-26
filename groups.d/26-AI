@@ -128,6 +128,15 @@ fixups =
         ~/.claude/skills/bd-issue-tracking \
         "$MR_REPO/examples/claude-code-skill"
 
+[$HOME/.GIT/3rd-party/vc]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user steveyegge
+fixups =
+    go build -o ~/bin/vc ./cmd/vc
+
 [$HOME/.GIT/3rd-party/beads_viewer]
 checkout = github_clone
 remotes = auto_remotes
