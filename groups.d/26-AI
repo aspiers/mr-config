@@ -28,10 +28,10 @@ fixups =
     OPENCODE_REPO="${MR_REPO/$HOME\//\$HOME/}"
     OPENCODE_PKG="\$OPENCODE_REPO/packages/opencode"
 
-    $bun run \\
-        --conditions=development \\
-        --config="\$OPENCODE_PKG/bunfig.toml" \\
-        "\$OPENCODE_PKG/src/index.ts" \\
+    orig_cwd="\$(pwd)"
+    cd "\$OPENCODE_REPO"
+    $bun dev \\
+        "\$orig_cwd" \\
         "\$@"
     EOF
     chmod +x $script
