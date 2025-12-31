@@ -8,6 +8,8 @@ lib =
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
+fixups =
+    sudo `which stow` -t /etc -d "$MR_REPO" root-etc-stow-pkg
 
 [$HOME/.GIT/3rd-party/opencode]
 checkout = github_clone
