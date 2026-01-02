@@ -15,7 +15,7 @@ fixups =
 checkout = github_clone
 remotes = auto_remotes
 lib =
-    set_git_origin_user sst
+    set_git_origin_user anomalyco
 fixups =
     source ~/.nvm/nvm.sh
     nvm use 22
