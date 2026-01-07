@@ -144,7 +144,7 @@ fixups =
     mkdir -p ~/.claude/skills/
     ensure_symlink_exists \
         ~/.claude/skills/bd-issue-tracking \
-        "$MR_REPO/examples/claude-code-skill"
+        "$MR_REPO/skills/beads"
 
 [$HOME/.GIT/3rd-party/vc]
 checkout = github_clone
