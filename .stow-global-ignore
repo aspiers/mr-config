@@ -61,6 +61,7 @@ COPYING
 \.autosync
 \.autocommit
 \.mypy_cache
+\.ruff_cache
 \.env
 \.env\..*
 \.cursor
