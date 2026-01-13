@@ -243,3 +243,12 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     uv tool install --with PyQt6 .
+
+[$HOME/.GIT/3rd-party/keyd]
+skip = default_skipper || missing_exe X
+lib =
+    set_git_origin_user rvaiya
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    make
