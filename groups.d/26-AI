@@ -131,7 +131,11 @@ fixups =
 
     export PATH="$node_bin:\$PATH"
     cd "$MR_REPO/apps/whispering"
-    WEBKIT_DISABLE_COMPOSITING_MODE=1 bun tauri dev "\$@"
+
+    # Only needed on ionian?
+    # export WEBKIT_DISABLE_COMPOSITING_MODE=1
+
+    bun tauri dev "\$@"
     EOF
     chmod +x ~/bin/$MR_NAME
 
