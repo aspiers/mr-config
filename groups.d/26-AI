@@ -193,3 +193,75 @@ lib =
 fixups =
     make build
     ln -sf "$MR_REPO/perles" ~/bin/
+
+[$HOME/.GIT/3rd-party/lazybeads]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user codegangsta
+fixups =
+    go build -o ~/bin/lazybeads .
+
+[$HOME/.GIT/3rd-party/bsv]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user bglenden
+fixups =
+    cargo build --release
+    cp target/release/bsv ~/bin/
+
+[$HOME/.GIT/3rd-party/abacus]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user ChrisEdwards
+fixups =
+    go build -o ~/bin/abacus .
+
+[$HOME/.GIT/3rd-party/beads-ui]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user mantoni
+fixups =
+    source ~/.nvm/nvm.sh
+    nvm use 22
+    npm install
+    npm link
+
+[$HOME/.GIT/3rd-party/beads-viz-prototype]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user mattbeane
+fixups =
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+
+[$HOME/.GIT/3rd-party/beads-dashboard]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user rhydlewis
+fixups =
+    source ~/.nvm/nvm.sh
+    nvm use 22
+    npm install
+    npm run build
+
+[$HOME/.GIT/3rd-party/beads-kanban-ui]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user AvivK5498
+    set_git_origin_name Beads-Kanban-UI
+fixups =
+    source ~/.nvm/nvm.sh
+    nvm use 22
+    npm install
+    npm link
