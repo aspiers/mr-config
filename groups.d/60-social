@@ -98,3 +98,11 @@ remotes =
     github_readwrite_remote hypercerts-org
     git_add_remote origin git@tangled.org:slices.network/quickslice
 checkout = git_clone git@tangled.org:adamspiers.org/quickslice
+
+[$HOME/.GIT/3rd-party/swell]
+skip = lazy
+lib =
+    set_git_origin_user bigmoves
+remotes =
+    auto_remotes
+checkout = github_clone
