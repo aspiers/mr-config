@@ -152,6 +152,7 @@ lib =
     set_git_origin_user steveyegge
 fixups =
     go build -o ~/bin/bd ./cmd/bd
+    echo "bd built in ~/bin/bd"
     mkdir -p ~/.claude/skills/
     ensure_symlink_exists \
         ~/.claude/skills/bd-issue-tracking \
