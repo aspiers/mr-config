@@ -29,6 +29,7 @@ checkout = github_clone
 skip = lazy
 lib =
     set_git_origin_user bluesky-social
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
     github_readwrite_remote bitbeckers
@@ -41,6 +42,7 @@ checkout = github_clone
 skip = lazy
 lib =
     set_git_origin_user bluesky-social
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
     github_readwrite_remote bitbeckers
@@ -52,6 +54,7 @@ checkout = github_clone
 skip = lazy
 lib =
     set_git_origin_user davepeck
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
 checkout = github_clone
@@ -60,6 +63,7 @@ checkout = github_clone
 skip = lazy
 lib =
     set_git_origin_user @pdsls.dev
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
     github_readwrite_remote hypercerts-org
@@ -71,6 +75,7 @@ skip = lazy
 lib =
     set_git_origin_user ThisIsMissEm
     set_git_clone_name bluesky-social-pds-entryway
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
     github_readwrite_remote hypercerts-org
@@ -80,6 +85,7 @@ checkout = github_clone
 skip = lazy
 lib =
     set_git_origin_user bluesky-social
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
 checkout = github_clone
@@ -93,6 +99,7 @@ fixups =
 skip = lazy
 lib =
     set_git_origin_user @slices.network
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
     github_readwrite_remote hypercerts-org
@@ -103,6 +110,7 @@ checkout = git_clone git@tangled.org:adamspiers.org/quickslice
 skip = lazy
 lib =
     set_git_origin_user bigmoves
+    set_email atproto@adamspiers.org
 remotes =
     auto_remotes
 checkout = github_clone
