@@ -255,6 +255,12 @@ fixups =
     npm install
     npm run build
 
+[$HOME/.GIT/3rd-party/agentic_coding_flywheel_setup]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user Dicklesworthstone
+
 [$HOME/.GIT/3rd-party/beads-kanban-ui]
 checkout = github_clone
 remotes = auto_remotes
