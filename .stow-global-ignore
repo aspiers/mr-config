@@ -77,3 +77,4 @@ COPYING
 ^/node_modules
 tmp
 nohup\.out
+^/\.beads
