@@ -33,6 +33,7 @@ moosehall_remotes () {
         nuc       REMOTE:$repo
         pacific   REMOTE:$repo
         slate     REMOTE:$repo
+        ovh       REMOTE:/data/projects/$MR_NAME
     "
 
     git_ignore_remotes "
