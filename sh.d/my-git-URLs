@@ -52,7 +52,11 @@ gitlab_readwrite_url () {
 
 # For use when adding origin or auxiliary remotes
 github_readonly_url () {
-    echo "https://github.com/$1/${2:-`git_clone_name`}.git"
+    # This doesn't work for private repos, and probably
+    # the only advantage of https is that it avoids
+    # occasional blocking by excessive firewalls.
+    #echo "https://github.com/$1/${2:-`git_clone_name`}.git"
+    github_readwrite_url "$@"
 }
 
 # For use when adding origin or auxiliary remotes
