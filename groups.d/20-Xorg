@@ -89,15 +89,6 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
-[$HOME/.GIT/3rd-party/ctoolu]
-skip = default_skipper || missing_exe ruby
-checkout = github_clone
-lib = set_git_origin_user mvidner
-remotes =
-    auto_remotes
-fixups =
-    rake install_user
-
 [$HOME/.GIT/3rd-party/xdotool]
 skip = lazy || default_skipper
 lib =

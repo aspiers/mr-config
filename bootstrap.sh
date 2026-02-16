@@ -33,8 +33,12 @@ div () {
     echo
 }
 
-fatal () {
+warn () {
     echo "$*" >&2
+}
+
+fatal () {
+    warn "$*"
     exit 1
 }
 
@@ -57,9 +61,15 @@ mr_update_stow_fixups () {
 
 # There's a whole bunch more we could check for here, but we don't
 # because we want it to work for bare bones installs.
-for prog in curl git ruby rake virtualenv make zsh; do
+for prog in curl git make zsh; do
     if ! which "$prog" >/dev/null 2>&1; then
         fatal "mr can't bootstrap without $prog"
+    fi
+done
+
+for prog in ruby virtualenv; do
+    if ! which "$prog" >/dev/null 2>&1; then
+        warn "Some mr repos need $prog"
     fi
 done
 
