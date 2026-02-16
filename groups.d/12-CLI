@@ -74,7 +74,7 @@ fixups =
     mr_restow_regardless
 
 [$HOME/.GIT/3rd-party/tmux]
-skip = lazy
+skip = missing_exe tmux
 #checkout = svn co https://tmux.svn.sourceforge.net/svnroot/tmux/trunk tmux
 checkout = github_clone
 stowable = true
@@ -91,7 +91,7 @@ fixups =
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/tpm]
-skip = default_skipper || missing_exe tmux
+skip = missing_exe tmux
 checkout = github_clone
 remotes = auto_remotes
 stowable = true
@@ -102,7 +102,7 @@ fixups =
     ensure_symlink_exists ~/.tmux/plugins/tpm $MR_REPO
 
 [$HOME/.tmux/plugins/tmux-fingers]
-skip = default_skipper || missing_exe tmux
+skip = missing_exe tmux
 checkout = github_clone
 remotes = auto_remotes
 stowable = true
