@@ -63,8 +63,7 @@ setup_push_to_checkout_hook () {
 
 setup_auto_sync () {
     auto_sync_enabled || return 0
-
-    ensure_git_annex
+    ensure_git_annex || return 0
 
     setup_push_to_checkout_hook
     setup_auto_sync_service

@@ -35,7 +35,7 @@ git_annex_re_smudge () {
 }
 
 ensure_git_annex () {
-    if ! [ -d "$MR_REPO/.git/annex" ]; then
+    if which git-annex && ! [ -d "$MR_REPO/.git/annex" ]; then
         cd "$MR_REPO"
         git annex init
         git_annex_no_smudge
