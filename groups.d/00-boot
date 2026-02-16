@@ -89,11 +89,12 @@ stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
 checkout = git_clone_my_repo
-skip = default_skipper || user_not_adam
+skip = user_not_adam
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.sec]
+skip = user_not_adam
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -101,13 +102,13 @@ stowable = true
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/ssh]
 lib = set_git_clone_name ssh-config
-skip = default_skipper || missing_exe ssh
+skip = missing_exe ssh
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ssh.adam_spiers.sec]
-skip = default_skipper || missing_exe ssh
+skip = user_not_adam || missing_exe ssh
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
