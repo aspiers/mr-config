@@ -33,8 +33,17 @@ moosehall_remotes () {
         nuc       REMOTE:$repo
         pacific   REMOTE:$repo
         slate     REMOTE:$repo
-        ovh       REMOTE:/data/projects/$MR_NAME
     "
+
+    ovh_project="$( ssh ovh stat /data/projects/$MR_NAME 2>&1 )" || :
+    case "$ovh_project" in
+        *"File:"*"Blocks: "*)
+            git_add_remote ovh "ovh:/data/projects/$MR_NAME"
+            ;;
+        "stat: cannot stat "*)
+            git_add_remote ovh "ovh:/home/ubuntu/$repo"
+            ;;
+    esac
 
     git_ignore_remotes "
         atlantic
