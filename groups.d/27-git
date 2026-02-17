@@ -1,5 +1,9 @@
 # -*- mode: sh -*-
 
+[DEFAULT]
+lib =
+    set_email git@adamspiers.org
+
 # [$HOME/.GIT/adamspiers.org/git] is in 00-boot
 
 [$HOME/.GIT/3rd-party/git]
