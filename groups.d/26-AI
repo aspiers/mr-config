@@ -12,6 +12,7 @@ fixups =
     sudo `which stow` -t /etc -d "$MR_REPO" root-etc-stow-pkg
 
 [$HOME/.GIT/3rd-party/opencode]
+skip = missing_exe nvm || missing_exe npm
 checkout = github_clone
 remotes = auto_remotes
 lib =
