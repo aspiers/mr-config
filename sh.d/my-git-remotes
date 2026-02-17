@@ -75,8 +75,29 @@ auto_my_upstream_remote () {
     fi
 }
 
+tailscale_remotes () {
+    if ! machine_has_property tailscale; then
+        return 0
+    fi
+    repo="${MR_REPO#$HOME/}"
+    repo=$( echo "$repo" | sed 's/ /\\\\ /g' )
+
+    if ! not_moosehall; then
+        return 0
+    fi
+
+    git_add_remotes "
+        celtic    REMOTE:$repo
+    "
+
+    git_ping_remotes "
+        celtic
+    "
+}
+
 auto_personal_remotes () {
     auto_moosehall_remotes
+    tailscale_remotes
     auto_my_upstream_remote
 }
 
