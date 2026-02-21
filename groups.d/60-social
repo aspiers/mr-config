@@ -38,6 +38,15 @@ remotes =
     git_add_remote test test.certified.app:atproto
 checkout = github_clone
 
+[$HOME/.GIT/3rd-party/ePDS]
+skip = lazy
+lib =
+    set_git_origin_user hypercerts-org
+    set_email atproto@adamspiers.org
+remotes =
+    auto_remotes
+checkout = github_clone
+
 [$HOME/.GIT/3rd-party/pds]
 skip = lazy
 lib =
