@@ -25,7 +25,9 @@ fixups =
     oc=~/bin/oc
     oca=~/bin/oca
     ocd=~/bin/ocd
+    ocw=~/bin/ocw
     bun=$( which bun )
+
     # https://github.com/anomalyco/opencode/issues/6404
     cat <<EOF >$oc
     #!/bin/bash
@@ -53,6 +55,7 @@ fixups =
         attach \\
         "\$@"
     EOF
+
     # https://github.com/anomalyco/opencode/issues/6780
     cat <<EOF >$ocd
     #!/bin/bash
@@ -67,7 +70,23 @@ fixups =
         --cwd=packages/desktop tauri dev \\
         "\$@"
     EOF
-    chmod +x $oc $ocd
+
+    cat <<EOF >$ocw
+    #!/bin/bash
+    # Launch opencode web interface from the current directory.
+    # Unlike the default TUI command, the web subcommand doesn't accept a positional
+    # directory argument - it uses process.cwd() - so we must cd to orig_cwd first.
+
+    OPENCODE_REPO="${MR_REPO/$HOME\//\$HOME/}"
+    OPENCODE_PKG="\$OPENCODE_REPO/packages/opencode"
+
+    # Stay in orig_cwd so process.cwd() is correct for the web server
+    exec $bun \\
+        run --cwd="\$OPENCODE_PKG" --conditions=browser \\
+        src/index.ts web \\
+        "\$@"
+    EOF
+    chmod +x $oc $oca $ocd $ocw
 
 [$HOME/.GIT/3rd-party/gemini-cli]
 checkout = github_clone
