@@ -77,6 +77,8 @@ Used to configure repository behavior before clone/checkout:
 - **`auto_remotes`** - Automatically configure remotes based on repository type and service
   - Calls `auto_personal_remotes` and `auto_external_remotes`
   - Intelligently adds remotes for moosehall peer machines, github forks, etc.
+- **`github_readwrite_remote <remote> [<username> [<reponame>]]`** - Add a GitHub remote with read/write (SSH) access; username defaults to remote name
+- **`github_readonly_remote <remote> [<username> [<reponame>]]`** - Add a GitHub remote with read-only access; username defaults to remote name
 - **`git_add_remotes "<list>"`** - Manually add remotes from a whitespace-separated list:
   ```
   remotes = git_add_remotes "
