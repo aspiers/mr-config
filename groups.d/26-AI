@@ -323,3 +323,13 @@ fixups =
     nvm use 22
     npm install
     npm link
+
+[$HOME/.GIT/3rd-party/claude-cowork-linux]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote alpham8
+lib =
+    set_git_origin_user johnzfitch
+fixups =
+    ./install.sh
