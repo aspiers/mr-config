@@ -157,8 +157,10 @@ remotes = auto_remotes
 stowable = true
 fixups =
     set_stow_common_opts
-    zypper_install gcc13-c++ 'sqlite3-devel >= 3.9.0' gpm-devel pcre-devel
-    export CXX=g++-13
+    zypper_install gcc13-c++ 'sqlite3-devel >= 3.9.0' gpm-devel pcre-devel libunistring-devel libcurl-devel
+    if command -v g++-13 >/dev/null 2>&1; then
+        export CXX=g++-13
+    fi
     # export CFLAGS='-fmessage-length=0 -grecord-gcc-switches -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g'
     # export CXXFLAGS="$CFLAGS"
     # export FFLAGS="$CFLAGS"
@@ -166,9 +168,7 @@ fixups =
         bash ./autogen.sh
     fi
     ./configure \
-        --prefix=$HOME \
-        --with-ncurses \
-        --with-readline
+        --prefix=$HOME
     make -j install prefix=$STOW_PKG_PATH
     mr_restow_regardless
 
