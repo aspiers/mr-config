@@ -27,6 +27,7 @@ fixups =
     ocd=~/bin/ocd
     ocw=~/bin/ocw
     bun=$( which bun )
+    bun_dir=$( dirname "$bun" )
 
     # https://github.com/anomalyco/opencode/issues/6404
     cat <<EOF >$oc
@@ -38,7 +39,8 @@ fixups =
 
     orig_cwd="\$(pwd)"
     cd "\$OPENCODE_REPO"
-    $bun dev \\
+    export PATH="$bun_dir:\$PATH"
+    bun dev \\
         "\$orig_cwd" \\
         "\$@"
     EOF
@@ -51,7 +53,8 @@ fixups =
 
     orig_cwd="\$(pwd)"
     cd "\$OPENCODE_REPO"
-    $bun dev \\
+    export PATH="$bun_dir:\$PATH"
+    bun dev \\
         attach \\
         "\$@"
     EOF
@@ -64,7 +67,8 @@ fixups =
     OPENCODE_REPO="${MR_REPO/$HOME\//\$HOME/}"
 
     cd "\$OPENCODE_REPO"
-    $bun \\
+    export PATH="$bun_dir:\$PATH"
+    bun \\
         --cwd=packages/desktop build
     $bun \\
         --cwd=packages/desktop tauri dev \\
