@@ -324,6 +324,21 @@ fixups =
     npm install
     npm link
 
+[$HOME/.GIT/3rd-party/skills]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user vercel-labs
+fixups =
+    source ~/.nvm/nvm.sh
+    nvm use 22
+    pnpm install
+    # build script runs `node scripts/generate-licenses.ts` which needs
+    # --experimental-strip-types for Node 22 to handle .ts files
+    export NODE_OPTIONS="--experimental-strip-types"
+    pnpm run build
+    ln -sf "$MR_REPO/bin/cli.mjs" ~/bin/skills
+
 [$HOME/.GIT/3rd-party/claude-cowork-linux]
 checkout = github_clone
 remotes =
