@@ -233,6 +233,14 @@ stowable = true
 fixups =
     ./build.sh --install --prefix=$HOME
 
+[$HOME/.GIT/adamspiers.org/lazydolt]
+skip = default_skipper || missing_exe dolt
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+fixups =
+    go build -o ~/bin/lazydolt ./cmd/lazydolt
+
 [$HOME/.GIT/3rd-party/sysz]
 skip = default_skipper || missing_exes systemctl fzf
 checkout = github_clone
