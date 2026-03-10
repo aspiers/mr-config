@@ -408,6 +408,11 @@ fixups =
     symlink_repo_from $HOME/.GIT/adamspiers.org/$MR_NAME
     symlink_repo_from $HOME/.GIT/3rd-party/$MR_NAME
 
+[$HOME/.GIT/adamspiers.org/madolt]
+skip = lazy || default_skipper || missing_exe emacs
+checkout = github_clone
+remotes = auto_remotes
+
 [$HOME/.emacs.d/straight/repos/lispy]
 skip = lazy || default_skipper || missing_exe emacs
 lib =
