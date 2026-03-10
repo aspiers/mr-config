@@ -191,6 +191,18 @@ fixups =
         make -j install DESTDIR=$STOW_PKG_PATH && \
         rm $STOW_PKG_PATH/.local/share/applications/mimeinfo.cache
 
+[$HOME/.GIT/3rd-party/mblaze]
+stowable = true
+lib =
+    set_git_origin_user leahneukirchen
+    mr_init_stow_package
+checkout = github_clone
+remotes = auto_remotes
+fixups =
+    make -j
+    make install PREFIX= DESTDIR=$STOW_PKG_PATH
+    mr_restow_regardless
+
 [$HOME/.GIT/3rd-party/lieer]
 skip = default_skipper
 #stowable = true
