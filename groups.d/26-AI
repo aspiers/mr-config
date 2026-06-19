@@ -276,6 +276,17 @@ fixups =
     pnpm run build
     ln -sf "$MR_REPO/bin/cli.mjs" ~/bin/skills
 
+[$HOME/.GIT/3rd-party/opencode-dcg-plugin]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user jms830
+fixups =
+    mkdir -p ~/.config/opencode/plugins
+    ensure_symlink_exists \
+        ~/.config/opencode/plugins/dcg-guard.js \
+        "../../../${MR_REPO#$HOME/}/plugin/dcg-guard.js"
+
 [$HOME/.GIT/3rd-party/claude-cowork-linux]
 checkout = github_clone
 remotes =
