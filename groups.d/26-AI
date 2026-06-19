@@ -276,7 +276,7 @@ fixups =
     # --experimental-strip-types for Node 22 to handle .ts files
     export NODE_OPTIONS="--experimental-strip-types"
     pnpm run build
-    ln -sf "$MR_REPO/bin/cli.mjs" ~/bin/skills
+    ensure_symlink_exists ~/bin/skills "$MR_REPO/dist/cli.mjs"
 
 [$HOME/.GIT/3rd-party/claude-cowork-linux]
 checkout = github_clone
