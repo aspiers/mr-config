@@ -265,6 +265,8 @@ fixups =
 checkout = github_clone
 remotes = auto_remotes
 lib =
+    # ai@adamspiers.org results in "Commits must have verified signatures"
+    set_email github@adamspiers.org
     set_git_origin_user vercel-labs
 fixups =
     source ~/.nvm/nvm.sh
