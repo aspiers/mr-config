@@ -124,10 +124,10 @@ lib =
 fixups =
     go build -o ~/bin/bd ./cmd/bd
     echo "bd built in ~/bin/bd"
-    mkdir -p ~/.claude/skills/
-    ensure_symlink_exists \
-        ~/.claude/skills/bd-issue-tracking \
-        "$MR_REPO/skills/beads"
+    # mkdir -p ~/.claude/skills/
+    # ensure_symlink_exists \
+    #     ~/.claude/skills/bd-issue-tracking \
+    #     "$MR_REPO/skills/beads"
 
 [$HOME/.GIT/3rd-party/vc]
 checkout = github_clone
