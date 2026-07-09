@@ -1,5 +1,12 @@
 # -*- mode: sh -*-
 
+[$HOME/.GIT/adamspiers.org/mysqldiff]
+skip = lazy
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readonly_remote guyfawkes GuyFawkes
+
 [$HOME/.GIT/3rd-party/dolt]
 skip = default_skipper || missing_exe go
 checkout = github_clone

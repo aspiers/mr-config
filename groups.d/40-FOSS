@@ -24,13 +24,6 @@ remotes = auto_remotes
 stowable = true
 lib = set_email gnu@adamspiers.org
 
-[$HOME/.GIT/adamspiers.org/mysqldiff]
-skip = lazy
-checkout = github_clone
-remotes =
-    auto_remotes
-    github_readonly_remote guyfawkes GuyFawkes
-
 [$HOME/.CVS/texinfo]
 checkout = cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/texinfo co texinfo
 skip = lazy
