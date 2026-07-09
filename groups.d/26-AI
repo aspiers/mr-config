@@ -129,6 +129,18 @@ fixups =
     #     ~/.claude/skills/bd-issue-tracking \
     #     "$MR_REPO/skills/beads"
 
+[$HOME/.GIT/3rd-party/bead-me-up-scotty]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user brendan-appstart
+fixups =
+    source ~/.nvm/nvm.sh
+    nvm use 22
+    npm install
+    npm run build
+    npm link
+
 [$HOME/.GIT/3rd-party/vc]
 checkout = github_clone
 remotes = auto_remotes
