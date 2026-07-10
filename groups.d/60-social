@@ -42,7 +42,8 @@ checkout = github_clone
 skip = lazy
 lib =
     set_git_origin_user hypercerts-org
-    set_email atproto@adamspiers.org
+    set_email adam@hypercerts.org
+    #set_email atproto@adamspiers.org
 remotes =
     auto_remotes
 checkout = github_clone
