@@ -78,3 +78,4 @@ COPYING
 tmp
 nohup\.out
 ^/\.beads
+\.perles
