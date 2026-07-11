@@ -35,7 +35,7 @@ moosehall_remotes () {
         slate     REMOTE:$repo
     "
 
-    ovh_project="$( ssh ovh stat /data/projects/$MR_NAME 2>&1 )" || :
+    ovh_project="$( isup ovh && ssh ovh stat /data/projects/$MR_NAME 2>&1 )" || :
     case "$ovh_project" in
         *"File:"*"Blocks: "*)
             git_add_remote ovh "ovh:/data/projects/$MR_NAME"
