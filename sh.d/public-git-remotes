@@ -34,11 +34,31 @@ github_readwrite_remote () {
 
 github_origin_remote () {
     git_add_remote origin `github_origin_url`
+    gh_set_default_repo
 }
 
 github_origin_rw_remote () {
     git_add_remote origin `github_origin_rw_url`
     git config remote.pushDefault origin
+    gh_set_default_repo
+}
+
+# Tell the gh CLI which repo to default to for PR/issue operations.
+# For a fork this is the upstream (origin) repo, so gh commands act
+# against the repo we send pull requests to rather than our fork.
+# No-op unless gh is installed.
+gh_set_default_repo () {
+    command -v gh >/dev/null 2>&1 || return 0
+
+    # gh repo set-default wants an owner/repo, not a remote name, so
+    # derive it from the origin remote's URL (SSH or HTTPS form).
+    local url owner_repo
+    url=$(git -C "$MR_REPO" config remote.origin.url) || return 0
+    owner_repo=$(echo "$url" | \
+        sed -E 's#^(git@github\.com:|https://github\.com/)##; s#\.git$##') || return 0
+    case "$owner_repo" in
+        */*) ( cd "$MR_REPO" && gh repo set-default "$owner_repo" ) || return 0 ;;
+    esac
 }
 
 gitlab_clone_remote () {
