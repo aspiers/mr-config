@@ -19,6 +19,12 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
+[$HOME/.GIT/adamspiers.org/herdr-config]
+skip = default_skipper || missing_exe herdr
+checkout = git_clone_my_repo
+remotes = auto_remotes
+stowable = true
+
 [$HOME/.GIT/3rd-party/git-annex]
 stowable = true
 lib =
