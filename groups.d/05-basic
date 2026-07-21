@@ -77,15 +77,6 @@ uninstall =
 [$HOME/.GIT/adamspiers.org/gnupg]
 deleted = true
 
-[$HOME/.GIT/adamspiers.org/gnupg.sec]
-skip = default_skipper || missing_exe gpg
-lib = set_confidential_repo
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
-fixups =
-    run_cfg_post
-
 [$HOME/.GIT/3rd-party/zsh-completions]
 skip = missing_exe zsh
 lib =
