@@ -301,6 +301,17 @@ fixups =
         ~/.config/opencode/plugins/dcg-guard.js \
         "../../../${MR_REPO#$HOME/}/plugin/dcg-guard.js"
 
+[$HOME/.GIT/3rd-party/codex-desktop-linux]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user ilysenko
+fixups =
+    # /usr/bin/rustc (zypper) shadows rustup's shims and is too old for
+    # some deps (e.g. notify-rust needs rustc >= 1.89); prefer rustup.
+    export PATH="$HOME/.cargo/bin:$PATH"
+    make bootstrap-native
+
 [$HOME/.GIT/3rd-party/claude-cowork-linux]
 checkout = github_clone
 remotes =
