@@ -79,3 +79,4 @@ tmp
 nohup\.out
 ^/\.beads
 \.perles
+^/\.agents/skills/beads/
