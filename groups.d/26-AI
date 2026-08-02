@@ -11,6 +11,14 @@ stowable = true
 fixups =
     sudo `which stow` -t /etc -d "$MR_REPO" root-etc-stow-pkg
 
+[$HOME/.GIT/3rd-party/pi-packages]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+lib =
+    set_git_origin_user gotgenes
+
 [$HOME/.GIT/3rd-party/herdr-agent-recency]
 checkout = github_clone
 remotes = auto_remotes
