@@ -80,3 +80,4 @@ nohup\.out
 ^/\.beads
 \.perles
 ^/\.agents/skills/beads/
+^/\.beads-solo
