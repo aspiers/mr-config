@@ -110,6 +110,17 @@ fixups =
         ln -sf $MR_REPO/$agent ~/.claude/agents/$agent
     done
 
+# NOT under ~/.GIT: vitest/vite mis-resolve relative config paths when any
+# ancestor directory is named .GIT (it case-insensitively matches .git), which
+# breaks the web test suite. See herdr-config-58v.
+[$HOME/software/AI/collie]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+lib =
+    set_git_origin_user AltanS
+
 [$HOME/software/AI/whispering]
 skip = lazy
 checkout = github_clone
