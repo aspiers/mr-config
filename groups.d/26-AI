@@ -27,6 +27,28 @@ remotes =
 lib =
     set_git_origin_user edlsh
 
+[$HOME/.GIT/3rd-party/herdr]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+stowable = true
+lib =
+    set_git_origin_user herdrdev
+fixups =
+    # The vendored libghostty-vt is built by build.rs via zig >= 0.15.2.
+    # On Tumbleweed that needs the devel:languages:zig OBS repo:
+    #   sudo zypper ar https://download.opensuse.org/repositories/devel:/languages:/zig/openSUSE_Tumbleweed/ devel_languages_zig
+    #   sudo zypper in zig
+    if missing_exe zig; then
+        echo "zig not found in \$PATH; skipping herdr build" >&2
+        exit 0
+    fi
+    cargo build --release
+    # Installed as herdr-git to avoid clashing with the official
+    # ~/.local/bin/herdr, which precedes ~/bin in $PATH.
+    cp target/release/herdr ~/bin/herdr-git
+
 [$HOME/.GIT/3rd-party/herdr-agent-recency]
 checkout = github_clone
 remotes = auto_remotes
