@@ -44,6 +44,9 @@ fixups =
         echo "zig not found in \$PATH; skipping herdr build" >&2
         exit 0
     fi
+    # /usr/bin/rustc (zypper) shadows rustup's shims, so rust-toolchain.toml's
+    # pinned channel is ignored and the build fails on unstable features.
+    export PATH="$HOME/.cargo/bin:$PATH"
     cargo build --release
     # Installed as herdr-git to avoid clashing with the official
     # ~/.local/bin/herdr, which precedes ~/bin in $PATH.
