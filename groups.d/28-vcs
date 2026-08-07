@@ -35,6 +35,21 @@ stowable = true
 # remotes = auto_remotes
 # stowable = true
 
+[$HOME/.GIT/3rd-party/worktrunk]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user max-sixty
+fixups =
+    # /usr/bin/rustc (zypper) shadows rustup's shims, so rust-toolchain.toml's
+    # pinned channel (1.96.0) is ignored and the build fails.
+    export PATH="$HOME/.cargo/bin:$PATH"
+    cargo build --release
+    # Installed as wt-git to avoid clashing with the official
+    # ~/.local/bin/wt, which precedes ~/bin in $PATH.  To use this build,
+    # set WORKTRUNK_BIN=wt-git for the wt shell function.
+    cp target/release/wt ~/bin/wt-git
+
 [$HOME/.GIT/3rd-party/googledriveannex]
 skip = default_skipper || missing_exe git-annex
 checkout = github_clone
