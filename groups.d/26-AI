@@ -19,6 +19,14 @@ remotes =
 lib =
     set_git_origin_user gotgenes
 
+[$HOME/.GIT/3rd-party/pi-shortcuts]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+lib =
+    set_git_origin_user siesing
+
 [$HOME/.GIT/3rd-party/pi-ask-user]
 checkout = github_clone
 remotes =
