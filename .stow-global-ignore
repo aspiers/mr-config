@@ -62,6 +62,13 @@ COPYING
 \.autocommit
 \.mypy_cache
 \.ruff_cache
+# pi-shortcuts (@siesing/pi-shortcuts) writes this cache relative to
+# process.cwd(), so it lands in whatever directory pi was run from,
+# including stow packages.  Its contents are keyed only on the pi
+# version/platform/schema, so per-directory copies are redundant and
+# regenerate on demand.  Upstream bug, unreported as of 2026-08-13:
+# https://github.com/siesing/pi-shortcuts (index.ts getCachePath)
+\.pi-shortcuts-cache
 \.env
 \.env\..*
 \.cursor
