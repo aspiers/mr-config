@@ -27,6 +27,14 @@ remotes =
 lib =
     set_git_origin_user siesing
 
+[$HOME/.GIT/3rd-party/amp-themes]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+lib =
+    set_git_origin_user me-frankan
+
 [$HOME/.GIT/3rd-party/pi-ask-user]
 checkout = github_clone
 remotes =
@@ -42,6 +50,14 @@ remotes =
     github_readwrite_remote aspiers
 lib =
     set_git_origin_user justcyl
+
+[$HOME/.GIT/3rd-party/pi-monitor]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+lib =
+    set_git_origin_user lukemelnik
 
 [$HOME/.GIT/3rd-party/herdr]
 checkout = github_clone
