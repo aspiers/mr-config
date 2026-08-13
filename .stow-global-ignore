@@ -78,6 +78,7 @@ COPYING
 tmp
 nohup\.out
 ^/\.beads
+^/\.beads.*\.lock
 \.perles
 ^/\.agents/skills/beads/
 ^/\.beads-solo
