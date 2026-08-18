@@ -28,6 +28,7 @@ lib =
     set_git_origin_user siesing
 
 [$HOME/.GIT/3rd-party/amp-themes]
+skip = lazy
 checkout = github_clone
 remotes =
     auto_remotes
