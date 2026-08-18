@@ -408,6 +408,15 @@ fixups =
     git config --global alias.as assembler
 remotes = auto_remotes
 
+[$HOME/.GIT/3rd-party/git-machete]
+skip = lazy || missing_exes git uv
+checkout = github_clone
+lib =
+    set_git_origin_user VirtusLab
+fixups =
+    uv tool install --force .
+remotes = auto_remotes
+
 [$HOME/.GIT/3rd-party/git-filter-repo]
 skip = lazy
 checkout = github_clone
