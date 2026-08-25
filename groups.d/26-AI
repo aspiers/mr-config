@@ -211,7 +211,9 @@ fixups =
 
 [$HOME/.GIT/3rd-party/sussurro]
 checkout = github_clone_ro_origin
-remotes = auto_remotes
+remotes =
+    auto_remotes
+    github_readonly_remote flt-james flt-james
 lib =
     set_git_origin_user Aploide
     set_git_clone_remote_branch master
