@@ -472,3 +472,16 @@ lib =
     set_git_origin_user johnzfitch
 fixups =
     ./install.sh
+
+[$HOME/.GIT/3rd-party/worktrunk-sync]
+checkout = github_clone
+remotes = auto_remotes
+stowable = true
+lib =
+    set_git_origin_user pablospe
+fixups =
+    # /usr/bin/rustc (zypper) shadows rustup's shims and is too old
+    # (Cargo.toml pins rust-version 1.93); prefer rustup.
+    export PATH="$HOME/.cargo/bin:$PATH"
+    cargo build --release
+    cp target/release/wt-sync ~/bin/
