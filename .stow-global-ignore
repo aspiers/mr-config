@@ -62,6 +62,7 @@ COPYING
 \.autocommit
 \.mypy_cache
 \.ruff_cache
+\.pi-lens
 # pi-shortcuts (@siesing/pi-shortcuts) writes this cache relative to
 # process.cwd(), so it lands in whatever directory pi was run from,
 # including stow packages.  Its contents are keyed only on the pi
