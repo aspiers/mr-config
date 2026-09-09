@@ -363,11 +363,10 @@ fixups =
     WorkingDirectory=$MR_REPO
     ExecStart=$node scripts/serve.mjs
 
-    Restart=on-failure
-    RestartSec=5s
+    Restart=no
 
-    # serve.mjs forks \`next start\`; kill the whole group so a crashed run
-    # cannot leave a child holding port 19847 and block the restart with
+    # serve.mjs forks \`next start\`; kill the whole group so a stopped run
+    # cannot leave a child holding port 19847 and block the next start with
     # EADDRINUSE.
     KillMode=control-group
     TimeoutStopSec=15s
