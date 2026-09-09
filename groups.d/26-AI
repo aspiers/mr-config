@@ -354,6 +354,12 @@ fixups =
 
     Environment=PORT=19847
     Environment=HOST=127.0.0.1
+    # The "Update now" check shells out to \`git fetch\`, which needs the SSH key
+    # for the github remote.  systemd --user inherits DISPLAY but not
+    # SSH_AUTH_SOCK, so without this ssh cannot reach the agent, falls back to
+    # SSH_ASKPASS and pops a GUI passphrase dialog no one is there to answer --
+    # leaving stuck ssh processes in the unit's cgroup for days.
+    Environment=SSH_AUTH_SOCK=%t/keyring/ssh
     WorkingDirectory=$MR_REPO
     ExecStart=$node scripts/serve.mjs
 
