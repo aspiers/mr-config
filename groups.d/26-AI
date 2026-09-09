@@ -306,10 +306,21 @@ fixups =
 
 [$HOME/.GIT/3rd-party/bead-me-up-scotty]
 checkout = github_clone
-remotes = auto_remotes
+remotes =
+    auto_remotes
+    configure_scotty_origin
 lib =
     set_git_origin_user brendan-appstart
+    configure_scotty_origin () {
+        # The unattended update check only needs public read access.  Keep
+        # pushes on SSH without giving the service access to an SSH agent.
+        git -C "$MR_REPO" remote set-url origin \
+            https://github.com/brendan-appstart/bead-me-up-scotty.git
+        git -C "$MR_REPO" remote set-url --push origin \
+            git@github.com:brendan-appstart/bead-me-up-scotty.git
+    }
 fixups =
+    configure_scotty_origin
     source ~/.nvm/nvm.sh
     nvm use 22
     npm install
@@ -354,12 +365,8 @@ fixups =
 
     Environment=PORT=19847
     Environment=HOST=127.0.0.1
-    # The "Update now" check shells out to \`git fetch\`, which needs the SSH key
-    # for the github remote.  systemd --user inherits DISPLAY but not
-    # SSH_AUTH_SOCK, so without this ssh cannot reach the agent, falls back to
-    # SSH_ASKPASS and pops a GUI passphrase dialog no one is there to answer --
-    # leaving stuck ssh processes in the unit's cgroup for days.
-    Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+    # Update checks fetch the public origin over HTTPS, configured above, so
+    # this service deliberately receives no SSH_AUTH_SOCK.
     WorkingDirectory=$MR_REPO
     ExecStart=$node scripts/serve.mjs
 
