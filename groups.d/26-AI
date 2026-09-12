@@ -298,12 +298,17 @@ fixups =
     nvm use 24
     corepack enable
     pnpm install
-    # build:cli alone, not the full build:desktop/build:linux: the packaged
+    # Only the CLI, not the full build:desktop/build:linux: the packaged
     # AppImage is already installed via ~/.cache/orca/appimage, so only the
     # dev CLI is worth building from this checkout.
-    pnpm run build:cli
-    # build:cli's install-dev-cli.mjs tries /usr/local/bin/orca-dev and gives
-    # up without sudo, so put the wrapper in ~/bin to match everything else.
+    #
+    # build:cli's two real steps are inlined rather than calling the script,
+    # because it also runs install-dev-cli.mjs, which hardcodes a symlink in
+    # /usr/local/bin/orca-dev with no override and tells you to re-run under
+    # sudo.  We keep the wrapper in ~/bin like everything else mr installs.
+    pnpm exec tsc -p config/tsconfig.cli.json \
+        --outDir out --composite false --incremental false
+    node config/scripts/verify-cli-bin.mjs --fix-executable --fix-package-json
     ensure_symlink_exists ~/bin/orca-dev "$MR_REPO/config/scripts/orca-dev.mjs"
 
 [$HOME/.GIT/adamspiers.org/agent-doctor]

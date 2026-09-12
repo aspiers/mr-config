@@ -96,6 +96,37 @@ Run after checkout to configure the repository:
 - **`setup_git_autocommit_and_annex_autosync`** - Enable auto-commit and git-annex auto-sync if configured
 - **`ensure_symlink_exists <target> <link>`** - Create a symlink if it doesn't exist
 
+### Install Everything Under `$HOME`
+
+**Fixups must never install into `/usr/local` (or anywhere else outside
+`$HOME`) unless it is genuinely unavoidable.** Everything mr manages belongs
+under `$HOME`, typically `~/bin/` or a stow package in `~/.STOW/`, so that:
+
+- no fixup needs `sudo`, and `mr fix` can run unattended
+- the whole installation is per-user and reproducible on any machine
+- nothing mr owns can collide with distro-packaged files
+
+Upstream build scripts frequently disagree, hardcoding `/usr/local/bin` or
+probing for passwordless sudo. Redirect them, in descending order of
+preference:
+
+1. **Use the upstream override** if one exists: a `--prefix`, `PREFIX=`,
+   `DESTDIR=`, or an install-directory environment variable.
+2. **Run only the sub-steps you need**, skipping the upstream "install
+   globally" step, then create the symlink yourself with
+   `ensure_symlink_exists ~/bin/<name> "$MR_REPO/path/to/script"`. Inline the
+   sub-steps rather than calling the aggregate script that appends the global
+   install.
+3. **Patch a temporary copy** of the installer with `sed` when it offers no
+   override at all, and `grep -Fq` both before and after to assert the pattern
+   matched. A silently-failed `sed` would otherwise install to the wrong place.
+
+Whichever route you take, leave a comment saying why, so the next reader does
+not "simplify" it back to the upstream one-liner.
+
+**Examples:** orca (`groups.d/26-AI`, route 2), sussurro (`groups.d/26-AI`,
+route 3)
+
 ### Skip Conditions
 
 Used in `skip = ...` to conditionally skip repositories:
