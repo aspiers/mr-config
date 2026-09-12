@@ -285,6 +285,27 @@ fixups =
     EOF
     chmod +x ~/bin/$MR_NAME-dev
 
+[$HOME/software/AI/orca]
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+lib =
+    set_git_origin_user stablyai
+fixups =
+    source ~/.nvm/nvm.sh
+    # package.json pins engines.node to 24; 22 is too old for this build.
+    nvm use 24
+    corepack enable
+    pnpm install
+    # build:cli alone, not the full build:desktop/build:linux: the packaged
+    # AppImage is already installed via ~/.cache/orca/appimage, so only the
+    # dev CLI is worth building from this checkout.
+    pnpm run build:cli
+    # build:cli's install-dev-cli.mjs tries /usr/local/bin/orca-dev and gives
+    # up without sudo, so put the wrapper in ~/bin to match everything else.
+    ensure_symlink_exists ~/bin/orca-dev "$MR_REPO/config/scripts/orca-dev.mjs"
+
 [$HOME/.GIT/adamspiers.org/agent-doctor]
 checkout = git_clone_my_repo
 remotes = auto_remotes
