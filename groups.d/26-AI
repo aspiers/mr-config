@@ -541,6 +541,13 @@ fixups =
     pnpm run build
     ensure_symlink_exists ~/bin/skills "$MR_REPO/dist/cli.mjs"
 
+[$HOME/.GIT/3rd-party/mattpocock-skills]
+checkout = github_clone_ro_origin
+remotes = auto_remotes
+lib =
+    set_git_origin_user mattpocock
+    set_git_origin_name skills
+
 [$HOME/.GIT/3rd-party/opencode-dcg-plugin]
 checkout = github_clone
 remotes = auto_remotes
