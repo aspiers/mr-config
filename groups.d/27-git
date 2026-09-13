@@ -262,11 +262,15 @@ fixups =
           RAILS_SERVE_STATIC_FILES: "true"
           SECRET_KEY_BASE: \${SECRET_KEY_BASE}
 
+      # Restart after docker daemon restarts; the systemd unit only
+      # starts these in ExecStartPre, so puma would otherwise outlive them.
       database.service.octobox.internal:
+        restart: unless-stopped
         ports:
           - "127.0.0.1:5433:5432"
 
       redis.service.octobox.internal:
+        restart: unless-stopped
         ports:
           - "127.0.0.1:6380:6379"
     EOF
