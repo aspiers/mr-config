@@ -232,7 +232,12 @@ checkout = github_clone_ro_origin
 remotes = auto_remotes
 fixups =
     cd "$MR_REPO"
-    # Secrets live outside the checkout so worktree churn can't lose them.
+    # Octobox secrets (GitHub OAuth/App credentials, SECRET_KEY_BASE,
+    # OCTOBOX_ATTRIBUTE_ENCRYPTION_KEY) live in ~/.config/octobox/env, NOT in
+    # $MR_REPO/.env. They were moved out of the checkout on 2026-09-11 so that
+    # worktree churn can't lose them; both systemd units below read this file,
+    # and octobox-oauth-setup writes to it. Losing OCTOBOX_ATTRIBUTE_ENCRYPTION_KEY
+    # makes every stored GitHub token in the database unreadable.
     env_file="$HOME/.config/octobox/env"
     if ! [ -e "$env_file" ]; then
         install -d -m 700 "$HOME/.config/octobox"
