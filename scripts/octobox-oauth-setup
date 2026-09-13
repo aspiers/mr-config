@@ -185,7 +185,7 @@ finish() {
 # ──────────────────────────────────────────────────────────────────────────
 
 TOTAL_STAGES=1
-ENV_FILE="$HOME/.GIT/3rd-party/octobox/.env"
+ENV_FILE="$HOME/.config/octobox/env"
 
 banner "Octobox GitHub OAuth setup"
 
