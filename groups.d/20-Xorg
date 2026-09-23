@@ -243,3 +243,32 @@ checkout = github_clone
 remotes = auto_remotes
 fixups =
     make
+
+[$HOME/.GIT/3rd-party/sussurro]
+checkout = github_clone_ro_origin
+remotes =
+    auto_remotes
+    github_readonly_remote flt-james flt-james
+lib =
+    set_git_origin_user Aploide
+    # Upstream's default branch moved from master to stable.
+    set_git_clone_remote_branch stable
+fixups =
+    # Build from source rather than running scripts/install.sh: that
+    # downloads the latest GitHub release, so it would silently discard
+    # local commits and cannot track this checkout.
+    #
+    # make build compiles the vendored whisper.cpp/llama.cpp with the CGO
+    # flags Vulkan needs; a bare `go build` fails to link.  There is no
+    # install target.
+    make build
+    mkdir -p ~/bin
+    # The helper must sit beside the main binary: helperPath() in
+    # internal/llm/helper_client.go checks siblings before $PATH.
+    install -m 0755 bin/sussurro bin/sussurro-llm-helper ~/bin/
+    # Linux releases ship trigger.sh as sussurro-trigger so compositor
+    # shortcuts have a stable on-PATH command to bind.
+    install -m 0755 scripts/trigger.sh ~/bin/sussurro-trigger
+    # Pick up the new binary if the daemon is running; leave it alone
+    # otherwise.
+    systemctl --user try-restart sussurro.service

@@ -124,8 +124,9 @@ preference:
 Whichever route you take, leave a comment saying why, so the next reader does
 not "simplify" it back to the upstream one-liner.
 
-**Examples:** orca (`groups.d/26-AI`, route 2), sussurro (`groups.d/26-AI`,
-route 3)
+**Examples:** orca (`groups.d/26-AI`, route 2). sussurro (`groups.d/20-Xorg`)
+sidesteps the upstream installer entirely by building from source with
+`make build` and copying into `~/bin/`.
 
 ### Skip Conditions
 

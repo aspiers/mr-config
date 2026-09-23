@@ -233,27 +233,6 @@ fixups =
     EOF
     chmod +x ~/bin/$MR_NAME
 
-[$HOME/.GIT/3rd-party/sussurro]
-checkout = github_clone_ro_origin
-remotes =
-    auto_remotes
-    github_readonly_remote flt-james flt-james
-lib =
-    set_git_origin_user Aploide
-    set_git_clone_remote_branch master
-fixups =
-    # Upstream prefers /usr/local/bin when passwordless sudo is available and
-    # does not support an install-directory override.  Patch a temporary copy
-    # so mr-managed binaries stay in ~/bin.
-    grep -Fq 'INSTALL_DIR=$(pick_install_dir)' scripts/install.sh
-    installer=$(mktemp)
-    trap 'rm -f "$installer"' EXIT
-    sed 's|INSTALL_DIR=$(pick_install_dir)|INSTALL_DIR="$HOME/bin"|' \
-        scripts/install.sh > "$installer"
-    grep -Fq 'INSTALL_DIR="$HOME/bin"' "$installer"
-    mkdir -p "$HOME/bin"
-    bash "$installer"
-
 [$HOME/software/AI/t3code]
 checkout = github_clone
 remotes =
