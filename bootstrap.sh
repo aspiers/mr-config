@@ -315,12 +315,17 @@ mr_update_stow_fixups moosehall+shell-env
 
 source ~/lib/libhost.sh  # from shell-env
 read_localhost_nickname
-while ! grep "$localhost_nickname" ~/etc/hosts-moosehall; do
-    echo "$localhost_nickname not found in ~/etc/hosts-moosehall"
-    echo "Please follow steps in TweaksForAll.org, and exit shell when done ..."
-    $SHELL
-    mrupc moosehall+shell-env
-done
+# Same test as mr's not_moosehall skipper: non-moosehall hosts
+# (e.g. remote servers) never get moosehall+shell-env, so waiting
+# for ~/etc/hosts-moosehall there would loop forever.
+if grep -q '^moosehall$' ~/.localhost-props; then
+    while ! grep "$localhost_nickname" ~/etc/hosts-moosehall; do
+        echo "$localhost_nickname not found in ~/etc/hosts-moosehall"
+        echo "Please follow steps in TweaksForAll.org, and exit shell when done ..."
+        $SHELL
+        mrupc moosehall+shell-env
+    done
+fi
 
 mr_update_stow_fixups git.adam_spiers.pub
 
