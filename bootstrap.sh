@@ -296,8 +296,12 @@ echo "Removing $ssh_bootstrap_conf and rebuilding ssh config ..."
 rm $ssh_bootstrap_conf
 ~/.cfg-post.d/ssh
 
-while ! [ -e ~/.ssh/id_rsa ]; do
-    echo "No ssh private key found; create or copy one now, and exit shell when done ..."
+# What matters is reaching $git_host, not a key file on disk: a
+# forwarded agent or the ControlMaster started above works just as well.
+while ! ssh-add -l >/dev/null 2>&1 &&
+      ! ssh -O check $git_user_at_host >/dev/null 2>&1; do
+    echo "No ssh agent identities and no ssh master to $git_user_at_host;"
+    echo "load or forward a key now, and exit shell when done ..."
     $SHELL
 done
 
