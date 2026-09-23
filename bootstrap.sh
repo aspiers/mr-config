@@ -335,7 +335,6 @@ div ############################################################
 
 echo "Installing 05-basic ..."
 mr_update_stow_fixups desktop-config screenrc git-annex.static
-mr_update_stow_fixups gnupg{,.sec}
 
 div ############################################################
 
