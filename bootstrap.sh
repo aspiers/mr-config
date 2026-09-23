@@ -109,6 +109,14 @@ else
 fi
 echo "exported PERL5LIB=$PERL5LIB"
 
+# git-annex's ssh caching forces its own socket (-S .git/annex/ssh/...),
+# bypassing the ssh master below, which is all a keyless host can use.
+# Setting it via the environment keeps it scoped to this run.
+export GIT_CONFIG_COUNT=1
+export GIT_CONFIG_KEY_0=annex.sshcaching
+export GIT_CONFIG_VALUE_0=false
+echo "disabled git-annex ssh caching for this run"
+
 [ -d ~/.ssh ] || mkdir ~/.ssh
 chmod 700 ~/.ssh
 
