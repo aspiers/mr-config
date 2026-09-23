@@ -45,7 +45,7 @@ fatal () {
 mr_update_stow_fixups () {
     cd
     for pkg in "$@"; do
-        echo "Retrieving $1 ..."
+        echo "Retrieving $pkg ..."
         # N.B. -i is omitted the first time, since the fixups are expected
         # to fail due to it not having been stowed yet.
         echo "(Any fixups are likely to fail since not yet stowed)"
