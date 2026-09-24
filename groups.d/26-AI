@@ -300,7 +300,7 @@ checkout = github_clone
 remotes = auto_remotes
 # stowable = true
 lib =
-    set_git_origin_user steveyegge
+    set_git_origin_user gastownhall
 fixups =
     go build -o ~/bin/bd ./cmd/bd
     echo "bd built in ~/bin/bd"
@@ -402,7 +402,7 @@ checkout = github_clone
 remotes = auto_remotes
 stowable = true
 lib =
-    set_git_origin_user steveyegge
+    set_git_origin_user gastownhall
 fixups =
     go build -o ~/bin/vc ./cmd/vc
 
