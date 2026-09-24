@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+#
+# Probe a Tailscale Funnel endpoint through the public ingress and, after
+# consecutive failed runs, toggle Funnel off and on again.
+#
+# Works around https://github.com/tailscale/tailscale/issues/21114: after a
+# network reconnect the Funnel ingress nodes can keep a stale route to this
+# node, so the public URL dies (TLS handshake EOF) while `tailscale funnel
+# status` still looks healthy. Toggling flips Hostinfo.IngressEnabled
+# false->true, which re-announces the node; a tailscaled restart does not.
+
+set -euo pipefail
+
+usage() {
+    echo "Usage: ${0##*/} PORT PATH TARGET" >&2
+    echo "e.g.   ${0##*/} 8443 /hooks/github http://127.0.0.1:3331/hooks/github" >&2
+    exit 2
+}
+
+[[ $# -eq 3 ]] || usage
+port=$1 path=$2 target=$3
+threshold=${FUNNEL_WATCHDOG_THRESHOLD:-2}
+state_dir=${STATE_DIRECTORY:-${XDG_STATE_HOME:-$HOME/.local/state}/tailscale-funnel-watchdog}
+fails_file="$state_dir/fails-$port"
+mkdir -p "$state_dir"
+
+host=$(tailscale status --json | jq -r '.Self.DNSName | rtrimstr(".")')
+
+funnel_enabled() {
+    tailscale serve status --json |
+        jq -e --arg hp "$host:$port" '.AllowFunnel[$hp] == true' >/dev/null
+}
+
+# Public DNS on purpose: MagicDNS answers with the tailnet IP, which
+# bypasses the ingress path we need to test.
+public_ips() {
+    dig +short +time=5 +tries=2 @1.1.1.1 "$host" A | grep -E '^[0-9.]+$' || true
+}
+
+# curl exits 0 for any HTTP response, and any response proves the ingress
+# reached tailscaled here; a broken ingress gives a TLS EOF or timeout.
+probe() {
+    curl -sS -o /dev/null -m 20 -w '%{http_code}' \
+        --resolve "$host:$port:$1" "https://$host:$port$path" 2>&1
+}
+
+heal() {
+    echo "Toggling Funnel on :$port off and on"
+    tailscale funnel --https="$port" --set-path="$path" off
+    sleep 8
+    tailscale funnel --bg --https="$port" --set-path="$path" "$target" >/dev/null
+    funnel_enabled || { echo "Funnel on :$port did not come back" >&2; exit 1; }
+}
+
+main() {
+    if ! funnel_enabled; then
+        echo "Funnel not enabled on $host:$port; nothing to watch"
+        exit 0
+    fi
+
+    local ips
+    mapfile -t ips < <(public_ips)
+    if (( ${#ips[@]} == 0 )); then
+        echo "No public DNS answer for $host; assuming offline, skipping"
+        exit 0
+    fi
+
+    local ip out failed=0
+    for ip in "${ips[@]}"; do
+        if out=$(probe "$ip"); then
+            echo "$ip: HTTP $out"
+        else
+            echo "$ip: FAILED: ${out//$'\n'/ }"
+            failed=1
+        fi
+    done
+
+    local fails=0
+    [[ -r $fails_file ]] && fails=$(<"$fails_file")
+    if (( ! failed )); then
+        echo 0 >"$fails_file"
+        exit 0
+    fi
+
+    fails=$((fails + 1))
+    echo "Public Funnel probe failed ($fails/$threshold consecutive runs)"
+    if (( fails >= threshold )); then
+        heal
+        fails=0
+    fi
+    echo "$fails" >"$fails_file"
+}
+
+main
