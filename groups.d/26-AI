@@ -402,7 +402,7 @@ checkout = github_clone
 remotes = auto_remotes
 stowable = true
 lib =
-    set_git_origin_user gastownhall
+    set_git_origin_user steveyegge
 fixups =
     go build -o ~/bin/vc ./cmd/vc
 
@@ -539,6 +539,8 @@ lib =
 fixups =
     . ~/.nvm/nvm.sh
     nvm use 22
+    # provides pnpm at the version pinned by packageManager in package.json
+    corepack enable
     pnpm install
     # build script runs `node scripts/generate-licenses.ts` which needs
     # --experimental-strip-types for Node 22 to handle .ts files
