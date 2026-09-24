@@ -73,6 +73,12 @@ for prog in ruby virtualenv; do
     fi
 done
 
+# mr runs stanzas via /bin/sh, so bash-isms like `source` fail when it's
+# dash or similar.  Probe the capability rather than the shell's name.
+if ! /bin/sh -c 'source /dev/null' >/dev/null 2>&1; then
+    warn "/bin/sh ($(readlink -f /bin/sh)) lacks 'source'; mr stanzas must use '.' instead"
+fi
+
 [ -d ~/.stow ] && fatal "Rogue ~/.stow - delete it first."
 
 cd
