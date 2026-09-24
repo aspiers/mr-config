@@ -128,7 +128,7 @@ remotes = auto_remotes
 lib =
     set_git_origin_user anomalyco
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     npm install -g bun
     bun install
@@ -144,7 +144,7 @@ lib =
     # so that Google's CLA signing process works.
     set_email github@adamspiers.org
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     npm install
     export GEMINI_SANDBOX=docker
@@ -212,7 +212,7 @@ lib =
     set_git_clone_name epicenter
 remotes = auto_remotes
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     bun install
     node=$( nvm which 22 )
@@ -272,7 +272,7 @@ remotes =
 lib =
     set_git_origin_user stablyai
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     # package.json pins engines.node to 24; 22 is too old for this build.
     nvm use 24
     corepack enable
@@ -326,7 +326,7 @@ lib =
     }
 fixups =
     configure_scotty_origin
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     npm install
     npm run build
@@ -468,7 +468,7 @@ remotes = auto_remotes
 lib =
     set_git_origin_user mantoni
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     npm install
     npm link
@@ -480,7 +480,7 @@ lib =
     set_git_origin_user mattbeane
 fixups =
     python3 -m venv venv
-    source venv/bin/activate
+    . venv/bin/activate
     pip install -r requirements.txt
 
 [$HOME/.GIT/3rd-party/beads-dashboard]
@@ -489,7 +489,7 @@ remotes = auto_remotes
 lib =
     set_git_origin_user rhydlewis
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     npm install
     npm run build
@@ -524,7 +524,7 @@ lib =
     set_git_origin_user AvivK5498
     set_git_origin_name Beads-Kanban-UI
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     npm install
     npm link
@@ -537,7 +537,7 @@ lib =
     set_email github@adamspiers.org
     set_git_origin_user vercel-labs
 fixups =
-    source ~/.nvm/nvm.sh
+    . ~/.nvm/nvm.sh
     nvm use 22
     pnpm install
     # build script runs `node scripts/generate-licenses.ts` which needs
