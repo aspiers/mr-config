@@ -180,3 +180,20 @@ remotes =
     github_readonly_remote fwolfst
 fixups =
     pip3 install --user --no-use-pep517 -e .
+
+[$HOME/.GIT/3rd-party/xfce4-panel]
+skip = lazy
+lib =
+    set_email xfce@adamspiers.org
+checkout = git_clone https://gitlab.xfce.org/xfce/xfce4-panel.git
+remotes = auto_remotes
+fixups = git_config_email
+
+[$HOME/.GIT/3rd-party/xfce4-theme-switcher]
+skip = lazy
+lib =
+    set_email xfce@adamspiers.org
+    set_git_origin_user UdeshyaDhungana
+checkout = github_clone
+remotes = auto_remotes
+fixups = git_config_email
