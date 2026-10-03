@@ -20,3 +20,6 @@ fixups =
     fi
     mkdir -p "$HOME/bin"
     ensure_symlink_exists "$HOME/bin/seestar-alp" "$HOME/.config/mr/scripts/seestar-alp"
+    echo "To run seestar_alp:   seestar-alp"
+    echo "Web UI:               http://localhost:5432 (uiport in $MR_REPO/device/config.toml)"
+    echo "To run unit tests:    cd $MR_REPO && uv run pytest -m 'not integration' -q"

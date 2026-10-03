@@ -3,4 +3,6 @@ set -eu
 
 # The application loads templates and data relative to its checkout.
 cd "$HOME/.GIT/3rd-party/seestar_alp"
-exec .venv/bin/python root_app.py "$@"
+# --no-sync leaves installs to mr fixups: a plain `uv run` on a branch with
+# upstream's stale uv.lock would re-lock and downgrade the venv at launch.
+exec uv run --no-sync python root_app.py "$@"
