@@ -1,0 +1,6 @@
+#!/bin/sh
+set -eu
+
+# The application loads templates and data relative to its checkout.
+cd "$HOME/.GIT/3rd-party/seestar_alp"
+exec .venv/bin/python root_app.py "$@"

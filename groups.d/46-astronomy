@@ -1,0 +1,22 @@
+# -*- mode: sh -*-
+
+[$HOME/.GIT/3rd-party/seestar_alp]
+skip = default_skipper
+checkout = github_clone
+lib =
+    set_git_origin_user smart-underworld
+remotes =
+    auto_remotes
+    github_readwrite_remote github aspiers
+fixups =
+    set -e
+    # Avoid the Raspberry Pi installer, which changes system packages and services.
+    # Upstream doesn't maintain uv.lock, so refresh it before syncing; otherwise
+    # sync would downgrade to its stale pins.
+    uv lock --upgrade --python 3.13
+    uv sync --python 3.13
+    if [ ! -e device/config.toml ]; then
+        cp device/config.toml.example device/config.toml
+    fi
+    mkdir -p "$HOME/bin"
+    ensure_symlink_exists "$HOME/bin/seestar-alp" "$HOME/.config/mr/scripts/seestar-alp"
