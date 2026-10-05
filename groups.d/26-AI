@@ -135,6 +135,17 @@ fixups =
     # oc/oca/ocd/ocr/ocw/ocwe wrappers are now in ai-config/bin/
     # and stowed into ~/bin/ — no longer generated here.
 
+[$HOME/.GIT/3rd-party/webmcp-tool-overrides]
+checkout = github_clone
+remotes = auto_remotes
+lib =
+    set_git_origin_user GoogleChromeLabs
+fixups =
+    # This is an unpacked Chromium extension, with no build or runtime npm deps.
+    # Load the checkout directly; browser registration requires Load unpacked once.
+    echo "In chrome://extensions, enable Developer mode and Load unpacked:"
+    echo "$MR_REPO"
+
 [$HOME/.GIT/3rd-party/gemini-cli]
 checkout = github_clone
 remotes = auto_remotes
