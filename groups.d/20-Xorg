@@ -96,6 +96,14 @@ lib =
 checkout = github_clone
 remotes = auto_remotes
 
+# Packaged with local patches in OBS home:aspiers:branches:X11:windowmanagers/fluxbox
+[$HOME/.GIT/3rd-party/fluxbox]
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user fluxbox
+checkout = github_clone
+remotes = auto_remotes
+
 [$HOME/.GIT/3rd-party/logkeys]
 skip = lazy || default_skipper
 checkout = git_clone https://code.google.com/p/logkeys/
