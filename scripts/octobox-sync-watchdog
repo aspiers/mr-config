@@ -1,0 +1,235 @@
+#!/usr/bin/env python3
+"""Recover a continuously observed over-budget notification sync."""
+
+import argparse
+import json
+import math
+import os
+import pathlib
+import re
+import socket
+import subprocess
+import sys
+import tempfile
+import time
+from collections.abc import Callable
+
+MAX_SYNC_SECONDS = 600
+
+
+class InspectionError(RuntimeError):
+    """Unknown state must not trigger a speculative restart."""
+
+
+def checked_command(argv: list[str], timeout: int = 5) -> str:
+    try:
+        result = subprocess.run(argv, capture_output=True, text=True, timeout=timeout, check=False)
+    except (OSError, subprocess.TimeoutExpired) as error:
+        raise InspectionError(f"{argv[0]} inspection failed: {type(error).__name__}") from error
+    if result.returncode:
+        # Errors can echo connection details. Never log those or job payloads.
+        raise InspectionError(f"{argv[0]} exited with status {result.returncode}")
+    return result.stdout
+
+
+def service_state(command: Callable, unit: str, monotonic: float) -> dict | None:
+    output = command([
+        "systemctl", "--user", "show", unit,
+        "--property=ActiveState", "--property=SubState", "--property=MainPID",
+        "--property=InvocationID", "--property=ExecMainStartTimestampMonotonic",
+    ])
+    state = dict(line.split("=", 1) for line in output.splitlines() if "=" in line)
+    if state.get("ActiveState") != "active" or state.get("SubState") != "running":
+        return None
+    try:
+        pid = int(state["MainPID"])
+        started = int(state["ExecMainStartTimestampMonotonic"]) / 1_000_000
+        invocation = state["InvocationID"]
+    except (KeyError, ValueError) as error:
+        raise InspectionError("invalid service identity") from error
+    if pid <= 0 or not invocation or not 0 < started <= monotonic:
+        raise InspectionError("invalid service identity")
+    return {"pid": pid, "started": started, "invocation": invocation}
+
+
+def redis_json(command: Callable, redis_url: str, *args: str):
+    # This local deployment uses unauthenticated loopback Redis. Do not put
+    # credentials in process arguments if somebody points it at another server.
+    if not re.fullmatch(r"redis://(?:127\.0\.0\.1|localhost):[0-9]+(?:/[0-9]+)?", redis_url):
+        raise InspectionError("watchdog requires unauthenticated loopback Redis")
+    try:
+        return json.loads(command(["redis-cli", "-u", redis_url, "--json", *args]))
+    except (ValueError, TypeError) as error:
+        raise InspectionError("invalid Redis response") from error
+
+
+def positive_number(value) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        raise InspectionError("invalid execution timestamp")
+    if not math.isfinite(value) or value <= 0:
+        raise InspectionError("invalid execution timestamp")
+    return value
+
+
+def notification_work(records: dict, identity: str, beat: float) -> dict:
+    jobs = {}
+    for thread, encoded in records.items():
+        try:
+            work = json.loads(encoded)
+            payload = work["payload"]
+            job = json.loads(payload) if isinstance(payload, str) else payload
+            if job["class"] != "SyncNotificationsWorker":
+                continue
+            jid = job["jid"]
+            if not isinstance(jid, str) or not jid:
+                raise ValueError("invalid job identity")
+            run_at = positive_number(work["run_at"])
+        except (KeyError, ValueError, TypeError) as error:
+            raise InspectionError("invalid worker execution record") from error
+        # A retry of the same jid is a new execution, so include its run_at.
+        key = json.dumps([identity, thread, jid, run_at])
+        jobs[key] = beat
+    return jobs
+
+
+def live_syncs(command: Callable, redis_url: str, state: dict) -> dict:
+    identities = redis_json(command, redis_url, "SMEMBERS", "processes")
+    if not isinstance(identities, list):
+        raise InspectionError("invalid process list")
+    jobs = {}
+    for identity in identities:
+        if not isinstance(identity, str):
+            raise InspectionError("invalid process identity")
+        encoded = redis_json(command, redis_url, "HGET", identity, "info")
+        if encoded is None:
+            continue
+        try:
+            info = json.loads(encoded)
+            if info["pid"] != state["pid"] or info["hostname"] != socket.gethostname():
+                continue
+            beat = positive_number(float(redis_json(command, redis_url, "HGET", identity, "beat")))
+        except (KeyError, ValueError, TypeError) as error:
+            raise InspectionError("invalid process metadata") from error
+        records = redis_json(command, redis_url, "HGETALL", identity + ":work")
+        if not isinstance(records, dict):
+            raise InspectionError("invalid execution list")
+        jobs.update(notification_work(records, identity, beat))
+    return jobs
+
+
+def valid_observation(record, started: float, monotonic: float) -> bool:
+    if not isinstance(record, dict) or not isinstance(record.get("over_budget"), bool):
+        return False
+    first = record.get("first_seen")
+    beat = record.get("beat")
+    return (type(first) in (int, float) and math.isfinite(first) and started <= first <= monotonic
+            and type(beat) in (int, float) and math.isfinite(beat) and beat > 0)
+
+
+def observe(observations: dict, jobs: dict, monotonic: float) -> dict:
+    previous = observations.get("jobs", {})
+    if not isinstance(previous, dict):
+        previous = {}
+    current = {}
+    eligible = {}
+    for key, beat in jobs.items():
+        prior = previous.get(key, {})
+        if not valid_observation(prior, observations["service"]["started"], monotonic):
+            prior = {}
+        first = prior.get("first_seen", monotonic)
+        age = monotonic - first
+        refreshed = prior.get("beat") != beat
+        over_budget = age > MAX_SYNC_SECONDS
+        # Confirm on a later timer tick with a newly published heartbeat/work
+        # snapshot, rather than rereading one stale ten-second snapshot twice.
+        if over_budget and prior.get("over_budget") is True and refreshed:
+            eligible[key] = int(age)
+        current[key] = {"first_seen": first, "beat": beat, "over_budget": over_budget}
+    observations["jobs"] = current
+    return eligible
+
+
+def run_watchdog(
+    observations: dict,
+    unit: str = "octobox-sidekiq.service",
+    redis_url: str = "redis://127.0.0.1:6380",
+    command: Callable = checked_command,
+    monotonic: Callable = time.monotonic,
+    emit: Callable = print,
+) -> None:
+    if not re.fullmatch(r"[A-Za-z0-9_.@:-]+\.service", unit):
+        raise InspectionError("invalid service name")
+    state = service_state(command, unit, monotonic())
+    if state is None:
+        observations.clear()
+        emit("Worker is not running; nothing to inspect")
+        return
+    if observations.get("service") != state:
+        observations.clear()
+        observations["service"] = state
+    eligible = observe(observations, live_syncs(command, redis_url, state), monotonic())
+    if not eligible:
+        emit("No confirmed over-budget notification sync")
+        return
+    if service_state(command, unit, monotonic()) != state:
+        emit("Worker changed during inspection; skipping restart")
+        return
+    confirmed = live_syncs(command, redis_url, state)
+    remaining = eligible.keys() & confirmed.keys()
+    if not remaining:
+        emit("Notification sync finished during inspection; skipping restart")
+        return
+    # Redis reads can take time. Check generation again immediately before acting.
+    if service_state(command, unit, monotonic()) != state:
+        emit("Worker changed during confirmation; skipping restart")
+        return
+    age = max(eligible[key] for key in remaining)
+    emit(f"Notification sync observed for {age}s, over {MAX_SYNC_SECONDS}s; restarting {unit}")
+    # Unlike restart, try-restart cannot start a service deliberately stopped
+    # between the identity check and systemd processing this request.
+    command(["systemctl", "--user", "try-restart", unit], timeout=45)
+    recovered = service_state(command, unit, monotonic())
+    if recovered is None or recovered == state:
+        raise InspectionError("worker restart did not produce a running new service generation")
+    observations.clear()
+    emit("Background worker restarted; notification data and Redis locks were not modified")
+
+
+def observation_file() -> pathlib.Path:
+    directory = os.environ.get("STATE_DIRECTORY")
+    if directory is None:
+        directory = str(pathlib.Path(os.environ.get("XDG_STATE_HOME", pathlib.Path.home() / ".local/state"))
+                        / "octobox-sync-watchdog")
+    path = pathlib.Path(directory)
+    path.mkdir(mode=0o700, parents=True, exist_ok=True)
+    return path / "observations.json"
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--unit", default="octobox-sidekiq.service")
+    args = parser.parse_args()
+    try:
+        path = observation_file()
+        try:
+            observations = json.loads(path.read_text()) if path.exists() else {}
+        except ValueError:
+            observations = {}
+            print("Invalid watchdog state discarded; observation budget resets", file=sys.stderr)
+        if not isinstance(observations, dict):
+            observations = {}
+        run_watchdog(observations, unit=args.unit,
+                     redis_url=os.environ.get("REDIS_URL", "redis://127.0.0.1:6380"))
+        with tempfile.NamedTemporaryFile(mode="w", dir=path.parent, delete=False) as temporary:
+            json.dump(observations, temporary)
+        os.replace(temporary.name, path)
+    except (InspectionError, OSError, ValueError) as error:
+        # Do not echo file contents or connection details from external errors.
+        message = str(error) if isinstance(error, InspectionError) else type(error).__name__
+        print(f"Sync watchdog failed: {message}", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

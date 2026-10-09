@@ -416,6 +416,7 @@ fixups =
     EOF
     systemctl --user daemon-reload
     systemctl --user enable --now octobox-funnel-watchdog.timer
+    bash "$HOME/.config/mr/scripts/install-octobox-sync-watchdog" "$MR_REPO"
     systemctl --user enable octobox.service octobox-sidekiq.service
     systemctl --user restart octobox.service octobox-sidekiq.service
     if ! grep -Eq '^GITHUB_CLIENT_ID=.+$' "$env_file" ||
