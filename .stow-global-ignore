@@ -91,5 +91,12 @@ nohup\.out
 ^/\.beads
 ^/\.beads.*\.lock
 \.perles
-^/\.agents/skills/beads/
+# No trailing slash: stow matches the path without one, so
+# "^/\.agents/skills/beads/" never matched and the files beneath it collided.
+^/\.agents/skills/beads
 ^/\.beads-solo
+# Repo-local agent setup, e.g. from `bd setup claude` and `bd setup codex`.
+# The user-level copies in ~ belong to the agent config package.
+^/\.claude/skills
+^/\.codex
+\.pytest_cache
