@@ -99,4 +99,6 @@ nohup\.out
 # The user-level copies in ~ belong to the agent config package.
 ^/\.claude/skills
 ^/\.codex
-\.pytest_cache
+# Repo-local secret-scanner configuration.
+^/\.gitleaks\.toml
+^/\.gitleaksignore
