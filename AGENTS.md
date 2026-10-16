@@ -343,19 +343,18 @@ fixups =
 
 **Configuration:**
 ```
-[$HOME/org]
+[.config/mr.sec]
+name = mr-config.sec
+stowable = true
 lib =
     export STOW_PKG_TYPE=symlink
     export STOW_SOURCE_PATH="$MR_REPO/.STOW"
     mr_init_stow_package
-stowable = true
-fixups =
-    # ... setup code ...
 ```
 
 **How it works:**
 1. `STOW_SOURCE_PATH` overrides the default repo path
-2. Stow symlink points to custom path: `~/.STOW/org -> ~/org/.STOW/`
+2. Stow symlink points to custom path: `~/.STOW/mr-config.sec -> ~/.config/mr.sec/.STOW/`
 3. Only contents of `.STOW/` subdirectory are stowed
 
 **Key characteristics:**
@@ -363,7 +362,7 @@ fixups =
 - `STOW_SOURCE_PATH` points to subdirectory
 - Used for repos with mixed content
 
-**Examples:** org (groups.d/23-PIM)
+**Examples:** mr-config.sec (home-mrconfig)
 
 ### STOW_PKG_TYPE Reference
 
