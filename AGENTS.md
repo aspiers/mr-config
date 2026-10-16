@@ -70,6 +70,7 @@ Used to configure repository behavior before clone/checkout:
 - **`set_git_origin_name <name>`** - Set the origin repository name (if different from clone name)
 - **`set_git_clone_name <name>`** - Set the name to use when cloning
 - **`set_email <email>`** - Set the git user.email for this repo (overrides defaults)
+- **`set_description <text>`** - Record the repo's one-line purpose, printed by `mr describe`. Every repo under `~/.GIT/adamspiers.org` and every top-level repo in `~` needs one; third-party clones don't
 - **`set_git_clone_remote <remote>`** - Set which remote name to use during clone (default: depends on service)
 
 ### Remote Management Functions
@@ -175,6 +176,7 @@ mr up             # Update all repos
 mr remotes        # Set up remotes for all repos
 mr stow           # Stow all stowable packages
 mr fix            # Run fixups for all repos
+mr describe       # Print "- name<TAB>path<TAB>description" per repo
 ```
 
 For specific repos (must be run from `$HOME`):
