@@ -15,13 +15,6 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
-[$HOME/.GIT/adamspiers.org/mutt.sec]
-# needs ~/.mutt/run-hooks
-skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
-
 [$HOME/.GIT/3rd-party/offlineimap]
 checkout = github_clone
 remotes = auto_remotes

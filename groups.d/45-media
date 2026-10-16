@@ -1,13 +1,5 @@
 # -*- mode: sh -*-
 
-[$HOME/media]
-skip = lazy || default_skipper
-checkout = git_clone_my_repo
-lib =
-    set_email adam@spiers.net
-    set_confidential_repo
-remotes = auto_remotes
-
 [$HOME/software/audio/mpdtoys]
 skip = lazy || default_skipper
 checkout = git_clone git://git.kitenet.net/mpdtoys.git
@@ -26,14 +18,6 @@ fixups =
     mv usr/* .
     rmdir usr
     mr_restow_regardless
-
-[$HOME/video]
-skip = lazy || default_skipper
-checkout = moosehall_git_checkout
-lib =
-    set_email adam@spiers.net
-    set_confidential_repo
-remotes = auto_remotes
 
 [$HOME/.SVN/pyroscope]
 skip = lazy || default_skipper

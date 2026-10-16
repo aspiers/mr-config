@@ -1,49 +1,8 @@
 # -*- mode: sh -*-
 
-[$HOME/org]
-lib =
-    set_confidential_repo
-    export STOW_PKG_TYPE=symlink
-    export STOW_SOURCE_PATH="$MR_REPO/.STOW"
-    mr_init_stow_package
-skip = lazy || default_skipper
-checkout = moosehall_git_checkout
-remotes = auto_remotes
-stowable = true
-fixups =
-    setup_auto_sync_org_lockfiles
-    setup_git_autocommit_and_annex_autosync
-
-[$HOME/finance]
-lib = set_confidential_repo
-skip = lazy || default_skipper
-checkout = moosehall_git_checkout
-remotes = auto_remotes
-
-[$HOME/hardware]
-lib =
-    set_email adam@spiers.net
-    set_confidential_repo
-skip = lazy || default_skipper
-checkout = moosehall_git_checkout
-remotes = auto_remotes
-
-[$HOME/OWRA]
-lib =
-    set_confidential_repo
-    set_email oceanwharf@adamspiers.org
-skip = lazy || default_skipper
-checkout = moosehall_git_checkout
-remotes = auto_remotes
-
 [$HOME/.GIT/adamspiers.org/pim]
 checkout = git_clone_my_repo
 skip = default_skipper || user_not_adam
-remotes = auto_remotes
-stowable = true
-
-[$HOME/.GIT/adamspiers.org/pim.sec]
-checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
@@ -70,12 +29,6 @@ skip = lazy || default_skipper
 checkout = svn checkout http://googlecl.googlecode.com/svn/trunk/ googlecl
 fixups =
     python setup.py install --home ~
-
-[$HOME/training]
-lib = set_confidential_repo
-skip = lazy || default_skipper
-checkout = moosehall_git_checkout
-remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/pass]
 checkout = git_clone https://git.zx2c4.com/password-store

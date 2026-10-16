@@ -63,12 +63,6 @@ stowable = true
 # fixups =
 #     mr_restow_regardless
 
-[$HOME/.GIT/adamspiers.org/github.sec]
-skip = lazy || default_skipper
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
-
 [$HOME/.GIT/3rd-party/willgit]
 skip = default_skipper || missing_exe git || missing_exe ruby
 checkout = git_clone git://gitorious.org/willgit/mainline.git

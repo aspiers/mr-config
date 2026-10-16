@@ -1,13 +1,5 @@
 # -*- mode: sh -*-
 
-[$HOME/hack]
-lib =
-    # Contains Ruby books, and probably some embarrassing code.
-    set_confidential_repo
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
-
 [$HOME/.GIT/3rd-party/ijq]
 checkout = git_clone https://git.sr.ht/~gpanders/ijq
 fixups =

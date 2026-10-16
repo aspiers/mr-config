@@ -109,15 +109,6 @@ stowable = true
 lib =
     set_git_origin_user Morantron
 
-[$HOME/.GIT/adamspiers.org/weechat]
-name = weechat-config
-skip = default_skipper || ( missing_exe weechat-curses && missing_exe weechat )
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
-lib =
-    set_confidential_repo
-
 [$HOME/.GIT/3rd-party/weechat-matrix-protocol-script]
 skip = default_skipper || ( missing_exe weechat-curses && missing_exe weechat )
 checkout = github_clone

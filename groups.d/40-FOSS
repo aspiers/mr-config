@@ -17,13 +17,6 @@ fixups =
         ensure_symlink_exists ~/bin/${bin##*/} "$MR_REPO/$bin"
     done
 
-[$HOME/.GIT/adamspiers.org/gnu.sec]
-skip = default_skipper || not_moosehall
-checkout = git_clone_my_repo
-remotes = auto_remotes
-stowable = true
-lib = set_email gnu@adamspiers.org
-
 [$HOME/.CVS/texinfo]
 checkout = cvs -z3 -d:pserver:anonymous@cvs.savannah.gnu.org:/sources/texinfo co texinfo
 skip = lazy
