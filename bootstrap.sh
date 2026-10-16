@@ -59,6 +59,17 @@ mr_update_stow_fixups () {
     done
 }
 
+# For private repos, which are defined only in mr.sec.  Only secure
+# machines check mr.sec out, and mr aborts on a repo name it doesn't
+# know, which would stop the whole bootstrap under set -e.
+mr_update_stow_fixups_sec () {
+    if [ -e ~/.config/mr.sec/.mrconfig ]; then
+        mr_update_stow_fixups "$@"
+    else
+        echo "Skipping $* since they are defined in mr.sec, which this machine lacks"
+    fi
+}
+
 # There's a whole bunch more we could check for here, but we don't
 # because we want it to work for bare bones installs.
 for prog in curl git make zsh; do
@@ -298,13 +309,20 @@ mr -i -r mr fixups
 
 div ############################################################
 
+# Private repo definitions live in mr.sec, so get it before any of
+# them are needed.  mr skips it on machines without the secure property.
+echo "Retrieving private mr config ..."
+mr_update_stow_fixups mr-config.sec
+
+div ############################################################
+
 # Check out some packages to bootstrap ssh config.  This will add
 # extra stuff to the config but keep our ControlMaster / ControlPath
 # bits so that passwordless ssh still works.
 
-boot=( ssh ssh.adam_spiers.sec mr-util git-config )
-
-mr_update_stow_fixups "${boot[@]}"
+mr_update_stow_fixups ssh
+mr_update_stow_fixups_sec ssh.adam_spiers.sec
+mr_update_stow_fixups mr-util git-config
 
 echo "Removing $ssh_bootstrap_conf and rebuilding ssh config ..."
 rm $ssh_bootstrap_conf
@@ -322,7 +340,8 @@ done
 div ############################################################
 
 echo "Installing other core dependencies ..."
-mr_update_stow_fixups shell-env.adam_spiers.{pub,sec}
+mr_update_stow_fixups shell-env.adam_spiers.pub
+mr_update_stow_fixups_sec shell-env.adam_spiers.sec
 
 # Get moosehall-git-URL-rewriters.
 mr_update_stow_fixups moosehall+shell-env
@@ -343,7 +362,8 @@ fi
 
 mr_update_stow_fixups git.adam_spiers.pub
 
-mr_update_stow_fixups moosehall+ssh.{pub,sec}
+mr_update_stow_fixups moosehall+ssh.pub
+mr_update_stow_fixups_sec moosehall+ssh.sec
 
 div ############################################################
 
@@ -358,12 +378,14 @@ mr_update_stow_fixups emacs
 div ############################################################
 
 echo "Installing important stuff from 10-moosehall ..."
-mr_update_stow_fixups moosehall+{xsession,watchlogs.pub,ldap.{pub,sec}}
+mr_update_stow_fixups moosehall+{xsession,watchlogs.pub,ldap.pub}
+mr_update_stow_fixups_sec moosehall+ldap.sec
 
 div ############################################################
 
 echo "Installing important stuff from 12-CLI ..."
-mr_update_stow_fixups lftp fastdup xdiskusage weechat-config lnav lnav-formats
+mr_update_stow_fixups lftp fastdup xdiskusage lnav lnav-formats
+mr_update_stow_fixups_sec weechat-config
 
 div ############################################################
 
