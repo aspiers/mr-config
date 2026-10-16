@@ -1,0 +1,12 @@
+# -*- mode: sh -*-
+
+# Records a repo's one-line purpose for "mr describe".  Call it from a
+# repo's lib section, like set_email.
+set_description () {
+    if [ $# != 1 ]; then
+        error "$MR_REPO: invoked set_description $*"
+        exit 1
+    fi
+
+    MR_DESCRIPTION="$1"
+}

@@ -1,0 +1,2 @@
+# Like "mr dir", plus each repo's one-line purpose from set_description
+describe = echo "- ${MR_NAME:-(unnamed)}	$MR_REPO	${MR_DESCRIPTION:-}"
