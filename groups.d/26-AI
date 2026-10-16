@@ -385,6 +385,10 @@ fixups =
 
     Environment=PORT=19847
     Environment=HOST=127.0.0.1
+    # File paths clicked in bead text open in Emacs.  Not xdg-open: the
+    # desktop maps source files to Qt Linguist (.ts), Firefox (.tsx),
+    # Okular (.md), Bluefish (.json) and Zed (plain text).
+    Environment=SCOTTY_OPEN_COMMAND=$HOME/bin/quick-emacs
     # Update checks fetch the public origin over HTTPS, configured above, so
     # this service deliberately receives no SSH_AUTH_SOCK.
     WorkingDirectory=$MR_REPO
