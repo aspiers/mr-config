@@ -18,6 +18,7 @@ fixups =
         [ -x "$ep" ] && ln -sf "$ep" ~/bin
     done
     ensure_symlink_exists ~/bin/mrname mrdir
+    ensure_symlink_exists ~/bin/mrdesc mrdir
     # FIXME: This has been known to break during bootstrapping,
     # probably due to ~/.zsh/functions somehow being a symlink to
     # within shell-env.  I don't understand why though, because

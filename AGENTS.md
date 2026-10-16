@@ -177,6 +177,7 @@ mr remotes        # Set up remotes for all repos
 mr stow           # Stow all stowable packages
 mr fix            # Run fixups for all repos
 mr describe       # Print "- name<TAB>path<TAB>description" per repo
+mrdesc <repo>     # Print one repo's description, cached by mr-recache
 ```
 
 For specific repos (must be run from `$HOME`):
