@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/desktop-config]
+lib = set_description "Xorg desktop config and helper scripts"
 skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -18,6 +19,7 @@ lib =
     mr_post_stow () {
         fc-cache -v
     }
+    set_description "Fonts installed into ~/.fonts and the X font path"
 fixups =
     fc-cache
 
@@ -50,41 +52,48 @@ remotes = auto_remotes
 # stowable = true
 
 [$HOME/.GIT/adamspiers.org/xwrits]
+lib = set_description "xwrits typing-break reminder wrappers and config"
 skip = default_skipper || missing_exe xwrits
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/graphics]
+lib = set_description "Image viewing and screenshot shortcuts (gqv, iv, xwdjpeg)"
 skip = default_skipper || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/audio]
+lib = set_description "PipeWire and WirePlumber audio scripts and config"
 skip = default_skipper || ! machine_has_property music
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/kde]
+lib = set_description "KDE keybindings, theme and window rules"
 skip = default_skipper || ( missing_exe kdeinit && missing_exe kdeinit4 )
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/watchlogs]
+lib = set_description "watchlogs log watcher plus DHCP and MAC address helpers"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/xchat]
+lib = set_description "XChat IRC client config"
 skip = default_skipper || missing_exe xchat
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/backgrounds]
+lib = set_description "Desktop background selection and rotation scripts"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

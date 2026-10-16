@@ -2,6 +2,7 @@
 
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/mutt]
+lib = set_description "Generic mutt config"
 skip = default_skipper || missing_exe mutt
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -9,6 +10,7 @@ stowable = true
 
 # depends on shell-env for sort-by-filename
 [$HOME/.GIT/adamspiers.org/mutt.pub]
+lib = set_description "mutt config written for Adam but shared publicly"
 # needs ~/.mutt/run-hooks
 skip = missing_dir $HOME/.GIT/adamspiers.org/mutt
 checkout = git_clone_my_repo
@@ -31,6 +33,7 @@ fixups =
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/mailcap]
+lib = set_description "mailcap and MIME type config"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -55,6 +58,7 @@ fixups =
     # mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/gmail-count]
+lib = set_description "Counts Gmail messages over time and graphs them with ploticus"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 

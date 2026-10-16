@@ -1,17 +1,20 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/perl+mine]
+lib = set_description "Personal Perl utilities (ptc, cpan wrappers, pb/pd)"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/perl+doc]
+lib = set_description "List of CPAN modules to install"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/pmtools]
+lib = set_description "Perl module inspection commands (pmdesc, pmcat, pman and friends)"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

@@ -96,7 +96,9 @@ remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/ly-lib]
 skip = lazy || ! music_machine || missing_exe lilypond
-lib = set_email lilypond@adamspiers.org
+lib =
+    set_email lilypond@adamspiers.org
+    set_description "Shared LilyPond include files for Adam's scores"
 checkout = github_clone
 remotes = auto_remotes
 stowable = true
@@ -194,6 +196,7 @@ skip = lazy || missing_exe ruby || missing_exe sclang
 checkout = github_clone
 lib =
     set_email supercollider@adamspiers.org
+    set_description "Guard plugin for automatic testing of SuperCollider code"
 remotes =
     auto_remotes
 

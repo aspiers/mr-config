@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/pim]
+lib = set_description "Personal organisation (PIM) tools: routines, timers, scanning, org sync"
 checkout = git_clone_my_repo
 skip = default_skipper || user_not_adam
 remotes = auto_remotes
@@ -70,6 +71,7 @@ remotes = auto_remotes
 #stowable = true
 
 [$HOME/.GIT/adamspiers.org/email2ics]
+lib = set_description "Converts emails into iCalendar (.ics) events (not started)"
 checkout = git_clone_my_repo
 skip = default_skipper || user_not_adam
 remotes = auto_remotes

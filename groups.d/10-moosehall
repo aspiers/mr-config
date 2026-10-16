@@ -1,18 +1,21 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/moosehall+shell-env]
+lib = set_description "Shell config and DNS/DHCP scripts for moosehall machines"
 skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/moosehall+xsession]
+lib = set_description "X session programs for moosehall machines"
 skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/moosehall+ssh.pub]
+lib = set_description "Shareable ssh and cluster log-tailing config for moosehall machines"
 skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -20,12 +23,14 @@ stowable = true
 fixups = $MR_REPO/.cfg-post.d/$MR_NAME
 
 [$HOME/.GIT/adamspiers.org/moosehall+watchlogs.pub]
+lib = set_description "watchlogs rules for moosehall network devices"
 skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/moosehall+ldap.pub]
+lib = set_description "LDAP environment and DHCP host helper for moosehall"
 skip = default_skipper || not_moosehall
 checkout = git_clone_my_repo
 remotes = auto_remotes

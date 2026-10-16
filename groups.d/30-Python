@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/python-env]
+lib = set_description "pyenv and virtualenvwrapper shell setup"
 skip = default_skipper || missing_exe python
 checkout = git_clone_my_repo
 remotes = auto_remotes

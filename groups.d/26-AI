@@ -5,6 +5,7 @@ lib =
     set_email ai@adamspiers.org
 
 [$HOME/.GIT/adamspiers.org/ai-config]
+lib = set_description "Config and skills for AI coding agents (Claude, Codex, Pi and others)"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -302,6 +303,7 @@ fixups =
     ensure_symlink_exists ~/bin/orca-dev "$MR_REPO/config/scripts/orca-dev.mjs"
 
 [$HOME/.GIT/adamspiers.org/agent-doctor]
+lib = set_description "Planned CLI to check a project's AI agent setup (requirements only)"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

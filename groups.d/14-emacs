@@ -33,6 +33,7 @@ remotes =
     auto_remotes
 
 [$HOME/.GIT/adamspiers.org/emacs]
+lib = set_description "Adam's emacs config"
 skip = default_skipper || missing_exe emacs
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -238,7 +239,9 @@ checkout = cvs -d :pserver:anonymous@cvs.savannah.gnu.org:/sources/tramp co tram
 
 [$HOME/.GIT/adamspiers.org/vc-osc]
 skip = lazy || default_skipper || missing_exe emacs || missing_exe osc
-lib = set_email aspiers@suse.com
+lib =
+    set_email aspiers@suse.com
+    set_description "Open Build Service (osc) backend for Emacs vc-mode"
 checkout = github_clone
 remotes = auto_remotes
 #fixups =
@@ -246,7 +249,9 @@ remotes = auto_remotes
 
 [$HOME/.GIT/adamspiers.org/smooth-scrolling]
 skip = lazy || default_skipper || missing_exe emacs
-lib = set_email emacs@adamspiers.org
+lib =
+    set_email emacs@adamspiers.org
+    set_description "Emacs smooth scrolling package"
 checkout = github_clone
 remotes = auto_remotes
 # fixups =
@@ -409,6 +414,7 @@ fixups =
     symlink_repo_from $HOME/.GIT/3rd-party/$MR_NAME
 
 [$HOME/.GIT/adamspiers.org/madolt]
+lib = set_description "Magit-like Emacs interface for Dolt"
 skip = lazy || default_skipper || missing_exe emacs
 checkout = github_clone
 remotes = auto_remotes

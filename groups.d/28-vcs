@@ -2,29 +2,34 @@
 
 # N.B. cvs requires glob-to-re from shell-env.
 [$HOME/.GIT/adamspiers.org/cvs]
+lib = set_description "CVS config and shortcut commands"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/hg]
+lib = set_description "Mercurial config and shortcut commands"
 skip = default_skipper || missing_exe hg
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/hg.pub]
+lib = set_description "Adam's Mercurial identity and CVS-to-hg conversion scripts"
 skip = default_skipper || missing_exe hg
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/svn]
+lib = set_description "Subversion config and shortcut commands"
 skip = default_skipper || missing_exe svn
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/darcs]
+lib = set_description "darcs shortcut commands"
 skip = default_skipper || missing_exe darcs
 checkout = git_clone_my_repo
 remotes = auto_remotes

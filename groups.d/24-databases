@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/mysqldiff]
+lib = set_description "Compares MySQL database schemas (CPAN suite)"
 skip = lazy
 checkout = github_clone
 remotes =

@@ -1,7 +1,9 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/rpm]
-lib = set_git_clone_name rpm-tools
+lib =
+    set_git_clone_name rpm-tools
+    set_description "Utilities for working with rpm packages"
 skip = default_skipper || missing_exe rpm
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -9,6 +11,7 @@ stowable = true
 
 [$HOME/.GIT/adamspiers.org/SUSE]
 name = SUSE-dist
+lib = set_description "SUSE-specific utilities and osc plugins (SUSE-dist)"
 # Check out on adamspiers.org web server so we can publish files
 skip =
     default_skipper || \

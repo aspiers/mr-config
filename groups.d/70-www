@@ -110,6 +110,7 @@ checkout = mr_download_checkout
 skip = lazy
 lib =
     set_email userscripts@adamspiers.org
+    set_description "Browser userscript assigning custom nicknames to Discord users"
 checkout = github_clone
 remotes =
     auto_remotes
@@ -118,6 +119,7 @@ remotes =
 skip = lazy
 lib =
     set_email blockchain@adamspiers.org
+    set_description "Browser userscript fixing two Twitter bugs"
 checkout = github_clone
 remotes =
     auto_remotes

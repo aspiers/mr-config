@@ -4,7 +4,9 @@
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
-lib = set_email mr@adamspiers.org
+lib =
+    set_email mr@adamspiers.org
+    set_description "Shortcut commands for mr and git-annex (mrco, mrf, mrcd, au*)"
 fixups =
     # FIXME: maybe necessary during bootstrap to ensure that it's
     # stowed before fixups_append from mr/lib.d/cfg-post kicks in?
@@ -14,12 +16,14 @@ fixups =
 
 [$HOME/.GIT/adamspiers.org/screen]
 name = screenrc
+lib = set_description "Config for GNU Screen and tmux"
 skip = default_skipper || ( missing_exe screen && missing_exe tmux )
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/herdr-config]
+lib = set_description "Herdr config and its Worktrunk integration"
 skip = default_skipper || missing_exe herdr
 checkout = git_clone_my_repo
 remotes = auto_remotes

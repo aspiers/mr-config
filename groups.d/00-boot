@@ -60,12 +60,14 @@ fixups =
 [$HOME/.GIT/adamspiers.org/META]
 deleted = true
 [$HOME/.GIT/adamspiers.org/cfgctl]
+lib = set_description "Utility for managing config repositories"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 # Needed for many things including lib/libhooks.sh, lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/shell-env]
+lib = set_description "Shell environment for zsh and bash, with many home-made utilities"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -74,6 +76,7 @@ fixups =
 
 [$HOME/.GIT/adamspiers.org/git]
 name = git-config
+lib = set_description "git shortcuts and environment (git-config)"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -83,11 +86,13 @@ stowable = true
 # accidentally put new files in there and they unintentionally go
 # in a package directory).
 [$HOME/.GIT/adamspiers.org/ANTIFOLD]
+lib = set_description "Stops GNU Stow folding chosen directories under \$HOME"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/shell-env.adam_spiers.pub]
+lib = set_description "Shell config specific to Adam that is safe to share"
 checkout = git_clone_my_repo
 skip = user_not_adam
 remotes = auto_remotes
@@ -95,7 +100,9 @@ stowable = true
 
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/ssh]
-lib = set_git_clone_name ssh-config
+lib =
+    set_git_clone_name ssh-config
+    set_description "OpenSSH public config and helper scripts"
 skip = missing_exe ssh
 checkout = git_clone_my_repo
 remotes = auto_remotes

@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/work-tools]
+lib = set_description "Work hours logging scripts"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

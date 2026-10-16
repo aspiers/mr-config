@@ -1,18 +1,21 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/lftp]
+lib = set_description "lftp config and bookmarks"
 skip = default_skipper || missing_exe lftp
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/ncftp]
+lib = set_description "ncftp bookmarks and macros"
 skip = default_skipper || missing_exe ncftp
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
 
 [$HOME/.GIT/adamspiers.org/wscan]
+lib = set_description "Wireless network scanning and reporting scripts"
 skip = default_skipper || ! iwconfig 2>&1 | grep -q IEEE
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -20,6 +23,7 @@ stowable = true
 
 # needs lib/perl5/Sh.pm
 [$HOME/.GIT/adamspiers.org/dup-files]
+lib = set_description "Finds and removes duplicate files by MD5 checksum"
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true
@@ -167,6 +171,7 @@ fixups =
 skip = lazy
 lib =
     set_email lnav@adamspiers.org
+    set_description "Extra log file formats for the lnav log viewer"
 checkout = github_clone
 remotes = auto_remotes
 fixups =
@@ -219,12 +224,14 @@ skip = default_skipper || missing_exe bat
 checkout = github_clone
 lib =
     set_git_origin_user eth-p
+    set_description "Fork of eth-p/bat-extras: scripts integrating bat with other CLI tools"
 remotes = auto_remotes
 stowable = true
 fixups =
     ./build.sh --install --prefix=$HOME
 
 [$HOME/.GIT/adamspiers.org/lazydolt]
+lib = set_description "Terminal UI for Dolt databases, inspired by lazygit"
 skip = default_skipper || missing_exe dolt
 checkout = github_clone
 remotes = auto_remotes

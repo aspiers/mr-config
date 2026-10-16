@@ -55,6 +55,7 @@ fixups =
     mr_restow_regardless
 
 [$HOME/.GIT/adamspiers.org/git.adam_spiers.pub]
+lib = set_description "git config specific to Adam, but reusable by anyone"
 skip = default_skipper
 checkout = git_clone_my_repo
 remotes = auto_remotes
@@ -174,6 +175,7 @@ checkout = github_clone
 lib =
     set_email git@adamspiers.org
     #mr_init_stow_package
+    set_description "Analyses dependencies between git commits"
 remotes = auto_remotes
 fixups =
     #PYTHONUSERBASE=$STOW_PKG_PATH pip install --user -e .
@@ -205,6 +207,7 @@ skip = default_skipper || missing_exe git
 checkout = github_clone
 lib =
     set_email git@adamspiers.org
+    set_description "Explodes a linear sequence of git commits into topic branches"
 remotes = auto_remotes
 fixups =
     pip install --user -e .
@@ -215,6 +218,7 @@ checkout = git_clone_my_repo
 remotes = auto_remotes
 lib =
     set_email git@adamspiers.org
+    set_description "Marks GitHub notifications as read from a mail client"
 fixups =
     ensure_symlink_exists $HOME/bin/github-notifications "$MR_REPO/github-notifications"
 
@@ -424,6 +428,7 @@ skip = default_skipper || missing_exe git
 checkout = github_clone
 lib =
     set_email github@adamspiers.org
+    set_description "Source of the aspiers.github.io GitHub Pages site"
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/git-series]
@@ -443,6 +448,7 @@ remotes = auto_remotes
 skip = lazy
 lib =
     set_email git@adamspiers.org
+    set_description "Git auto-magic talk, Git London User Group, May 2018"
 checkout = github_clone
 remotes =
     auto_remotes
@@ -453,6 +459,7 @@ remotes =
 skip = lazy
 lib =
     set_email git@adamspiers.org
+    set_description "Git auto-magic lightning talk, OpenStack PTG Denver, Sept 2018"
 checkout = github_clone
 remotes =
     auto_remotes
@@ -466,6 +473,7 @@ fixups =
 skip = lazy
 lib =
     set_email git@adamspiers.org
+    set_description "Git auto-magic talk, Nashville, April 2019"
 checkout = github_clone
 remotes =
     auto_remotes

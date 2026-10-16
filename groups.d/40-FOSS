@@ -116,6 +116,7 @@ remotes = auto_remotes
 skip = default_skipper
 lib =
     set_email github@adamspiers.org
+    set_description "Utilities for mailing lists, NNTP and groups"
 checkout = github_clone
 remotes = auto_remotes
 #stowable = true

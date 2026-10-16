@@ -45,6 +45,7 @@ skip = lazy || default_skipper
 checkout = git_clone_my_repo
 lib =
     set_email pdf-exploder@adamspiers.org
+    set_description "Splits PDFs into fragments based on an index"
 remotes = auto_remotes
 
 [$HOME/.GIT/3rd-party/get_iplayer]
@@ -72,5 +73,6 @@ fixups =
 skip = lazy || default_skipper
 lib =
     set_email github@adamspiers.org
+    set_description "Draws highlight hulls around element groups in SVG diagrams"
 checkout = github_clone
 remotes = auto_remotes

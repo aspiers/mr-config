@@ -1,6 +1,7 @@
 # -*- mode: sh -*-
 
 [$HOME/.GIT/adamspiers.org/ruby]
+lib = set_description "Ruby, irb and pry config plus Bundler shortcuts"
 skip = default_skipper || missing_exe ruby
 checkout = git_clone_my_repo
 remotes = auto_remotes
