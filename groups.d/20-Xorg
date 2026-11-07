@@ -185,6 +185,29 @@ fixups =
     zypper_install libXft-devel libXi-devel libXtst-devel libXinerama-devel
     make PREFIX= DESTDIR=$STOW_PKG_PATH DISABLE_WAYLAND=1
 
+# Keyboard-driven mouse control via evdev and uinput.  Hint mode and the
+# cursor locator need Wayland (wlr layer-shell, screencopy), so on X11
+# only the free mouse mode and key remapping work.
+[$HOME/.GIT/3rd-party/fievel]
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user MontyTheSoftwareEngineer
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+fixups =
+    # Build from source rather than scripts/install-systemd-service.sh,
+    # which also enables a systemd user unit; enabling autostart is a
+    # separate decision.
+    #
+    # No --locked: upstream's Cargo.lock still records fievel 2.0.0 while
+    # Cargo.toml says 2.0.1, so --locked refuses to build.  Cargo only
+    # rewrites that line; dependencies stay at their locked versions.
+    cargo build --release
+    mkdir -p ~/bin
+    install -m 0755 target/release/fievel ~/bin/
+
 [$HOME/.GIT/3rd-party/evdipp]
 stowable = true
 skip = lazy || default_skipper
