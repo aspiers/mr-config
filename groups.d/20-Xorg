@@ -208,6 +208,30 @@ fixups =
     mkdir -p ~/bin
     install -m 0755 target/release/fievel ~/bin/
 
+# Keyboard-driven hints, grids and pointer control.  Unlike fievel, its
+# hints work on X11, where it binds hotkeys through X rather than grabbing
+# input devices, so it coexists with keyd.
+[$HOME/.GIT/3rd-party/neru]
+skip = lazy || default_skipper
+lib =
+    set_git_origin_user y3owk1n
+checkout = github_clone
+remotes =
+    auto_remotes
+    github_readwrite_remote aspiers
+fixups =
+    zypper_install tesseract-ocr-devel leptonica-devel pipewire-devel libei-devel
+    # Build from source rather than scripts/install.sh, which downloads a
+    # release.  This is `just build` (just isn't installed here) with the
+    # version ldflags trimmed to the one `neru --version` shows.  As in the
+    # justfile, allow the -fno-strict-overflow that pipewire's pkg-config
+    # adds, which Go otherwise rejects.
+    CGO_ENABLED=1 CGO_CFLAGS_ALLOW=-fno-strict-overflow go build \
+        -ldflags="-s -w -X github.com/y3owk1n/neru/internal/buildinfo.Version=$(git describe --tags --always --dirty)" \
+        -o bin/neru ./cmd/neru
+    mkdir -p ~/bin
+    install -m 0755 bin/neru ~/bin/
+
 [$HOME/.GIT/3rd-party/evdipp]
 stowable = true
 skip = lazy || default_skipper
