@@ -27,8 +27,14 @@ include =
         # way, we only set it if we've already bootstrapped and
         # cloned the repo, otherwise auto_remotes won't be defined yet.
         echo "remotes = auto_remotes"
-        # Likewise set_description.
-        echo 'lib = set_description "mr definitions and helpers for every repo Adam manages"'
+        # Likewise set_description and the stow helpers, which
+        # publish .STOW/ (agent skills) into $HOME.
+        echo 'stowable = true'
+        echo 'lib ='
+        echo '    set_description "mr definitions and helpers for every repo Adam manages"'
+        echo '    export STOW_PKG_TYPE=symlink'
+        echo '    export STOW_SOURCE_PATH="$MR_REPO/.STOW"'
+        echo '    mr_init_stow_package'
     fi
 fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
