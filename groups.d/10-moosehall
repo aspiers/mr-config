@@ -9,7 +9,7 @@ stowable = true
 
 [$HOME/.GIT/adamspiers.org/moosehall+xsession]
 lib = set_description "X session programs for moosehall machines"
-skip = default_skipper || not_moosehall
+skip = default_skipper || not_moosehall || missing_exe X
 checkout = git_clone_my_repo
 remotes = auto_remotes
 stowable = true

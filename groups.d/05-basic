@@ -51,6 +51,9 @@ fixups =
     mr_restow_regardless
 
 [$HOME/software/scm/git-annex.static]
+# Only Linux builds are published; on macOS `arch` says arm64, which
+# would match arm* below and fetch the Linux armel tarball.
+skip = default_skipper || ! on_linux
 lib =
     case "`arch`" in
         x86_64)
