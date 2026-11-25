@@ -84,13 +84,39 @@ for prog in ruby virtualenv; do
     fi
 done
 
+# Platform differences in which repos apply are handled by skip
+# conditions in groups.d (see on_darwin etc. in sh.d/skippers); only
+# what's needed before mr can run belongs here.
+if [ "`uname -s`" = Darwin ]; then
+    # mr stanzas and fixups assume GNU userland, so put Homebrew's GNU
+    # tools first on $PATH for this run.
+    which brew >/dev/null 2>&1 || fatal "mr can't bootstrap on macOS without Homebrew"
+    gnu_formulae="coreutils findutils gnu-sed grep"
+    for formula in $gnu_formulae; do
+        if ! brew list --formula "$formula" >/dev/null 2>&1; then
+            echo "Installing $formula via Homebrew ..."
+            brew install "$formula"
+        fi
+    done
+    brew_prefix=`brew --prefix`
+    for formula in $gnu_formulae; do
+        PATH="$brew_prefix/opt/$formula/libexec/gnubin:$PATH"
+    done
+    export PATH
+    echo "Put GNU tools first on \$PATH"
+fi
+
 # mr runs stanzas via /bin/sh, so bash-isms like `source` fail when it's
 # dash or similar.  Probe the capability rather than the shell's name.
 if ! /bin/sh -c 'source /dev/null' >/dev/null 2>&1; then
     warn "/bin/sh ($(readlink -f /bin/sh)) lacks 'source'; mr stanzas must use '.' instead"
 fi
 
-[ -d ~/.stow ] && fatal "Rogue ~/.stow - delete it first."
+# Match the exact name: on case-insensitive filesystems (the macOS
+# default) ~/.stow and ~/.STOW are the same directory.
+if ls -a ~ | grep -qx '\.stow'; then
+    fatal "Rogue ~/.stow - delete it first."
+fi
 
 cd
 
