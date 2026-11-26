@@ -38,7 +38,7 @@ include =
     fi
 fixups =
     ln -sf "$MR_REPO/home-mrconfig" ~/.mrconfig
-    ln -sf "$MR_REPO/.stow-global-ignore" ~
+    ln -sf "$MR_REPO/.stow-global-ignore" ~/.stow-global-ignore
     if type git_config_email >/dev/null; then
         git_config_email
     else
