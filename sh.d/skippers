@@ -62,6 +62,39 @@ missing_rpm () {
     fi
 }
 
+# OS family, for conditions which a capability test such as
+# missing_exe can't express.  WSL is Linux too, so on_linux is true
+# there; use on_wsl to single it out.
+on_darwin () {
+    if [ "`uname -s`" = Darwin ]; then
+        debug_skippers ". On Darwin"
+        return 0 # true
+    else
+        debug_skippers "! Not on Darwin"
+        return 1 # false
+    fi
+}
+
+on_linux () {
+    if [ "`uname -s`" = Linux ]; then
+        debug_skippers ". On Linux"
+        return 0 # true
+    else
+        debug_skippers "! Not on Linux"
+        return 1 # false
+    fi
+}
+
+on_wsl () {
+    if on_linux && grep -qi microsoft /proc/version 2>/dev/null; then
+        debug_skippers ". On WSL"
+        return 0 # true
+    else
+        debug_skippers "! Not on WSL"
+        return 1 # false
+    fi
+}
+
 not_host () {
     read_localhost_nickname
     if [ "$localhost_nickname" != "$1" ]; then
